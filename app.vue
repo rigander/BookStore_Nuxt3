@@ -1,5 +1,7 @@
 <template>
   <div>
-    <div>BookStore</div>
+    <NuxtLayout>
+        <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
