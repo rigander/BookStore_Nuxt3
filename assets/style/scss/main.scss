@@ -38,8 +38,8 @@ body{
       height: 864px;
       display: flex;
       flex-direction: column;
-      justify-content: start;
-      align-items: start;
+      justify-content: flex-start;
+      align-items: flex-start;
       .product-list__nav{
         display: flex;
         justify-content: center;
