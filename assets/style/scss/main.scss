@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "reset-styles.css";
+@font-face {
+  font-family: SegoeWP;
+  src: url("/assets/fonts/Segoe WP Regular.ttf");
+}
+
+body {
+  color: #8b7f00;
+  background-color: #3c3f41;
+}
