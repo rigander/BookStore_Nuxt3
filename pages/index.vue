@@ -1,75 +1,10 @@
 <script setup>
 
+
 </script>
-
-
 <template>
     <div class="main-wrapper">
-        <header>
-            <div class="header-layout">
-                <div class="account-nav-container">
-                    <nav class="account-nav">
-                        <ul>
-                            <li><a id="account-nav__sign-in" href="">Sign in</a></li>
-                            <li><a id="account-nav__my-account" href="">My Account</a></li>
-                            <li><a id="account-nav__order-status" href="">Order Status</a></li>
-                            <li><a id="account-nav__help" href="">Help</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="header-content-container">
-                    <div class="header-content">
-                        <div class="header-content__books-online">
-                            <img src="../assets/img/header/logo.png" alt="logo">
-                        </div>
-                        <div class="header-content__search-panel">
-                            <input id="search" type="search">
-                            <button id="search-button">
-                                <div class="magnifying-glass">
-                                    <div id="magnifying_circle"></div>
-                                    <div id="stick-for__magnifying-circle"></div>
-                                </div><span>Search</span>
-                            </button>
-                        </div>
-                        <div class="header-content__your-cart">
-                            <div class="my-cart" >
-                                <div class="cart"><a href="/pages/product-page.vue" class="cart-link"><img src="../assets/img/header/green%20cart.png" alt="cart"></a></div>
-                                <div class="items">Your cart<div>(2 items)</div></div>
-                            </div>
-                            <div class="checkout">
-                                <div class="total-cost">$125.0</div>
-                                <button>Checkout</button>
-                            </div>
-                        </div>
-                        <div class="header-content__wish-list">
-                            <div class="star-wish-list">
-                                <div class="round-for-star">
-                                    <div class="star"></div>
-                                </div>
-                                <div class="wish-list">Wish list</div>
-                            </div>
-                            <div class="twenty">20</div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="main-nav-wrapper">
-                    <nav class="main-nav">
-                        <ul>
-                            <li><a href="" id="main-nav__computers">Computers</a></li>
-                            <li><a href="" class="main-nav__cooking">Cooking</a></li>
-                            <li><a href="" class="main-nav__education">Education</a></li>
-                            <li><a href="" class="main-nav__fiction">Fiction</a></li>
-                            <li><a href="" class="main-nav__health">Health</a></li>
-                            <li><a href="" class="main-nav__math">Mathematics</a></li>
-                            <li><a href="" class="main-nav__medical">Medical</a></li>
-                            <li><a href="" class="main-nav__reference">Reference</a></li>
-                            <li><a href="" id="main-nav__science">Science</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
+        <shared-header/>
         <div class="sliders-container">
             <article class="sliders">
                 <div class="main-slider">
@@ -110,47 +45,7 @@
         </div>
         <main id="main-content-wrapper">
             <div class="product-list-content">
-                <aside class="categories">
-                    <div class="categories__content">
-                        <h2 id="categories">Categories</h2>
-                        <button>ALL</button>
-                        <ul class="fiction">
-                            <div class="list-title">Fiction & Literature</div>
-                            <li><a href=""><div>Children</div></a></li>
-                            <li><a href="/pages/category-page.vue"><div>Science</div></a></li>
-                            <li><a href=""><div>Fantasy</div></a></li>
-                            <li><a href=""><div>Mystery</div></a></li>
-                            <li><a href=""><div>Romance</div></a></li>
-                            <li><a href=""><div>Horror</div></a></li>
-                            <li><a href=""><div>Poetry</div></a></li>
-                            <li><a href=""><div>Literature</div></a></li>
-                            <li><a href=""><div>Crime</div></a></li>
-                        </ul>
-                        <ul class="non-fiction">
-                            <li class="list-title">Non-Fiction</li>
-                            <li><a href=""><div>Comic</div></a></li>
-                            <li><a href=""><div>Cook</div></a></li>
-                            <li><a href=""><div>Psychology</div></a></li>
-                            <li><a href=""><div>Medical</div></a></li>
-                            <li><a href=""><div>Art</div></a></li>
-                            <li><a href=""><div>Photography</div></a></li>
-                            <li><a href=""><div>Law</div></a></li>
-                            <li><a href=""><div>History</div></a></li>
-                            <li><a href=""><div>Business</div></a></li>
-                            <li><a href=""><div>Computer</div></a></li>
-                        </ul>
-                        <div class="others-container">
-                            <ul class="other">
-                                <li class="list-title">Other</li>
-                                <li><a href=""><div>Baby</div></a></li>
-                                <li><a href=""><div>Sex</div></a></li>
-                                <li><a href=""><div>Travel</div></a></li>
-                                <li><a href=""><div>Science</div></a></li>
-                                <li><a href=""><div>Sports</div></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
+                <shared-aside-nav/>
                 <section class="product-list">
                     <div class="product-list__nav">
                         <ul>
@@ -162,10 +57,7 @@
                     </div>
                     <div class="product-list__best-sellers">
                         <div>
-                            <div class="discount">
-                                <span>30%</span>
-                                <span class="off">Off</span>
-                            </div>
+                            <shared-discount-label/>
                             <a href=""><img src="../assets/img/BestSellers/1.png" alt="image"></a>
                             <p>The Hare With Amber Eyes</p>
                             <span>$50</span>
@@ -178,10 +70,7 @@
                             <span>$60</span>
                         </div>
                         <div>
-                            <div class="discount">
-                                <span>30%</span>
-                                <span class="off">Off</span>
-                            </div>
+                            <shared-discount-label/>
                             <a href="">
                                 <img src="../assets/img/BestSellers/3.png" alt="image">
                             </a>
@@ -215,10 +104,7 @@
                             <span>$150</span>
                         </div>
                         <div>
-                            <div class="discount">
-                                <span>30%</span>
-                                <span class="off">Off</span>
-                            </div>
+                            <shared-discount-label/>
                             <a href=""><img src="../assets/img/BestSellers/8.png" alt="image">
                             </a>
                             The Hare With Amber Eyes
@@ -284,78 +170,9 @@
                 </section>
             </div>
         </main>
-        <footer>
-            <div id="list-of-themes">
-                <div id="biography-true-stories">
-                    <h3>Biography & True Stories</h3>
-                    <ul>
-                        <li><a href="">General</a></li>
-                        <li><a href="">Diaries, Letters, & Journals</a></li>
-                        <li><a href="">Memoirs</a></li>
-                        <li><a href="">True Stories</a></li>
-                        <li><a href="">Generic Exams</a></li>
-                        <li><a href="">GK Titles</a></li>
-                        <li><a href="">Medical Entrance</a></li>
-                        <li><a href="">Other Entrance Exams</a></li>
-                        <li><a href="">PG Entrance Examinations</a></li>
-                        <li><a href="">Self-help Titles</a></li>
-                        <li><a href="">Sociology</a></li>
-                    </ul>
-                </div>
-                <div id="professional-reference">
-                    <h3>Professional & Reference </h3>
-                    <ul>
-                        <li><a href="">Academic and Reference</a></li>
-                        <li><a href="">Business Trade</a></li>
-                        <li><a href="">Engineering and Computer Science</a></li>
-                        <li><a href="">Humanities, Social Sciences and Languages</a></li>
-                        <li><a href="">Introduction to Computers</a></li>
-                        <li><a href="">Science and Maths</a></li>
-                        <li><a href="">Trade Business</a></li>
-                        <li><a href="">English Language & Literature</a></li>
-                        <li><a href="">English Language Teaching</a></li>
-                        <li><a href="">Environment Awareness</a></li>
-                        <li><a href="">Environment Protection</a></li>
-                    </ul>
-                </div>
-                <div id="earth-sciences">
-                    <h3>Earth Sciences</h3>
-                    <ul>
-                        <li><a href="">Earth Sciences</a></li>
-                        <li><a href="">Geography</a></li>
-                        <li><a href="">The Environment</a></li>
-                        <li><a href="">Regional & Area Planning</a></li>
-                        <li><a href="">Fantasy</a></li>
-                        <li><a href="">Gay</a></li>
-                        <li><a href="">Humorous</a></li>
-                        <li><a href="">Interactive</a></li>
-                        <li><a href="">Legal</a></li>
-                        <li><a href="">Lesbian</a></li>
-                        <li><a href="">Men'S Adventure</a></li>
-                    </ul>
-                </div>
-                <div id="mathematics">
-                    <h3>Mathematics</h3>
-                    <ul>
-                        <li><a href="">Algebra</a></li>
-                        <li><a href="">Differential Equations</a></li>
-                        <li><a href="">Discrete Mathematics</a></li>
-                        <li><a href="">Fourier Analysis</a></li>
-                        <li><a href="">Numerical Analysis</a></li>
-                        <li><a href="">Probability</a></li>
-                        <li><a href="">Statistic Methods/data Analyses</a></li>
-                        <li><a href="">Stochastic And Random Processes</a></li>
-                        <li><a href="">Topology</a></li>
-                        <li><a href="">Statistics</a></li>
-                        <li><a href="">Mathematics</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="banking"><div id="accept">We accept all major Credit Card/Debit Card/Internet Banking</div><div class="cards">
-                <img src="../assets/img/Footer/Master-Card.png" alt=""><img src="../assets/img/Footer/American-Express.png" alt=""><img src="../assets/img/Footer/Visa.png" alt="">
-            </div> </div>
-            <div id="bottom"><a href="">Conditions of Use Privacy Notice© 2012-2013, Booksonline, Inc. or its affiliates</a></div>
-        </footer>
+        <shared-footer/>
     </div>
 </template>
+
+
 
