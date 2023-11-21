@@ -4,6 +4,7 @@
 
 
 <template>
+    <MainpageBanners/>
         <main id="main-content-wrapper">
             <div class="product-list-content">
                 <SharedAsideNav/>
