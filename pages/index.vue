@@ -4,48 +4,16 @@
 </script>
 <template>
     <div class="main-wrapper">
-        <shared-header/>
+        <SharedHeader/>
         <div class="sliders-container">
             <article class="sliders">
-                <div class="main-slider">
-                    <div class="main-slider__wrapper">
-                        <div class="main-slider__content">
-                            <div class="man"><a href="">A Wanted Man</a></div>
-                            <div class="title">(Jack Reacher #17)</div>
-                            <div class="author">By Lee Child</div>
-                        </div>
-                        <button class="left">
-                            <div>
-                                <img alt="img" src="../assets/img/left.png">
-                            </div>
-                        </button>
-                        <button class="right">
-                            <div>
-                                <img alt="img" src="../assets/img/right.png">
-                            </div>
-                        </button>
-                    </div>
-                </div>
-                <div class="side-slider">
-                    <div class="side-slider__wrapper">
-                        <div class="side-slider__content">
-                            <div id="deal">
-                                Deal of the Month
-                                <div id="book-title">The Human Face of Big Data</div>
-                            </div>
-                            <div id="save">
-                                Save 45% Today
-                                <div id="cost">$27.50</div>
-                                <button><span>Buy now</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <MainpageBannersLeft/>
+                <MainpageBannersRight/>
             </article>
         </div>
         <main id="main-content-wrapper">
             <div class="product-list-content">
-                <shared-aside-nav/>
+                <SharedAsideNav/>
                 <section class="product-list">
                     <div class="product-list__nav">
                         <ul>
@@ -57,7 +25,7 @@
                     </div>
                     <div class="product-list__best-sellers">
                         <div>
-                            <shared-discount-label/>
+                            <SharedDiscountLabel/>
                             <a href=""><img src="../assets/img/BestSellers/1.png" alt="image"></a>
                             <p>The Hare With Amber Eyes</p>
                             <span>$50</span>
@@ -70,7 +38,7 @@
                             <span>$60</span>
                         </div>
                         <div>
-                            <shared-discount-label/>
+                            <SharedDiscountLabel/>
                             <a href="">
                                 <img src="../assets/img/BestSellers/3.png" alt="image">
                             </a>
@@ -104,7 +72,7 @@
                             <span>$150</span>
                         </div>
                         <div>
-                            <shared-discount-label/>
+                            <SharedDiscountLabel/>
                             <a href=""><img src="../assets/img/BestSellers/8.png" alt="image">
                             </a>
                             The Hare With Amber Eyes
@@ -170,7 +138,7 @@
                 </section>
             </div>
         </main>
-        <shared-footer/>
+        <SharedFooter/>
     </div>
 </template>
 
