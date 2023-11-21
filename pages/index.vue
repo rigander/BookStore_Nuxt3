@@ -1,16 +1,9 @@
 <script setup>
 
-
 </script>
+
+
 <template>
-    <div class="main-wrapper">
-        <SharedHeader/>
-        <div class="sliders-container">
-            <article class="sliders">
-                <MainpageBannersLeft/>
-                <MainpageBannersRight/>
-            </article>
-        </div>
         <main id="main-content-wrapper">
             <div class="product-list-content">
                 <SharedAsideNav/>
@@ -138,8 +131,6 @@
                 </section>
             </div>
         </main>
-        <SharedFooter/>
-    </div>
 </template>
 
 
