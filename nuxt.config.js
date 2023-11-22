@@ -9,6 +9,8 @@ export default defineNuxtConfig({
   },
   css: [
     "~/assets/style/scss/main.scss",
+    "~/assets/style/scss/product.scss",
+    "~/assets/style/scss/sciencefiction.scss",
   ],
   postcss: {
     plugins: {

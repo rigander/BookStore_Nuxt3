@@ -1,7 +1,7 @@
-@import "normalize.css";
+@import "reset-styles.css";
 @font-face {
   font-family: SegoeWP;
-  src: url("../fonts/Segoe WP Regular.ttf");
+  src: url("/assets/fonts/Segoe WP Regular.ttf");
 }
 
 // Variables
@@ -46,8 +46,8 @@ body{
       height: 1118px;
       display: flex;
       flex-direction: column;
-      justify-content: start;
-      align-items: start;
+      justify-content: flex-start;
+      align-items: flex-start;
       #page-number{
         display: flex;
         flex-direction: row;
