@@ -22,8 +22,8 @@ body{
 
 @import "header";
 @import "slide-bar";
-
 #main-content-wrapper{
+  @import "aside-left";
   margin-top: 14px;
   width: 1280px;
   display: flex;
@@ -31,8 +31,7 @@ body{
   .product-list-content{
     width: $cw;
     display: flex;
-    justify-content: center;
-    @import "aside-left";
+    justify-content: right;
     section{
       width: 798px;
       height: 864px;
