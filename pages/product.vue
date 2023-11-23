@@ -25,8 +25,7 @@ definePageMeta({
                 </section>
                 <section class="product-review">
                     <h2 class="title">Product review</h2>
-                    <ProductReviewOne/>
-                    <ProductReviewTwo/>
+                    <ProductReview/>
                     <ProductFeedbackForm/>
                 </section>
             </div>
