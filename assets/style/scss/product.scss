@@ -412,7 +412,7 @@ input{
   @extend %green-button-styles
 }
 
-// Aside
+// Aside Right
 .may-like{
   box-sizing: border-box;
   margin-top: 78px;
@@ -426,7 +426,7 @@ input{
     font-weight: 400;
   }
 }
-.hare-with-amber{
+.may-like-book{
   height: 103.8px;
   width: 249px;
   border-bottom: 1px solid #c0c0c1;
@@ -460,13 +460,13 @@ input{
     @extend%black-button-styles;
   }
 }
-.hare-with-amber__right-content{
+.may-like__right-content{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 70px;
 }
-.last-hare-element{
+.last-element{
   border-bottom: none;
 }
 
