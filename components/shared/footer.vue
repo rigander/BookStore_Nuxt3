@@ -1,5 +1,192 @@
 <script setup>
-
+let bios;
+let profs;
+let earths;
+let maths;
+bios = [
+    {
+        link: "",
+        name: "General"
+    },
+    {
+        link: "",
+        name: "Diaries, Letters, & Journals"
+    },
+    {
+        link: "",
+        name: "Memoirs"
+    },
+    {
+        link: "",
+        name: "True Stories"
+    },
+    {
+        link: "",
+        name: "Generic Exams"
+    },
+    {
+        link: "",
+        name: "GK Titles"
+    },
+    {
+        link: "",
+        name: "Medical Entrance"
+    },
+    {
+        link: "",
+        name: "Other Entrance Exams"
+    },
+    {
+        link: "",
+        name: "PG Entrance Examinations"
+    },
+    {
+        link: "",
+        name: "Self-help Titles"
+    },
+    {
+        link: "",
+        name: "Sociology"
+    },
+];
+profs = [
+    {
+        link: "",
+        name: "Academic and Reference"
+    },
+    {
+        link: "",
+        name: "Business Trade"
+    },
+    {
+        link: "",
+        name: "Engineering and Computer Science"
+    },
+    {
+        link: "",
+        name: "True Stories"
+    },
+    {
+        link: "",
+        name: "Introduction to Computers"
+    },
+    {
+        link: "",
+        name: "Science and Maths"
+    },
+    {
+        link: "",
+        name: "Humanities, Social Sciences and Languages"
+    },
+    {
+        link: "",
+        name: "Trade Business"
+    },
+    {
+        link: "",
+        name: "English Language Teaching"
+    },
+    {
+        link: "",
+        name: "Environment Awareness"
+    },
+    {
+        link: "",
+        name: "Environment Protection"
+    },
+];
+earths = [
+    {
+        link: "",
+        name: "Earth Sciences"
+    },
+    {
+        link: "",
+        name: "Geography"
+    },
+    {
+        link: "",
+        name: "The Environment"
+    },
+    {
+        link: "",
+        name: "Regional & Area Planning"
+    },
+    {
+        link: "",
+        name: "Fantasy"
+    },
+    {
+        link: "",
+        name: "Gay"
+    },
+    {
+        link: "",
+        name: "Humorous"
+    },
+    {
+        link: "",
+        name: "Interactive"
+    },
+    {
+        link: "",
+        name: "Legal"
+    },
+    {
+        link: "",
+        name: "Lesbian"
+    },
+    {
+        link: "",
+        name: "Men'S Adventure"
+    },
+];
+maths = [
+    {
+        link: "",
+        name: "Algebra"
+    },
+    {
+        link: "",
+        name: "Differential Equations"
+    },
+    {
+        link: "",
+        name: "Discrete Mathematics"
+    },
+    {
+        link: "",
+        name: "Fourier Analysis"
+    },
+    {
+        link: "",
+        name: "Numerical Analysis"
+    },
+    {
+        link: "",
+        name: "Probability"
+    },
+    {
+        link: "",
+        name: "Statistic Methods/data Analyses"
+    },
+    {
+        link: "",
+        name: "Stochastic And Random Processes"
+    },
+    {
+        link: "",
+        name: "Topology"
+    },
+    {
+        link: "",
+        name: "Statistics"
+    },
+    {
+        link: "",
+        name: "Mathematics"
+    },
+];
 </script>
 
 <template>
@@ -8,70 +195,36 @@
             <div id="biography-true-stories">
                 <h3>Biography & True Stories</h3>
                 <ul>
-                    <li><a href="">General</a></li>
-                    <li><a href="">Diaries, Letters, & Journals</a></li>
-                    <li><a href="">Memoirs</a></li>
-                    <li><a href="">True Stories</a></li>
-                    <li><a href="">Generic Exams</a></li>
-                    <li><a href="">GK Titles</a></li>
-                    <li><a href="">Medical Entrance</a></li>
-                    <li><a href="">Other Entrance Exams</a></li>
-                    <li><a href="">PG Entrance Examinations</a></li>
-                    <li><a href="">Self-help Titles</a></li>
-                    <li><a href="">Sociology</a></li>
+                    <li v-for="bio in bios"
+                    ><a href="">{{ bio.name }}</a></li>
                 </ul>
             </div>
             <div id="professional-reference">
                 <h3>Professional & Reference </h3>
                 <ul>
-                    <li><a href="">Academic and Reference</a></li>
-                    <li><a href="">Business Trade</a></li>
-                    <li><a href="">Engineering and Computer Science</a></li>
-                    <li><a href="">Humanities, Social Sciences and Languages</a></li>
-                    <li><a href="">Introduction to Computers</a></li>
-                    <li><a href="">Science and Maths</a></li>
-                    <li><a href="">Trade Business</a></li>
-                    <li><a href="">English Language & Literature</a></li>
-                    <li><a href="">English Language Teaching</a></li>
-                    <li><a href="">Environment Awareness</a></li>
-                    <li><a href="">Environment Protection</a></li>
+                    <li v-for="prof in profs"
+                    ><a href="">{{ prof.name }}</a></li>
                 </ul>
             </div>
             <div id="earth-sciences">
                 <h3>Earth Sciences</h3>
                 <ul>
-                    <li><a href="">Earth Sciences</a></li>
-                    <li><a href="">Geography</a></li>
-                    <li><a href="">The Environment</a></li>
-                    <li><a href="">Regional & Area Planning</a></li>
-                    <li><a href="">Fantasy</a></li>
-                    <li><a href="">Gay</a></li>
-                    <li><a href="">Humorous</a></li>
-                    <li><a href="">Interactive</a></li>
-                    <li><a href="">Legal</a></li>
-                    <li><a href="">Lesbian</a></li>
-                    <li><a href="">Men'S Adventure</a></li>
+                    <li v-for="earth in earths"
+                    ><a href="">{{ earth.name }}</a></li>
                 </ul>
             </div>
             <div id="mathematics">
                 <h3>Mathematics</h3>
                 <ul>
-                    <li><a href="">Algebra</a></li>
-                    <li><a href="">Differential Equations</a></li>
-                    <li><a href="">Discrete Mathematics</a></li>
-                    <li><a href="">Fourier Analysis</a></li>
-                    <li><a href="">Numerical Analysis</a></li>
-                    <li><a href="">Probability</a></li>
-                    <li><a href="">Statistic Methods/data Analyses</a></li>
-                    <li><a href="">Stochastic And Random Processes</a></li>
-                    <li><a href="">Topology</a></li>
-                    <li><a href="">Statistics</a></li>
-                    <li><a href="">Mathematics</a></li>
+                    <li v-for="math in maths"
+                    ><a href="">{{ math.name }}</a></li>
                 </ul>
             </div>
         </div>
         <div class="banking"><div id="accept">We accept all major Credit Card/Debit Card/Internet Banking</div><div class="cards">
-            <img src="~/assets/img/Footer/Master-Card.png" alt=""><img src="~/assets/img/Footer/American-Express.png" alt=""><img src="~/assets/img/Footer/Visa.png" alt="">
+            <img src="~/assets/img/Footer/Master-Card.png" alt="">
+            <img src="~/assets/img/Footer/American-Express.png" alt="">
+            <img src="~/assets/img/Footer/Visa.png" alt="">
         </div> </div>
         <div id="bottom"><a href="">Conditions of Use Privacy Notice© 2012-2013, Booksonline, Inc. or its affiliates</a></div>
     </footer>
