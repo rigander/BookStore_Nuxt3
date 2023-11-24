@@ -59,6 +59,10 @@ footer{
   #accept{
     margin-top: 9px;
   }
+  .cards-container{
+    display: flex;
+    flex-direction: row;
+  }
   .cards{
     margin-top: -5px;
   }

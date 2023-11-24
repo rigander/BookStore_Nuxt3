@@ -237,13 +237,15 @@ cardsImages = [
             <div id="accept">
                 We accept all major Credit Card/Debit Card/Internet Banking
             </div>
-            <div class="cards"
-                 v-for="card in cardsImages"
-            >
-                <img :src="`/img/Footer/${card.image}.png`" alt="">
+            <div class="cards-container">
+                <div class="cards"
+                     v-for="card in cardsImages"
+                >
+                    <img :src="`/img/Footer/${card.image}.png`" alt="">
+                </div>
             </div>
         </div>
-        <div id="bottom"><a href="">Conditions of Use Privacy Notice© 2012-2013, Booksonline, Inc. or its affiliates</a></div>
+        <div id="bottom"><a href="">Conditions of Use Privacy Notice© 2022-2023, Booksonline, Inc. or its affiliates</a></div>
     </footer>
 </template>
 
