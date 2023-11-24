@@ -3,6 +3,7 @@ let bios;
 let profs;
 let earths;
 let maths;
+let cardsImages;
 bios = [
     {
         link: "",
@@ -187,6 +188,17 @@ maths = [
         name: "Mathematics"
     },
 ];
+cardsImages = [
+    {
+        image: "Master-Card"
+    },
+    {
+        image: "American-Express"
+    },
+    {
+        image: "Visa"
+    },
+]
 </script>
 
 <template>
@@ -221,11 +233,16 @@ maths = [
                 </ul>
             </div>
         </div>
-        <div class="banking"><div id="accept">We accept all major Credit Card/Debit Card/Internet Banking</div><div class="cards">
-            <img src="~/assets/img/Footer/Master-Card.png" alt="">
-            <img src="~/assets/img/Footer/American-Express.png" alt="">
-            <img src="~/assets/img/Footer/Visa.png" alt="">
-        </div> </div>
+        <div class="banking">
+            <div id="accept">
+                We accept all major Credit Card/Debit Card/Internet Banking
+            </div>
+            <div class="cards"
+                 v-for="card in cardsImages"
+            >
+                <img :src="`/img/Footer/${card.image}.png`" alt="">
+            </div>
+        </div>
         <div id="bottom"><a href="">Conditions of Use Privacy Notice© 2012-2013, Booksonline, Inc. or its affiliates</a></div>
     </footer>
 </template>
