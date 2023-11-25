@@ -1,111 +1,119 @@
 <script setup>
-
+let BSbooks;
+BSbooks = [
+    {
+        name: "The Hare With Amber Eyes",
+        image: 1,
+        price: 50,
+        discount: 1,
+    },
+    {
+        name: "The war of Art",
+        image: 2,
+        price: 60,
+        discount: 0,
+    },
+    {
+        name: "The Hare With Amber Eyes",
+        image: 3,
+        price: 25,
+        discount: 1,
+    },
+    {
+        name: "The Immortals of Meluha",
+        image: 4,
+        price: 80,
+        discount: 0,
+    },
+    {
+        name: "Life is what you make it",
+        image: 5,
+        price: 200,
+        discount: 0,
+    },
+    {
+        name: "The Hare With Amber Eyes",
+        image: 6,
+        price: 200,
+        discount: 0,
+    },
+    {
+        name: "The war of Art",
+        image: 7,
+        price: 150,
+        discount: 0,
+    },
+    {
+        name: "The Hare With Amber Eyes",
+        image: 8,
+        price: 100,
+        discount: 1,
+    },
+    {
+        name: "The Immortals of Meluha",
+        image: 9,
+        price: 152,
+        discount: 0,
+    },
+    {
+        name: "Life is what you make it",
+        image: 10,
+        price: 200,
+        discount: 0,
+    },
+    {
+        name: "The Hare With Amber Eyes",
+        image: 11,
+        price: 220,
+        discount: 0,
+    },
+    {
+        name: "The war of Art",
+        image: 12,
+        price: 10,
+        discount: 0,
+    },
+    {
+        name: "The Hare With Amber Eyes",
+        image: 13,
+        price: 22,
+        discount: 0,
+    },
+    {
+        name: "The Immortals of Meluha",
+        image: 14,
+        price: 300,
+        discount: 1,
+    },
+    {
+        name: "Life is what you make it",
+        image: 15,
+        price: 205,
+        discount: 0,
+    },
+    {
+        name: "The Hare With Amber Eyes",
+        image: 11,
+        price: 220,
+        discount: 0,
+    },
+];
 </script>
 
 
 <template>
     <div class="product-list__best-sellers">
-        <div>
-            <SharedDiscountLabel/>
-            <a href=""><img src="~/assets/img/BestSellers/1.png" alt="image"></a>
-            <p>The Hare With Amber Eyes</p>
-            <span>$50</span>
-        </div>
-        <div>
-            <a href="">
-                <img src="~/assets/img/BestSellers/2.png" alt="image">
+        <div v-for="book in BSbooks">
+            <SharedDiscountLabel
+            v-if="book.discount === 1"
+            />
+            <a href=""><img
+                :src="`/img/BestSellers/${book.image}.png`"
+                alt="image"
+            >
             </a>
-            <p class="war-of-art">The war of Art</p>
-            <span>$60</span>
-        </div>
-        <div>
-            <SharedDiscountLabel/>
-            <a href="">
-                <img src="~/assets/img/BestSellers/3.png" alt="image">
-            </a>
-            <p>The Hare With Amber Eyes</p>
-            <span>$25</span>
-        </div>
-        <div>
-            <a href=""><img src="~/assets/img/BestSellers/4.png" alt="image"></a>
-            <p class="immortals">The Immortals of Meluha</p>
-            <span>$80</span>
-        </div>
-        <div>
-            <a href="">
-                <img src="~/assets/img/BestSellers/5.png" alt="image">
-            </a>
-            <p>Life Is What You Make It</p>
-            <span>$200</span>
-        </div>
-        <div>
-            <a href="">
-                <img src="~/assets/img/BestSellers/6.png" alt="image">
-            </a>
-            <p>The Hare With Amber Eyes</p
-            ><span>$200</span>
-        </div>
-        <div>
-            <a href="">
-                <img src="~/assets/img/BestSellers/7.png" alt="image">
-            </a>
-            <p class="war-of-art">The war of Art</p>
-            <span>$150</span>
-        </div>
-        <div>
-            <SharedDiscountLabel/>
-            <a href=""><img src="~/assets/img/BestSellers/8.png" alt="image">
-            </a>
-            The Hare With Amber Eyes
-            <span>$100</span></div>
-        <div>
-            <a href="">
-                <img src="~/assets/img/BestSellers/9.png" alt="image">
-            </a>
-            <p class="immortals">The Immortals of Meluha</p>
-            <span>$152</span>
-        </div>
-        <div>
-            <a href=""><img src="~/assets/img/BestSellers/10.png" alt="image">
-            </a>
-            <p>Life Is What You Make It</p>
-            <span>$200</span>
-        </div>
-        <div>
-            <a href=""><img src="~/assets/img/BestSellers/11.png" alt="image">
-            </a>
-            <p>The Hare With Amber Eyes</p>
-            <span>$220</span>
-        </div>
-        <div>
-            <a href=""><img src="~/assets/img/BestSellers/12.png" alt="image">
-            </a>
-            <p class="war-of-art">The war of Art</p>
-            <span>$10</span>
-        </div>
-        <div>
-            <a href="">
-                <img src="~/assets/img/BestSellers/13.png" alt="image">
-            </a>
-            <p>The Hare With Amber Eyes</p>
-            <span>$22</span>
-        </div>
-        <div>
-            <div class="discount">
-                <span>30%</span>
-                <span class="off">Off</span>
-            </div>
-            <a href="">
-                <img src="~/assets/img/BestSellers/14.png" alt="image">
-            </a>
-            <p class="immortals">The Immortals of Meluha</p>
-            <span>$300</span>
-        </div>
-        <div>
-            <a href=""><img src="~/assets/img/BestSellers/15.png" alt="image">
-            </a>
-            <p>Life Is What You Make It</p>
-            <span>$205</span>
+            <p>{{ book.name }}</p>
+            <span>${{ book.price }}</span>
         </div>
         <MainpagePagination/>
     </div>
