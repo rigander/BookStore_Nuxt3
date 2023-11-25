@@ -6,6 +6,7 @@
 <template>
     <div class="main-wrapper">
         <SharedHeader/>
+        <SharedAsideNav/>
         <slot/>
         <SharedFooter/>
     </div>
