@@ -5,7 +5,7 @@
 
 <template>
     <article class="product-info__article">
-        <div class="article-img"><img src="~/assets/img/product-page/obi-van.png" alt="img" class="jedi"></div>
+        <div class="article-img"><img src="/img/product-page/obi-van.png" alt="img" class="jedi"></div>
         <div class="wrapper-content-cart">
             <article class="content-cart">
                 <div class="in-stock-wrapper">
@@ -69,10 +69,10 @@
                         <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
                     </svg>Safe, Secure, Shopping</div>
                     <div id="credit-cards">
-                        <img src="~/assets/img/product-page/paypal.png" alt="">
-                        <img src="~/assets/img/Footer/Master-Card.png" alt="card">
-                        <img src="~/assets/img/Footer/Visa.png" alt="card">
-                        <img src="~/assets/img/Footer/American-Express.png" alt="card">
+                        <img src="/img/product-page/paypal.png" alt="">
+                        <img src="/img/Footer/Master-Card.png" alt="card">
+                        <img src="/img/Footer/Visa.png" alt="card">
+                        <img src="/img/Footer/American-Express.png" alt="card">
                     </div>
                 </div>
             </div>

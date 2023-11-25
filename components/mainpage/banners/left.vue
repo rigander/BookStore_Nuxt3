@@ -12,12 +12,12 @@
             </div>
             <button class="left">
                 <div>
-                    <img alt="img" src="~/assets/img/left.png">
+                    <img alt="img" src="/img/left.png">
                 </div>
             </button>
             <button class="right">
                 <div>
-                    <img alt="img" src="~/assets/img/right.png">
+                    <img alt="img" src="/img/right.png">
                 </div>
             </button>
         </div>

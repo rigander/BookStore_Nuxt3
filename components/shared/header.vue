@@ -18,7 +18,7 @@
             <div class="header-content-container">
                 <div class="header-content">
                     <div class="header-content__books-online">
-                        <img src="~/assets/img/header/logo.png" alt="logo">
+                        <img src="/img/header/logo.png" alt="logo">
                     </div>
                     <div class="header-content__search-panel">
                         <input id="search" type="search">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="header-content__your-cart">
                         <div class="my-cart" >
-                            <div class="cart"><a href="/pages/product.vue" class="cart-link"><img src="~/assets/img/header/green%20cart.png" alt="cart"></a></div>
+                            <div class="cart"><a href="/pages/product.vue" class="cart-link"><img src="/img/header/green%20cart.png" alt="cart"></a></div>
                             <div class="items">Your cart<div>(2 items)</div></div>
                         </div>
                         <div class="checkout">
