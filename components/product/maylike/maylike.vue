@@ -36,7 +36,7 @@ books = [
 
 
 <template>
-    <aside class="may-like">
+    <aside class="may-like__products">
         <h3>You may also like</h3>
         <div class="may-like-book"
              v-for="book in books"

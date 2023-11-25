@@ -1,12 +1,13 @@
 <script setup lang="ts">
 definePageMeta({
-    layout: 'custom'
+    layout: false
 })
 </script>
 
 
 <template>
-    <main id="main-content-wrapper">
+    <NuxtLayout name="product">
+    <main id="main-content-wrapper__product">
         <section class="product-info">
             <ProductBreadcrumps/>
             <ProductInfoarticle/>
@@ -32,4 +33,5 @@ definePageMeta({
             <ProductMaylike/>
         </div>
     </main>
+    </NuxtLayout>
 </template>

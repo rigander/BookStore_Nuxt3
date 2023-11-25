@@ -22,14 +22,13 @@ body{
 
 #main-content-wrapper{
   margin-top: 14px;
-  width: 1280px;
-  display: flex;
-  justify-content: center;
-  .title-science-fiction{
+  width: 800px;
+  display: inline-flex;
+  border: solid 1px #d8dce0;
+  .title_sci-fi{
     font-size: 24px;
     font-weight: 300;
     color: #464646;
-    border: solid 1px #d8dce0;
     box-sizing: border-box;
     border-bottom: none;
     width: inherit;
@@ -37,17 +36,10 @@ body{
       margin: 18px 0 15px 30px;
     }
   }
-  .product-list-content{
-    width: $cw;
-    display: flex;
-    justify-content: center;
+  .books-li_container{
     section{
-      width: 798px;
-      height: 1118px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
       #page-number{
         display: flex;
         flex-direction: row;
@@ -99,13 +91,13 @@ body{
       }
 
 // Science Fiction (product list)
-      .product-list__best-sellers{
+      .books__sci-fi{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         padding: 0 5px 0 5px;
-        border: solid 1px #d8dce0;
+
         border-top: none;
         a{
           text-decoration: none;

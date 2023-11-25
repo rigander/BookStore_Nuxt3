@@ -5,9 +5,9 @@
 
 <template>
     <MainpageBanners/>
+    <SharedAsideNav/>
         <main id="main-content-wrapper">
-            <div class="product-list-content">
-                <SharedAsideNav/>
+            <div class="main__product-list-content">
                 <section class="product-list">
                     <div class="product-list__nav">
                         <ul>

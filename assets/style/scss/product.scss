@@ -26,18 +26,8 @@ $ff:SegoeWP;
 }
 
 
-body{
-  display: flex;
-  .main-wrapper{
-    margin: auto;
-    flex-basis: 1280px;
-    font-family: $ff;
-    border: solid 1px rgba(0, 0, 1, 0.16);
-  }
-}
-
 @import "header";
-#main-content-wrapper{
+#main-content-wrapper__product{
   margin-top: 9px;
   width: 1280px;
   display: flex;
@@ -413,9 +403,11 @@ input{
 }
 
 // Aside Right
-.may-like{
+.may-like__products{
+  display: block;
   box-sizing: border-box;
   margin-top: 78px;
+  margin-left: 20px;
   max-height: 771px;
   min-width: 248px;
   border: solid 1px #d4d4d5;

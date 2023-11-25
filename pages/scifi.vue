@@ -1,56 +1,19 @@
 <script setup lang="ts">
-
+definePageMeta({
+    layout: false,
+})
 
 </script>
 
 
 <template>
+    <NuxtLayout name="scifi">
+    <SharedAsideNav/>
     <main id="main-content-wrapper">
-        <div class="product-list-content">
-            <aside class="categories">
-                <div class="categories__content">
-                    <h2 id="categories">Categories</h2>
-                    <button>ALL</button>
-                    <ul class="fiction">
-                        <div class="list-title">Fiction & Literature</div>
-                        <li><a href=""><div>Children</div></a></li>
-                        <li><a href="./category-page.html"><div>Science</div></a></li>
-                        <li><a href=""><div>Fantasy</div></a></li>
-                        <li><a href=""><div>Mystery</div></a></li>
-                        <li><a href=""><div>Romance</div></a></li>
-                        <li><a href=""><div>Horror</div></a></li>
-                        <li><a href=""><div>Poetry</div></a></li>
-                        <li><a href=""><div>Literature</div></a></li>
-                        <li><a href=""><div>Crime</div></a></li>
-                    </ul>
-                    <ul class="non-fiction">
-                        <div class="list-title">Non-Fiction</div>
-                        <li><a href=""><div>Comic</div></a></li>
-                        <li><a href=""><div>Cook</div></a></li>
-                        <li><a href=""><div>Psychology</div></a></li>
-                        <li><a href=""><div>Medical</div></a></li>
-                        <li><a href=""><div>Art</div></a></li>
-                        <li><a href=""><div>Photography</div></a></li>
-                        <li><a href=""><div>Law</div></a></li>
-                        <li><a href=""><div>History</div></a></li>
-                        <li><a href=""><div>Business</div></a></li>
-                        <li><a href=""><div>Computer</div></a></li>
-                    </ul>
-                    <div class="others-container">
-                        <ul class="other">
-                            <div class="list-title">Other</div>
-                            <li><a href=""><div>Baby</div></a></li>
-                            <li><a href=""><div>Sex</div></a></li>
-                            <li><a href=""><div>Travel</div></a></li>
-                            <li><a href=""><div>Science</div></a></li>
-                            <li><a href=""><div>Sports</div></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </aside>
+        <div class="books-li_container">
             <section class="product-list">
-                <div class="title-science-fiction"><h4>Science Fiction</h4></div>
-                <div class="product-list__best-sellers">
+                <div class="title_sci-fi"><h4>Science Fiction</h4></div>
+                <div class="books__sci-fi">
                     <div><SharedDiscountLabel/><a href=""><img src="~/assets/img/BestSellers/1.png" alt="image"><p>The Hare With Amber Eyes</p></a><span>$50</span></div>
                     <div><a href=""><img src="~/assets/img/BestSellers/2.png" alt="image"><p>The war of </p><span class="art">Art</span></a><span>$60</span></div>
                     <div><SharedDiscountLabel/><a href=""><img src="~/assets/img/BestSellers/3.png" alt="image"><p>The Hare With Amber Eyes</p></a><span>$25</span></div>
@@ -83,4 +46,5 @@
             </section>
         </div>
     </main>
+    </NuxtLayout>
 </template>
