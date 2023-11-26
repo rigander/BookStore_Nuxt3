@@ -115,6 +115,13 @@ BSbooks = [
             <p>{{ book.name }}</p>
             <span>${{ book.price }}</span>
         </div>
-        <MainpagePagination/>
+        <SharedPagination
+        />
     </div>
 </template>
+
+<style>
+#componentContainer{
+    align-self: flex-end;
+}
+</style>

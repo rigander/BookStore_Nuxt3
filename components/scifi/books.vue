@@ -146,6 +146,6 @@ scifiBooks = [
             </a>
             <span>${{ book.price }}</span>
         </div>
-        <ScifiPagination/>
+        <SharedPagination/>
     </div>
 </template>
