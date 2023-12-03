@@ -5,8 +5,8 @@
 <template>
     <div class="sliders-container">
         <article class="sliders">
-            <MainpageBannersLeft/>
-            <MainpageBannersRight/>
+            <MpageBannersLeft/>
+            <MpageBannersRight/>
         </article>
     </div>
 </template>

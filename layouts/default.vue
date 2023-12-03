@@ -6,7 +6,7 @@
 <template>
     <div class="main-wrapper">
         <SharedHeader/>
-        <MainpageBanners/>
+        <MpageBanners/>
         <SharedAsideNav/>
         <slot/>
         <SharedFooter/>

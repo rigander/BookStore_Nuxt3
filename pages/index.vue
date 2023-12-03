@@ -15,7 +15,7 @@
                             <li><div class="shadow"><a href="">Special Offers</a></div></li>
                         </ul><div class="big-box"></div>
                     </div>
-                    <MainpageBestsellers/>
+                    <MpageBestsellers/>
                 </section>
             </div>
         </main>
