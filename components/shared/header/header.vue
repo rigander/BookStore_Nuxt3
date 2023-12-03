@@ -5,16 +5,7 @@
 <template>
     <header>
         <div class="header-layout">
-            <div class="account-nav-container">
-                <nav class="account-nav">
-                    <ul>
-                        <li><a id="account-nav__sign-in" href="">Sign in</a></li>
-                        <li><a id="account-nav__my-account" href="">My Account</a></li>
-                        <li><a id="account-nav__order-status" href="">Order Status</a></li>
-                        <li><a id="account-nav__help" href="">Help</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <shared-header-topnav/>
             <div class="header-content-container">
                 <div class="header-content">
                     <div class="header-content__books-online">
@@ -51,21 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="main-nav-wrapper">
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="" id="main-nav__computers">Computers</a></li>
-                        <li><a href="" class="main-nav__cooking">Cooking</a></li>
-                        <li><a href="" class="main-nav__education">Education</a></li>
-                        <li><a href="" class="main-nav__fiction">Fiction</a></li>
-                        <li><a href="" class="main-nav__health">Health</a></li>
-                        <li><a href="" class="main-nav__math">Mathematics</a></li>
-                        <li><a href="" class="main-nav__medical">Medical</a></li>
-                        <li><a href="" class="main-nav__reference">Reference</a></li>
-                        <li><a href="" id="main-nav__science">Science</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <shared-header-bottomnav/>
         </div>
     </header>
 </template>
