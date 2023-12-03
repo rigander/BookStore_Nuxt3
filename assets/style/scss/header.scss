@@ -278,12 +278,11 @@
     padding: 0 5px 0 0;
     li{
       a{
-        padding: 8px;
+        padding: 0 29px 0 8px;
         text-decoration: none;
         color: #5b5b5b;
         &:hover{
           color: #ff0000;
-          font-size: 20px;
           font-weight: bold;
         }
         &:active{
@@ -294,7 +293,7 @@
     }
   }
 }
-#main-nav__computers{
+.main-nav__computers{
   display: inline-block;
   width: 70px;
 }
@@ -323,7 +322,7 @@
   display: inline-block;
   width: 55px;
 }
-#main-nav__science{
+.main-nav__science{
   display: inline-block;
   width: 60px;
 }

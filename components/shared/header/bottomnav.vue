@@ -1,5 +1,52 @@
 <script setup>
-
+let nav;
+nav = [
+    {
+        link: "/",
+        name: "Computers",
+        id: "main-nav__computers"
+    },
+    {
+        link: "/scifi",
+        name: "Cooking",
+        id: "main-nav__cooking"
+    },
+    {
+        link: "/product",
+        name: "Education",
+        id: "main-nav__education"
+    },
+    {
+        link: "/",
+        name: "Fiction",
+        id: "main-nav__fiction"
+    },
+    {
+        link: "/",
+        name: "Health",
+        id: "main-nav__health"
+    },
+    {
+        link: "/",
+        name: "Mathematics",
+        id: "main-nav__math"
+    },
+    {
+        link: "/",
+        name: "Medical",
+        id: "main-nav__medical"
+    },
+    {
+        link: "/",
+        name: "Reference",
+        id: "main-nav__reference"
+    },
+    {
+        link: "/",
+        name: "Science",
+        id: "main-nav__science"
+    },
+]
 </script>
 
 
@@ -7,15 +54,11 @@
     <div class="main-nav-wrapper">
         <nav class="main-nav">
             <ul>
-                <li><a href="" id="main-nav__computers">Computers</a></li>
-                <li><a href="" class="main-nav__cooking">Cooking</a></li>
-                <li><a href="" class="main-nav__education">Education</a></li>
-                <li><a href="" class="main-nav__fiction">Fiction</a></li>
-                <li><a href="" class="main-nav__health">Health</a></li>
-                <li><a href="" class="main-nav__math">Mathematics</a></li>
-                <li><a href="" class="main-nav__medical">Medical</a></li>
-                <li><a href="" class="main-nav__reference">Reference</a></li>
-                <li><a href="" id="main-nav__science">Science</a></li>
+                <li>
+                    <a  v-for="n in nav"
+                        :href="n.link"
+                        :id="n.id"
+                    >{{ n.name }}</a></li>
             </ul>
         </nav>
     </div>

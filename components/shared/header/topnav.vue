@@ -2,22 +2,22 @@
 let nav;
 nav = [
     {
-        link: "",
+        link: "/",
         name: "Sign in",
         id: "account-nav__sign-in"
     },
     {
-        link: "",
+        link: "/scifi",
         name: "My Account",
         id: "account-nav__my-account"
     },
     {
-        link: "",
+        link: "/product",
         name: "Order Status",
         id: "account-nav__order-status"
     },
     {
-        link: "",
+        link: "/",
         name: "Help",
         id: "account-nav__help"
     },
@@ -34,7 +34,7 @@ nav = [
                     v-for="n in nav"
                 ><a
                     :id="n.id"
-                    href=""
+                    :href="n.link"
                 >{{ n.name }}</a></li>
             </ul>
         </nav>
