@@ -12,9 +12,14 @@ $ff:SegoeWP;
 @import "header";
 @import "slide-bar";
 @import "aside-left";
-#main-content-wrapper{
-  margin-top: 14px;
+.main-wrapper{
   width: 1280px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.main-content-wrapper{
+  order: 4;
+  margin-top: 14px;
   display: flex;
   justify-content: center;
   border-top: none;
@@ -69,15 +74,15 @@ $ff:SegoeWP;
             .box-before{
               position: absolute;
               left:342px;
-              top: 553px;
+              top: 552px;
               height: 1px;
               width: 1px;
               background-color: #d8dce0;
             }
             .box-after{
               position: absolute;
-              left:483px;
-              top: 553px;
+              left:482px;
+              top: 551px;
               height: 1px;
               width: 1px;
               background-color: #d8dce0;
@@ -94,8 +99,9 @@ $ff:SegoeWP;
           }
         }
         .big-box{
-          width: 232px;
-          height: 38px;
+          width: 238px;
+          height: 37px;
+          border-bottom: 1px solid #d4d4d5;
         }
       }
       #page-number{
@@ -145,6 +151,8 @@ $ff:SegoeWP;
         justify-content: space-between;
         align-items: center;
         padding: 8px 5px 0 5px;
+        border: 1px solid #d4d4d5;
+        border-top: none;
         div{
           position: relative;
           font-size: 15px;
@@ -210,5 +218,8 @@ $ff:SegoeWP;
       }
     }
   }
+}
+#best-sel-box{
+  border-left: 1px solid #d4d4d5;
 }
 @import "footer";

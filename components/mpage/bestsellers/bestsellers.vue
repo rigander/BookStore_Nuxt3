@@ -122,6 +122,9 @@ BSbooks = [
 
 <style>
 #componentContainer{
+    width: 170px;
     align-self: flex-end;
+    margin-left: 600px;
+    margin-top: 20px;
 }
 </style>

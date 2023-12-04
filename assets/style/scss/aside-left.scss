@@ -13,10 +13,13 @@
 
 // ASIDE
 aside{
+  height: 863px;
+  order: 3;
   display: inline-flex;
   border: solid 1px rgba(0, 0, 1, 0.16);
+  margin-top: 15px;
   margin-right: 9px;
-  margin-left: 145px;
+  margin-left: 142px;
   box-sizing: border-box;
   .categories__content {
     width: 188px;

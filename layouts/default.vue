@@ -6,9 +6,8 @@
 <template>
     <div class="main-wrapper">
         <SharedHeader/>
-        <MpageBanners/>
-        <SharedAsideNav/>
         <slot/>
+        <SharedAsideNav/>
         <SharedFooter/>
     </div>
 </template>

@@ -20,11 +20,12 @@ body{
 }
 @import "header";
 
-#main-content-wrapper{
+#main-content-wrapper-scifi{
   margin-top: 14px;
   width: 800px;
   display: inline-flex;
   border: solid 1px #d8dce0;
+  border-top: none;
   .title_sci-fi{
     font-size: 24px;
     font-weight: 300;
