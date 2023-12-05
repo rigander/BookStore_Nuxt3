@@ -52,6 +52,9 @@
 }
 
 //Header Content Part
+header{
+  display: flex;
+}
 .header-layout{
   order: 1;
 }

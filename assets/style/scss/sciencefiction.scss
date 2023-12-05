@@ -10,8 +10,8 @@ $ff:SegoeWP;
 
 
 body{
-  display: flex;
   .main-wrapper{
+    display: flex;
     margin: auto;
     flex-basis: 1280px;
     font-family: $ff;
@@ -21,6 +21,7 @@ body{
 @import "header";
 
 #main-content-wrapper-scifi{
+  order: 4;
   margin-top: 14px;
   width: 800px;
   display: inline-flex;

@@ -1,13 +1,10 @@
 <script setup lang="ts">
-definePageMeta({
-    layout: false,
-})
+
 
 </script>
 
 
 <template>
-    <NuxtLayout name="scifi">
     <main id="main-content-wrapper-scifi">
         <div class="books-li_container">
             <section class="product-list">
@@ -16,5 +13,4 @@ definePageMeta({
             </section>
         </div>
     </main>
-    </NuxtLayout>
 </template>
