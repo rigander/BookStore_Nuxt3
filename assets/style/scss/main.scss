@@ -131,11 +131,6 @@ $ff:SegoeWP;
           a{
             text-decoration: none;
             color: #646464;
-            &:hover{
-              color: red;
-              font-size: 20px;
-              font-weight: bold;
-            }
           }
         }
         .three{
@@ -163,11 +158,7 @@ $ff:SegoeWP;
           width: 125px;
           display: flex;
           flex-direction: column;
-          padding-left: 9px;
-          .war-of-art{
-            width: 90px;
-            align-self: center;
-          }
+          margin: 0 16px;
           .discount{
             align-self: end;
             position: absolute;
@@ -196,7 +187,11 @@ $ff:SegoeWP;
             }
           }
           p{
-            margin: 0;
+            margin: 0 auto;
+            display: block;
+          }
+          .p-bests{
+            width: 90px;
           }
           img{
             height: 177px;
@@ -206,6 +201,7 @@ $ff:SegoeWP;
             font-weight: bold;
             font-size: 22px;
             color: #f05356;
+            padding-top: 5px;
           }
         }
         .art{
@@ -222,4 +218,21 @@ $ff:SegoeWP;
 #best-sel-box{
   border-left: 1px solid #d4d4d5;
 }
+.bs-anchor-book{
+  p:hover{
+    color: black;
+    font-weight: bold;
+  }
+  p:active{
+    color: red;
+    font-weight: bold;
+  }
+  img{
+    padding-left: 5px;
+  }
+  span{
+    padding-top: 5px;
+  }
+}
+
 @import "footer";
