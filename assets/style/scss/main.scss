@@ -159,33 +159,7 @@ $ff:SegoeWP;
           display: flex;
           flex-direction: column;
           margin: 0 16px;
-          .discount{
-            align-self: end;
-            position: absolute;
-            margin-top: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 50px;
-            width: 50px;
-            border:none;
-            border-radius: 50%;
-            background-color: #f05356;
-            padding: 0;
-            color: white;
-            font-size: 19px;
-            span{
-              color: #ffffff;
-              font-family: $ff;
-              font-size: 19px;
-              font-weight: bold;
-            }
-            .off{
-              font-size: 13px;
-              font-weight: normal;
-              color: #ffffff;
-            }
-          }
+          @import "discount";
           p{
             margin: 0 auto;
             display: block;
@@ -194,7 +168,7 @@ $ff:SegoeWP;
             width: 90px;
           }
           img{
-            height: 177px;
+            height: 159px;
           }
           span{
             display: block;

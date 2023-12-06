@@ -30,7 +30,7 @@ BSbooks = [
         transfer: false
     },
     {
-        name: "Life is what you make it",
+        name: "Life is what You Make it",
         image: 5,
         price: 200,
         discount: false,
@@ -65,7 +65,7 @@ BSbooks = [
         transfer: false
     },
     {
-        name: "Life is what you make it",
+        name: "Life is what You Make it",
         image: 10,
         price: 200,
         discount: false,
@@ -100,7 +100,7 @@ BSbooks = [
         transfer: false
     },
     {
-        name: "Life is what you make it",
+        name: "Life is what You Make it",
         image: 15,
         price: 205,
         discount: false,
