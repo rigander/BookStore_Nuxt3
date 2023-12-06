@@ -19,14 +19,11 @@ body{
   }
 }
 @import "header";
-
 #main-content-wrapper-scifi{
   order: 4;
   margin-top: 14px;
   width: 800px;
   display: inline-flex;
-  border: solid 1px #d8dce0;
-  border-top: none;
   .title_sci-fi{
     font-size: 24px;
     font-weight: 300;
@@ -38,7 +35,9 @@ body{
       margin: 18px 0 15px 30px;
     }
   }
-  .books-li_container{
+  .books-li_container-scifi{
+    border: 1px solid #d4d4d5;
+    margin-top: 1px;
     section{
       display: flex;
       flex-direction: column;
@@ -123,7 +122,8 @@ body{
           width: 125px;
           display: flex;
           flex-direction: column;
-          padding-left: 9px;
+          margin-left: 16px;
+          margin-right: 16px;
           .discount{
             align-self: end;
             position: absolute;
