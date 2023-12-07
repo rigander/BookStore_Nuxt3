@@ -11,13 +11,11 @@
                 <div class="author">By Lee Child</div>
             </div>
             <button class="left">
-                <div>
-                    <img alt="img" src="/img/left.png">
+                <div class="arrow-left">
                 </div>
             </button>
             <button class="right">
-                <div>
-                    <img alt="img" src="/img/right.png">
+                <div class="arrow-right">
                 </div>
             </button>
         </div>

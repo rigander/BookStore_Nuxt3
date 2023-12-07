@@ -29,7 +29,7 @@
     justify-content: center;
     width: 38px;
     height: 38px;
-    opacity: 0.50;
+    opacity: 0.76;
     background-color: #303033;
     border-radius: 50%;
     border: none;
@@ -41,6 +41,10 @@
     }
     &:active{
       background-color: #e4bc6a;
+    }
+    div{
+      padding-bottom: 3px;
+      padding-left: 6px;
     }
   }
   .right{
@@ -63,6 +67,10 @@
     }
     &:active{
       background-color: #e6bd6a;
+    }
+    div{
+      padding-bottom: 3px;
+      padding-right: 6px;
     }
   }
   .main-slider__content{
@@ -155,4 +163,26 @@
       color: #e6bd6a;
     }
   }
+}
+
+.arrow-right,
+.arrow-left,{
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-top: 6px solid black;
+  border-left: 6px solid black;
+}
+.arrow-right{
+  transform: rotate(135deg);
+  margin-left: -6px;
+  margin-right: 8px;
+  margin-bottom: 3px;
+}
+
+.arrow-left{
+  transform: rotate(-45deg);
+  margin-left: 8px;
+  margin-right: -6px;
+  margin-bottom: 3px;
 }
