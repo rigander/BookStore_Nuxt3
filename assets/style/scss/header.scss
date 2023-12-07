@@ -94,9 +94,9 @@ header{
   width: 25px;
   transform: rotate(315deg);
   #magnifying_circle{
-    width: 16px;
-    height: 16px;
-    border: solid 3px white;
+    width: 18px;
+    height: 18px;
+    border: solid 2px white;
     border-radius: 50%;
     background-color: #79b260;
   }
@@ -105,7 +105,8 @@ header{
     margin-left: 5px;
     height: 8px;
     width: 5px;
-    border-left: 5px solid white;
+    border-left: 4px solid white;
+    transform: rotate(-5deg);
   }
 }
 #search{
@@ -198,6 +199,7 @@ header{
   width: 90px;
   height: 50px;
   .twenty{
+    padding-top: 1px;
     margin-left: 78px;
     margin-top: -35px;
     align-self: end;
@@ -289,7 +291,6 @@ header{
         color: #5b5b5b;
         &:hover{
           color: #ff0000;
-          font-weight: bold;
         }
         &:active{
           background-image: linear-gradient(to top, #79b260, #92d774);
