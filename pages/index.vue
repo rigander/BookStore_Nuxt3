@@ -5,6 +5,7 @@
 
 <template>
     <MpageBanners/>
+    <SharedAsideNav/>
         <main class="main-content-wrapper">
             <div class="main__product-list-content">
                 <section class="product-list">
