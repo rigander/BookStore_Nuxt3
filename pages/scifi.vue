@@ -5,6 +5,7 @@
 
 
 <template>
+    <SharedAsideNav/>
     <main id="main-content-wrapper-scifi">
         <div class="books-li_container-scifi">
             <section class="product-list-scifi">
