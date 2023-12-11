@@ -51,7 +51,6 @@ $ff:SegoeWP;
             height: 37px;
             border: solid 1px #d8dce0;
             border-left: none;
-            background-color: rgba(216, 220, 224, 0.71);
             text-shadow: 0.5px 0.9px 0 #fff;
             font-size: 17px;
             font-weight: 300;
@@ -59,7 +58,6 @@ $ff:SegoeWP;
             &:first-child{
               font-weight: bold;
               border-bottom: none;
-              background-color: white;
             }
             .shadow{
               display: flex;

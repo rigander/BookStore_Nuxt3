@@ -1,5 +1,8 @@
-<script setup lang="ts">
-
+<script setup>
+const activeTab = 'used-books';
+function changeTab(tab) {
+    this.activeTab = tab;
+}
 </script>
 
 
@@ -9,10 +12,31 @@
             <section class="product-list">
                 <div class="product-list__nav">
                     <ul>
-                        <li id="best-sel-box"><div class="box-before"></div><a href="">Best Sellers</a><div class="box-after"></div></li>
-                        <li id="new-arrivals-box"><div class="shadow"><a href="">New Arrivals</a></div></li>
-                        <li id="used-books-box"><div class="shadow"><a href="">Used Books</a></div></li>
-                        <li id="special-offers-box"><div class="shadow"><a href="">Special Offers</a></div></li>
+                        <li
+                            :class="{ 'active-tab': activeTab === 'best-sellers' }"
+                            @click="changeTab('best-sellers')"
+                            id="best-sel-box" >
+                            <div class="box-before"></div>
+                            <a href="#">Best Sellers</a>
+                            <div class="box-after"></div>
+                        </li>
+                        <li
+                            :class="{ 'active-tab': activeTab === 'new-arrivals' }"
+                            @click="changeTab('new-arrivals')"
+                            >
+                            <div ><a href="#">New Arrivals</a></div>
+                        </li>
+                        <li
+                            :class="{ 'active-tab': activeTab === 'used-books' }"
+                            @click="changeTab('used-books')"
+                            >
+                            <div ><a href="#">Used Books</a></div></li>
+                        <li
+                            :class="{ 'active-tab': activeTab === 'special-offers' }"
+                            @click="changeTab('special-offers')"
+                            >
+                            <div ><a href="#">Special Offers</a></div>
+                        </li>
                     </ul>
                     <div class="big-box"></div>
                 </div>
@@ -22,3 +46,10 @@
     </main>
 
 </template>
+
+<style>
+
+.active-tab {
+    background-color: #e52424;
+}
+</style>
