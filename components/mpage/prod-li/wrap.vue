@@ -1,7 +1,8 @@
 <script setup>
-const activeTab = 'used-books';
+let activeTab = 'best-sel';
 function changeTab(tab) {
-    this.activeTab = tab;
+    activeTab = tab;
+    console.log(activeTab);
 }
 </script>
 
@@ -13,8 +14,8 @@ function changeTab(tab) {
                 <div class="product-list__nav">
                     <ul>
                         <li
-                            :class="{ 'active-tab': activeTab === 'best-sellers' }"
-                            @click="changeTab('best-sellers')"
+                            :class="{'active-tab': activeTab === 'best-sel'}"
+                            @click="changeTab('best-sel')"
                             id="best-sel-box" >
                             <div class="box-before"></div>
                             <a href="#">Best Sellers</a>
