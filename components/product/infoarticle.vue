@@ -58,9 +58,9 @@
             <div class="cart-billing">
                 <div class="price-add-to-cart">
                     <div class="our-price">
-                        <p>Our price :</p>
-                        <div>$150</div>
-                        <span>Was $ 200 Save 20%</span>
+                        <p>Our price:</p>
+                        <div> $150</div>
+                        <span>Was $200 Save 20%</span>
                     </div>
                     <button id="add-to-cart">Add to cart</button>
                 </div>
