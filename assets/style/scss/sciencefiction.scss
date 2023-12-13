@@ -26,11 +26,14 @@ body{
   display: inline-flex;
   .title_sci-fi{
     font-size: 24px;
-    font-weight: 300;
+    font-weight: bold;
     color: #464646;
     box-sizing: border-box;
     border-bottom: none;
     width: inherit;
+    :hover{
+      cursor: context-menu;
+    }
     h4{
       margin: 18px 0 15px 30px;
     }

@@ -3,25 +3,26 @@
 .discount{
   align-self: end;
   position: absolute;
-  margin-top: 4px;
+  margin-top: 2px;
+  margin-right: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  width: 50px;
+  height: 48px;
+  width: 48px;
   border:none;
   border-radius: 50%;
   background-color: #f05356;
   padding: 0;
   color: white;
-  font-size: 19px;
+  font-size: 18px;
   span{
     color: #ffffff;
     font-family: $ff;
-    font-size: 19px;
-    font-weight: bold;
+    font-size: 18px;
   }
   .off{
+    padding: 2px;
     font-size: 13px;
     font-weight: normal;
     color: #ffffff;
