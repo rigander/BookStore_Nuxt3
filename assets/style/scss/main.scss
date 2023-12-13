@@ -48,56 +48,18 @@ $ff:SegoeWP;
             align-items: center;
             list-style: none;
             width: 140px;
-            height: 37px;
-            border: solid 1px #d8dce0;
-            border-left: none;
+            height: 39px;
+            border: 1px solid #d8dce0;
             text-shadow: 0.5px 0.9px 0 #fff;
             font-size: 17px;
             font-weight: 300;
             color: #6b6969;
-            &:first-child{
-              font-weight: bold;
-              border-bottom: none;
-            }
-            .shadow{
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 139px;
-              height: 37px;
-              border-left: solid 1px white;
-
-            }
-            .box-before{
-              position: absolute;
-              left:342px;
-              top: 552px;
-              height: 1px;
-              width: 1px;
-              background-color: #d8dce0;
-            }
-            .box-after{
-              position: absolute;
-              left:482px;
-              top: 551px;
-              height: 1px;
-              width: 1px;
-              background-color: #d8dce0;
-            }
-            a{
-              padding: 1px;
-              text-decoration: none;
-              color: black;
-              opacity: 75%;
-              &:hover{
-                font-size: 19px;
-              }
-            }
+            box-sizing: border-box;
           }
         }
         .big-box{
           width: 238px;
-          height: 37px;
+          height: 39px;
           border-bottom: 1px solid #d4d4d5;
         }
       }

@@ -1,11 +1,6 @@
 <script setup>
-let active = false;
-console.log(active);
 
-function isActive() {
-    this.active = true;
-    console.log(active);
-}
+
 </script>
 
 
@@ -16,27 +11,21 @@ function isActive() {
                 <div class="product-list__nav">
                     <ul>
                         <li
-                            :class="{'active-tab': activeTab === 'best-sel'}"
-                            @click="changeTab('best-sel')"
-                            id="best-sel-box" >
-                            <div class="box-before"></div>
-                            <a href="#">Best Sellers</a>
-                            <div class="box-after"></div>
+                            class="option"
+                            >
+                            <div><a href="#">Best Sellers</a></div>
                         </li>
                         <li
-                            :class="{ 'active-tab': activeTab === 'new-arrivals' }"
-                            @click="changeTab('new-arrivals')"
+                            class="option"
                             >
                             <div ><a href="#">New Arrivals</a></div>
                         </li>
                         <li
-                            :class="{ 'active-tab': activeTab === 'used-books' }"
-                            @click="changeTab('used-books')"
+                            class="option"
                             >
                             <div ><a href="#">Used Books</a></div></li>
                         <li
-                            :class="{ 'active-tab': activeTab === 'special-offers' }"
-                            @click="changeTab('special-offers')"
+                            class="option"
                             >
                             <div ><a href="#">Special Offers</a></div>
                         </li>
