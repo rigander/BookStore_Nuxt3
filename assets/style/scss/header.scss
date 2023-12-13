@@ -291,6 +291,7 @@ header{
         color: #5b5b5b;
         &:hover{
           color: #ff0000;
+          font-weight: bold;
         }
         &:active{
           background-image: linear-gradient(to top, #79b260, #92d774);

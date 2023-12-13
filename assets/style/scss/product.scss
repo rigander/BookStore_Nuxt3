@@ -52,20 +52,26 @@ $ff:SegoeWP;
 }
 .bread-cramps{
   width: 465px;
-  height: 16px;
+  height: 20px;
   padding-left: 17px;
+  padding-bottom: 2px;
   display: flex;
   margin: 0;
   li{
     list-style: none;
     display: flex;
     align-items: center;
+    :hover{
+      color: red;
+      font-weight: bold;
+    }
     a{
       text-decoration: none;
       color: #a6a6a6;
     }
   }.bi-chevron-double-right{
-     padding-top: 5px;
+     padding-top: 4px;
+     padding-bottom: 1px;
    }
 
 }
@@ -243,12 +249,15 @@ $ff:SegoeWP;
       }
       #other-det{
         width: 136px;
-        height: 35px;
+        height: 37px;
         border: 1px solid #d6d6d6;
         border-bottom: 3px solid #c0c0c1;
         border-radius:4px 4px 0 0;
         background-color: #c0c0c1;
         margin-left: 10px;
+        :hover{
+          color: darkred;
+        }
         a{
           color: white;
         }
@@ -257,6 +266,9 @@ $ff:SegoeWP;
         border: 1px solid #d6d6d6;
         border-bottom: transparent;
         border-radius:4px 4px 0 0;
+        :hover{
+          color: darkred;
+        }
       }
       li{
         display: flex;
@@ -311,15 +323,15 @@ $ff:SegoeWP;
     font-size: 20px;
     margin-left: 26px;
     color: #7e7e7e;
+    padding-top: 5px;
+    padding-bottom: 7px;
   }
   .top-name{
     border-bottom: 1px solid #c0c0c1;
   }
-  .bottom-name{
-    margin-top: 16px;
-  }
   .name{
     display: flex;
+    padding-top: 10px;
     justify-content: space-between;
     width: 647px;
     height: 98px;
