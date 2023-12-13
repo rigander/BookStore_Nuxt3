@@ -55,10 +55,10 @@ nav = [
         <nav class="main-nav">
             <ul>
                 <li>
-                    <a  v-for="n in nav"
+                    <NuxtLink  v-for="n in nav"
                         :href="n.link"
                         :id="n.id"
-                    >{{ n.name }}</a></li>
+                    >{{ n.name }}</NuxtLink></li>
             </ul>
         </nav>
     </div>

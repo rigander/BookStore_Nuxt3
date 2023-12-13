@@ -32,10 +32,10 @@ nav = [
             <ul>
                 <li
                     v-for="n in nav"
-                ><a
+                ><NuxtLink
                     :id="n.id"
                     :href="n.link"
-                >{{ n.name }}</a></li>
+                >{{ n.name }}</NuxtLink></li>
             </ul>
         </nav>
     </div>

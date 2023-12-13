@@ -6,47 +6,47 @@ let maths;
 let cardsImages;
 bios = [
     {
-        link: "",
+        link: "/",
         name: "General"
     },
     {
-        link: "",
+        link: "/scifi",
         name: "Diaries, Letters, & Journals"
     },
     {
-        link: "",
+        link: "/product",
         name: "Memoirs"
     },
     {
-        link: "",
+        link: "/",
         name: "True Stories"
     },
     {
-        link: "",
+        link: "/",
         name: "Generic Exams"
     },
     {
-        link: "",
+        link: "/",
         name: "GK Titles"
     },
     {
-        link: "",
+        link: "/",
         name: "Medical Entrance"
     },
     {
-        link: "",
+        link: "/",
         name: "Other Entrance Exams"
     },
     {
-        link: "",
+        link: "/",
         name: "PG Entrance Examinations"
     },
     {
-        link: "",
+        link: "/",
         name: "Self-help Titles"
     },
     {
-        link: "",
+        link: "/",
         name: "Sociology"
     },
 ];
@@ -208,28 +208,36 @@ cardsImages = [
                 <h3>Biography & True Stories</h3>
                 <ul>
                     <li v-for="bio in bios"
-                    ><a href="">{{ bio.name }}</a></li>
+                    ><NuxtLink
+                        :href="bio.link">{{ bio.name }}
+                    </NuxtLink></li>
                 </ul>
             </div>
             <div id="professional-reference">
                 <h3>Professional & Reference </h3>
                 <ul>
                     <li v-for="prof in profs"
-                    ><a href="">{{ prof.name }}</a></li>
+                    ><NuxtLink
+                        :href="prof.link">{{ prof.name }}
+                    </NuxtLink></li>
                 </ul>
             </div>
             <div id="earth-sciences">
                 <h3>Earth Sciences</h3>
                 <ul>
                     <li v-for="earth in earths"
-                    ><a href="">{{ earth.name }}</a></li>
+                    ><NuxtLink
+                        :href="earth.link">{{ earth.name }}
+                    </NuxtLink></li>
                 </ul>
             </div>
             <div id="mathematics">
                 <h3>Mathematics</h3>
                 <ul>
                     <li v-for="math in maths"
-                    ><a href="">{{ math.name }}</a></li>
+                    ><NuxtLink
+                        :href="math.link">{{ math.name }}
+                    </NuxtLink></li>
                 </ul>
             </div>
         </div>
@@ -245,7 +253,11 @@ cardsImages = [
                 </div>
             </div>
         </div>
-        <div id="bottom"><a href="">Conditions of Use Privacy Notice© 2022-2023, Booksonline, Inc. or its affiliates</a></div>
+        <div id="bottom">
+            <NuxtLink href="">
+                Conditions of Use Privacy Notice© 2022-2023,
+                Booksonline, Inc. or its affiliates
+            </NuxtLink></div>
     </footer>
 </template>
 

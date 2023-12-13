@@ -125,25 +125,25 @@ other = [
                 <li class="list-title">Fiction & Literature</li>
                 <li
                     v-for="fic in fiction"
-                ><a :href="fic.link"
+                ><NuxtLink :href="fic.link"
                 >
-                    <div>{{ fic.name }}</div></a></li>
+                    <div>{{ fic.name }}</div></NuxtLink></li>
             </ul>
             <ul class="non-fiction">
                 <li class="list-title">Non-Fiction</li>
                 <li
                     v-for="non in nonfiction"
-                ><a :href="non.link"
-                ><div>{{ non.name }}</div></a></li>
+                ><NuxtLink :href="non.link"
+                ><div>{{ non.name }}</div></NuxtLink></li>
             </ul>
             <div class="others-container">
                 <ul class="other">
                     <li class="list-title">Other</li>
                     <li
                         v-for="oth in other"
-                    ><a
+                    ><NuxtLink
                         :href="oth.link"
-                    ><div>{{ oth.name }}</div></a></li>
+                    ><div>{{ oth.name }}</div></NuxtLink></li>
                 </ul>
             </div>
         </div>
