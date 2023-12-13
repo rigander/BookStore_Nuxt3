@@ -1,8 +1,10 @@
 <script setup>
-let activeTab = 'best-sel';
-function changeTab(tab) {
-    activeTab = tab;
-    console.log(activeTab);
+let active = false;
+console.log(active);
+
+function isActive() {
+    this.active = true;
+    console.log(active);
 }
 </script>
 
