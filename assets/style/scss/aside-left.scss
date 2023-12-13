@@ -35,12 +35,14 @@ aside{
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      width: 186px;
+      width: 188px;
       height: 29px;
       border: none;
       color: #555454;
+      margin-top: 10px;
       padding-left: 21px;
       font-weight: bold;
+      background-color: #eeeeef;
       @extend %green-button-styles;
     }
     ul{
