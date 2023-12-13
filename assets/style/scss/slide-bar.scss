@@ -85,6 +85,7 @@
     font-size: 47px;
     font-weight: bold;
     color: white;
+    user-select: none;
     a{
       text-decoration: none;
       color: white;
@@ -92,10 +93,12 @@
   }
   .title{
     font-size: 25px;
+    user-select: none;
   }
   .author{
     font-size: 21px;
     font-weight: bold;
+    user-select: none;
   }
 }
 
@@ -122,6 +125,7 @@
     height: 46px;
     font-size: 27px;
     font-weight: 600;
+    user-select: none;
     div{
       font-size: 15px;
       font-weight: 300;
@@ -136,6 +140,7 @@
     height: 90px;
     font-size: 21px;
     font-weight: 300;
+    user-select: none;
     div{
       font-weight: 600;
       font-size: 29px;
@@ -149,8 +154,9 @@
     color: white;
     display: flex;
     width: 108px;
-    height: 28px;
+    height: 30px;
     justify-content: center;
+    padding: 2px;
     text-shadow: 0.5px 0.9px 0 rgba(74, 151, 74, 0.75);
 
     font-size: 19px;

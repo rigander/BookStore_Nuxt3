@@ -256,7 +256,7 @@ cardsImages = [
         <div id="bottom">
             <NuxtLink href="">
                 Conditions of Use Privacy Notice© 2022-2023,
-                Booksonline, Inc. or its affiliates
+                Books online, Inc. or its affiliates
             </NuxtLink></div>
     </footer>
 </template>
