@@ -1,4 +1,22 @@
 <script setup lang="ts">
+const data = [
+    {
+        name: "New Arrivals",
+        table: "tab.NEW_ARRIVALS",
+        link: ""
+    },
+    {
+        name: "Used Books",
+        table: "tab.USED_BOOKS",
+        link: ""
+    },
+    {
+        name: "Special Offers",
+        table: "tab.SPECIAL_OFFERS",
+        link: ""
+    },
+]
+
 enum tab {
     BEST_SELLERS = "b-sek",
     NEW_ARRIVALS = "n-arr",
@@ -10,7 +28,7 @@ interface OptionsState {
 }
 
 const opt = reactive<OptionsState>({
-    genre: tab.SPECIAL_OFFERS
+    genre: tab.BEST_SELLERS
 })
 </script>
 
@@ -25,28 +43,20 @@ const opt = reactive<OptionsState>({
                             :class="opt.genre === tab.BEST_SELLERS && 'active'"
                             @click="opt.genre = tab.BEST_SELLERS"
                             class="option"
-                            >
-                            <div><a href="#">Best Sellers</a></div>
+                        >
+                            <div>
+                                <a href="">Best Sellers</a>
+                            </div>
                         </li>
                         <li
-                            :class="opt.genre === tab.NEW_ARRIVALS && 'active'"
-                            @click="opt.genre = tab.NEW_ARRIVALS"
+                            v-for="item in data"
+                            :class="opt.genre === item.table && 'active'"
+                            @click="opt.genre = item.table"
                             class="option"
                             >
-                            <div ><a href="#">New Arrivals</a></div>
-                        </li>
-                        <li
-                            :class="opt.genre === tab.USED_BOOKS && 'active'"
-                            @click="opt.genre = tab.USED_BOOKS"
-                            class="option"
-                            >
-                            <div ><a href="#">Used Books</a></div></li>
-                        <li
-                            :class="opt.genre === tab.SPECIAL_OFFERS && 'active'"
-                            @click="opt.genre = tab.SPECIAL_OFFERS"
-                            class="option"
-                            >
-                            <div ><a href="#">Special Offers</a></div>
+                            <div>
+                                <a href="">{{ item.name }}</a>
+                            </div>
                         </li>
                     </ul>
                     <div class="big-box"></div>
