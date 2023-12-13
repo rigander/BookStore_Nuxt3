@@ -11,7 +11,7 @@
                 <div class="product-list__nav">
                     <ul>
                         <li
-                            class="option"
+                            class="option active"
                             >
                             <div><a href="#">Best Sellers</a></div>
                         </li>
@@ -41,7 +41,5 @@
 
 <style>
 
-.active-tab {
-    background-color: #e52424;
-}
+
 </style>
