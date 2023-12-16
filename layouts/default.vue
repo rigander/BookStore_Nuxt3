@@ -1,7 +1,9 @@
 <script setup lang="ts">
 const uri = 'http://api.book-store.loc/api/categories'
 const {data: category} = await useFetch(uri);
-console.log(category);
+provide('categories', {
+    category
+})
 </script>
 
 
