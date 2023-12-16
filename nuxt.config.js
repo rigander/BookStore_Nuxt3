@@ -4,6 +4,9 @@ import { resolve } from "path";
 // @ts-ignore
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  modules: ['@pinia/nuxt'],
+  pinia: { autoImports:["defineStore"] },
+  imports: { dirs: ["./stores"] },
   alias: {
     '@': resolve(__dirname, '/'),
   },
