@@ -1,41 +1,11 @@
-<script setup lang="ts">
-enum tab {
-    BEST_SELLERS = "b-sel",
-    NEW_ARRIVALS = "n-arr",
-    USED_BOOKS = "u-books",
-    SPECIAL_OFFERS = "s-offers",
-}
-const data = [
-    {
-        name: "Best Sellers",
-        table: tab.BEST_SELLERS,
-        link: ""
-    },
-    {
-        name: "New Arrivals",
-        table: tab.NEW_ARRIVALS,
-        link: ""
-    },
-    {
-        name: "Used Books",
-        table: tab.USED_BOOKS,
-        link: ""
-    },
-    {
-        name: "Special Offers",
-        table: tab.SPECIAL_OFFERS,
-        link: ""
-    },
-]
-interface OptionsState {
-    genre: string;
-}
+<script setup>
+const { category } = inject('categories');
 
-const opt = reactive<OptionsState>({
-    genre: tab.BEST_SELLERS
-})
+const opt = reactive({
+    genre: 'best-sellers',
+});
 
-const changeGenre = (event: Event, genre: string) => {
+const changeGenre = (event, genre) => {
     event.preventDefault();
     opt.genre = genre;
 };
@@ -49,9 +19,10 @@ const changeGenre = (event: Event, genre: string) => {
                 <div class="product-list__nav">
                     <ul>
                         <li
-                            v-for="item in data"
-                            :class="opt.genre === item.table && 'active'"
-                            @click="changeGenre($event, item.table)"
+                            v-for="(item, index) in category.data.featured"
+                            :key="index"
+                            :class="opt.genre === item.slug && 'active'"
+                            @click="changeGenre($event, item.slug)"
                             class="option"
                         >
                             <div><a href="">{{ item.name }}</a></div>
