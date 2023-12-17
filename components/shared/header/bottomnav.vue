@@ -1,6 +1,10 @@
 <script setup>
-
 const { category } = inject('categories');
+
+const categoryStore = useCategoryStore();
+const handleMenuClick = (slug) => {
+    categoryStore.setSelectedSlug(slug)
+}
 
 </script>
 
@@ -9,9 +13,13 @@ const { category } = inject('categories');
     <div class="main-nav-wrapper">
         <nav class="main-nav">
             <ul>
-                <li class="bottom-nav">
-                    <NuxtLink  v-for="item in category.data.header"
-                        href=""
+                <li
+                    v-for="item in category.data.header"
+                    :key="item.id"
+                    class="bottom-nav">
+                    <NuxtLink
+                        :to="item.slug"
+                        @click="handleMenuClick(item.slug)"
                         :id="item.id"
                     >{{ item.name }}</NuxtLink></li>
             </ul>
