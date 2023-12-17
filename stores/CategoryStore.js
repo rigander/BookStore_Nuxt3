@@ -4,7 +4,7 @@ export const useCategoryStore = defineStore(
     'category',
     () => {
         const selectedSlug = ref(null);
-        let books = ref([]);
+        const books = ref([]);
 
         const setBooks = (newBooks) => {
             books.value = newBooks;

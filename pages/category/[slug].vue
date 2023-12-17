@@ -1,6 +1,5 @@
 <script setup>
 const booksStore = useCategoryStore();
-const data = booksStore.books.value;
 </script>
 
 
@@ -8,8 +7,8 @@ const data = booksStore.books.value;
     <div>
         <h1>Category: {{ booksStore.selectedSlug }}</h1>
         <ul>
-            <li v-for="item in data">
-                {{ item.name }}
+            <li v-for="item in booksStore.books.value">
+                {{ item.slug }}
             </li>
         </ul>
     </div>
