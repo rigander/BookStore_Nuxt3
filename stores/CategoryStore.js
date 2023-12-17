@@ -8,7 +8,6 @@ export const useCategoryStore = defineStore(
 
         const setBooks = (newBooks) => {
             books.value = newBooks;
-            console.log('books:', books);
             console.log('inside', books.value);
         };
 

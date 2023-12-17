@@ -3,6 +3,7 @@ const { category } = inject('categories');
 
 const categoryStore = useCategoryStore();
 const handleMenuClick = (slug) => {
+    console.log('Clicked slug:', slug);
     categoryStore.setSelectedSlug(slug)
 }
 
@@ -18,7 +19,7 @@ const handleMenuClick = (slug) => {
                     :key="item.id"
                     class="bottom-nav">
                     <NuxtLink
-                        :to="item.slug"
+                        :to="`/category/${item.slug}`"
                         @click="handleMenuClick(item.slug)"
                         :id="item.id"
                     >{{ item.name }}</NuxtLink></li>

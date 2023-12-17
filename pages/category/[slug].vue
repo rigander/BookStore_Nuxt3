@@ -8,9 +8,9 @@ const data = booksStore.books.value;
     <div>
         <h1>Category: {{ booksStore.selectedSlug }}</h1>
         <ul>
-<!--            <li v-for="item in data">-->
-<!--                {{ item.name }}-->
-<!--            </li>-->
+            <li v-for="item in data">
+                {{ item.name }}
+            </li>
         </ul>
     </div>
 </template>

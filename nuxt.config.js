@@ -7,13 +7,6 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
   pinia: { autoImports:["defineStore"] },
   imports: { dirs: ["./stores"] },
-  routes: [
-    {
-      name: 'category',
-      path: '/category/:slug',
-      component: '~/pages/category/[slug].vue',
-    },
-  ],
   alias: {
     '@': resolve(__dirname, '/'),
   },
