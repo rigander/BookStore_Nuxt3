@@ -1,5 +1,7 @@
 <script setup>
-const booksStore = useCategoryStore();
+
+const route = useRoute();
+const { data: booksStore } = await useFetch(`http://api.book-store.loc/api/category/${route.params.slug}/books`)
 
 </script>
 
@@ -10,7 +12,7 @@ const booksStore = useCategoryStore();
         <div class="books-li_container-scifi">
             <section class="product-list-scifi">
                 <div class="title_sci-fi">
-                    <h4>{{ booksStore.selectedSlug }}</h4>
+                    <h4>{{ booksStore.data.name }}</h4>
                 </div>
                 <ScifiBooks/>
             </section>
