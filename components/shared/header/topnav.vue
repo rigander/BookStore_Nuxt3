@@ -7,7 +7,7 @@ nav = [
         id: "account-nav__sign-in"
     },
     {
-        link: "/scifi",
+        link: "/",
         name: "My Account",
         id: "account-nav__my-account"
     },
@@ -34,7 +34,7 @@ nav = [
                     v-for="n in nav"
                 ><NuxtLink
                     :id="n.id"
-                    :href="n.link"
+                    :to="n.link"
                 >{{ n.name }}</NuxtLink></li>
             </ul>
         </nav>
