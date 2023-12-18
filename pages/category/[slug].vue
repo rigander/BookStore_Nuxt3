@@ -14,7 +14,7 @@ const { data: booksStore } = await useFetch(`http://api.book-store.loc/api/categ
                 <div class="title_sci-fi">
                     <h4>{{ booksStore.data.name }}</h4>
                 </div>
-                <ScifiBooks/>
+                <ScifiBooks v-model="booksStore"/>
             </section>
         </div>
     </main>
