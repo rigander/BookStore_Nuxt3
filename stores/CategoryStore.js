@@ -8,12 +8,11 @@ export const useCategoryStore = defineStore(
 
         const setBooks = (newBooks) => {
             books.value = newBooks;
-            console.log('inside', books.value);
         };
 
         const loadBooks = async () => {
             if (!selectedSlug.value) return;
-            const uri = `http://api.book-store.loc/api/category/${selectedSlug.value}/books?page=1`;
+            const uri = `http://api.book-store.loc/api/category/${selectedSlug.value}/books`;
             const { data: booksResponse } = await useFetch(uri);
             setBooks(booksResponse);
         };

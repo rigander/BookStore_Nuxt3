@@ -3,7 +3,6 @@ const { category } = inject('categories');
 
 const categoryStore = useCategoryStore();
 const handleMenuClick = (slug) => {
-    console.log('Clicked slug:', slug);
     categoryStore.setSelectedSlug(slug)
 }
 

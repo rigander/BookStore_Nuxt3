@@ -1,15 +1,19 @@
 <script setup>
 const booksStore = useCategoryStore();
+
 </script>
 
 
 <template>
-    <div>
-        <h1>Category: {{ booksStore.selectedSlug }}</h1>
-        <ul>
-            <li v-for="item in booksStore.books.value">
-                {{ item.slug }}
-            </li>
-        </ul>
-    </div>
+    <SharedAsideNav/>
+    <main id="main-content-wrapper-scifi">
+        <div class="books-li_container-scifi">
+            <section class="product-list-scifi">
+                <div class="title_sci-fi">
+                    <h4>{{ booksStore.selectedSlug }}</h4>
+                </div>
+                <ScifiBooks/>
+            </section>
+        </div>
+    </main>
 </template>
