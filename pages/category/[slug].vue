@@ -1,7 +1,10 @@
 <script setup>
 
 const route = useRoute();
-const { data: booksStore } = await useFetch(`http://api.book-store.loc/api/category/${route.params.slug}/books`)
+const { data: booksStore } = await useFetch(
+    `http://api.book-store.loc/api/category/${route.params.slug}/books?page=1`,
+    { cache: 'no-cache' }
+);
 
 </script>
 

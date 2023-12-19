@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
+
+const emit = defineEmits(['page-clicked']);
 const onClickHandler = (page: number) => {
-    console.log(page);
+    emit('page-clicked', page);
 };
 
 const currentPage = ref(1);
@@ -9,6 +11,7 @@ const currentPage = ref(1);
 
 <template>
     <vue-awesome-paginate
+        @click="onClickHandler"
         :total-items="30"
         v-model="currentPage"
         :items-per-page="5"

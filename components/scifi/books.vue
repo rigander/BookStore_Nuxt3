@@ -1,10 +1,15 @@
 <script setup>
-
 defineProps({
     modelValue: {
         type: Object,
     }
 });
+
+const currentPage = ref(1);
+const handlePageClicked = (newPage) => {
+    currentPage.value = newPage;
+    console.log('Page clicked on books.vue: ',currentPage.value);
+};
 </script>
 
 
@@ -25,6 +30,9 @@ defineProps({
             </NuxtLink>
             <span>${{ book.price }}</span>
         </div>
-        <SharedPagination/>
+        <SharedPagination
+            @page-clicked="handlePageClicked"
+            :currentPage="currentPage"
+        />
     </div>
 </template>
