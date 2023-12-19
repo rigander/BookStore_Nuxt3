@@ -1,11 +1,21 @@
 <script setup>
-
+const currentPage = ref(1);
 const route = useRoute();
-const { data: booksStore } = await useFetch(
-    `http://api.book-store.loc/api/category/${route.params.slug}/books?page=1`,
+const curCategory = route.params.slug;
+
+
+let { data: booksStore } = await useFetch(
+    `http://api.book-store.loc/api/category/${curCategory}/books?page=${currentPage.value}`,
     { cache: 'no-cache' }
 );
-
+const updatePage = async (newPage) => {
+    const newData = await $fetch(
+        `http://api.book-store.loc/api/category/${curCategory}/books?page=${newPage}`,
+        {
+        method: 'GET',
+    });
+    booksStore.value = newData;
+};
 </script>
 
 
@@ -17,7 +27,10 @@ const { data: booksStore } = await useFetch(
                 <div class="title_sci-fi">
                     <h4>{{ booksStore.data.name }}</h4>
                 </div>
-                <ScifiBooks v-model="booksStore"/>
+                <ScifiBooks
+                    @page-updated="updatePage"
+                    v-model="booksStore"
+                />
             </section>
         </div>
     </main>

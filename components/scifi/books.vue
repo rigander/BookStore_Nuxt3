@@ -4,11 +4,11 @@ defineProps({
         type: Object,
     }
 });
-
+const emit = defineEmits(['page-updated']);
 const currentPage = ref(1);
 const handlePageClicked = (newPage) => {
     currentPage.value = newPage;
-    console.log('Page clicked on books.vue: ',currentPage.value);
+    emit('page-updated', currentPage.value);
 };
 </script>
 
