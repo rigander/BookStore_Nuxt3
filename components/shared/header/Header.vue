@@ -5,7 +5,7 @@
 <template>
     <header>
         <div class="header-layout">
-            <shared-header-topnav/>
+            <SharedHeaderTopNav/>
             <div class="header-content-container">
                 <div class="header-content">
                     <div class="header-content__books-online">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <shared-header-bottomnav/>
+            <SharedHeaderBottomNav/>
         </div>
     </header>
 </template>

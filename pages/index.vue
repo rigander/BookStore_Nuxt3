@@ -6,7 +6,7 @@
 <template>
     <MpageBanners/>
     <SharedAsideNav/>
-    <MpageProdLiWrap/>
+    <MpageProdliWrap/>
 </template>
 
 

@@ -30,7 +30,7 @@ const changeGenre = (event, genre) => {
                     </ul>
                     <div class="big-box"></div>
                 </div>
-                <MpageProdLiContent/>
+                <MpageProdliContent/>
             </section>
         </div>
     </main>
