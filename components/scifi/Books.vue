@@ -1,14 +1,18 @@
 <script setup>
-defineProps({
-    modelValue: {
-        type: Object,
-    }
-});
-const emit = defineEmits(['page-updated']);
+const props = defineProps(['modelValue']);
 const currentPage = ref(1);
-const handlePageClicked = (newPage) => {
-    currentPage.value = newPage;
-    emit('page-updated', currentPage.value);
+const route = useRoute();
+const curCategory = route.params.slug;
+
+const handlePageClicked = async (newPage) => {
+    const response = await $fetch(
+        `http://api.book-store.loc/api/category/${curCategory}/books?page=${newPage}`,
+        {
+            method: 'GET',
+        });
+    if (response) {
+        props.modelValue.data = response.data;
+    }
 };
 </script>
 
