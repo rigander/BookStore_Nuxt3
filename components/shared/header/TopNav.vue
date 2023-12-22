@@ -1,6 +1,5 @@
 <script setup>
-let nav;
-nav = [
+const nav = [
     {
         link: "/",
         name: "Sign in",

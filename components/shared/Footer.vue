@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps(['modelValue']);
-console.log(props.modelValue);
+
 const cardsImages = [
     {image: "Master-Card"},
     {image: "American-Express"},
