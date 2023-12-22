@@ -1,17 +1,20 @@
 <script setup>
 const props = defineProps(['modelValue']);
+const emit = defineEmits(['update:modelValue'])
 const currentPage = ref(1);
 const route = useRoute();
 const curCategory = route.params.slug;
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
 const handlePageClicked = async (newPage) => {
-    const response = await $fetch(
-        `http://api.book-store.loc/api/category/${curCategory}/books?page=${newPage}`,
-        {
-            method: 'GET',
-        });
-    if (response) {
-        props.modelValue.data = response.data;
+    const { data } = await useFetch(
+        `${apiBaseUrl}/category/${curCategory}/books`,
+        { cache: false,
+          query: {page:newPage}
+        },
+    );
+    if (data.value) {
+        emit('update:modelValue', data.value);
     }
 };
 </script>
@@ -23,12 +26,12 @@ const handlePageClicked = async (newPage) => {
             v-for="book in modelValue.data.books.data"
             :key="book.id">
             <SharedDiscountLabel
-             v-if="book.discount !== null"
+                v-if="book.discount !== null"
             />
             <NuxtLink href="">
                 <img class="book-img-scifi"
-                    :src="book.image"
-                    alt="image"
+                     :src="book.image"
+                     alt="image"
                 >
                 <p>{{ book.title }}</p>
             </NuxtLink>

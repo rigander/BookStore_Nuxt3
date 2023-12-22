@@ -1,6 +1,8 @@
 <script setup lang="ts">
-const uri = 'http://api.book-store.loc/api/categories'
-const {data: category} = await useFetch(uri);
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
+const {data: category} = await useFetch(`${apiBaseUrl}/categories`);
+
 provide('categories', {
     category
 })

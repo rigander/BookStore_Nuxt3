@@ -2,10 +2,10 @@
 const currentPage = ref(1);
 const route = useRoute();
 const curCategory = route.params.slug;
-
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 const { data: booksStore } = await useFetch(
-    `http://api.book-store.loc/api/category/${curCategory}/books?page=${currentPage.value}`,
-    { cache: 'no-cache' }
+    `${apiBaseUrl}/category/${curCategory}/books?page=${currentPage.value}`,
+    { cache: false }
 );
 </script>
 
