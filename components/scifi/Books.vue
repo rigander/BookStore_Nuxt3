@@ -17,13 +17,6 @@ const handlePageClicked = async (newPage) => {
         emit('update:modelValue', data.value);
     }
 };
-
-const handleMouseOver = (title) => {
-    if (title.length > 20) {
-        // Изменяем высоту только для длинных текстов
-        document.querySelector('.long-text').style.height = 'auto';
-    }
-};
 </script>
 
 
