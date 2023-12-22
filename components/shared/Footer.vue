@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['modelValue']);
+const props = defineProps(['cat-footer']);
 
 const cardsImages = [
     {image: "Master-Card"},
@@ -12,7 +12,7 @@ const cardsImages = [
     <footer>
         <div id="list-of-themes">
             <div
-                v-for="category in props.modelValue"
+                v-for="category in props.catFooter"
                 :key="category.id"
                 id="biography-true-stories">
                 <h3>{{ category.name }}</h3>

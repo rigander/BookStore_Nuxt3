@@ -14,7 +14,7 @@ provide('categories', {
         <SharedHeader/>
         <slot/>
         <SharedFooter
-            v-model="catFooter"
+            :cat-footer="catFooter"
         />
     </div>
 </template>
