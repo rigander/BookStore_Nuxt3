@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps(['modelValue']);
+defineProps(['modelValue']);
 const emit = defineEmits(['update:modelValue'])
 const currentPage = ref(1);
 const route = useRoute();

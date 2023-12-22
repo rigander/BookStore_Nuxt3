@@ -1,19 +1,18 @@
 <script setup>
-
+const props = defineProps(['modelValue']);
+console.log(props.modelValue);
 const cardsImages = [
     {image: "Master-Card"},
     {image: "American-Express"},
     {image: "Visa"},
 ]
-
-const { category } = inject('categories');
 </script>
 
 <template>
     <footer>
         <div id="list-of-themes">
             <div
-                v-for="category in category.data.footer"
+                v-for="category in props.modelValue"
                 :key="category.id"
                 id="biography-true-stories">
                 <h3>{{ category.name }}</h3>
