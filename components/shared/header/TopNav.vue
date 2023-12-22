@@ -1,9 +1,16 @@
 <script setup>
+const show = ref(false);
+const emit = defineEmits(['show-sign-in']);
+
 const nav = [
     {
         link: "/",
         name: "Sign in",
-        id: "account-nav__sign-in"
+        id: "account-nav__sign-in",
+        action: () => {
+            show.value = true;
+            emit('show-sign-in', show.value);
+        }
     },
     {
         link: "/",
@@ -21,7 +28,6 @@ const nav = [
         id: "account-nav__help"
     },
 ]
-
 </script>
 
 
@@ -34,6 +40,7 @@ const nav = [
                 ><NuxtLink
                     :id="n.id"
                     :to="n.link"
+                    @click="n.action"
                 >{{ n.name }}</NuxtLink></li>
             </ul>
         </nav>

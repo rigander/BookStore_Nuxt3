@@ -1,11 +1,18 @@
 <script setup>
-
+const show = ref(false);
+const emit = defineEmits(['show-sign-in-to-layout']);
+const handleSignInEvent = (data) => {
+    emit("show-sign-in-to-layout", show.value = data)
+    console.log('Received some-event from TopNav:', data);
+}
 </script>
 
 <template>
     <header>
         <div class="header-layout">
-            <SharedHeaderTopNav/>
+            <SharedHeaderTopNav
+                @show-sign-in="handleSignInEvent"
+            />
             <div class="header-content-container">
                 <div class="header-content">
                     <div class="header-content__books-online">
