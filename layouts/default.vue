@@ -7,7 +7,7 @@ provide('categories', {
     category
 })
 
-const show = ref(true);
+const show = ref(false);
 const handleSignInShowEvent = (data) => {
     console.log('Received some-event from header:', data);
     show.value = data;
@@ -17,7 +17,7 @@ const handleSignInShowEvent = (data) => {
 
 <template>
     <div class="main-wrapper">
-        <SignIn/>
+        <SignIn :show="show"/>
         <SharedHeader
             @show-sign-in-to-layout="handleSignInShowEvent"
         />
