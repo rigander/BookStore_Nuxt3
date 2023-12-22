@@ -76,6 +76,6 @@ const handleMouseOver = (title) => {
     overflow: visible;
 }
 .short-text {
-    width: 75px;
+    width: 80px;
 }
 </style>
