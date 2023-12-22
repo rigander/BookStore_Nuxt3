@@ -30,9 +30,9 @@ reviews = [
         class="name top-name"
         v-for="review in reviews"
     >
-        <div class="avatar-name"><img :src="`/img/product-page/${Review.image}.png`" alt="">
-            <h4>Name {{ Review.id }}</h4></div>
+        <div class="avatar-name"><img :src="`/img/product-page/${review.image}.png`" alt="">
+            <h4>Name {{ review.id }}</h4></div>
         <p class="text-review">
-            {{ Review.text }}
+            {{ review.text }}
         </p></article>
 </template>

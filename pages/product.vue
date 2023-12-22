@@ -7,7 +7,7 @@
     <main id="main-content-wrapper__product">
         <section class="product-info">
             <ProductBreadcrumps/>
-            <ProductInfoarticle/>
+            <ProductInfoArticle/>
         </section>
         <div class="container-lower">
             <div class="wrapper-prod-rew-info">
@@ -24,10 +24,10 @@
                 <section class="product-review">
                     <h2 class="title">Product review</h2>
                     <ProductReview/>
-                    <ProductFeedbackForm/>
+                    <ProductFeedBackForm/>
                 </section>
             </div>
-            <ProductMaylike/>
+            <ProductMayLike/>
         </div>
     </main>
 </template>
