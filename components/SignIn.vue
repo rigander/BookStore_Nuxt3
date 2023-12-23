@@ -10,7 +10,7 @@ const emit = defineEmits(['update:show'])
 const hideDialog = () => {
     emit('update:show', false)
 }
-
+const signup = '/signup'
 </script>
 
 
@@ -51,8 +51,11 @@ const hideDialog = () => {
                     <div class="sign-in-button">
                         <input name="signInButton" id="sign-in-but" value="Sing In" type="submit">
                     </div>
-                    <NuxtLink>
-                        <div class="create-account">Create Account</div>
+                    <NuxtLink
+                        class="create-account"
+                        :to="signup"
+                    >
+                        Create Account
                     </NuxtLink>
                 </div>
             </form>
