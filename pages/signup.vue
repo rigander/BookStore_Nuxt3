@@ -6,7 +6,6 @@ definePageMeta({
 
 
 <template>
-    <body>
     <div class="sign-up__main">
         <form action="#" name="registration" class="sign-up__form">
             <img class="sign-up_img" src="/img/Chromatic-Floral-Rabbit.svg" alt="rabbit">
@@ -57,13 +56,16 @@ definePageMeta({
             </div>
         </form>
     </div>
-    </body>
 </template>
 
 <style lang="scss" scoped>
-body{
+.sign-up__main{
     background-color: #333537;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 .sign-up__form{
     display: flex;
@@ -72,7 +74,6 @@ body{
     margin: 0 auto;
     padding: 20px;
     width: 400px;
-    height: 800px;
     background-color: #2e3032;
 }
 .sign-up_img{
