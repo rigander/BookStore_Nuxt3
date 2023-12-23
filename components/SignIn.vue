@@ -6,12 +6,22 @@ const props = defineProps({
     }
 });
 
+const emit = defineEmits(['update:show'])
+const hideDialog = () => {
+    emit('update:show', false)
+}
+
 </script>
 
 
 <template>
-    <div class="dialog" v-if="show">
-        <div class="dialog__content">
+    <div
+        @click.stop="hideDialog"
+        class="dialog"
+        v-if="show">
+        <div
+            @click.stop
+            class="dialog__content">
             <slot></slot>
         </div>
     </div>

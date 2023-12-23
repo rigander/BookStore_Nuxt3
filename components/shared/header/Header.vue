@@ -1,9 +1,8 @@
 <script setup>
 const show = ref(false);
-const emit = defineEmits(['show-sign-in-to-layout']);
+const emit = defineEmits(['sign-in-visible']);
 const handleSignInEvent = (data) => {
-    emit("show-sign-in-to-layout", show.value = data)
-    console.log('Received some-event from TopNav:', data);
+    emit("sign-in-visible", show.value = data)
 }
 </script>
 

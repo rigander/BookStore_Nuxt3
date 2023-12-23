@@ -7,19 +7,18 @@ provide('categories', {
     category
 })
 
-const show = ref(false);
+const dialogVisible = ref(false);
 const handleSignInShowEvent = (data) => {
-    console.log('Received some-event from header:', data);
-    show.value = data;
+    dialogVisible.value = data;
 }
 </script>
 
 
 <template>
     <div class="main-wrapper">
-        <SignIn :show="show"/>
+        <SignIn v-model:show="dialogVisible"/>
         <SharedHeader
-            @show-sign-in-to-layout="handleSignInShowEvent"
+            @sign-in-visible="handleSignInShowEvent"
         />
         <slot/>
         <SharedFooter

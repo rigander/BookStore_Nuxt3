@@ -4,7 +4,6 @@ const emit = defineEmits(['show-sign-in']);
 
 const nav = [
     {
-        link: "/",
         name: "Sign in",
         id: "account-nav__sign-in",
         action: () => {
@@ -38,6 +37,7 @@ const nav = [
                 <li
                     v-for="n in nav"
                 ><NuxtLink
+                    class="hover_it"
                     :id="n.id"
                     :to="n.link"
                     @click="n.action"
@@ -46,3 +46,9 @@ const nav = [
         </nav>
     </div>
 </template>
+
+<style lang="scss">
+.hover_it:hover{
+    cursor: pointer;
+}
+</style>
