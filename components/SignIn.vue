@@ -66,10 +66,15 @@ const signup = '/signup'
 
 <style lang="scss" scoped>
 form{
-    padding: 20px;
+    padding: 15px;
+
+}
+h1{
+    font-weight: bold;
+    font-size: 18px;
 }
 hr{
-    margin: 20px 0;
+    margin: 10px 0 20px 0;
 }
 .white-rabbit__container{
     height: 250px;
@@ -102,7 +107,38 @@ hr{
     height: 500px;
     width: 350px;
 }
+.sign-in__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    width: 300px;
+}
+label{
+    font-weight: bold;
+}
 .all-inputs{
     background-color: #38404f;
+    width: 290px;
+    margin-top: 5px;
+    margin-left: 0;
+    margin-bottom: 5px;
+}
+.forgot-pass{
+    margin-left: 190px;
+    font-size: 14px;
+    text-decoration: underline;
+}
+#sign-in-but{
+    margin: 9px 0 0 0;
+    width: 290px;
+    height: 23px;
+    font-size: 14px;
+}
+.create-account{
+    text-decoration: underline;
+    margin: 0 auto;
+    padding-top: 15px;
+    font-size: 14px;
 }
 </style>
