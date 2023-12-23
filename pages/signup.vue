@@ -57,6 +57,11 @@ definePageMeta({
             <div class="group">
                 <input name="submitButton" id="submit" value="Submit" type="submit">
             </div>
+            <hr>
+            <div class="verify-human">
+                <h1>Verify you are a human</h1>
+                <div class="verification"></div>
+            </div>
         </form>
     </div>
 </template>
@@ -65,6 +70,7 @@ definePageMeta({
 #form{
     margin: 0 auto;
     width: 400px;
+    height: 800px;
     background-color: #2e3032;
 }
 .sign-up__main{
@@ -74,5 +80,17 @@ definePageMeta({
     right: 0;
     left: 0;
     position: fixed;
+}
+hr{
+    color: white;
+    height: 1px;
+    width: 85%;
+    margin: 0 auto;
+}
+.verification{
+    margin: 0 auto;
+    height: 200px;
+    width: 200px;
+    border: 1px solid white;
 }
 </style>
