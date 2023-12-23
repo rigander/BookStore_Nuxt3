@@ -22,8 +22,12 @@ const hideDialog = () => {
         <div
             @click.stop
             class="dialog__content">
+            <div class="white-rabbit__container"><img
+                class="white-rabbit"
+                src="/img/white-rabbit.svg" alt="white-rabbit"></div>
             <form action="">
                 <h1>Sign In</h1>
+                <hr>
                 <div class="sign-in__container">
                     <div class="sign-in__username">
                         <span class="invalidUserName validUserName"></span>
@@ -34,7 +38,7 @@ const hideDialog = () => {
                                type="text">
                     </div>
                     <NuxtLink>
-                        <div>Forgot password?</div>
+                        <div class="forgot-pass">Forgot password?</div>
                     </NuxtLink>
                     <div class="sign-in__password">
                         <span class="invalidPassword validPassword"></span>
@@ -48,7 +52,7 @@ const hideDialog = () => {
                         <input name="signInButton" id="sign-in-but" value="Sing In" type="submit">
                     </div>
                     <NuxtLink>
-                        <div>Create Account</div>
+                        <div class="create-account">Create Account</div>
                     </NuxtLink>
                 </div>
             </form>
@@ -61,6 +65,19 @@ const hideDialog = () => {
 form{
     padding: 20px;
 }
+hr{
+    margin: 20px 0;
+}
+.white-rabbit__container{
+    height: 250px;
+    width: 200px;
+}
+.white-rabbit{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
 .dialog{
   top: 0;
   bottom: 0;
@@ -72,10 +89,17 @@ form{
   display: flex;
 }
 .dialog__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #bfbfc1;
     margin: auto;
-    background: white;
+    background: rgb(63, 63, 64);
     border-radius: 10px;
     height: 500px;
     width: 350px;
+}
+.all-inputs{
+    background-color: #38404f;
 }
 </style>
