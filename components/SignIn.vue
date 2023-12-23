@@ -24,7 +24,7 @@ const signup = '/signup'
             class="dialog__content">
             <div class="white-rabbit__container"><img
                 class="white-rabbit"
-                src="/img/white-rabbit.svg" alt="white-rabbit"></div>
+                src="/img/Chromatic-Floral-Rabbit.svg" alt="white-rabbit"></div>
             <form action="">
                 <h1>Sign In</h1>
                 <hr>
@@ -49,7 +49,7 @@ const signup = '/signup'
                                type="text">
                     </div>
                     <div class="sign-in-button">
-                        <input name="signInButton" id="sign-in-but" value="Sing In" type="submit">
+                        <input name="signInButton" class="sign-in-but" value="Sing In" type="submit">
                     </div>
                     <NuxtLink
                         class="create-account"
@@ -81,6 +81,7 @@ hr{
     width: 200px;
 }
 .white-rabbit{
+    margin-top: 10px;
     max-width: 100%;
     max-height: 100%;
     width: auto;
@@ -95,6 +96,7 @@ hr{
   position: fixed;
   z-index: 3;
   display: flex;
+  user-select: none;
 }
 .dialog__content{
     display: flex;
@@ -123,22 +125,39 @@ label{
     margin-top: 5px;
     margin-left: 0;
     margin-bottom: 5px;
+    color: white;
 }
 .forgot-pass{
     margin-left: 190px;
     font-size: 14px;
     text-decoration: underline;
 }
-#sign-in-but{
+.forgot-pass:hover{
+    cursor: pointer;
+}
+.forgot-pass:active{
+    color: #f57375;
+}
+.sign-in-but{
     margin: 9px 0 0 0;
     width: 290px;
     height: 23px;
     font-size: 14px;
+}
+.sign-in-but:hover{
+    cursor: pointer;
+}
+.sign-in-but:active{
+    background-color: #92d774;
+    color: #3f3f40;
 }
 .create-account{
     text-decoration: underline;
     margin: 0 auto;
     padding-top: 15px;
     font-size: 14px;
+}
+.create-account:active{
+    color: #f57375;
 }
 </style>
