@@ -2,35 +2,57 @@
 definePageMeta({
     layout: false
 })
+const formData =ref({
+    name: '',
+    email: '',
+    phone: '',
+    password: '',
+    password_confirmation: ''
+})
+const submitForm = async () => {
+    const { data : responseData } = await useFetch(
+        'http://api.book-store.loc/api/auth/register',{
+        method: 'post',
+        body: {
+            name: formData.value.name,
+            email: formData.value.email,
+            phone: formData.value.phone,
+            password: formData.value.password,
+            password_confirmation: formData.value.password_confirmation
+        }
+    })
+
+    console.log(responseData.value);
+}
 </script>
 
 
 <template>
     <div class="sign-up__main">
-        <form action="#" name="registration" class="sign-up__form">
+        <form  @submit.prevent="submitForm" name="registration" class="sign-up__form">
             <img class="sign-up_img" src="/img/Chromatic-Floral-Rabbit.svg" alt="rabbit">
             <h1 title="Sign Up">Sign Up</h1>
             <hr>
             <div class="sign-up_group">
                 <span class="invalidUserName valid-feedback"></span>
                 <label for="name" class="sign-up_label_name">Username</label>
-                <input class="sign-up__all-inputs sing-up_name" minlength="2" name="UserName" type="text">
+                <input v-model="formData.name" class="sign-up__all-inputs sing-up_name" minlength="2" name="name" type="text">
             </div>
             <div class="sign-up_group">
                 <span id="invalidEmail" class="valid-feedback"></span>
                 <label for="email" class="sign-up_label_email">E-mail</label>
-                <input class="sing-up__all-inputs sign-up_email" type="email" name="Email">
+                <input v-model="formData.email" class="sing-up__all-inputs sign-up_email" type="email" name="email">
             </div>
             <div class="sign-up_group">
                 <span id="invalidPhone" class="valid-feedback"></span>
                 <label for="phone">Phone</label>
-                <input class="sing-up_all-inputs sign-up_phone" name="phoneNumber" placeholder="+(380)00-000-0000"
+                <input v-model="formData.phone" class="sing-up_all-inputs sign-up_phone" name="phone" placeholder="+(380)00-000-0000"
                        type="text">
             </div>
             <div class="sign-up_group sing-up_pass">
                 <span id="shortPass" class="valid-feedback short-pass"></span>
                 <label for="pass1">Password</label>
-                <input class="sing-up__all-inputs" name="Password" id="pass1"
+                <input v-model="formData.password" class="sing-up__all-inputs" name="password" id="pass1"
                        type="password">
                 <input id="passInput" class="checkbox" type="checkbox">
                 <span id="invalidPass" class="valid-feedback"></span>
@@ -41,7 +63,7 @@ definePageMeta({
             </div>
             <div class="sign-up_group sign-up_pass-confirm">
                 <label>Password Confirmation</label>
-                <input class="sing-up_all-inputs pass2" name="confirmPassword" id="pass2" type="password">
+                <input v-model="formData.password_confirmation" class="sing-up_all-inputs pass2" name="password_confirmation" id="pass2" type="password">
                 <input class="checkbox sign-up_confirm__pass-input" type="checkbox">
                 <span id="shortRepeatPass" class="valid-feedback"></span>
             </div>
