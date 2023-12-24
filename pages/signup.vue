@@ -75,7 +75,7 @@ const submitForm = async () => {
     })
 }
 
-
+// Show text input on corresponding checkbox click
 const showPass = ref(false);
 const showPass2 = ref(false);
 const PassVisibility = () => {
@@ -96,21 +96,18 @@ const Pass2Visibility = () => {
             <span class="error_fill-up">{{ errorMessage }}</span>
             <hr>
             <div class="sign-up_group">
-                <span class="invalidUserName valid-feedback"></span>
                 <label for="name" class="sign-up_label_name">Username</label>
                 <input v-model="formData.name"
                        class="sign-up__all-inputs sing-up_name"
                        minlength="2" name="name" type="text">
             </div>
             <div class="sign-up_group">
-                <span id="invalidEmail" class="valid-feedback"></span>
                 <label for="email" class="sign-up_label_email">E-mail</label>
                 <input v-model="formData.email"
                        class="sing-up__all-inputs sign-up_email"
                        type="email" name="email">
             </div>
             <div class="sign-up_group">
-                <span id="invalidPhone" class="valid-feedback"></span>
                 <label for="phone">Phone</label>
                 <input v-model="formData.phone"
                        class="sing-up_all-inputs sign-up_phone"
@@ -128,11 +125,6 @@ const Pass2Visibility = () => {
                        class="checkbox" type="checkbox"
                        @click="PassVisibility"
                 >
-                <span id="invalidPass" class="valid-feedback"></span>
-                <span id="invalidRepeatPass" class="valid-feedback"></span>
-                <div>
-                    <span id="passwordsNotEqual" class="valid-feedback"></span>
-                </div>
             </div>
             <div class="sign-up_group sign-up_pass-confirm">
                 <label>Password Confirmation</label>
