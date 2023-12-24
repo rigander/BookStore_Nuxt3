@@ -2,14 +2,66 @@
 definePageMeta({
     layout: false
 })
+
 const formData =ref({
     name: '',
     email: '',
     phone: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
+    checkTerms: false
 })
+
+const errorMessage = ref();
+const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex = /^\d{1,10}$/;
+const passwordRegex = /^.{10,18}$/;
 const submitForm = async () => {
+    if (
+        !formData.value.name ||
+        !formData.value.email ||
+        !formData.value.phone ||
+        !formData.value.password ||
+        !formData.value.password_confirmation
+    ) {
+        errorMessage.value = 'All fields need to be filled';
+        return;
+    }
+    if (!usernameRegex.test(formData.value.name)) {
+        errorMessage.value = 'User name must not contain special symbols';
+        return;
+    }
+    if (formData.value.name.length > 18){
+        errorMessage.value = 'User name should not be longer 18 symbols';
+        return;
+    }
+    if (formData.value.name.length < 2){
+        errorMessage.value = 'User name should not be longer 18 symbols';
+        return;
+    }
+    if (!emailRegex.test(formData.value.email)) {
+        errorMessage.value = 'Incorrect e-mail';
+        return;
+    }
+    if (!phoneRegex.test(formData.value.phone)) {
+        errorMessage.value = 'Wrong phone number';
+        return;
+    }
+    if (!passwordRegex.test(formData.value.password)) {
+        errorMessage.value = 'Password must be 10 to 18 symbols';
+        return;
+    }
+
+    if (formData.value.password !== formData.value.password_confirmation) {
+        errorMessage.value = 'Passwords are not similar';
+        return;
+    }
+    if (!formData.value.checkTerms) {
+        errorMessage.value = 'Click checkbox if agree with User Agreement';
+        return;
+    }
+    errorMessage.value = '';
     const { data : responseData } = await useFetch(
         'http://api.book-store.loc/api/auth/register',{
         method: 'post',
@@ -21,9 +73,18 @@ const submitForm = async () => {
             password_confirmation: formData.value.password_confirmation
         }
     })
-
-    console.log(responseData.value);
 }
+
+
+const showPass = ref(false);
+const showPass2 = ref(false);
+const PassVisibility = () => {
+    showPass.value = !showPass.value;
+};
+const Pass2Visibility = () => {
+    showPass2.value = !showPass2.value;
+};
+
 </script>
 
 
@@ -32,29 +93,41 @@ const submitForm = async () => {
         <form  @submit.prevent="submitForm" name="registration" class="sign-up__form">
             <img class="sign-up_img" src="/img/Chromatic-Floral-Rabbit.svg" alt="rabbit">
             <h1 title="Sign Up">Sign Up</h1>
+            <span class="error_fill-up">{{ errorMessage }}</span>
             <hr>
             <div class="sign-up_group">
                 <span class="invalidUserName valid-feedback"></span>
                 <label for="name" class="sign-up_label_name">Username</label>
-                <input v-model="formData.name" class="sign-up__all-inputs sing-up_name" minlength="2" name="name" type="text">
+                <input v-model="formData.name"
+                       class="sign-up__all-inputs sing-up_name"
+                       minlength="2" name="name" type="text">
             </div>
             <div class="sign-up_group">
                 <span id="invalidEmail" class="valid-feedback"></span>
                 <label for="email" class="sign-up_label_email">E-mail</label>
-                <input v-model="formData.email" class="sing-up__all-inputs sign-up_email" type="email" name="email">
+                <input v-model="formData.email"
+                       class="sing-up__all-inputs sign-up_email"
+                       type="email" name="email">
             </div>
             <div class="sign-up_group">
                 <span id="invalidPhone" class="valid-feedback"></span>
                 <label for="phone">Phone</label>
-                <input v-model="formData.phone" class="sing-up_all-inputs sign-up_phone" name="phone" placeholder="+(380)00-000-0000"
+                <input v-model="formData.phone"
+                       class="sing-up_all-inputs sign-up_phone"
+                       name="phone" placeholder="+(380)00-000-0000" pattern="\d*"
                        type="text">
             </div>
             <div class="sign-up_group sing-up_pass">
                 <span id="shortPass" class="valid-feedback short-pass"></span>
                 <label for="pass1">Password</label>
-                <input v-model="formData.password" class="sing-up__all-inputs" name="password" id="pass1"
-                       type="password">
-                <input id="passInput" class="checkbox" type="checkbox">
+                <input v-model="formData.password"
+                       class="sing-up__all-inputs"
+                       name="password" id="pass1"
+                       :type="showPass ? 'text' : 'password'">
+                <input v-model="showPass"
+                       class="checkbox" type="checkbox"
+                       @click="PassVisibility"
+                >
                 <span id="invalidPass" class="valid-feedback"></span>
                 <span id="invalidRepeatPass" class="valid-feedback"></span>
                 <div>
@@ -63,13 +136,22 @@ const submitForm = async () => {
             </div>
             <div class="sign-up_group sign-up_pass-confirm">
                 <label>Password Confirmation</label>
-                <input v-model="formData.password_confirmation" class="sing-up_all-inputs pass2" name="password_confirmation" id="pass2" type="password">
-                <input class="checkbox sign-up_confirm__pass-input" type="checkbox">
+                <input v-model="formData.password_confirmation"
+                       class="sing-up_all-inputs pass2"
+                       name="password_confirmation" id="pass2"
+                       :type="showPass2 ? 'text' : 'password'">
+                <input v-model="showPass2"
+                       class="checkbox" type="checkbox"
+                       @click="Pass2Visibility">
                 <span id="shortRepeatPass" class="valid-feedback"></span>
             </div>
             <div class="sign-up_group sign-up_agreement">
-                <span id="invalidTerms" class="valid-feedback"></span>
-                <input name="checkTerms" class="sign-up_agreement__input" type="checkbox"/>
+                <span class="valid-feedback"></span>
+                <input
+                    v-model="formData.checkTerms"
+                    @click="formData.checkTerms = true"
+                    name="checkTerms" class="sign-up_agreement__input"
+                    type="checkbox"/>
                 I agree to the<a href="" id="sign-up_terms">
                 End User License Agreement &amp; Privacy Policy</a>
             </div>
@@ -81,6 +163,12 @@ const submitForm = async () => {
 </template>
 
 <style lang="scss" scoped>
+.error_fill-up{
+    padding-top: 5px;
+    color: red;
+    font-size: 20px;
+    height: 40px;
+}
 .sign-up__main{
     background-color: #333537;
     margin: 0;
