@@ -62,6 +62,10 @@ const submitForm = async () => {
         return;
     }
     errorMessage.value = '';
+
+    // Get CSRFCookie before sending form.
+    await getCSRFCookie();
+
     const { data : responseData, error } = await useFetch(
         'http://api.book-store.loc/api/auth/register',
         {
@@ -91,6 +95,20 @@ const submitForm = async () => {
             return;
         }
         errorMessage.value = 'Validation error. Please check your input.';
+    }
+}
+
+const getCSRFCookie = async () => {
+    try {
+        const response = await useFetch(
+            'http://api.book-store.loc/sanctum/csrf-cookie',
+            {
+                credentials: 'include'
+            }
+        );
+        console.log(response.status.value);
+    } catch (error) {
+        console.error('Failed to get CSRF cookie', error);
     }
 }
 
