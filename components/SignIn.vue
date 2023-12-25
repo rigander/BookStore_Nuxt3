@@ -11,6 +11,30 @@ const hideDialog = () => {
     emit('update:show', false)
 }
 const signup = '/signup'
+
+const signin = async () => {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const {data: {access_token}} = await useFetch(
+        'http://api.book-store.loc/api/auth/login',
+        {
+            method: 'post',
+            body: {
+                username,
+                password
+            }
+        });
+
+    const { data: userData, error } = await useFetch(
+        'http://api.book-store.loc/api/user',
+        {
+            method: 'get',
+            headers: {
+                Authorization: `Bearer ${access_token}`
+            }
+        }
+    );
+}
 </script>
 
 
