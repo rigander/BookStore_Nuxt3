@@ -2,6 +2,7 @@
 definePageMeta({
     layout: false
 })
+const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const formData =ref({
     name: '',
@@ -67,7 +68,7 @@ const submitForm = async () => {
     await getCSRFCookie();
 
     const { data : responseData, error } = await useFetch(
-        'http://api.book-store.loc/api/auth/register',
+        `${apiBaseUrl}/auth/register`,
         {
             method: 'post',
             body: {

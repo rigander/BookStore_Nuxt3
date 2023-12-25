@@ -6,6 +6,8 @@ const props = defineProps({
     }
 });
 
+const apiBaseUrl = useRuntimeConfig().public.apiBase;
+
 const emit = defineEmits(['update:show'])
 const hideDialog = () => {
     emit('update:show', false)
@@ -16,7 +18,7 @@ const signin = async () => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const {data: {access_token}} = await useFetch(
-        'http://api.book-store.loc/api/auth/login',
+        `${apiBaseUrl}/auth/login`,
         {
             method: 'post',
             body: {

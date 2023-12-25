@@ -2,7 +2,7 @@
 const currentPage = ref(1);
 const route = useRoute();
 const curCategory = route.params.slug;
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const { data: booksStore } = await useFetch(
     `${apiBaseUrl}/category/${curCategory}/books?page=${currentPage.value}`,
     { cache: false }

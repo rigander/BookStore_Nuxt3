@@ -15,6 +15,11 @@ export default defineNuxtConfig({
     "~/assets/style/scss/product.scss",
     "~/assets/style/scss/sciencefiction.scss",
   ],
+  runtimeConfig: {
+    public: {
+      apiBase: 'http://api.book-store.loc/api'
+    }
+  },
   postcss: {
     plugins: {
       tailwindcss: {},

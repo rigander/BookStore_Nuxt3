@@ -1,5 +1,5 @@
 <script setup>
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const {data: category} = await useFetch(`${apiBaseUrl}/categories`);
 const catFooter = category.value.data.footer;
