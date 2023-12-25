@@ -62,17 +62,36 @@ const submitForm = async () => {
         return;
     }
     errorMessage.value = '';
-    const { data : responseData } = await useFetch(
-        'http://api.book-store.loc/api/auth/register',{
-        method: 'post',
-        body: {
-            name: formData.value.name,
-            email: formData.value.email,
-            phone: formData.value.phone,
-            password: formData.value.password,
-            password_confirmation: formData.value.password_confirmation
+    const { data : responseData, error } = await useFetch(
+        'http://api.book-store.loc/api/auth/register',
+        {
+            method: 'post',
+            body: {
+                name: formData.value.name,
+                email: formData.value.email,
+                phone: formData.value.phone,
+                password: formData.value.password,
+                password_confirmation: formData.value.password_confirmation
+            }
         }
-    })
+    );
+    if (!error.value) {
+        errorMessage.value = '';
+        return;
+    }
+    if (error) {
+        const serverErrors = error.value.data.errors;
+
+        if (serverErrors.email) {
+            errorMessage.value = serverErrors.email[0];
+            return;
+        }
+        if (serverErrors.phone) {
+            errorMessage.value = serverErrors.phone[0];
+            return;
+        }
+        errorMessage.value = 'Validation error. Please check your input.';
+    }
 }
 
 // Show text input on corresponding checkbox click
@@ -90,51 +109,61 @@ const Pass2Visibility = () => {
 
 <template>
     <div class="sign-up__main">
-        <form  @submit.prevent="submitForm" name="registration" class="sign-up__form">
+        <form
+            @submit.prevent="submitForm"
+            name="registration"
+            class="sign-up__form">
             <img class="sign-up_img" src="/img/Chromatic-Floral-Rabbit.svg" alt="rabbit">
             <h1 title="Sign Up">Sign Up</h1>
             <span class="error_fill-up">{{ errorMessage }}</span>
             <hr>
             <div class="sign-up_group">
                 <label for="name" class="sign-up_label_name">Username</label>
-                <input v-model="formData.name"
-                       class="sign-up__all-inputs sing-up_name"
-                       minlength="2" name="name" type="text">
+                <input
+                    v-model="formData.name"
+                    class="sign-up__all-inputs sing-up_name"
+                    minlength="2" name="name" type="text">
             </div>
             <div class="sign-up_group">
                 <label for="email" class="sign-up_label_email">E-mail</label>
-                <input v-model="formData.email"
-                       class="sing-up__all-inputs sign-up_email"
-                       type="email" name="email">
+                <input
+                    v-model="formData.email"
+                    class="sing-up__all-inputs sign-up_email"
+                    type="email" name="email">
             </div>
             <div class="sign-up_group">
                 <label for="phone">Phone</label>
-                <input v-model="formData.phone"
-                       class="sing-up_all-inputs sign-up_phone"
-                       name="phone" placeholder="+(380)00-000-0000" pattern="\d*"
-                       type="text">
+                <input
+                    v-model="formData.phone"
+                    class="sing-up_all-inputs sign-up_phone"
+                    name="phone" placeholder="+(380)00-000-0000" pattern="\d*"
+                    type="text">
             </div>
             <div class="sign-up_group sing-up_pass">
                 <span id="shortPass" class="valid-feedback short-pass"></span>
                 <label for="pass1">Password</label>
-                <input v-model="formData.password"
-                       class="sing-up__all-inputs"
-                       name="password" id="pass1"
-                       :type="showPass ? 'text' : 'password'">
-                <input v-model="showPass"
-                       class="checkbox" type="checkbox"
-                       @click="PassVisibility"
+                <input
+                    v-model="formData.password"
+                    class="sing-up__all-inputs"
+                    name="password" id="pass1"
+                    :type="showPass ? 'text' : 'password'">
+                <input
+                    v-model="showPass"
+                    class="checkbox" type="checkbox"
+                    @click="PassVisibility"
                 >
             </div>
             <div class="sign-up_group sign-up_pass-confirm">
                 <label>Password Confirmation</label>
-                <input v-model="formData.password_confirmation"
-                       class="sing-up_all-inputs pass2"
-                       name="password_confirmation" id="pass2"
-                       :type="showPass2 ? 'text' : 'password'">
-                <input v-model="showPass2"
-                       class="checkbox" type="checkbox"
-                       @click="Pass2Visibility">
+                <input
+                    v-model="formData.password_confirmation"
+                    class="sing-up_all-inputs pass2"
+                    name="password_confirmation" id="pass2"
+                    :type="showPass2 ? 'text' : 'password'">
+                <input
+                    v-model="showPass2"
+                    class="checkbox" type="checkbox"
+                    @click="Pass2Visibility">
                 <span id="shortRepeatPass" class="valid-feedback"></span>
             </div>
             <div class="sign-up_group sign-up_agreement">
@@ -148,7 +177,8 @@ const Pass2Visibility = () => {
                 End User License Agreement &amp; Privacy Policy</a>
             </div>
             <div class="sign-up_group">
-                <input name="submitButton" id="sign-up_submit" value="Submit" type="submit">
+                <input name="submitButton" id="sign-up_submit"
+                       value="Submit" type="submit">
             </div>
         </form>
     </div>
