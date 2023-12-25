@@ -1,7 +1,5 @@
 <script setup>
-definePageMeta({
-    layout: false
-})
+
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const formData =ref({

@@ -14,9 +14,11 @@ const handleSignInEvent = (data) => {
             />
             <div class="header-content-container">
                 <div class="header-content">
-                    <div class="header-content__books-online">
+                    <NuxtLink
+                        to="/"
+                        class="header-content__books-online">
                         <img src="/img/header/logo.png" alt="logo">
-                    </div>
+                    </NuxtLink>
                     <div class="header-content__search-panel">
                         <input id="search" type="search">
                         <button id="search-button">
