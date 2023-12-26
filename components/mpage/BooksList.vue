@@ -26,7 +26,6 @@ const changeGenre = (event, genre) => {
     event.preventDefault();
     option.genre = genre;
     currentPage.value = 1;
-    provide('page-reset', 1);
     fetchData();
 
 };

@@ -2,6 +2,9 @@
 import { ref } from "vue";
 
 const emit = defineEmits(['page-clicked']);
+const props = defineProps(['page-refresh']);
+
+console.log(props.pageRefresh);
 const onClickHandler = (page: number) => {
     emit('page-clicked', page);
 };
