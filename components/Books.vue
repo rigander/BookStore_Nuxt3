@@ -2,7 +2,6 @@
 const props = defineProps(['modelValue', 'current-page']);
 const emit = defineEmits(['page-clicked']);
 const currentPage = ref(1);
-
 const onClickHandler = (newPage) => {
     currentPage.value = newPage;
     emit('page-clicked', newPage);
