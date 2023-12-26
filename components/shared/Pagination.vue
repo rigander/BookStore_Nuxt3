@@ -3,7 +3,6 @@ import { ref } from "vue";
 
 const emit = defineEmits(['page-clicked']);
 const props = defineProps(['current-page-top']);
-console.log(props.currentPageTop);
 const onClickHandler = (page: number) => {
     emit('page-clicked', page);
 };
@@ -11,14 +10,9 @@ const onClickHandler = (page: number) => {
 const currentPage = ref(1);
 const localCurrentPage = ref(props.currentPageTop);
 
-watch(() => props.currentPageTop, (newValue) => {
-        localCurrentPage.value = newValue;
-        console.log("Hello")
-});
 </script>
 
 <template>
-        <div></div>
         <vue-awesome-paginate
             @click="onClickHandler"
             :total-items="100"

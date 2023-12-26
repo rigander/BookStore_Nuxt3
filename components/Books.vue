@@ -5,13 +5,11 @@ const currentPage = ref(1);
 const route = useRoute();
 const curCategory = route.params.slug;
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
-const handlePageClicked = (newPage) => {
+
+const onClickHandler = (newPage) => {
     currentPage.value = newPage;
     emit('page-clicked', newPage);
-}
-const currentPageTop = ref(props.currentPage);
-
-console.log(props.currentPage);
+};
 </script>
 
 
@@ -40,9 +38,17 @@ console.log(props.currentPage);
             <span>${{ book.price }}</span>
         </div>
         <div id="block"></div>
-        <SharedPagination
-            @page-clicked="handlePageClicked"
-            :current-page-top="currentPageTop"
+        <vue-awesome-paginate
+            @click="onClickHandler"
+            :total-items="100"
+            v-model="currentPage"
+            :items-per-page="15"
+            :max-pages-shown="5"
+            paginate-buttons-class="btn"
+            active-page-class="btn-active"
+            back-button-class="back-btn"
+            next-button-class="next-btn"
+            class="pagination-container"
         />
     </div>
 </template>

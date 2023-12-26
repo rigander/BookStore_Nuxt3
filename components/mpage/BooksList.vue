@@ -11,8 +11,10 @@ const { data: categories } = await useFetch(`${apiBaseUrl}/categories`);
 
 const fetchData = async () => {
     const { data } = await useFetch(
-        `${apiBaseUrl}/category/${option.genre}/books?page=${currentPage.value}`,
-        { cache: false }
+        `${apiBaseUrl}/category/${option.genre}/books`,
+        { cache: false,
+          query: {page: currentPage.value}
+        }
     );
     booksStore.value = data.value;
 };
