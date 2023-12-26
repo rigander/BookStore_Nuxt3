@@ -79,4 +79,27 @@ const onClickHandler = (newPage) => {
 .short-text {
     width: 80px;
 }
+.pagination-container{
+    padding-top: 25px;
+    margin-left: 520px;
+    position: absolute;
+    bottom: 0;
+}
+.btn {
+    height: 28px;
+    width: 24px;
+    border: none;
+    cursor: pointer;
+    color: #5b5b5b;
+}
+.back-btn {
+    color: transparent;
+}
+.next-btn {
+    color: transparent;
+}
+.btn-active {
+    border: 1px solid #bdbdbe;
+    border-bottom: 4px solid #93bb6b;
+}
 </style>
