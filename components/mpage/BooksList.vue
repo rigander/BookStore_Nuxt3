@@ -1,13 +1,7 @@
 <script setup>
-const opt = reactive({
+const option = reactive({
     genre: 'best-sellers',
 });
-
-const changeGenre = (event, genre) => {
-    event.preventDefault();
-    opt.genre = genre;
-};
-
 
 const currentPage = ref(1);
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
@@ -22,15 +16,20 @@ const { data: store } = await useFetch(
 booksStore.value = store.value;
 const fetchData = async () => {
     const { data } = await useFetch(
-        `${apiBaseUrl}/category/best-sellers/books?page=${currentPage.value}`,
+        `${apiBaseUrl}/category/${option.genre}/books?page=${currentPage.value}`,
         { cache: false }
     );
     booksStore.value = data.value;
+    console.log(booksStore.value);
 };
 
 const updateCurrentPage = (newPage) => {
     currentPage.value = newPage;
-    console.log(currentPage.value);
+    fetchData();
+};
+const changeGenre = (event, genre) => {
+    event.preventDefault();
+    option.genre = genre;
     fetchData();
 };
 </script>
@@ -45,7 +44,7 @@ const updateCurrentPage = (newPage) => {
                         <li
                                 v-for="(item, index) in categories.data.featured"
                                 :key="index"
-                                :class="opt.genre === item.slug && 'active'"
+                                :class="option.genre === item.slug && 'active'"
                                 @click="changeGenre($event, item.slug)"
                                 class="option product-list__nav__li"
                         >
