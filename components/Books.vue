@@ -1,25 +1,16 @@
 <script setup>
 defineProps(['modelValue']);
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'page-clicked'])
 const currentPage = ref(1);
 const route = useRoute();
 const curCategory = route.params.slug;
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
-const handlePageClicked = async (newPage) => {
-    const { data } = await useFetch(
-        `${apiBaseUrl}/category/${curCategory}/books`,
-        { cache: false,
-          query: {page:newPage}
-        },
-    );
-    if (data.value) {
-        emit('update:modelValue', data.value);
-    }
-};
+const handlePageClicked = (newPage) => {
+    currentPage.value = newPage;
+    emit('page-clicked', newPage);
+}
 
-
-// @page-clicked="handlePageClicked"
 </script>
 
 
@@ -48,7 +39,7 @@ const handlePageClicked = async (newPage) => {
             <span>${{ book.price }}</span>
         </div>
         <SharedPagination
-
+            @page-clicked="handlePageClicked"
             :currentPage="currentPage"
         />
     </div>
@@ -59,7 +50,7 @@ const handlePageClicked = async (newPage) => {
     display: flex;
     align-items: center;
     min-height: 150px;
-    margin-bottom: 20px;
+    margin-top: 10px;
     display: -webkit-box;
 }
 .books-p{

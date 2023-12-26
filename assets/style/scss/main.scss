@@ -34,48 +34,6 @@ $ff:SegoeWP;
       justify-content: flex-start;
       align-items: flex-start;
 
-      // Product list navigation (tabs nav)
-      .product-list__nav{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 39px;
-        ul{
-          display: flex;
-          padding: 0;
-          margin: 0;
-        }
-        .big-box{
-          width: 242px;
-          height: 39px;
-          border-bottom: 1px solid #d4d4d5;
-        }
-      }
-      .option{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        list-style: none;
-        width: 140px;
-        height: 39px;
-        border: 1px solid #d8dce0;
-        text-shadow: 0.5px 0.9px 0 #fff;
-        font-size: 17px;
-        font-weight: 300;
-        color: #6b6969;
-        margin-right: -1px;
-        background-color: #e1e4e8;
-      }
-      .option:hover{
-        font-size: 18px;
-      }
-      .active{
-        border-bottom: none;
-        background-color: transparent;
-        font-weight: bold;
-        color: #3f3f40;
-      }
-
       // Products list (books in tab)
       .product-list__index{
         display: flex;
@@ -98,7 +56,7 @@ $ff:SegoeWP;
           width: 125px;
           display: flex;
           flex-direction: column;
-          margin: 0 16px;
+          margin: 0 16px 0 16px;
           @import "discount";
           p{
             margin: 0 auto;

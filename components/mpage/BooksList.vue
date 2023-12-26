@@ -19,7 +19,10 @@ const { data: booksStore } = await useFetch(
     { cache: false }
 );
 console.log(booksStore);
-
+const updateCurrentPage = (newPage) => {
+    currentPage.value = newPage;
+    console.log(currentPage.value);
+};
 </script>
 
 
@@ -43,6 +46,7 @@ console.log(booksStore);
                 </div>
                 <Books
                     v-model="booksStore"
+                    @page-clicked="updateCurrentPage"
                 />
             </section>
         </div>
