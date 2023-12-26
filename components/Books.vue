@@ -2,9 +2,6 @@
 const props = defineProps(['modelValue', 'current-page']);
 const emit = defineEmits(['page-clicked']);
 const currentPage = ref(1);
-const route = useRoute();
-const curCategory = route.params.slug;
-const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const onClickHandler = (newPage) => {
     currentPage.value = newPage;
