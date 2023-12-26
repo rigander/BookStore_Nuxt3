@@ -18,10 +18,15 @@ const { data: booksStore } = await useFetch(
                 <div class="title_sci-fi">
                     <h4>{{ booksStore.data.name }}</h4>
                 </div>
-                <ScifiBooks
+                <Books
                     v-model="booksStore"
                 />
             </section>
         </div>
     </main>
 </template>
+
+
+<style lang="scss">
+
+</style>

@@ -20,10 +20,14 @@ const currentPage = ref(1);
         active-page-class="btn-active"
         back-button-class="back-btn"
         next-button-class="next-btn"
+        class="pagination-container"
     />
 </template>
 
 <style>
+.pagination-container{
+    margin-left: 590px;
+}
 .btn {
     height: 28px;
     width: 24px;
