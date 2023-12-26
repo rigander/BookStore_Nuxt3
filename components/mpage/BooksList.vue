@@ -5,23 +5,18 @@ const option = reactive({
 
 const currentPage = ref(1);
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
-
-const { data: categories } = await useFetch(`${apiBaseUrl}/categories`,);
-
 const booksStore = ref({});
-const { data: store } = await useFetch(
-        `${apiBaseUrl}/category/best-sellers/books?page=${currentPage.value}`,
-        { cache: false }
-    );
-booksStore.value = store.value;
+
+const { data: categories } = await useFetch(`${apiBaseUrl}/categories`);
+
 const fetchData = async () => {
     const { data } = await useFetch(
         `${apiBaseUrl}/category/${option.genre}/books?page=${currentPage.value}`,
         { cache: false }
     );
     booksStore.value = data.value;
-    console.log(booksStore.value);
 };
+fetchData();
 
 const updateCurrentPage = (newPage) => {
     currentPage.value = newPage;
@@ -30,7 +25,10 @@ const updateCurrentPage = (newPage) => {
 const changeGenre = (event, genre) => {
     event.preventDefault();
     option.genre = genre;
+    currentPage.value = 1;
+    provide('page-reset', 1);
     fetchData();
+
 };
 </script>
 
@@ -75,9 +73,14 @@ const changeGenre = (event, genre) => {
   margin: 0;
 }
 .big-box{
-  width: 242px;
-  height: 39px;
+  width: 243px;
+  height: 40px;
   border-bottom: 1px solid #d4d4d5;
+  border-top: 1px solid white;
+  border-right: 1px solid white;
+  margin-top: -1px;
+  margin-right: -1px;
+  margin-left: 1px;
 }
 .option{
   display: flex;

@@ -10,23 +10,26 @@ const currentPage = ref(1);
 </script>
 
 <template>
-    <vue-awesome-paginate
-        @click="onClickHandler"
-        :total-items="30"
-        v-model="currentPage"
-        :items-per-page="5"
-        :max-pages-shown="6"
-        paginate-buttons-class="btn"
-        active-page-class="btn-active"
-        back-button-class="back-btn"
-        next-button-class="next-btn"
-        class="pagination-container"
-    />
+        <vue-awesome-paginate
+            @click="onClickHandler"
+            :total-items="100"
+            v-model="currentPage"
+            :items-per-page="15"
+            :max-pages-shown="5"
+            paginate-buttons-class="btn"
+            active-page-class="btn-active"
+            back-button-class="back-btn"
+            next-button-class="next-btn"
+            class="pagination-container"
+        />
 </template>
 
 <style>
 .pagination-container{
-    margin-left: 590px;
+    padding-top: 25px;
+    margin-left: 520px;
+    position: absolute;
+    bottom: 0;
 }
 .btn {
     height: 28px;

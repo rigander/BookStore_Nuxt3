@@ -1,6 +1,6 @@
 <script setup>
 defineProps(['modelValue']);
-const emit = defineEmits(['update:modelValue', 'page-clicked'])
+const emit = defineEmits(['page-clicked']);
 const currentPage = ref(1);
 const route = useRoute();
 const curCategory = route.params.slug;
@@ -38,6 +38,7 @@ const handlePageClicked = (newPage) => {
             </NuxtLink>
             <span>${{ book.price }}</span>
         </div>
+        <div id="block"></div>
         <SharedPagination
             @page-clicked="handlePageClicked"
             :currentPage="currentPage"
@@ -46,6 +47,10 @@ const handlePageClicked = (newPage) => {
 </template>
 
 <style lang="scss">
+.books__sci-fi{
+    position: relative;
+    height: 822px;
+}
 .books__sci-fi-div {
     display: flex;
     align-items: center;
