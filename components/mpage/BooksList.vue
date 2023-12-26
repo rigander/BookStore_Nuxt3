@@ -14,14 +14,24 @@ const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const { data: categories } = await useFetch(`${apiBaseUrl}/categories`,);
 
-const { data: booksStore } = await useFetch(
-    `${apiBaseUrl}/category/best-sellers/books?page=${currentPage.value}`,
-    { cache: false }
-);
-console.log(booksStore);
+const booksStore = ref({});
+const { data: store } = await useFetch(
+        `${apiBaseUrl}/category/best-sellers/books?page=${currentPage.value}`,
+        { cache: false }
+    );
+booksStore.value = store.value;
+const fetchData = async () => {
+    const { data } = await useFetch(
+        `${apiBaseUrl}/category/best-sellers/books?page=${currentPage.value}`,
+        { cache: false }
+    );
+    booksStore.value = data.value;
+};
+
 const updateCurrentPage = (newPage) => {
     currentPage.value = newPage;
     console.log(currentPage.value);
+    fetchData();
 };
 </script>
 
