@@ -79,6 +79,8 @@ $ff:SegoeWP;
       // Products list (books in tab)
       .product-list__index{
         display: flex;
+        width: 800px;
+        height: 825px;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;

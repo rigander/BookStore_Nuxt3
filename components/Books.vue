@@ -17,6 +17,9 @@ const handlePageClicked = async (newPage) => {
         emit('update:modelValue', data.value);
     }
 };
+
+
+// @page-clicked="handlePageClicked"
 </script>
 
 
@@ -45,7 +48,7 @@ const handlePageClicked = async (newPage) => {
             <span>${{ book.price }}</span>
         </div>
         <SharedPagination
-            @page-clicked="handlePageClicked"
+
             :currentPage="currentPage"
         />
     </div>
