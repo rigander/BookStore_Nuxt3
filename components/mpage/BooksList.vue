@@ -6,7 +6,7 @@ const option = reactive({
 const currentPage = ref(1);
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const booksStore = ref({});
-
+const pageRefresh = ref(1);
 const { data: categories } = await useFetch(`${apiBaseUrl}/categories`);
 
 const fetchData = async () => {
@@ -27,7 +27,6 @@ const changeGenre = (event, genre) => {
     option.genre = genre;
     currentPage.value = 1;
     fetchData();
-
 };
 </script>
 
@@ -53,6 +52,7 @@ const changeGenre = (event, genre) => {
                 <Books
                     v-model="booksStore"
                     @page-clicked="updateCurrentPage"
+                    :current-page="currentPage"
                 />
             </section>
         </div>

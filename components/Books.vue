@@ -1,16 +1,17 @@
 <script setup>
-const props = defineProps(['modelValue', 'page-refresh']);
+const props = defineProps(['modelValue', 'current-page']);
 const emit = defineEmits(['page-clicked']);
 const currentPage = ref(1);
 const route = useRoute();
 const curCategory = route.params.slug;
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
-const pageRefresh = 1;
 const handlePageClicked = (newPage) => {
     currentPage.value = newPage;
     emit('page-clicked', newPage);
 }
+const currentPageTop = ref(props.currentPage);
 
+console.log(props.currentPage);
 </script>
 
 
@@ -41,8 +42,7 @@ const handlePageClicked = (newPage) => {
         <div id="block"></div>
         <SharedPagination
             @page-clicked="handlePageClicked"
-            :currentPage="currentPage"
-            :page-refresh="pageRefresh"
+            :current-page-top="currentPageTop"
         />
     </div>
 </template>
