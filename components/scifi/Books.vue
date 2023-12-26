@@ -26,9 +26,11 @@ const handlePageClicked = async (newPage) => {
             class="books__sci-fi-div"
             v-for="book in modelValue.data.books.data"
             :key="book.id">
-            <SharedDiscountLabel
-                v-if="book.discount !== null"
-            />
+            <div v-if="book.discount"
+                 class="discount">
+                <span>{{ book.discount }}%</span>
+                <span class="off">Off</span>
+            </div>
             <NuxtLink href="">
                 <img class="book-img-scifi"
                      :src="book.image"

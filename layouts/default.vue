@@ -3,6 +3,12 @@ const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const {data: category} = await useFetch(`${apiBaseUrl}/categories`);
 const catFooter = category.value.data.footer;
+
+const {data: booksBS} = await useFetch(`${apiBaseUrl}/category/best-sellers/books`);
+
+provide('booksBS', {
+    booksBS
+})
 provide('categories', {
     category
 })
