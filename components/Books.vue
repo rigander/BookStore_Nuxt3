@@ -34,18 +34,18 @@ const onClickHandler = (newPage) => {
             <span>${{ book.price }}</span>
         </div>
         <div id="block"></div>
-        <vue-awesome-paginate
-            @click="onClickHandler"
-            :total-items="100"
-            v-model="currentPage"
-            :items-per-page="15"
-            :max-pages-shown="5"
-            paginate-buttons-class="btn"
-            active-page-class="btn-active"
-            back-button-class="back-btn"
-            next-button-class="next-btn"
-            class="pagination-container"
-        />
+<!--        <vue-awesome-paginate-->
+<!--            @click="onClickHandler"-->
+<!--            :total-items="100"-->
+<!--            v-model="currentPage"-->
+<!--            :items-per-page="15"-->
+<!--            :max-pages-shown="5"-->
+<!--            paginate-buttons-class="btn"-->
+<!--            active-page-class="btn-active"-->
+<!--            back-button-class="back-btn"-->
+<!--            next-button-class="next-btn"-->
+<!--            class="pagination-container"-->
+<!--        />-->
     </div>
 </template>
 
