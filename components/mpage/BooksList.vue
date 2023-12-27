@@ -6,7 +6,6 @@ const option = reactive({
 const currentPage = ref(1);
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const booksStore = ref({});
-const pageRefresh = ref(1);
 const { data: categories } = await useFetch(`${apiBaseUrl}/categories`);
 
 const fetchData = async () => {
