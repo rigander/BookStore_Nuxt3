@@ -15,7 +15,8 @@ const { category } = inject('categories');
                 <li class="list-title">{{ cat.name }}</li>
                 <li
                     v-for="item in cat.subCategories"
-                ><NuxtLink href="/"
+                ><NuxtLink
+                    :to="`/category/${item.slug}`"
                 >
                     <div>{{ item.name }}</div></NuxtLink></li>
             </ul>

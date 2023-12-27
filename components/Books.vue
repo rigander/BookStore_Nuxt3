@@ -69,6 +69,9 @@ const onClickHandler = (newPage) => {
     width: 120px;
     overflow: hidden;
 }
+.books-p:hover{
+    cursor: pointer;
+}
 .long-text {
     height: auto;
     overflow: visible;
