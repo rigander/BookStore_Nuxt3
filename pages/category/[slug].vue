@@ -45,6 +45,7 @@ const updateCurrentPage = (newPage) => {
                 <Books
                     v-model="booksStore"
                     @page-clicked="updateCurrentPage"
+                    :current-page="currentPage"
                 />
             </section>
         </div>
