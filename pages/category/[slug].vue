@@ -24,7 +24,7 @@ const fetchData = async () => {
     booksStore.value = data.value;
 };
 
-fetchData();
+await fetchData();
 
 const updateCurrentPage = (newPage) => {
     currentPage.value = newPage;
