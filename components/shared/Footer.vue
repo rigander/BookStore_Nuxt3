@@ -16,7 +16,6 @@ const { data } = await useFetch(
     }
 );
 booksStore.value = data.value;
-console.log(booksStore);
 </script>
 
 <template>
