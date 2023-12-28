@@ -209,12 +209,14 @@ const Pass2Visibility = () => {
     height: 40px;
 }
 .sign-up__main{
-    background-color: #333537;
+    background-color: #f2f2f3;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    height: 800px;
+    width: 1280px;
+
 }
 .sign-up__form{
     display: flex;
@@ -223,7 +225,7 @@ const Pass2Visibility = () => {
     margin: 0 auto;
     padding: 20px;
     width: 400px;
-    background-color: #2e3032;
+    background-color: #424143;
 }
 .sign-up_img{
     height: 200px;
