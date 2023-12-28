@@ -4,11 +4,15 @@ import { resolve } from "path";
 // @ts-ignore
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt'],
+  modules: ['@pinia/nuxt', 'nuxt-swiper'],
   pinia: { autoImports:["defineStore"] },
+  swiper: {
+    prefix: 'Swiper',
+    styleLang: 'css'
+  },
   imports: { dirs: ["./stores"] },
   alias: {
-    '@': resolve(__dirname, '/'),
+    '@': resolve(__dirname, '/')
   },
   css: [
     "~/assets/style/scss/main.scss",
