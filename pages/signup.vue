@@ -11,60 +11,7 @@ const formData =ref({
     checkTerms: false
 })
 
-const errorMessage = ref();
-const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^\d{1,10}$/;
-const passwordRegex = /^.{10,18}$/;
 const submitForm = async () => {
-    if (
-        !formData.value.name ||
-        !formData.value.email ||
-        !formData.value.phone ||
-        !formData.value.password ||
-        !formData.value.password_confirmation
-    ) {
-        errorMessage.value = 'All fields need to be filled';
-        return;
-    }
-    if (!usernameRegex.test(formData.value.name)) {
-        errorMessage.value = 'User name must not contain special symbols';
-        return;
-    }
-    if (formData.value.name.length > 18){
-        errorMessage.value = 'User name should not be longer 18 symbols';
-        return;
-    }
-    if (formData.value.name.length < 2){
-        errorMessage.value = 'User name should not be longer 18 symbols';
-        return;
-    }
-    if (!emailRegex.test(formData.value.email)) {
-        errorMessage.value = 'Incorrect e-mail';
-        return;
-    }
-    if (!phoneRegex.test(formData.value.phone)) {
-        errorMessage.value = 'Wrong phone number';
-        return;
-    }
-    if (!passwordRegex.test(formData.value.password)) {
-        errorMessage.value = 'Password must be 10 to 18 symbols';
-        return;
-    }
-
-    if (formData.value.password !== formData.value.password_confirmation) {
-        errorMessage.value = 'Passwords are not similar';
-        return;
-    }
-    if (!formData.value.checkTerms) {
-        errorMessage.value = 'Click checkbox if agree with User Agreement';
-        return;
-    }
-    errorMessage.value = '';
-
-    // Get CSRFCookie before sending form.
-    await getCSRFCookie();
-
     const { data : responseData, error } = await useFetch(
         `${apiBaseUrl}/auth/register`,
         {
@@ -97,19 +44,6 @@ const submitForm = async () => {
     }
 }
 
-const getCSRFCookie = async () => {
-    try {
-        const response = await useFetch(
-            'http://api.book-store.loc/sanctum/csrf-cookie',
-            {
-                credentials: 'include'
-            }
-        );
-        console.log(response.status.value);
-    } catch (error) {
-        console.error('Failed to get CSRF cookie', error);
-    }
-}
 
 // Show text input on corresponding checkbox click
 const showPass = ref(false);

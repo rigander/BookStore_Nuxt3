@@ -20,9 +20,12 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
+    "@vee-validate/rules": "^4.12.4",
     "nuxt-swiper": "^1.2.2",
     "pinia": "^2.1.7",
     "sass": "^1.69.5",
-    "vue-awesome-paginate": "^1.1.46"
+    "vee-validate": "^4.12.4",
+    "vue-awesome-paginate": "^1.1.46",
+    "yup": "^1.3.3"
   }
 }
