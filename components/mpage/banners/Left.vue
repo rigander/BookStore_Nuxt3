@@ -46,6 +46,7 @@ const photos = [
 
 <style lang="css">
 .black-slider{
+    user-select: none;
     font-weight: bold;
     --swiper-navigation-size: 45px;
     --swiper-navigation-top-offset: 50%;
