@@ -4,11 +4,20 @@ import { resolve } from "path";
 // @ts-ignore
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', 'nuxt-swiper'],
+  modules: ['@pinia/nuxt', 'nuxt-swiper', '@vee-validate/nuxt'],
   pinia: { autoImports:["defineStore"] },
   swiper: {
     prefix: 'Swiper',
     styleLang: 'css'
+  },
+  veeValidate: {
+    autoImports: true,
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage'
+    }
   },
   imports: { dirs: ["./stores"] },
   alias: {
