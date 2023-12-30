@@ -7,7 +7,7 @@ configure({
     validateOnBlur: true, // controls if `blur` events should trigger validation with `handleChange` handler
     validateOnChange: true, // controls if `change` events should trigger validation with `handleChange` handler
     validateOnInput: false, // controls if `input` events should trigger validation with `handleChange` handler
-    validateOnModelUpdate: true, // controls if `update:modelValue` events should trigger validation with `handleChange` handler
+    validateOnModelUpdate: false, // controls if `update:modelValue` events should trigger validation with `handleChange` handler
 });
 const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -55,7 +55,7 @@ const formData =ref({
 })
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const submitForm = async () => {
-    const { data : responseData, error } = await useFetch(
+    const { data : responseData } = await useFetch(
         `${apiBaseUrl}/auth/register`,
         {
             method: 'post',
@@ -70,18 +70,22 @@ const submitForm = async () => {
     );
 }
 
-const $v = useValidateForm(schema, initialValues);
-const handleSubmit = async (values, actions) => {
-    try {
-        await $v.form.validate;
-        if ($v.form.pending) return;
-        console.log(values);
-        await submitForm();
-        actions.resetForm();
-    } catch (error) {
-        console.error(error.errors);
-    }
-};
+const handleSubmit = () => {
+    console.log('Form submitted!');
+}
+
+// const $v = useValidateForm(schema, initialValues);
+// const handleSubmit = async (values, actions) => {
+//     try {
+//         await $v.form.validate;
+//         if ($v.form.pending) return;
+//         console.log(values);
+//         await submitForm();
+//         actions.resetForm();
+//     } catch (error) {
+//         console.error(error.errors);
+//     }
+// };
 // Show text input on corresponding checkbox click
 const showPass = ref(false);
 const showPass2 = ref(false);
@@ -99,8 +103,7 @@ const Pass2Visibility = () => {
     <div class="sign-up__main">
         <VeeForm
             :validation-schema="schema"
-            :initial-values="initialValues"
-            @submit="handleSubmit"
+            @submit.prevent="handleSubmit"
             name="registration"
             class="sign-up__form"
         >
@@ -173,11 +176,11 @@ const Pass2Visibility = () => {
                 End User License Agreement &amp; Privacy Policy</a>
             </div>
             <div class="sign-up_group">
-                <button
+                <VeeField
                     name="submitButton"
+                    value="Submit"
                     id="sign-up_submit"
-                    type="submit">Submit
-                </button>
+                    type="submit"/>
             </div>
         </VeeForm>
     </div>
