@@ -1,25 +1,49 @@
 <script setup>
-import { object, string, ref as yupRef } from "yup";
+import {object, string, ref as yupRef, number} from "yup";
+import { useValidateForm } from "vee-validate";
 import { configure } from "vee-validate";
 
+configure({
+    validateOnBlur: true, // controls if `blur` events should trigger validation with `handleChange` handler
+    validateOnChange: true, // controls if `change` events should trigger validation with `handleChange` handler
+    validateOnInput: false, // controls if `input` events should trigger validation with `handleChange` handler
+    validateOnModelUpdate: true, // controls if `update:modelValue` events should trigger validation with `handleChange` handler
+});
+const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const phoneRegex = /^\d+$/;
 const schema = object({
-    email: string()
-        .required()
-        .email()
-        .test(
-            "email-is-taken",
-            "Email is already taken",
-            async (value) => !(await existingEmail(value))
-        )
-        .label("Email Address"),
-    password: string().required().min(8).label("Your Password"),
-    confirmed: string()
-        .required()
-        .oneOf([yupRef("password")], "Passwords do not match") //Cross-Field Validation
-        .label("Your Confirmation Password"),
+    name:
+        string()
+        .required("Fill in name field")
+        .min(2, "Name must be no less then 2 symbols")
+        .max(20, "Name must not be longer 20 symbols")
+        .matches(usernameRegex, "Invalid username format"),
+    email:
+        string()
+        .required("Fill in your email")
+        .email("Enter valid email address"),
+    phone:
+         string()
+         .required("Fill in mobile phone number")
+         .length(10, "Invalid phone number")
+         .min(10,"Invalid phone number")
+         .max(10,"Invalid phone number")
+         .matches(phoneRegex, "Invalid phone number"),
+    password:
+         string()
+        .required("Fill in password field")
+        .matches(passwordRegex, "Weak password")
+        .min(8,"Password must be at least 8 symbols")
+        .max(20, "Password must not exceed 20 symbols"),
+    confirmed:
+         string()
+        .required("Fill in confirm password field")
+        .oneOf([yupRef("password")], "Passwords do not match"),
 });
 
-const apiBaseUrl = useRuntimeConfig().public.apiBase;
+const initialValues = { name:"", email: "", phone:"", password: "",
+    password_confirmation: "" };
 
 const formData =ref({
     name: '',
@@ -29,7 +53,7 @@ const formData =ref({
     password_confirmation: '',
     checkTerms: false
 })
-
+const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const submitForm = async () => {
     const { data : responseData, error } = await useFetch(
         `${apiBaseUrl}/auth/register`,
@@ -46,7 +70,18 @@ const submitForm = async () => {
     );
 }
 
-
+const $v = useValidateForm(schema, initialValues);
+const handleSubmit = async (values, actions) => {
+    try {
+        await $v.form.validate;
+        if ($v.form.pending) return;
+        console.log(values);
+        await submitForm();
+        actions.resetForm();
+    } catch (error) {
+        console.error(error.errors);
+    }
+};
 // Show text input on corresponding checkbox click
 const showPass = ref(false);
 const showPass2 = ref(false);
@@ -57,56 +92,42 @@ const Pass2Visibility = () => {
     showPass2.value = !showPass2.value;
 };
 
-
-// Vee Validate
-const onSubmit = (values) => {
-    console.log(values);
-}
-const validateEmail = (value) => {
-    if (!value) {
-        return 'This field is required';
-    }
-    const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-    if (!regex.test(value)) {
-        return 'Please enter a valid email';
-    }
-    return true;
-};
-const isRequired = (value) => {
-    if (value && value.trim()) {
-        return true;
-    }
-    return "All fields are mandatory to fill in"
-}
 </script>
 
 
 <template>
     <div class="sign-up__main">
         <VeeForm
-            @submit="[onSubmit, submitForm]"
+            :validation-schema="schema"
+            :initial-values="initialValues"
+            @submit="handleSubmit"
             name="registration"
-            class="sign-up__form">
+            class="sign-up__form"
+        >
             <img class="sign-up_img" src="/img/Chromatic-Floral-Rabbit.svg" alt="rabbit">
             <h1 title="Sign Up">Sign Up</h1>
-            <VeeErrorMessage name="email" class="error_fill-up"/>
             <hr>
             <div class="sign-up_group">
+                <VeeErrorMessage name="name" class="error_fill-up"/>
                 <label for="name" class="sign-up_label_name">Username</label>
                 <VeeField
                     v-model="formData.name"
                     class="sign-up__all-inputs sing-up_name"
-                    minlength="2" name="name" type="text"/>
+                    name="name"
+                    type="text"/>
             </div>
             <div class="sign-up_group">
+                <VeeErrorMessage name="email" class="error_fill-up"/>
                 <label for="email" class="sign-up_label_email">E-mail</label>
                 <VeeField
-                    :rules="[validateEmail, isRequired]"
                     v-model="formData.email"
+                    name="email"
                     class="sing-up__all-inputs sign-up_email"
-                    type="email" name="email"/>
+                    type="email"
+                    />
             </div>
             <div class="sign-up_group">
+                <VeeErrorMessage name="phone" class="error_fill-up"/>
                 <label for="phone">Phone</label>
                 <VeeField
                     v-model="formData.phone"
@@ -115,7 +136,7 @@ const isRequired = (value) => {
                     type="text"/>
             </div>
             <div class="sign-up_group sing-up_pass">
-                <span id="shortPass" class="valid-feedback short-pass"></span>
+                <VeeErrorMessage name="password" class="error_fill-up"/>
                 <label for="pass1">Password</label>
                 <VeeField
                     v-model="formData.password"
@@ -129,6 +150,7 @@ const isRequired = (value) => {
                 >
             </div>
             <div class="sign-up_group sign-up_pass-confirm">
+                <VeeErrorMessage name="password_confirmation" class="error_fill-up"/>
                 <label>Password Confirmation</label>
                 <VeeField
                     v-model="formData.password_confirmation"
@@ -139,11 +161,10 @@ const isRequired = (value) => {
                     v-model="showPass2"
                     class="checkbox" type="checkbox"
                     @click="Pass2Visibility">
-                <span id="shortRepeatPass" class="valid-feedback"></span>
             </div>
             <div class="sign-up_group sign-up_agreement">
-                <span class="valid-feedback"></span>
-                <input
+                <VeeErrorMessage name="checkTerms" class="error_fill-up"/>
+                <VeeField
                     v-model="formData.checkTerms"
                     @click="formData.checkTerms = true"
                     name="checkTerms" class="sign-up_agreement__input"
@@ -152,14 +173,23 @@ const isRequired = (value) => {
                 End User License Agreement &amp; Privacy Policy</a>
             </div>
             <div class="sign-up_group">
-                <input name="submitButton" id="sign-up_submit"
-                       value="Submit" type="submit">
+                <button
+                    name="submitButton"
+                    id="sign-up_submit"
+                    type="submit">Submit
+                </button>
             </div>
         </VeeForm>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.is-success{
+    border: #52a452;
+}
+.is-danger{
+    border: red;
+}
 .error_fill-up{
     padding-top: 5px;
     color: red;
@@ -231,8 +261,11 @@ label{
 #sign-up_submit{
     margin: 20px 0;
     width: 300px;
-    height: 28px;
+    height: 40px;
     color: white;
+    background-color: #52a452;
+    border: none;
+    border-radius: 2px;
 }
 #sign-up_submit:hover{
     cursor: pointer;
