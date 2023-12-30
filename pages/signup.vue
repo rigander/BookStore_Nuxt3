@@ -191,10 +191,11 @@ const Pass2Visibility = () => {
     border: red;
 }
 .error_fill-up{
-    padding-top: 5px;
+    margin-left: 95px;
     color: red;
-    font-size: 20px;
+    font-size: 17px;
     height: 40px;
+    position: absolute;
 }
 .sign-up__main{
     background-color: #f2f2f3;
@@ -214,6 +215,7 @@ const Pass2Visibility = () => {
     padding: 20px;
     width: 400px;
     background-color: #424143;
+    position: relative;
 }
 .sign-up_img{
     height: 200px;
