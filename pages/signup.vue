@@ -1,5 +1,5 @@
 <script setup>
-import {object, string, ref as yupRef, number} from "yup";
+import {object, string, ref as yupRef, number, boolean} from "yup";
 import { useValidateForm } from "vee-validate";
 import { configure } from "vee-validate";
 
@@ -36,14 +36,18 @@ const schema = object({
         .matches(passwordRegex, "Weak password")
         .min(8,"Password must be at least 8 symbols")
         .max(20, "Password must not exceed 20 symbols"),
-    confirmed:
+    password_confirmation:
          string()
-        .required("Fill in confirm password field")
+        .required("Fill in confirm password")
         .oneOf([yupRef("password")], "Passwords do not match"),
+    checkTerms:
+         boolean()
+         .oneOf([true],'Click if you agree with terms & conditions'),
+
 });
 
 const initialValues = { name:"", email: "", phone:"", password: "",
-    password_confirmation: "" };
+    password_confirmation: "", checkTerms: false };
 
 const formData =ref({
     name: '',
@@ -103,7 +107,7 @@ const Pass2Visibility = () => {
     <div class="sign-up__main">
         <VeeForm
             :validation-schema="schema"
-            @submit.prevent="handleSubmit"
+            @submit="handleSubmit"
             name="registration"
             class="sign-up__form"
         >
@@ -153,7 +157,7 @@ const Pass2Visibility = () => {
                 >
             </div>
             <div class="sign-up_group sign-up_pass-confirm">
-                <VeeErrorMessage name="password_confirmation" class="error_fill-up"/>
+                <VeeErrorMessage name="password_confirmation" class="error_fill-up" id="error-confirm"/>
                 <label>Password Confirmation</label>
                 <VeeField
                     v-model="formData.password_confirmation"
@@ -169,7 +173,6 @@ const Pass2Visibility = () => {
                 <VeeErrorMessage name="checkTerms" class="error_fill-up"/>
                 <VeeField
                     v-model="formData.checkTerms"
-                    @click="formData.checkTerms = true"
                     name="checkTerms" class="sign-up_agreement__input"
                     type="checkbox"/>
                 I agree to the<a href="" id="sign-up_terms">
@@ -187,6 +190,9 @@ const Pass2Visibility = () => {
 </template>
 
 <style lang="scss" scoped>
+#error-confirm{
+    margin-left: 190px;
+}
 .is-success{
     border: #52a452;
 }
