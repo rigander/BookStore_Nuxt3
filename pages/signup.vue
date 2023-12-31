@@ -4,10 +4,10 @@ import { useValidateForm } from "vee-validate";
 import { configure } from "vee-validate";
 
 configure({
-    validateOnBlur: true, // controls if `blur` events should trigger validation with `handleChange` handler
-    validateOnChange: true, // controls if `change` events should trigger validation with `handleChange` handler
-    validateOnInput: false, // controls if `input` events should trigger validation with `handleChange` handler
-    validateOnModelUpdate: false, // controls if `update:modelValue` events should trigger validation with `handleChange` handler
+    validateOnBlur: true,
+    validateOnChange: true,
+    validateOnInput: false,
+    validateOnModelUpdate: false,
 });
 const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -15,34 +15,35 @@ const phoneRegex = /^\d+$/;
 const schema = object({
     name:
         string()
-        .required("Fill in name field")
-        .min(2, "Name must be no less then 2 symbols")
-        .max(20, "Name must not be longer 20 symbols")
-        .matches(usernameRegex, "Invalid username format"),
+        .required("fill in name field")
+        .min(2, "must be no less then 2 symbols")
+        .max(20, "must not be longer 20 symbols")
+        .matches(usernameRegex, "invalid username format"),
     email:
         string()
-        .required("Fill in your email")
-        .email("Enter valid email address"),
+        .required("fill in your email")
+        .email("enter valid email"),
     phone:
          string()
-         .required("Fill in mobile phone number")
-         .length(10, "Invalid phone number")
-         .min(10,"Invalid phone number")
-         .max(10,"Invalid phone number")
-         .matches(phoneRegex, "Invalid phone number"),
+         .required("fill in mobile phone number")
+         .length(10, "invalid phone number")
+         .min(10,"invalid phone number")
+         .max(10,"invalid phone number")
+         .matches(phoneRegex, "invalid phone number"),
     password:
          string()
-        .required("Fill in password field")
-        .matches(passwordRegex, "Weak password")
-        .min(8,"Password must be at least 8 symbols")
-        .max(20, "Password must not exceed 20 symbols"),
+        .required("fill in password")
+        .matches(passwordRegex, "weak password")
+        .min(8,"must be at least 8 symbols")
+        .max(20, "must not exceed 20 symbols"),
     password_confirmation:
          string()
-        .required("Fill in confirm password")
-        .oneOf([yupRef("password")], "Passwords do not match"),
+        .required("fill in confirm password")
+        .oneOf([yupRef("password")], "passwords do not match"),
     checkTerms:
          boolean()
-         .oneOf([true],'Click if you agree with terms & conditions'),
+         .oneOf([true], "Please accept End User Licence Agreement " +
+             "& Privacy Policy before proceeding"),
 
 });
 
@@ -75,21 +76,9 @@ const submitForm = async () => {
 }
 
 const handleSubmit = () => {
-    console.log('Form submitted!');
+    submitForm();
 }
 
-// const $v = useValidateForm(schema, initialValues);
-// const handleSubmit = async (values, actions) => {
-//     try {
-//         await $v.form.validate;
-//         if ($v.form.pending) return;
-//         console.log(values);
-//         await submitForm();
-//         actions.resetForm();
-//     } catch (error) {
-//         console.error(error.errors);
-//     }
-// };
 // Show text input on corresponding checkbox click
 const showPass = ref(false);
 const showPass2 = ref(false);
@@ -121,7 +110,8 @@ const Pass2Visibility = () => {
                     v-model="formData.name"
                     class="sign-up__all-inputs sing-up_name"
                     name="name"
-                    type="text"/>
+                    type="text">
+                </VeeField>
             </div>
             <div class="sign-up_group">
                 <VeeErrorMessage name="email" class="error_fill-up"/>
@@ -170,7 +160,7 @@ const Pass2Visibility = () => {
                     @click="Pass2Visibility">
             </div>
             <div class="sign-up_group sign-up_agreement">
-                <VeeErrorMessage name="checkTerms" class="error_fill-up"/>
+                <VeeErrorMessage name="checkTerms" class="error_fill-up" id="error-terms"/>
                 <VeeField
                     v-model="formData.checkTerms"
                     name="checkTerms" class="sign-up_agreement__input"
@@ -193,11 +183,9 @@ const Pass2Visibility = () => {
 #error-confirm{
     margin-left: 190px;
 }
-.is-success{
-    border: #52a452;
-}
-.is-danger{
-    border: red;
+#error-terms{
+    bottom: 100px;
+    left: 30px;
 }
 .error_fill-up{
     margin-left: 95px;
