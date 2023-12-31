@@ -1,6 +1,5 @@
 <script setup>
 import {object, string, ref as yupRef, number, boolean} from "yup";
-import { useValidateForm } from "vee-validate";
 import { configure } from "vee-validate";
 
 configure({
@@ -56,7 +55,6 @@ const formData =ref({
     phone: '',
     password: '',
     password_confirmation: '',
-    checkTerms: false
 })
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const submitForm = async () => {
@@ -69,7 +67,7 @@ const submitForm = async () => {
                 email: formData.value.email,
                 phone: formData.value.phone,
                 password: formData.value.password,
-                password_confirmation: formData.value.password_confirmation
+                password_confirmation: formData.value.password_confirmation,
             }
         }
     );
@@ -96,6 +94,8 @@ const Pass2Visibility = () => {
     <div class="sign-up__main">
         <VeeForm
             :validation-schema="schema"
+            v-slot="{ meta }"
+            :initial-values="initialValues"
             @submit="handleSubmit"
             name="registration"
             class="sign-up__form"
@@ -163,23 +163,32 @@ const Pass2Visibility = () => {
                 <VeeErrorMessage name="checkTerms" class="error_fill-up" id="error-terms"/>
                 <VeeField
                     v-model="formData.checkTerms"
-                    name="checkTerms" class="sign-up_agreement__input"
+                    v-slot="{ field }"
+                    :value="true"
+                    :unchecked-value="false"
+                    name="checkTerms"
+                    class="sign-up_agreement__input"
                     type="checkbox"/>
                 I agree to the<a href="" id="sign-up_terms">
                 End User License Agreement &amp; Privacy Policy</a>
             </div>
             <div class="sign-up_group">
-                <VeeField
+                <button
+                    :disabled="!meta.valid"
                     name="submitButton"
                     value="Submit"
-                    id="sign-up_submit"
-                    type="submit"/>
+                    class="sign-up_submit"
+                    type="submit">Submit
+                </button>
             </div>
         </VeeForm>
     </div>
 </template>
 
 <style lang="scss" scoped>
+#disabled{
+    background-color: #6d6d6d;
+}
 #error-confirm{
     margin-left: 190px;
 }
@@ -257,7 +266,7 @@ label{
     margin: 20px 0;
     color: #e1e4e8;
 }
-#sign-up_submit{
+.sign-up_submit{
     margin: 20px 0;
     width: 300px;
     height: 40px;
@@ -266,11 +275,16 @@ label{
     border: none;
     border-radius: 2px;
 }
-#sign-up_submit:hover{
+.sign-up_submit:hover{
     cursor: pointer;
 }
-#sign-up_submit:active{
+.sign-up_submit:active{
     background-color: #a26693;
     color: black;
+}
+.sign-up_submit:disabled {
+    background-color: #6d6d6d;
+    cursor: not-allowed;
+    opacity: 0.7;
 }
 </style>
