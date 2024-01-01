@@ -74,7 +74,11 @@ const submitForm = async () => {
         }
     );
     if (!error.value) {
-        errorMessage.value = '';
+        errorMessageServEmail.value = '';
+        errorMessageServPhone.value = '';
+        formData.value = { ...initialValues };
+        const router = useRouter();
+        router.push('/');
         return;
     }
     if (error) {
