@@ -8,6 +8,8 @@ configure({
     validateOnInput: false,
     validateOnModelUpdate: false,
 });
+const errorMessageServEmail = ref();
+const errorMessageServPhone = ref();
 const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
 const passwordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!$_+%:?*()!@#^&_-]).*$/;
 const phoneRegex = /^\+\(38\)\d{3}-\d{3}-\d{4}$/;
@@ -58,7 +60,7 @@ const formData =ref({
 })
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const submitForm = async () => {
-    const { data : responseData } = await useFetch(
+    const { data : responseData, error } = await useFetch(
         `${apiBaseUrl}/auth/register`,
         {
             method: 'post',
@@ -71,6 +73,23 @@ const submitForm = async () => {
             }
         }
     );
+    if (!error.value) {
+        errorMessage.value = '';
+        return;
+    }
+    if (error) {
+        const serverErrors = error.value.data.errors;
+
+        if (serverErrors.email) {
+            errorMessageServEmail.value = serverErrors.email[0];
+            return;
+        }
+        if (serverErrors.phone) {
+            errorMessageServPhone.value = serverErrors.phone[0];
+            return;
+        }
+        errorMessage.value = 'Validation error. Please check your input.';
+    }
 }
 
 const handleSubmit = () => {
@@ -120,6 +139,7 @@ const onPhoneMaskChange = (event) => {
             </div>
             <div class="sign-up_group">
                 <VeeErrorMessage name="email" class="error_fill-up"/>
+                <span class="error_fill-up">{{ errorMessageServEmail }}</span>
                 <label for="email" class="sign-up_label_email">E-mail</label>
                 <VeeField
                     v-model="formData.email"
@@ -130,13 +150,14 @@ const onPhoneMaskChange = (event) => {
             </div>
             <div class="sign-up_group">
                 <VeeErrorMessage name="phone" class="error_fill-up"/>
+                <span class="error_fill-up">{{ errorMessageServPhone }}</span>
                 <label for="phone">Phone</label>
                 <VeeField
                     v-maska
                     data-maska="+(38)###-###-####"
                     @maska="onPhoneMaskChange"
                     class="sing-up_all-inputs sign-up_phone"
-                    name="phone" placeholder="000-000-0000" pattern="\d*"
+                    name="phone" placeholder="+(38)000-000-0000" pattern="\d*"
                     type="text"/>
             </div>
             <div class="sign-up_group sing-up_pass">
