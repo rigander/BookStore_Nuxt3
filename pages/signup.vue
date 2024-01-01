@@ -9,8 +9,8 @@ configure({
     validateOnModelUpdate: false,
 });
 const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-const phoneRegex = /^\d+$/;
+const passwordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!$_+%:?*()!@#^&_-]).*$/;
+const phoneRegex = /^\+\(38\)\d{3}-\d{3}-\d{4}$/;
 const schema = object({
     name:
         string()
@@ -25,10 +25,10 @@ const schema = object({
     phone:
          string()
          .required("fill in mobile phone number")
-         .length(10, "invalid phone number")
-         .min(10,"invalid phone number")
-         .max(10,"invalid phone number")
-         .matches(phoneRegex, "invalid phone number"),
+         .length(17, "invalid phone number1")
+         .min(17,"invalid phone number2")
+         .max(17,"invalid phone number3")
+         .matches(phoneRegex, "invalid phone number4"),
     password:
          string()
         .required("fill in password")
@@ -87,6 +87,11 @@ const Pass2Visibility = () => {
     showPass2.value = !showPass2.value;
 };
 
+const onPhoneMaskChange = (event) => {
+        const rawValue = event.target.value;
+        const phoneNumber = rawValue.replace(/\D/g, '');
+        formData.value.phone = phoneNumber.slice(2);
+    }
 </script>
 
 
@@ -127,9 +132,11 @@ const Pass2Visibility = () => {
                 <VeeErrorMessage name="phone" class="error_fill-up"/>
                 <label for="phone">Phone</label>
                 <VeeField
-                    v-model="formData.phone"
+                    v-maska
+                    data-maska="+(38)###-###-####"
+                    @maska="onPhoneMaskChange"
                     class="sing-up_all-inputs sign-up_phone"
-                    name="phone" placeholder="+(380)00-000-0000" pattern="\d*"
+                    name="phone" placeholder="000-000-0000" pattern="\d*"
                     type="text"/>
             </div>
             <div class="sign-up_group sing-up_pass">
