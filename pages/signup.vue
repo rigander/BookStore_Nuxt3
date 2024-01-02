@@ -96,10 +96,6 @@ const submitForm = async () => {
     }
 }
 
-const handleSubmit = () => {
-    submitForm();
-}
-
 // Show text input on corresponding checkbox click
 const showPass = ref(false);
 const showPass2 = ref(false);
@@ -124,7 +120,7 @@ const onPhoneMaskChange = (event) => {
             :validation-schema="schema"
             v-slot="{ meta }"
             :initial-values="initialValues"
-            @submit="handleSubmit"
+            @submit="submitForm"
             name="registration"
             class="sign-up__form"
         >
