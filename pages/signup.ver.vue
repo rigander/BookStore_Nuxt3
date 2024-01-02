@@ -1,7 +1,7 @@
 <script setup>
 
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
-
+const errorMessage = ref();
 const formData =ref({
     name: '',
     email: '',
@@ -11,12 +11,27 @@ const formData =ref({
     checkTerms: false
 })
 
-const errorMessage = ref();
-const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^\d{1,10}$/;
-const passwordRegex = /^.{10,18}$/;
-const submitForm = async () => {
+const isValidUsername = (username) => {
+    const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
+    return usernameRegex.test(username);
+};
+
+const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+};
+
+const isValidPhone = (phone) => {
+    const phoneRegex = /^\d{1,10}$/;
+    return phoneRegex.test(phone);
+};
+
+const isValidPassword = (password) => {
+    const passwordRegex = /^.{10,18}$/;
+    return passwordRegex.test(password);
+};
+const validateFields = () => {
+    const { name, email, phone, password, password_confirmation } = formData.value;
     if (
         !formData.value.name ||
         !formData.value.email ||
@@ -27,42 +42,56 @@ const submitForm = async () => {
         errorMessage.value = 'All fields need to be filled';
         return;
     }
-    if (!usernameRegex.test(formData.value.name)) {
+    if (!isValidUsername(name)) {
         errorMessage.value = 'User name must not contain special symbols';
-        return;
+        return false;
     }
-    if (formData.value.name.length > 18){
-        errorMessage.value = 'User name should not be longer 18 symbols';
-        return;
+
+    if (name.length > 18 || name.length < 2) {
+        errorMessage.value = 'User name should be between 2 and 18 characters';
+        return false;
     }
-    if (formData.value.name.length < 2){
-        errorMessage.value = 'User name should not be longer 18 symbols';
-        return;
-    }
-    if (!emailRegex.test(formData.value.email)) {
+
+    if (!isValidEmail(email)) {
         errorMessage.value = 'Incorrect e-mail';
-        return;
+        return false;
     }
-    if (!phoneRegex.test(formData.value.phone)) {
+
+    if (!isValidPhone(phone)) {
         errorMessage.value = 'Wrong phone number';
-        return;
+        return false;
     }
-    if (!passwordRegex.test(formData.value.password)) {
+
+    if (!isValidPassword(password)) {
         errorMessage.value = 'Password must be 10 to 18 symbols';
-        return;
+        return false;
     }
 
-    if (formData.value.password !== formData.value.password_confirmation) {
+    if (password !== password_confirmation) {
         errorMessage.value = 'Passwords are not similar';
-        return;
+        return false;
     }
-    if (!formData.value.checkTerms) {
-        errorMessage.value = 'Click checkbox if agree with User Agreement';
-        return;
-    }
-    errorMessage.value = '';
 
-    // Get CSRFCookie before sending form.
+    if (!formData.value.checkTerms) {
+        errorMessage.value = 'Click checkbox if you agree with User Agreement';
+        return false;
+    }
+
+    errorMessage.value = '';
+    return true;
+};
+
+const handleServerErrors = (serverErrors) => {
+    if (serverErrors.email) {
+        errorMessage.value = serverErrors.email[0];
+    } else if (serverErrors.phone) {
+        errorMessage.value = serverErrors.phone[0];
+    } else {
+        errorMessage.value = 'Validation error. Please check your input.';
+    }
+};
+const submitForm = async () => {
+    validateFields();
     await getCSRFCookie();
 
     const { data : responseData, error } = await useFetch(
@@ -82,19 +111,7 @@ const submitForm = async () => {
         errorMessage.value = '';
         return;
     }
-    if (error) {
-        const serverErrors = error.value.data.errors;
-
-        if (serverErrors.email) {
-            errorMessage.value = serverErrors.email[0];
-            return;
-        }
-        if (serverErrors.phone) {
-            errorMessage.value = serverErrors.phone[0];
-            return;
-        }
-        errorMessage.value = 'Validation error. Please check your input.';
-    }
+    handleServerErrors();
 }
 
 const getCSRFCookie = async () => {
@@ -201,86 +218,3 @@ const Pass2Visibility = () => {
     </div>
 </template>
 
-<style lang="scss" scoped>
-.error_fill-up{
-  padding-top: 5px;
-  color: red;
-  font-size: 20px;
-  height: 40px;
-}
-.sign-up__main{
-  background-color: #f2f2f3;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 800px;
-  width: 1280px;
-
-}
-.sign-up__form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  padding: 20px;
-  width: 400px;
-  background-color: #424143;
-}
-.sign-up_img{
-  height: 200px;
-}
-h1{
-  color: #e1e4e8;
-  font-size: 20px;
-  align-self: flex-start;
-}
-hr{
-  color: white;
-  height: 2px;
-  width: 100%;
-  margin: 8px 0 40px 0;
-}
-label{
-  margin-left: 20px;
-}
-.sign-up__all-inputs{
-  margin-top: 5px;
-  width: 300px;
-}
-.sign-up_email{
-  width: 300px;
-  margin-top: 5px;
-}
-.sign-up_phone{
-  margin-left: 20px;
-  padding-left: 5px;
-  width: 300px;
-  margin-top: 5px;
-}
-#pass1{
-  width: 300px;
-  margin-top: 5px;
-}
-#pass2{
-  width: 300px;
-  margin-top: 5px;
-}
-.sign-up_agreement{
-  margin: 20px 0;
-  color: #e1e4e8;
-}
-#sign-up_submit{
-  margin: 20px 0;
-  width: 300px;
-  height: 28px;
-  color: white;
-}
-#sign-up_submit:hover{
-  cursor: pointer;
-}
-#sign-up_submit:active{
-  background-color: #a26693;
-  color: black;
-}
-</style>
