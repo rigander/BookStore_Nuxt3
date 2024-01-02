@@ -12,7 +12,13 @@ const emit = defineEmits(['update:show'])
 const hideDialog = () => {
     emit('update:show', false)
 }
-const signup = '/signup'
+const signup = '/signup';
+
+const closeModalAndNavigate = (path) => {
+    hideDialog(); // Метод для закрытия модального окна
+    const router = useRouter();
+    router.push(path); // Метод для программного перехода
+}
 
 const signin = async () => {
     const username = document.getElementById('username').value;
@@ -79,7 +85,7 @@ const signin = async () => {
                     </div>
                     <NuxtLink
                         class="create-account"
-                        :to="signup"
+                        @click="closeModalAndNavigate(signup)"
                     >
                         Create Account
                     </NuxtLink>

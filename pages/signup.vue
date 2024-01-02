@@ -27,9 +27,9 @@ const schema = object({
     phone:
          string()
          .required("fill in mobile phone number")
-         .length(17, "invalid phone number1")
-         .min(17,"invalid phone number2")
-         .max(17,"invalid phone number3")
+         .length(17, "invalid phone number length")
+         .min(17,"invalid phone number")
+         .max(17,"invalid phone number")
          .matches(phoneRegex, "invalid phone number4"),
     password:
          string()
