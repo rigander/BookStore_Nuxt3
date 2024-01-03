@@ -66,7 +66,7 @@ const handleSuccess = () => {
     errorMessageServPhone.value = '';
     formData.value = { ...initialValues };
     const router = useRouter();
-    router.push('/');
+    router.push('/registrationsuccessful');
 }
 
 // Function to handle errors during form submission

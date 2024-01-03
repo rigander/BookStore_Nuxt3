@@ -15,9 +15,9 @@ const hideDialog = () => {
 const signup = '/signupform';
 
 const closeModalAndNavigate = (path) => {
-    hideDialog(); // Метод для закрытия модального окна
+    hideDialog();
     const router = useRouter();
-    router.push(path); // Метод для программного перехода
+    router.push(path);
 }
 
 const signin = async () => {
