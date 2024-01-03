@@ -12,7 +12,7 @@ const emit = defineEmits(['update:show'])
 const hideDialog = () => {
     emit('update:show', false)
 }
-const signup = '/signup';
+const signup = '/signupform';
 
 const closeModalAndNavigate = (path) => {
     hideDialog(); // Метод для закрытия модального окна

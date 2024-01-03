@@ -59,8 +59,33 @@ const formData =ref({
     password_confirmation: '',
 })
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
+
+// Function to handle successful form submission
+const handleSuccess = () => {
+    errorMessageServEmail.value = '';
+    errorMessageServPhone.value = '';
+    formData.value = { ...initialValues };
+    const router = useRouter();
+    router.push('/');
+}
+
+// Function to handle errors during form submission
+const handleError = (error) => {
+    const serverErrors = error.value.data.errors;
+
+    if (serverErrors.email) {
+        errorMessageServEmail.value = serverErrors.email[0];
+        return;
+    }
+    if (serverErrors.phone) {
+        errorMessageServPhone.value = serverErrors.phone[0];
+    }
+};
+
+// Function to submit the form data to the server
 const submitForm = async () => {
-    const { data : responseData, error } = await useFetch(
+    try {
+    const {data: responseData, error} = await useFetch(
         `${apiBaseUrl}/auth/register`,
         {
             method: 'post',
@@ -74,36 +99,23 @@ const submitForm = async () => {
         }
     );
     if (!error.value) {
-        errorMessageServEmail.value = '';
-        errorMessageServPhone.value = '';
-        formData.value = { ...initialValues };
-        const router = useRouter();
-        router.push('/');
-        return;
+        handleSuccess();
+    } else {
+        handleError(error);
     }
-    if (error) {
-        const serverErrors = error.value.data.errors;
-
-        if (serverErrors.email) {
-            errorMessageServEmail.value = serverErrors.email[0];
-            return;
-        }
-        if (serverErrors.phone) {
-            errorMessageServPhone.value = serverErrors.phone[0];
-            return;
-        }
-        errorMessage.value = 'Validation error. Please check your input.';
+} catch (error) {
+        console.error('An unexpected error occurred:', error);
     }
 }
 
 // Show text input on corresponding checkbox click
-const showPass = ref(false);
-const showPass2 = ref(false);
+const showPassInput = ref(false);
+const showPassConfirmInput = ref(false);
 const PassVisibility = () => {
-    showPass.value = !showPass.value;
+    showPassInput.value = !showPassInput.value;
 };
 const Pass2Visibility = () => {
-    showPass2.value = !showPass2.value;
+    showPassConfirmInput.value = !showPassConfirmInput.value;
 };
 
 const onPhoneMaskChange = (event) => {
@@ -167,9 +179,9 @@ const onPhoneMaskChange = (event) => {
                     v-model="formData.password"
                     class="sing-up__all-inputs"
                     name="password" id="pass1"
-                    :type="showPass ? 'text' : 'password'"/>
+                    :type="showPassInput ? 'text' : 'password'"/>
                 <input
-                    v-model="showPass"
+                    v-model="showPassInput"
                     class="checkbox" type="checkbox"
                     @click="PassVisibility"
                 >
@@ -181,9 +193,9 @@ const onPhoneMaskChange = (event) => {
                     v-model="formData.password_confirmation"
                     class="sing-up_all-inputs pass2"
                     name="password_confirmation" id="pass2"
-                    :type="showPass2 ? 'text' : 'password'"/>
+                    :type="showPassConfirmInput ? 'text' : 'password'"/>
                 <input
-                    v-model="showPass2"
+                    v-model="showPassConfirmInput"
                     class="checkbox" type="checkbox"
                     @click="Pass2Visibility">
             </div>
