@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     "~/assets/style/scss/main.scss",
     "~/assets/style/scss/product.scss",
     "~/assets/style/scss/sciencefiction.scss",
-    "~/assets/style/scss/signup.ver.scss"
+    "~/assets/style/scss/signup.scss"
   ],
   runtimeConfig: {
     public: {
