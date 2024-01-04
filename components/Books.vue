@@ -2,11 +2,16 @@
 const props = defineProps(['modelValue', 'current-page']);
 const emit = defineEmits(['page-clicked']);
 const currentPage = ref(props.currentPage);
-
+const router = useRouter();
 const onClickHandler = (newPage) => {
     currentPage.value = newPage;
     emit('page-clicked', newPage);
 };
+
+const navigateToProductPage = (bookTitle) => {
+    router.push({ path: `/product/${encodeURIComponent(bookTitle)}` });
+};
+
 </script>
 
 
@@ -15,7 +20,9 @@ const onClickHandler = (newPage) => {
         <div
             class="books__sci-fi-div"
             v-for="book in modelValue.data.books.data"
-            :key="book.id">
+            :key="book.id"
+            @click="navigateToProductPage(book.title)"
+        >
             <div v-if="book.discount"
                  class="discount">
                 <span>{{ book.discount }}%</span>

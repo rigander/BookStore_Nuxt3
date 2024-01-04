@@ -17,7 +17,7 @@ const nav = [
         id: "account-nav__my-account"
     },
     {
-        link: "/product",
+        link: "/",
         name: "Order Status",
         id: "account-nav__order-status"
     },

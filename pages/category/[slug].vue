@@ -1,6 +1,7 @@
 <script setup>
 const currentPage = ref(1);
 const route = useRoute();
+const router = useRouter();
 const booksStore = ref({});
 const curCategory = route.params.slug;
 const apiBaseUrl = useRuntimeConfig().public.apiBase;

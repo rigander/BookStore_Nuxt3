@@ -2,7 +2,7 @@
 const option = reactive({
     genre: 'best-sellers',
 });
-
+const emit = defineEmits(['book-clicked-to-index']);
 const currentPage = ref(1);
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const booksStore = ref({});
@@ -29,6 +29,7 @@ const changeGenre = (event, genre) => {
     currentPage.value = 1;
     fetchData();
 };
+
 </script>
 
 
