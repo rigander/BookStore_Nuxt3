@@ -1,8 +1,6 @@
 <script setup >
 const route = useRoute();
 const book = JSON.parse(route.query.book);
-console.log(book);
-
 
 </script>
 
@@ -11,14 +9,15 @@ console.log(book);
     <main id="main-content-wrapper__product">
         <section class="product-info">
             <ProductBreadcrumps/>
-            <ProductInfoArticle/>
+            <ProductInfoArticle
+                :book="book"
+            />
         </section>
         <div class="container-lower">
             <div class="wrapper-prod-rew-info">
                 <section class="prod-info-bottom">
                     <div class="prod-info-bottom__nav">
                         <ul>
-                            <div class="white-line"></div>
                             <li id="p-info"><a href="">Product Information</a></li>
                             <li id="other-det"><a href="">Other details</a></li>
                         </ul>

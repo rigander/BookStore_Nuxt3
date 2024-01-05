@@ -1,18 +1,29 @@
 <script setup>
+const props = defineProps(['book']);
 
+//price calculations
+const discount = props.book.discount;
+const price = props.book.price;
+const originalPrice = Math.floor(price / (1 - discount/100));
 </script>
 
 
 <template>
     <article class="product-info__article">
-        <div class="article-img"><img src="/img/product-page/obi-van.png" alt="img" class="jedi"></div>
+        <div class="article-img"><img
+            :src="props.book.image"
+            alt="img"
+            class="jedi"
+        ></div>
         <div class="wrapper-content-cart">
             <article class="content-cart">
                 <div class="in-stock-wrapper">
-                    <div id="in-stock-text">IN STOCK</div>
+                    <div
+                        v-if="props.book.in_stock"
+                        id="in-stock-text">IN STOCK</div>
                     <div class="in-stock"></div>
                 </div>
-                <h2 class="sw-title">Star Wars Episode I</h2>
+                <h2 class="sw-title">{{ props.book.title }}</h2>
                 <p id="star-wars1">
                     The Star Wars Episode I: The Phantom Menace novelization was written by Terry Brooks and
                     published on April 21,
@@ -59,8 +70,10 @@
                 <div class="price-add-to-cart">
                     <div class="our-price">
                         <p>Our price:</p>
-                        <div> $150</div>
-                        <span>Was $200 Save 20%</span>
+                        <div> ${{ props.book.price }}</div>
+                        <span
+                            v-if="props.book.discount"
+                        >Was ${{ originalPrice }} Save {{ props.book.discount }}%</span>
                     </div>
                     <button id="add-to-cart">Add to cart</button>
                 </div>
@@ -79,3 +92,10 @@
         </div>
     </article>
 </template>
+
+<style lang="scss">
+.jedi{
+    height: 100%;
+    width: auto;
+}
+</style>
