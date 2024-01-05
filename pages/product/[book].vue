@@ -1,5 +1,7 @@
 <script setup >
-
+const route = useRoute();
+const book = JSON.parse(route.query.book);
+console.log(book);
 
 
 </script>

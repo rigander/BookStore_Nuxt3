@@ -8,8 +8,11 @@ const onClickHandler = (newPage) => {
     emit('page-clicked', newPage);
 };
 
-const navigateToProductPage = (bookTitle) => {
-    router.push({ path: `/product/${encodeURIComponent(bookTitle)}` });
+const navigateToProductPage = (book) => {
+    router.push({
+        path: `/product/${encodeURIComponent(book.id)}`,
+        query: { book: JSON.stringify(book) },
+    });
 };
 
 </script>
@@ -21,7 +24,7 @@ const navigateToProductPage = (bookTitle) => {
             class="books__sci-fi-div"
             v-for="book in modelValue.data.books.data"
             :key="book.id"
-            @click="navigateToProductPage(book.title)"
+            @click="navigateToProductPage(book)"
         >
             <div v-if="book.discount"
                  class="discount">
