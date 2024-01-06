@@ -4,8 +4,18 @@ import { resolve } from "path";
 // @ts-ignore
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', 'nuxt-swiper', '@vee-validate/nuxt'],
-  pinia: { autoImports:["defineStore"] },
+  modules: [
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
+    'nuxt-swiper',
+    '@vee-validate/nuxt'
+  ],
+  pinia: {
+    autoImports:["defineStore"]
+  },
+  piniaPersistedstate: {
+    storage: 'localStorage'
+  },
   swiper: {
     prefix: 'Swiper',
     styleLang: 'css'

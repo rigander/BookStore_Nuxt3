@@ -1,7 +1,14 @@
 <script setup>
+const { state, setSelectedCategory } = useCategoryStore();
+
+watch(() => state.selectedCategory, (newVal, oldVal) => {
+    console.log('Selected Category Changed:', newVal);
+});
+
 const { category } = inject('categories');
 const setSelectedSlug = (slug) => {
     const selectedSlug = slug;
+    setSelectedCategory(slug);
 };
 
 </script>
@@ -14,7 +21,9 @@ const setSelectedSlug = (slug) => {
                 <li
                     v-for="item in category.data.header"
                     :key="item.id"
-                    class="bottom-nav">
+                    class="bottom-nav"
+                    :class="{ active: state.selectedCategory === item.slug }"
+                >
                     <NuxtLink
                         :to="`/category/${item.slug}`"
                         @click="setSelectedSlug(item.slug)"
@@ -30,5 +39,12 @@ const setSelectedSlug = (slug) => {
     :hover{
         user-select: none;
     }
+}
+.active {
+    background-color: #92d774;
+    height: 25px;
+    border-radius: 2px;
+    padding-top: 1px;
+    padding-left: 20px;
 }
 </style>
