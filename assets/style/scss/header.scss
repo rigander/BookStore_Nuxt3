@@ -286,7 +286,7 @@ header{
     padding: 0 5px 0 0;
     li{
       a{
-        padding: 0 29px 0 8px;
+        padding: 0 10px 0 10px;
         text-decoration: none;
         color: #5b5b5b;
         &:hover{
@@ -333,4 +333,11 @@ header{
 .main-nav__science{
   display: inline-block;
   width: 60px;
+}
+.bottom-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 36px;
+  border-radius: 2px;
 }

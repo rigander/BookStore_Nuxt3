@@ -28,7 +28,10 @@ const setSelectedSlug = (slug) => {
                         :to="`/category/${item.slug}`"
                         @click="setSelectedSlug(item.slug)"
                         :id="item.id"
-                    >{{ item.name }}</NuxtLink></li>
+                    >
+                        {{ item.name }}
+                    </NuxtLink>
+                </li>
             </ul>
         </nav>
     </div>
@@ -42,9 +45,5 @@ const setSelectedSlug = (slug) => {
 }
 .active {
     background-color: #92d774;
-    height: 25px;
-    border-radius: 2px;
-    padding-top: 1px;
-    padding-left: 20px;
 }
 </style>
