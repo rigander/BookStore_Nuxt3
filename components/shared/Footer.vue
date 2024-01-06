@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps(['cat-footer']);
+const route = useRoute();
 const cardsImages = [
     {image: "Master-Card"},
     {image: "American-Express"},
@@ -16,6 +17,9 @@ const { data } = await useFetch(
     }
 );
 booksStore.value = data.value;
+
+
+//:class="{ active: route.params.slug === item.slug }"
 </script>
 
 <template>
@@ -27,12 +31,15 @@ booksStore.value = data.value;
                 id="biography-true-stories">
                 <h3>{{ category.name }}</h3>
                 <ul>
-                    <li v-for="subCategory in category.subCategories"
+                    <li
+                        v-for="subCategory in category.subCategories"
+                        :class="{ active_footer: route.params.slug === subCategory.slug }"
                     ><NuxtLink
                         :to="`/category/${subCategory.slug}`"
                     >
                         {{ subCategory.name }}
-                    </NuxtLink></li>
+                    </NuxtLink>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -61,6 +68,9 @@ footer{
     :hover{
         user-select: none;
     }
+}
+.active_footer{
+    background-color: black;
 }
 </style>
 

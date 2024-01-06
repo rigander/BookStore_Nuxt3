@@ -3,7 +3,6 @@ const { state, setSelectedCategory } = useCategoryStore();
 const route = useRoute();
 
 const { category } = inject('categories');
-
 </script>
 
 
@@ -37,8 +36,5 @@ const { category } = inject('categories');
     :hover{
         user-select: none;
     }
-}
-.active {
-    background-color: #92d774;
 }
 </style>
