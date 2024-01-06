@@ -18,8 +18,6 @@ const { data } = await useFetch(
 );
 booksStore.value = data.value;
 
-
-//:class="{ active: route.params.slug === item.slug }"
 </script>
 
 <template>
