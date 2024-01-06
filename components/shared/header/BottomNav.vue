@@ -1,13 +1,10 @@
 <script setup>
 const { state, setSelectedCategory } = useCategoryStore();
-
-watch(() => state.selectedCategory, (newVal, oldVal) => {
-    console.log('Selected Category Changed:', newVal);
-});
+const router = useRouter();
 
 const { category } = inject('categories');
 const setSelectedSlug = (slug) => {
-    const selectedSlug = slug;
+    router.push(`/category/${slug}`);
     setSelectedCategory(slug);
 };
 
@@ -21,8 +18,10 @@ const setSelectedSlug = (slug) => {
                 <li
                     v-for="item in category.data.header"
                     :key="item.id"
-                    class="bottom-nav"
-                    :class="{ active: state.selectedCategory === item.slug }"
+                    :class="{
+                        'bottom-nav': true,
+                         active: state.selectedCategory === item.slug
+                    }"
                 >
                     <NuxtLink
                         :to="`/category/${item.slug}`"
