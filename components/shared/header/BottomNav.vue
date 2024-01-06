@@ -4,7 +4,6 @@ const router = useRouter();
 
 const { category } = inject('categories');
 const setSelectedSlug = (slug) => {
-    router.push(`/category/${slug}`);
     setSelectedCategory(slug);
 };
 
