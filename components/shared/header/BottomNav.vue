@@ -1,11 +1,8 @@
 <script setup>
 const { state, setSelectedCategory } = useCategoryStore();
-const router = useRouter();
+const route = useRoute();
 
 const { category } = inject('categories');
-const setSelectedSlug = (slug) => {
-    setSelectedCategory(slug);
-};
 
 </script>
 
@@ -19,12 +16,12 @@ const setSelectedSlug = (slug) => {
                     :key="item.id"
                     :class="{
                         'bottom-nav': true,
-                         active: state.selectedCategory === item.slug
+                         active: route.params.slug === item.slug
                     }"
                 >
                     <NuxtLink
                         :to="`/category/${item.slug}`"
-                        @click="setSelectedSlug(item.slug)"
+                        @click="setSelectedCategory(item.slug)"
                         :id="item.id"
                     >
                         {{ item.name }}
