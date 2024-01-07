@@ -18,7 +18,7 @@ const { category } = inject('categories');
                     }"
                 >
                     <NuxtLink
-                        :to="`/category/${item.slug}/${item.id}`"
+                        :to="`/category/${item.slug}`"
                         @click="setSelectedCategory(item.slug)"
                         :id="item.id"
                     >

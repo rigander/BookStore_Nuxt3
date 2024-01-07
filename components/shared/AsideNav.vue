@@ -17,7 +17,7 @@ const route = useRoute();
                     v-for="item in cat.subCategories"
                     :class="{ active: route.params.slug === item.slug }"
                 ><NuxtLink
-                    :to="`/category/${item.slug}/${item.id}`"
+                    :to="`/category/${item.slug}`"
                 >
                     <div>
                         {{ item.name }}
