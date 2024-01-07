@@ -6,18 +6,6 @@ const cardsImages = [
     {image: "American-Express"},
     {image: "Visa"},
 ]
-
-const apiBaseUrl = useRuntimeConfig().public.apiBase;
-const currentPage = ref(1);
-const booksStore = ref({});
-const { data } = await useFetch(
-    `${apiBaseUrl}/category/gay/books`,
-    {   cache: false,
-        query: {page: currentPage.value}
-    }
-);
-booksStore.value = data.value;
-
 </script>
 
 <template>
