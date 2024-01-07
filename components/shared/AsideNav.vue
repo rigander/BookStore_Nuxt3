@@ -1,7 +1,7 @@
 <script setup>
 const { category } = inject('categories');
-
 const route = useRoute();
+
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const route = useRoute();
                     v-for="item in cat.subCategories"
                     :class="{ active: route.params.slug === item.slug }"
                 ><NuxtLink
-                    :to="`/category/${item.slug}`"
+                    :to="`/category/${item.slug}/${item.id}`"
                 >
                     <div>
                         {{ item.name }}

@@ -1,9 +1,9 @@
 <script setup>
 const currentPage = ref(1);
 const route = useRoute();
-const router = useRouter();
 const booksStore = ref({});
 const curCategory = route.params.slug;
+const id = route.params.id;
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const fetchData = async () => {

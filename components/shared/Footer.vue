@@ -30,12 +30,12 @@ booksStore.value = data.value;
                 <h3>{{ category.name }}</h3>
                 <ul>
                     <li
-                        v-for="subCategory in category.subCategories"
-                        :class="{ active_footer: route.params.slug === subCategory.slug }"
+                        v-for="item in category.subCategories"
+                        :class="{ active_footer: route.params.slug === item.slug }"
                     ><NuxtLink
-                        :to="`/category/${subCategory.slug}`"
+                        :to="`/category/${item.slug}/${item.id}`"
                     >
-                        {{ subCategory.name }}
+                        {{ item.name }}
                     </NuxtLink>
                     </li>
                 </ul>

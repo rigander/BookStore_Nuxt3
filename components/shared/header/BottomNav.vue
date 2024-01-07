@@ -1,7 +1,6 @@
 <script setup>
 const { state, setSelectedCategory } = useCategoryStore();
 const route = useRoute();
-
 const { category } = inject('categories');
 </script>
 
@@ -19,7 +18,7 @@ const { category } = inject('categories');
                     }"
                 >
                     <NuxtLink
-                        :to="`/category/${item.slug}`"
+                        :to="`/category/${item.slug}/${item.id}`"
                         @click="setSelectedCategory(item.slug)"
                         :id="item.id"
                     >
