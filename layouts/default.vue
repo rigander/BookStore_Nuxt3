@@ -31,5 +31,8 @@ const handleSignInShowEvent = (data) => {
         <SharedFooter
             :cat-footer="catFooter"
         />
+        <Teleport to="body">
+            <SharedBasket/>
+        </Teleport>
     </div>
 </template>
