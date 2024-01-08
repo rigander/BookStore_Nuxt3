@@ -1,9 +1,16 @@
 <script setup>
+const props = defineProps({
+    show: {
+        type: Boolean,
+        default: false
+    }
+});
 
 </script>
 
 <template>
-    <div>
+    <div v-if="show"
+    >
         <div class="cart-image_box">
             <img src="/img/cart_icon2.svg" alt="cart">
         </div>
