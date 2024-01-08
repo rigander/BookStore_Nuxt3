@@ -1,4 +1,9 @@
 <script setup>
+const {basket, setBasketVisibility} = useCartStore();
+const addToCart = () => {
+    setBasketVisibility(true);
+};
+
 const props = defineProps(['book']);
 
 //price calculations
@@ -75,7 +80,10 @@ const originalPrice = Math.floor(price / (1 - discount/100));
                             v-if="props.book.discount"
                         >Was ${{ originalPrice }} Save {{ props.book.discount }}%</span>
                     </div>
-                    <button id="add-to-cart">Add to cart</button>
+                    <button
+                        @click="addToCart"
+                        id="add-to-cart"
+                    >Add to cart</button>
                 </div>
                 <div class="secure-shopping-info">
                     <div id="secure-shopping"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="14" fill="grey" class="bi bi-lock-fill" viewBox="2 0 14 16">

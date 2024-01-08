@@ -1,15 +1,9 @@
 <script setup>
-const props = defineProps({
-    show: {
-        type: Boolean,
-        default: false
-    }
-});
-
+const {basket, setBasketVisibility} = useCartStore();
 </script>
 
 <template>
-    <div v-if="show"
+    <div v-if="basket.showBasket"
     >
         <div class="cart-image_box">
             <img src="/img/cart_icon2.svg" alt="cart">
