@@ -6,41 +6,43 @@
     <div>
         <section class="modal-basket">
             <div class="added-item">
-                <button class="delete-item">
+                <div class="delete-item">
                     <div class="close"></div>
-                </button>
+                </div>
                 <img class="book-mini-img" src="" width="33" height="33" alt="img">
                 <div class="added-item-title">book title</div>
                 <div class="plus-minus_item">
                     <div class="add-item">&#43;</div>
+                    <span class="added-item-amount">4</span>
                     <div class="reduce-item">&#8722;</div>
                 </div>
-                <div class="amount-and-cost">
-                    <span class="added-item-amount">4 pcs</span>
-                    <span>x</span>
-                    <span class="added-item-cost">50 usd</span>
-                </div>
-                <span class="item-total-cost">200 usd</span>
+                <span class="item-total-cost">200 $</span>
             </div>
-            <span class="total-cost">Total: 200 usd</span>
-            <a class="button basket-button" href="#">Checkout</a>
+            <hr class="line">
+            <div class="total_checkout">
+                <span class="total-price">200$</span>
+                <button class="button basket-button" href="#">
+                    Checkout</button>
+            </div>
         </section>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .modal-basket{
-    height: 400px;
+    min-height: 300px;
     width: 500px;
     padding: 10px;
+    background-color: rgba(191, 191, 193, 0.20);
 }
 .added-item{
     display: flex;
 }
 .plus-minus_item{
-    width: 54px;
+    width: 90px;
     display: flex;
     justify-content: space-between;
+    margin: 0 60px;
 }
 .add-item,
 .reduce-item {
@@ -55,6 +57,20 @@
     border-radius: 2px;
     color: #306284;
 }
+.added-item-amount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid cadetblue;
+    border-radius: 2px;
+    height: 20px;
+    width: 40px;
+    font-size: 18px;
+}
+.item-total-cost{
+    color: #aa294b;
+    margin-left: 50px;
+}
 .add-item:hover,
 .reduce-item:hover{
     cursor: pointer;
@@ -62,35 +78,38 @@
     opacity: 0.8;
     color: white;
 }
-
+.book-mini-img,
+.delete-item,
+.amount-and-cost,
+.added-item-title{
+    margin-right: 10px;
+}
 // cross - delete sign
 .delete-item{
-    height: 21px;
-    width: 21px;
-    background-color: #f57375;
-    border: none;
-    border-radius: 4px;
     position: relative;
+    height: 20px;
+    width: 20px;
+    border: solid 1px #457caa;
+    border-radius: 2px;
 }
 .close {
-    right: 32px;
-    top: 32px;
-    width: 30px;
-    height: 30px;
-    opacity: 0.3;
+    width: 18px;
+    height: 18px;
+    opacity: 0.5;
 }
 .close:hover {
     opacity: 1;
+    cursor: pointer;
+    background-color: #3a7ca8;
 }
 .close:before, .close:after {
+    right: 8px;
     position: absolute;
-    top: 0.6px;
-    left: 8.5px;
     content: ' ';
-    height: 20px;
-    width: 4px;
+    height: 18px;
+    width: 2px;
     background-color: #333;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 .close:before {
     transform: rotate(45deg);
@@ -98,5 +117,34 @@
 .close:after {
     transform: rotate(-45deg);
 }
-
+.basket-button{
+    height: 40px;
+    width: 150px;
+    background-color: #52a452;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.basket-button:hover{
+    color: black;
+}
+.line{
+    height: 2px;
+}
+.total_checkout{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 50px;
+    height: 60px;
+    width: 250px;
+    background-color: #92d774;
+    border: none;
+    border-radius: 2px;
+}
+.total-price{
+    font-size: 23px;
+}
 </style>
