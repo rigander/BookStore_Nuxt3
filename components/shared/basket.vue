@@ -4,21 +4,26 @@
 
 <template>
     <div>
+        <div class="cart-image_box">
+            <img src="/img/cart_icon2.svg" alt="cart">
+        </div>
         <section class="modal-basket">
-            <div class="added-item">
-                <div class="delete-item">
-                    <div class="close"></div>
+            <div class="added-item_cont">
+                <div class="added-item">
+                    <img class="book-mini-img" src="/img/book_icon.svg" width="33" height="33" alt="img">
+                    <div class="added-item-title">book title</div>
+                    <div class="plus-minus_item">
+                        <div class="reduce-item">&#8722;</div>
+                        <span class="added-item-amount">4</span>
+                        <div class="add-item">&#43;</div>
+                    </div>
+                    <span class="item-total-cost">200 $</span>
+                    <div class="delete-item">
+                        <div class="close"></div>
+                    </div>
                 </div>
-                <img class="book-mini-img" src="" width="33" height="33" alt="img">
-                <div class="added-item-title">book title</div>
-                <div class="plus-minus_item">
-                    <div class="add-item">&#43;</div>
-                    <span class="added-item-amount">4</span>
-                    <div class="reduce-item">&#8722;</div>
-                </div>
-                <span class="item-total-cost">200 $</span>
+                <div class="line"></div>
             </div>
-            <hr class="line">
             <div class="total_checkout">
                 <span class="total-price">200$</span>
                 <button class="button basket-button" href="#">
@@ -29,6 +34,17 @@
 </template>
 
 <style lang="scss" scoped>
+.cart-image_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background-color: #3f3f40;
+    width: 500px;
+    img{
+        height: 20px;
+    }
+}
 .modal-basket{
     min-height: 300px;
     width: 500px;
@@ -37,12 +53,13 @@
 }
 .added-item{
     display: flex;
+    align-items: center;
 }
 .plus-minus_item{
     width: 90px;
     display: flex;
     justify-content: space-between;
-    margin: 0 60px;
+    margin: 0 10px;
 }
 .add-item,
 .reduce-item {
@@ -70,6 +87,7 @@
 .item-total-cost{
     color: #aa294b;
     margin-left: 50px;
+    margin-right: 10px;
 }
 .add-item:hover,
 .reduce-item:hover{
@@ -77,6 +95,15 @@
     background-color: rgba(58, 124, 168, 0.91);
     opacity: 0.8;
     color: white;
+}
+.line{
+    height: 1px;
+    background-color: #a2a2a2;
+    border-radius: 1px;
+    margin: 2px 0;
+}
+.added-item-title{
+    width: 190px;
 }
 .book-mini-img,
 .delete-item,
@@ -134,6 +161,7 @@
     height: 2px;
 }
 .total_checkout{
+    margin-left: 220px;
     display: flex;
     align-items: center;
     justify-content: space-around;
