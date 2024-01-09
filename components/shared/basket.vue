@@ -1,20 +1,11 @@
 <script setup>
-const {basket, removeFromCart} = useCartStore();
+const {
+    basket, removeFromCart, increaseQuantity,
+    reduceQuantity, hideCart } = useCartStore();
 
 const totalCost = computed(() => {
     return basket.books.reduce((total, book) => total + book.price * book.quantity, 0);
 });
-const reduceQuantity = (book) => {
-    if (book.quantity > 1) {
-        book.quantity -= 1;
-    }
-};
-const increaseQuantity = (book) => {
-    book.quantity += 1;
-};
-const hideCart = () => {
-    basket.showBasket = false;
-}
 </script>
 
 <template>

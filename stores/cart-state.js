@@ -13,6 +13,18 @@ export const useCartStore = defineStore(
         const addToCart = (book) => {
             basket.books.push(book);
         };
+        const increaseQuantity = (book) => {
+            book.quantity += 1;
+        };
+        const reduceQuantity = (book) => {
+            if (book.quantity > 1) {
+                book.quantity -= 1;
+            }
+        };
+
+        const hideCart = () => {
+            basket.showBasket = false;
+        }
 
         const removeFromCart = (book) => {
             const index = basket.books.findIndex((b) => b === book);
@@ -25,7 +37,14 @@ export const useCartStore = defineStore(
             basket,
             setBasketVisibility,
             addToCart,
-            removeFromCart
+            increaseQuantity,
+            reduceQuantity,
+            removeFromCart,
+            hideCart
         }
-    }
+    },
+{
+    persist: true,
+        storage: persistedState.localStorage,
+}
 )
