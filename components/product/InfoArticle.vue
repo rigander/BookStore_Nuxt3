@@ -1,10 +1,21 @@
 <script setup>
-const {basket, setBasketVisibility} = useCartStore();
-const addToCart = () => {
+const {basket, setBasketVisibility, addToCart} = useCartStore();
+const props = defineProps(['book']);
+const addToCartHandler = () => {
+    const existingBook = basket.books.find((item) =>
+        item.title === props.book.title);
+    if (existingBook) {
+        existingBook.quantity += 1;
+    } else {
+        addToCart({
+            image: props.book.image,
+            title: props.book.title,
+            price: props.book.price,
+            quantity: 1
+        });
+    }
     setBasketVisibility(true);
 };
-
-const props = defineProps(['book']);
 
 //price calculations
 const discount = props.book.discount;
@@ -81,7 +92,7 @@ const originalPrice = Math.floor(price / (1 - discount/100));
                         >Was ${{ originalPrice }} Save {{ props.book.discount }}%</span>
                     </div>
                     <button
-                        @click="addToCart"
+                        @click="addToCartHandler"
                         id="add-to-cart"
                     >Add to cart</button>
                 </div>

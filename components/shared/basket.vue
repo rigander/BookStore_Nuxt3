@@ -1,5 +1,17 @@
 <script setup>
-const {basket, setBasketVisibility} = useCartStore();
+const {basket, removeFromCart} = useCartStore();
+
+const totalCost = computed(() => {
+    return basket.books.reduce((total, book) => total + book.price * book.quantity, 0);
+});
+const reduceQuantity = (book) => {
+    if (book.quantity > 1) {
+        book.quantity -= 1;
+    }
+};
+const increaseQuantity = (book) => {
+    book.quantity += 1;
+};
 </script>
 
 <template>
@@ -10,23 +22,34 @@ const {basket, setBasketVisibility} = useCartStore();
         </div>
         <section class="modal-basket">
             <div class="added-item_cont">
-                <div class="added-item">
-                    <img class="book-mini-img" src="/img/book_icon.svg" width="33" height="33" alt="img">
-                    <div class="added-item-title">book title</div>
+                <div
+                    v-for="book in basket.books"
+                    :key="book.title"
+                    class="added-item">
+                    <img class="book-mini-img" :src="book.image" width="33" height="33" alt="img">
+                    <div class="added-item-title">{{ book.title }}</div>
                     <div class="plus-minus_item">
-                        <div class="reduce-item">&#8722;</div>
-                        <span class="added-item-amount">4</span>
-                        <div class="add-item">&#43;</div>
+                        <button
+                            @click="reduceQuantity(book)"
+                            :disabled="book.quantity === 1"
+                            class="reduce-item"
+                        >&#8722;</button>
+                        <span class="added-item-amount">{{ book.quantity }}</span>
+                        <button
+                            @click="increaseQuantity(book)"
+                            class="add-item">&#43;</button>
                     </div>
-                    <span class="item-total-cost">200 $</span>
-                    <div class="delete-item">
+                    <span class="item-total-cost">{{ book.price * book.quantity }} $</span>
+                    <div
+                        @click="removeFromCart(book)"
+                        class="delete-item">
                         <div class="close"></div>
                     </div>
                 </div>
                 <div class="line"></div>
             </div>
             <div class="total_checkout">
-                <span class="total-price">200$</span>
+                <span class="total-price">{{totalCost}}$</span>
                 <button class="button basket-button" href="#">
                     Checkout</button>
             </div>
