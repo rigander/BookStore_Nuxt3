@@ -12,52 +12,78 @@ const reduceQuantity = (book) => {
 const increaseQuantity = (book) => {
     book.quantity += 1;
 };
+const hideCart = () => {
+    basket.showBasket = false;
+}
 </script>
 
 <template>
-    <div v-if="basket.showBasket"
+    <div
+        v-if="basket.showBasket"
+        class="basket-dialog"
+        @click="hideCart"
     >
-        <div class="cart-image_box">
-            <img src="/img/cart_icon2.svg" alt="cart">
-        </div>
-        <section class="modal-basket">
-            <div class="added-item_cont">
-                <div
-                    v-for="book in basket.books"
-                    :key="book.title"
-                    class="added-item">
-                    <img class="book-mini-img" :src="book.image" width="33" height="33" alt="img">
-                    <div class="added-item-title">{{ book.title }}</div>
-                    <div class="plus-minus_item">
-                        <button
-                            @click="reduceQuantity(book)"
-                            :disabled="book.quantity === 1"
-                            class="reduce-item"
-                        >&#8722;</button>
-                        <span class="added-item-amount">{{ book.quantity }}</span>
-                        <button
-                            @click="increaseQuantity(book)"
-                            class="add-item">&#43;</button>
-                    </div>
-                    <span class="item-total-cost">{{ (book.price * book.quantity).toFixed(2) }} $</span>
+        <div
+            @click.stop
+            class="basket-dialog_content">
+            <div class="cart-image_box">
+                <img src="/img/cart_icon2.svg" alt="cart">
+            </div>
+            <section class="modal-basket">
+                <div class="added-item_cont">
                     <div
-                        @click="removeFromCart(book)"
-                        class="delete-item">
-                        <div class="close"></div>
+                        v-for="book in basket.books"
+                        :key="book.title"
+                        class="added-item">
+                        <img class="book-mini-img" :src="book.image" width="33" height="33" alt="img">
+                        <div class="added-item-title">{{ book.title }}</div>
+                        <div class="plus-minus_item">
+                            <button
+                                @click="reduceQuantity(book)"
+                                :disabled="book.quantity === 1"
+                                class="reduce-item"
+                            >&#8722;
+                            </button>
+                            <span class="added-item-amount">{{ book.quantity }}</span>
+                            <button
+                                @click="increaseQuantity(book)"
+                                class="add-item">&#43;
+                            </button>
+                        </div>
+                        <span class="item-total-cost">{{ (book.price * book.quantity).toFixed(2) }} $</span>
+                        <div
+                            @click="removeFromCart(book)"
+                            class="delete-item">
+                            <div class="close"></div>
+                        </div>
                     </div>
+                    <div class="line"></div>
                 </div>
-                <div class="line"></div>
-            </div>
-            <div class="total_checkout">
-                <span class="total-price">{{(totalCost).toFixed(2)}}$</span>
-                <button class="button basket-button" href="#">
-                    Checkout</button>
-            </div>
-        </section>
+                <div class="total_checkout">
+                    <span class="total-price">{{ (totalCost).toFixed(2) }}$</span>
+                    <button class="button basket-button" href="#">
+                        Checkout
+                    </button>
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.basket-dialog{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0,0,0, 0.5);
+}
+.basket-dialog_content{
+    width: 500px;
+    margin: 20% auto;
+}
 .cart-image_box{
     display: flex;
     justify-content: center;
@@ -73,7 +99,7 @@ const increaseQuantity = (book) => {
     min-height: 300px;
     width: 500px;
     padding: 10px;
-    background-color: rgba(191, 191, 193, 0.20);
+    background-color: whitesmoke;
 }
 .added-item{
     display: flex;
@@ -109,8 +135,9 @@ const increaseQuantity = (book) => {
     font-size: 18px;
 }
 .item-total-cost{
+    width: 60px;
     color: #aa294b;
-    margin-left: 50px;
+    margin-left: 10px;
     margin-right: 10px;
 }
 .add-item:hover,
