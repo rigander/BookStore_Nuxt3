@@ -39,7 +39,7 @@ const increaseQuantity = (book) => {
                             @click="increaseQuantity(book)"
                             class="add-item">&#43;</button>
                     </div>
-                    <span class="item-total-cost">{{ book.price * book.quantity }} $</span>
+                    <span class="item-total-cost">{{ (book.price * book.quantity).toFixed(2) }} $</span>
                     <div
                         @click="removeFromCart(book)"
                         class="delete-item">
@@ -49,7 +49,7 @@ const increaseQuantity = (book) => {
                 <div class="line"></div>
             </div>
             <div class="total_checkout">
-                <span class="total-price">{{totalCost}}$</span>
+                <span class="total-price">{{(totalCost).toFixed(2)}}$</span>
                 <button class="button basket-button" href="#">
                     Checkout</button>
             </div>
