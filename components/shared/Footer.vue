@@ -43,7 +43,7 @@ const cardsImages = [
         </div>
         <div id="bottom">
             <NuxtLink href="">
-                Conditions of Use Privacy Notice© 2022-2023,
+                Conditions of Use Privacy Notice© 2023-2024,
                 Books online, Inc. or its affiliates
             </NuxtLink></div>
     </footer>
