@@ -2,11 +2,16 @@
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
 
+const showDeliveryAddress = ref(false);
+const handleShowDeliveryAddress = () => {
+    showDeliveryAddress.value = !showDeliveryAddress.value;
+}
 </script>
 
 <template>
     <div class="checkout-form_wrapper">
         <VeeForm class="checkout-form">
+            <h1 class="order-placement-header">Order placement</h1>
             <div class="your_contact-details">
                 <label class="label__name_family-name" for="name-surname">Your contact details</label>
                 <VeeField class="name_family-name" name="name-surname" type="text"/>
@@ -14,30 +19,48 @@ import { configure } from "vee-validate";
             </div>
             <div class="checkout-orders">
                 <h1>Order</h1>
-                <div class="checkout-order_merch">
-                    <img src="" alt="img">
-                    <span class="checkout-book_name">Book title</span>
-                    <span class="checkout_quantity">1 pc.</span>
-                    <span class="cost"></span>
-                    <NuxtLink>Edit products</NuxtLink>
+                <div class="checkout-order_merch__container">
+                    <div class="checkout-order_merch"><img src="" alt="img">
+                        <span class="checkout-book_name">Book title</span>
+                        <span class="checkout_quantity">1 pc.</span>
+                        <span class="cost"></span>160$</div>
+                    <NuxtLink id="edit-products">Edit products</NuxtLink>
                 </div>
             </div>
-            <h1>Delivery</h1>
-            <div class="delivery_to-post">
-                <label for="self-pickup">Pick up in person from post office</label>
-                <input type="checkbox" name="self-pickup">
-                <select name="address" id="delivery-address">
-                    <option value="">Office no1. Wall street</option>
-                    <option value="">Office no2. Sunny street</option>
-                </select>
-            </div>
-            <div class="checkout_courier-delivery"><label for="courier-delivery">Courier delivery</label>
-                <input type="checkbox" name="сourier-delivery">
-                <input type="text" class="city">
-                <input type="text" class="home-address-street">
-                <input type="text" class="building">
-                <input type="text" class="floor">
-                <input type="text" class="flat">
+            <div class="delivery_to-post__wrapper">
+                <h1>Delivery</h1>
+                <div class="delivery_to-post">
+                    <div class="delivery_to-post_content">
+                        <div class="self-pickup">
+                            <label for="self-pickup">Pick up in person from post office</label>
+                            <input type="checkbox" name="self-pickup">
+                        </div>
+                        <select name="address" id="delivery-address">
+                            <option value="">Office no1. Wall street</option>
+                            <option value="">Office no2. Sunny street</option>
+                        </select>
+                    </div>
+                    <div class="checkout_courier-delivery">
+                        <div class="courier-delivery_checkbox">
+                            <label
+                                :class="{'active-label': showDeliveryAddress}"
+                                for="courier-delivery">Courier delivery</label>
+                            <input
+                                @click="handleShowDeliveryAddress"
+                                type="checkbox"
+                                name="сourier-delivery">
+                        </div>
+                        <div
+                            v-if="showDeliveryAddress"
+                            class="address-for-delivery">
+                            <input type="text" class="city">
+                            <input type="text" class="home-address-street">
+                            <input type="text" class="building">
+                            <input type="text" class="floor">
+                            <input type="text" class="flat">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="payment">
                 <h1>Payment</h1>
@@ -73,16 +96,190 @@ import { configure } from "vee-validate";
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
+    color: #3f3f40;
 }
 .checkout-form{
     width: 800px;
+    button{
+        border: 1px solid black;
+        padding: 25px;
+        border-radius: 1px;
+        background-color: #52a452;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    button:hover{
+        color: white;
+    }
+    button:active{
+        background-color: white;
+        color: #52a452;
+    }
+    p{
+        margin: 30px 0;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+}
+.order-placement-header{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 20px auto;
 }
 .your_contact-details{
     display: flex;
     flex-direction: column;
-    width: 600px;
+    input{
+        margin-left: 0;
+    }
+}
+.name_family-name{
+    height: 25px;
+}
+.home-city{
+    height: 40px;
 }
 .label__name_family-name{
-
+    color: #3f3f40;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
 }
+
+.checkout-orders{
+    h1{
+        font-size: 22px;
+        font-weight: 600;
+        padding-bottom: 15px;
+    }
+}
+.checkout-order_merch__container{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 800px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 10px;
+}
+.checkout-order_merch{
+    display: flex;
+    height: 70px;
+    img{
+        width: 80px;
+    }
+    .checkout-book_name{
+        width: 500px;
+    }
+    .cost{
+        width: 100px;
+    }
+}
+#edit-products{
+    display: flex;
+    justify-content: flex-end;
+}
+.delivery_to-post__wrapper{
+    display: flex;
+    flex-direction: column;
+    h1{
+        margin: 30px 0 15px 0;
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+.delivery_to-post{
+    display: flex;
+    flex-direction: column;
+}
+.self-pickup{
+    label{
+        color: #3f3f40;
+    }
+
+    padding-bottom: 5px;
+    padding-left: 4px;
+}
+#delivery-address{
+    width: 450px;
+}
+.delivery_to-post_content{
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 14px 6px;
+}
+.checkout_courier-delivery{
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 14px 6px;
+    display: flex;
+    flex-direction: column;
+}
+.courier-delivery_checkbox{
+    label{
+        margin-left: 5px;
+    }
+    input{
+        margin: 4px 0 15px 15px;
+    }
+}
+.active-label{
+    color: #2e3032;
+}
+.address-for-delivery{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    input{
+        margin-left: 3px;
+    }
+}
+.payment{
+    display: flex;
+    flex-direction: column;
+    h1{
+        font-size: 20px;
+        padding-top: 30px;
+        font-weight: bold;
+    }
+    select{
+        height: 30px;
+    }
+    label{
+        color: black;
+        margin-bottom: 5px;
+    }
+    input{
+        margin-left: 0;
+        height: 30px;
+    }
+    textarea{
+        height: 100px;
+        resize: none;
+        padding: 5px;
+    }
+}
+#pay-method{
+    margin: 20px 0;
+    color: #6d6d6d;
+}
+.checkout_total-cost{
+    margin: 20px 0;
+    padding: 30px;
+    border: 1px solid black;
+    h1{
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    .total_cost{
+        font-size: 23px;
+        font-weight: bold;
+        color: green;
+        margin-left: 2px;
+    }
+}
+
 </style>
