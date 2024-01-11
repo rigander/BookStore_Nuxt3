@@ -29,7 +29,12 @@ export const useCartStore = defineStore(
                 basket.books.splice(index, 1);
             }
         };
-        const countBooksInCart = ref(basket.books.reduce((total, book) => total + book.quantity, 0));
+
+        const countBooks =  basket.books.reduce((total, book) => total + book.quantity, 0);
+
+        const countBooksInCart = computed(() => {
+            return basket.books.reduce((total, book) => total + book.quantity, 0);
+        });
 
         return{
             basket,
@@ -37,9 +42,10 @@ export const useCartStore = defineStore(
             addToCart,
             increaseQuantity,
             reduceQuantity,
-            countBooksInCart,
             removeFromCart,
-            hideCart
+            hideCart,
+            countBooks,
+            countBooksInCart
         }
     },
 {

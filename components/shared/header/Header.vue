@@ -1,11 +1,8 @@
 <script setup>
-const {basket, setBasketVisibility, countBooksInCart} = useCartStore();
+const {basket, setBasketVisibility, countBooks, countBooksInCart} = useCartStore();
+console.log(countBooks);
 console.log(countBooksInCart);
 
-
-watch(() => basket.books, (newBooks) => {
-    countBooksInCart.value = newBooks.reduce((total, book) => total + book.quantity, 0);
-});
 const show = ref(false);
 const emit = defineEmits(['sign-in-visible']);
 const handleSignInEvent = (data) => {
@@ -42,7 +39,14 @@ const handleSignInEvent = (data) => {
                             <div class="cart">
                                 <img src="/img/header/green%20cart.png" alt="cart">
                             </div>
-                            <div class="items">Your cart<div>({{ countBooksInCart }} items)</div></div>
+                            <client-only>
+                                <div class="items">
+                                    Your cart
+                                    <div>
+                                        ({{ countBooksInCart }} items)
+                                    </div>
+                                </div>
+                            </client-only>
                         </div>
                         <div class="checkout">
                             <div class="total-cost">$125.0</div>
