@@ -15,8 +15,8 @@ const handleShowDeliveryAddress = () => {
             <h1 class="order-placement-header">Order placement</h1>
             <div class="your_contact-details">
                 <label class="label__name_family-name" for="name-surname">Your contact details</label>
-                <VeeField class="name_family-name" name="name-surname" type="text"/>
-                <VeeField class="home-city" name="home-city" type="text"/>
+                <VeeField class="name_family-name" name="name-surname" type="text" placeholder="Name Surname"/>
+                <VeeField class="home-city" name="home-city" type="text" placeholder="Home City"/>
             </div>
             <div class="checkout-orders">
                 <h1>Order</h1>
@@ -139,6 +139,10 @@ const handleShowDeliveryAddress = () => {
     flex-direction: column;
     input{
         margin-left: 0;
+        padding: 0 10px;
+    }
+    input::placeholder{
+        padding-left: 10px;
     }
 }
 .name_family-name{
@@ -162,6 +166,9 @@ const handleShowDeliveryAddress = () => {
         padding-bottom: 15px;
     }
 }
+.checkout_quantity{
+    width: 50px;
+}
 .checkout-order_merch__container{
     display: flex;
     flex-direction: column;
@@ -184,7 +191,7 @@ const handleShowDeliveryAddress = () => {
         width: 100px;
         font-weight: bold;
         color: green;
-        padding-left: 120px;
+        padding-left: 100px;
     }
 }
 #edit-products{

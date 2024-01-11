@@ -1,5 +1,7 @@
 <script setup>
 const cart = useCartStore();
+const {setBasketVisibility} = cart;
+const {totalCost, countBooksInCart} = storeToRefs(cart);
 const show = ref(false);
 const emit = defineEmits(['sign-in-visible']);
 const handleSignInEvent = (data) => {
@@ -31,7 +33,7 @@ const handleSignInEvent = (data) => {
                     </div>
                     <div class="header-content__your-cart">
                         <div
-                            @click="cart.setBasketVisibility(true)"
+                            @click="setBasketVisibility(true)"
                             class="my-cart">
                             <div class="cart">
                                 <img src="/img/header/green%20cart.png" alt="cart">
@@ -40,7 +42,7 @@ const handleSignInEvent = (data) => {
                                 <div class="items">
                                     Your cart
                                     <div>
-                                        ({{ cart.countBooksInCart }} items)
+                                        ({{ countBooksInCart }} items)
                                     </div>
                                 </div>
                             </client-only>
@@ -48,7 +50,7 @@ const handleSignInEvent = (data) => {
                         <client-only>
                             <div class="checkout">
                                 <div class="total-cost">
-                                    ${{ cart.totalCost }}
+                                    ${{ totalCost }}
                                 </div>
                                 <NuxtLink
                                     to="/checkout"
