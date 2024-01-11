@@ -1,9 +1,10 @@
 <script setup>
-const {basket, setBasketVisibility, addToCart} = useCartStore();
-const countBooksInCart = ref(basket.books.reduce((total, book) => total + book.quantity, 0));
-console.log(countBooksInCart.value);
-watch(() => basket.books.length, (newLength) => {
-    countBooksInCart.value = newLength;
+const {basket, setBasketVisibility, countBooksInCart} = useCartStore();
+console.log(countBooksInCart);
+
+
+watch(() => basket.books, (newBooks) => {
+    countBooksInCart.value = newBooks.reduce((total, book) => total + book.quantity, 0);
 });
 const show = ref(false);
 const emit = defineEmits(['sign-in-visible']);

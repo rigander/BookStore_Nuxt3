@@ -5,7 +5,6 @@ export const useCartStore = defineStore(
         const basket = reactive({
             showBasket: false,
             books: []
-
         })
         const setBasketVisibility = (slug) => {
             basket.showBasket = slug;
@@ -21,17 +20,16 @@ export const useCartStore = defineStore(
                 book.quantity -= 1;
             }
         };
-
         const hideCart = () => {
             basket.showBasket = false;
         }
-
         const removeFromCart = (book) => {
             const index = basket.books.findIndex((b) => b === book);
             if (index !== -1) {
                 basket.books.splice(index, 1);
             }
         };
+        const countBooksInCart = ref(basket.books.reduce((total, book) => total + book.quantity, 0));
 
         return{
             basket,
@@ -39,6 +37,7 @@ export const useCartStore = defineStore(
             addToCart,
             increaseQuantity,
             reduceQuantity,
+            countBooksInCart,
             removeFromCart,
             hideCart
         }
