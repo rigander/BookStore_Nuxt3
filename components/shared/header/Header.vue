@@ -1,8 +1,5 @@
 <script setup>
-const {basket, setBasketVisibility, countBooks, countBooksInCart} = useCartStore();
-console.log(countBooks);
-console.log(countBooksInCart);
-
+const {basket, setBasketVisibility} = useCartStore();
 const show = ref(false);
 const emit = defineEmits(['sign-in-visible']);
 const handleSignInEvent = (data) => {
@@ -43,7 +40,7 @@ const handleSignInEvent = (data) => {
                                 <div class="items">
                                     Your cart
                                     <div>
-                                        ({{ countBooksInCart }} items)
+                                        ({{ basket.books.reduce((total, book) => total + book.quantity, 0) }} items)
                                     </div>
                                 </div>
                             </client-only>
