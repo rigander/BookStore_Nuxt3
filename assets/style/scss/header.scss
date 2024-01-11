@@ -152,6 +152,9 @@ header{
     display: flex;
     justify-content: space-between;
   }
+  .my-cart:hover{
+    cursor: pointer;
+  }
   .items{
     display: flex;
     width: 157px;
@@ -162,6 +165,9 @@ header{
       padding-top: 9px;
       padding-left: 6px;
     }
+  }
+  .items:hover{
+    color: #3a7ca8;
   }
   .checkout{
     width: 185px;

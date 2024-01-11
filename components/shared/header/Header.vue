@@ -1,4 +1,10 @@
 <script setup>
+const {basket, setBasketVisibility, addToCart} = useCartStore();
+const countBooksInCart = ref(basket.books.reduce((total, book) => total + book.quantity, 0));
+console.log(countBooksInCart.value);
+watch(() => basket.books.length, (newLength) => {
+    countBooksInCart.value = newLength;
+});
 const show = ref(false);
 const emit = defineEmits(['sign-in-visible']);
 const handleSignInEvent = (data) => {
@@ -29,9 +35,13 @@ const handleSignInEvent = (data) => {
                         </button>
                     </div>
                     <div class="header-content__your-cart">
-                        <div class="my-cart" >
-                            <div class="cart"><a href="/pages/%5Bproduct%5D.vue" class="cart-link"><img src="/img/header/green%20cart.png" alt="cart"></a></div>
-                            <div class="items">Your cart<div>(2 items)</div></div>
+                        <div
+                            @click="setBasketVisibility(true)"
+                            class="my-cart">
+                            <div class="cart">
+                                <img src="/img/header/green%20cart.png" alt="cart">
+                            </div>
+                            <div class="items">Your cart<div>({{ countBooksInCart }} items)</div></div>
                         </div>
                         <div class="checkout">
                             <div class="total-cost">$125.0</div>
