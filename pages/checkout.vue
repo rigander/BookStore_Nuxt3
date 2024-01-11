@@ -1,6 +1,7 @@
 <script setup>
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
+const cart = useCartStore();
 
 const showDeliveryAddress = ref(false);
 const handleShowDeliveryAddress = () => {
@@ -20,11 +21,18 @@ const handleShowDeliveryAddress = () => {
             <div class="checkout-orders">
                 <h1>Order</h1>
                 <div class="checkout-order_merch__container">
-                    <div class="checkout-order_merch"><img src="" alt="img">
-                        <span class="checkout-book_name">Book title</span>
-                        <span class="checkout_quantity">1 pc.</span>
-                        <span class="cost"></span>160$</div>
-                    <NuxtLink id="edit-products">Edit products</NuxtLink>
+                    <div
+                        v-for="book in cart.basket.books"
+                        class="checkout-order_merch">
+                        <img :src="book.image" alt="img">
+                        <span class="checkout-book_name">{{ book.title }}</span>
+                        <span class="checkout_quantity">{{ book.quantity }} pc.</span>
+                        <span class="cost">{{ (book.price * book.quantity).toFixed(2) }}$</span>
+                    </div>
+                    <div
+                        @click="cart.setBasketVisibility(true)"
+                        id="edit-products">Edit products
+                    </div>
                 </div>
             </div>
             <div class="delivery_to-post__wrapper">
@@ -75,7 +83,7 @@ const handleShowDeliveryAddress = () => {
             </div>
             <div class="checkout_total-cost">
                 <h1>Total</h1>
-                <div class="total_cost">1600 $</div>
+                <div class="total_cost">{{ cart.totalCost }} $</div>
             </div>
             <button>
                 I confirm the order
@@ -157,7 +165,6 @@ const handleShowDeliveryAddress = () => {
 .checkout-order_merch__container{
     display: flex;
     flex-direction: column;
-    height: 100px;
     width: 800px;
     border: 1px solid black;
     border-radius: 4px;
@@ -165,15 +172,19 @@ const handleShowDeliveryAddress = () => {
 }
 .checkout-order_merch{
     display: flex;
-    height: 70px;
+    margin-bottom: 20px;
     img{
-        width: 80px;
+        width: 7%;
     }
     .checkout-book_name{
         width: 500px;
+        padding-left: 15px;
     }
     .cost{
         width: 100px;
+        font-weight: bold;
+        color: green;
+        padding-left: 120px;
     }
 }
 #edit-products{
@@ -203,6 +214,10 @@ const handleShowDeliveryAddress = () => {
 }
 #delivery-address{
     width: 450px;
+}
+#edit-products:hover{
+    color: #52a452;
+    cursor: pointer;
 }
 .delivery_to-post_content{
     border: 1px solid black;

@@ -50,7 +50,11 @@ const handleSignInEvent = (data) => {
                                 <div class="total-cost">
                                     ${{ cart.totalCost }}
                                 </div>
-                                <button>Checkout</button>
+                                <NuxtLink
+                                    to="/checkout"
+                                    class="checkout-button">
+                                    <button>Checkout</button>
+                                </NuxtLink>
                             </div>
                         </client-only>
                     </div>
