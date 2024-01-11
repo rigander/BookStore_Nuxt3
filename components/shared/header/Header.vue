@@ -1,5 +1,5 @@
 <script setup>
-const {basket, setBasketVisibility} = useCartStore();
+const cart = useCartStore();
 const show = ref(false);
 const emit = defineEmits(['sign-in-visible']);
 const handleSignInEvent = (data) => {
@@ -31,7 +31,7 @@ const handleSignInEvent = (data) => {
                     </div>
                     <div class="header-content__your-cart">
                         <div
-                            @click="setBasketVisibility(true)"
+                            @click="cart.setBasketVisibility(true)"
                             class="my-cart">
                             <div class="cart">
                                 <img src="/img/header/green%20cart.png" alt="cart">
@@ -40,15 +40,19 @@ const handleSignInEvent = (data) => {
                                 <div class="items">
                                     Your cart
                                     <div>
-                                        ({{ basket.books.reduce((total, book) => total + book.quantity, 0) }} items)
+                                        ({{ cart.countBooksInCart }} items)
                                     </div>
                                 </div>
                             </client-only>
                         </div>
-                        <div class="checkout">
-                            <div class="total-cost">$125.0</div>
-                            <button>Checkout</button>
-                        </div>
+                        <client-only>
+                            <div class="checkout">
+                                <div class="total-cost">
+                                    ${{ cart.totalCost }}
+                                </div>
+                                <button>Checkout</button>
+                            </div>
+                        </client-only>
                     </div>
                     <div class="header-content__wish-list">
                         <div class="star-wish-list">

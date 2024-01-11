@@ -29,6 +29,10 @@ export const useCartStore = defineStore(
                 basket.books.splice(index, 1);
             }
         };
+        const countBooksInCart = computed(() => basket.books.reduce((total, book) => total + book.quantity, 0));
+
+        const totalCost = computed(() => basket.books.reduce((total, book) => total + book.price * book.quantity, 0).toFixed(2));
+
         return{
             basket,
             setBasketVisibility,
@@ -37,6 +41,8 @@ export const useCartStore = defineStore(
             reduceQuantity,
             removeFromCart,
             hideCart,
+            countBooksInCart,
+            totalCost
         }
     },
 {
