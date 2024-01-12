@@ -125,7 +125,42 @@ $ff:SegoeWP;
 .article-img{
   height: 391px;
   flex: 0 1 250px;
+  position: relative;
 
+}
+#add-to-wishlist{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  svg path {
+    fill: darkolivegreen;
+  }
+  polygon{
+    fill: green;
+  }
+}
+#add-to-wishlist:hover svg path{
+  fill: #421b1b;
+}
+#add-to-wishlist:hover polygon{
+  fill: #ff2600;
+}
+#add-to-wishlist:hover .tooltip{
+  display: block;
+}
+#add-to-wishlist:active svg path{
+  fill: blue;
+}
+.tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  display: none;
 }
 .sw-title{
   color: #595959;

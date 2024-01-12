@@ -17,8 +17,36 @@
 
 
 <style lang="scss" scoped>
+.wishlist-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .wishlist{
-  width: 800px;
-  background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    background-color: #f4f4f4;
+        h1{
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+}
+.wishlist_book{
+    width: 800px;
+    display: flex;
+    border: 1px solid black;
+    img{
+        width: 100px;
+    }
+    .wishlist_book-title{
+        width: 200px;
+    }
+    .wishlist_book-cost{
+        width: 100px;
+    }
 }
 </style>

@@ -60,7 +60,9 @@ const handleSignInEvent = (data) => {
                             </div>
                         </client-only>
                     </div>
-                    <div class="header-content__wish-list">
+                    <NuxtLink
+                        to="/wishlist"
+                        class="header-content__wish-list">
                         <div class="star-wish-list">
                             <div class="round-for-star">
                                 <div class="star"></div>
@@ -68,8 +70,7 @@ const handleSignInEvent = (data) => {
                             <div class="wish-list">Wish list</div>
                         </div>
                         <div class="twenty">20</div>
-
-                    </div>
+                    </NuxtLink>
                 </div>
             </div>
             <SharedHeaderBottomNav/>
