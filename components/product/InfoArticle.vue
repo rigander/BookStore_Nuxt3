@@ -1,5 +1,7 @@
 <script setup>
 const {basket, setBasketVisibility, addToCart} = useCartStore();
+const {wishlist, addToWishlist, removeFromWishlist} = useWishListStore();
+
 const props = defineProps(['book']);
 const addToCartHandler = () => {
     const existingBook = basket.books.find((item) =>
@@ -17,6 +19,19 @@ const addToCartHandler = () => {
     setBasketVisibility(true);
 };
 
+const addToWishlistHandler = () => {
+    const existingBook = wishlist.books.find((item) =>
+        item.title === props.book.title);
+    if (!existingBook) {
+        addToWishlist({
+            image: props.book.image,
+            title: props.book.title,
+            price: props.book.price,
+        })
+        console.log(wishlist.books);
+    }
+}
+
 //price calculations
 const discount = props.book.discount;
 const price = props.book.price;
@@ -32,7 +47,7 @@ const originalPrice = Math.floor(price / (1 - discount/100));
             class="jedi"
         >
             <button
-                @click="addToCartHandler"
+                @click="addToWishlistHandler"
                 id="add-to-wishlist"
             >
                 <div class="tooltip">Add to wishlist</div>

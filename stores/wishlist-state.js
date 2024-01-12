@@ -16,5 +16,14 @@ export const useWishListStore = defineStore(
                 wishlist.books.splice(index, 1);
             }
         };
+        return{
+            wishlist,
+            addToWishlist,
+            removeFromWishlist
+        }
+    },
+    {
+        persist: true,
+        storage: persistedState.localStorage,
     }
 )
