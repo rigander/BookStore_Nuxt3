@@ -87,6 +87,9 @@ const totalCost = computed(() => {
     height: 30px;
     background-color: #3f3f40;
     width: 500px;
+    border: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     img{
         height: 20px;
     }
@@ -96,6 +99,9 @@ const totalCost = computed(() => {
     width: 500px;
     padding: 10px;
     background-color: whitesmoke;
+    border: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 .added-item{
     display: flex;
@@ -194,7 +200,8 @@ const totalCost = computed(() => {
 .basket-button{
     height: 40px;
     width: 150px;
-    background-color: #52a452;
+    background-image: linear-gradient(to top, #79b260, #92d774);
+    font-family: SegoeWP;
     color: white;
     border: none;
     border-radius: 3px;
@@ -202,7 +209,7 @@ const totalCost = computed(() => {
     font-weight: bold;
 }
 .basket-button:hover{
-    color: black;
+    color: #636364;
 }
 .line{
     height: 2px;
@@ -215,9 +222,11 @@ const totalCost = computed(() => {
     margin-top: 50px;
     height: 60px;
     width: 250px;
-    background-color: #92d774;
+    background-color: #6fa158;
     border: none;
     border-radius: 2px;
+    font-family: SegoeWP;
+    font-weight: bold;
 }
 .total-price{
     font-size: 23px;

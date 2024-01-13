@@ -109,15 +109,20 @@ const handleShowDeliveryAddress = () => {
 .checkout-form{
     width: 800px;
     button{
-        border: 1px solid black;
-        padding: 25px;
-        border-radius: 1px;
         background-color: #52a452;
-        font-size: 20px;
         font-weight: bold;
+        margin-top: 25px;
+        height: 60px;
+        width: 250px;
+        border: none;
+        border-radius: 1px;
+        background-image: linear-gradient(to top, #79b260, #92d774);
+        color: #ffffff;
+        font-size: 24px;
+        font-family: SegoeWP;
     }
     button:hover{
-        color: white;
+        color: #3c3f41;
     }
     button:active{
         background-color: white;
