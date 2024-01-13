@@ -136,10 +136,11 @@ hr{
     align-items: center;
     color: #bfbfc1;
     margin: auto;
-    background: rgb(63, 63, 64);
+    background: rgb(43,113,45);
+    background: radial-gradient(circle, rgba(43,113,45,1) 0%, rgba(67,84,67,1) 68%, rgba(77,95,83,1) 100%);
     border-radius: 10px;
-    height: 500px;
-    width: 350px;
+    height: 600px;
+    width: 450px;
 }
 .sign-in__container{
     display: flex;
