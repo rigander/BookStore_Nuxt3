@@ -135,26 +135,17 @@ $ff:SegoeWP;
   svg path {
     fill: darkolivegreen;
   }
-  polygon{
-    fill: green;
-  }
 }
 #add-to-wishlist:hover svg path{
   fill: #421b1b;
 }
-#add-to-wishlist:hover polygon{
-  fill: #ff2600;
-}
-#add-to-wishlist:hover .tooltip{
+#add-to-wishlist:hover + #tooltip{
   display: block;
 }
-#add-to-wishlist:active svg path{
-  fill: blue;
-}
-.tooltip {
+#tooltip {
   position: absolute;
-  top: 100%;
-  left: 50%;
+  top: 87%;
+  left: 45%;
   transform: translateX(-50%);
   background-color: #333;
   color: #fff;

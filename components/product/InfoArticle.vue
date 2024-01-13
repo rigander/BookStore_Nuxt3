@@ -38,6 +38,19 @@ const toggleWishlist = () => {
     }
 }
 
+const heartColor = computed(() => {
+    return wishlist.books.some((item) => item.title === props.book.title)
+        ? "red"
+        : "green";
+});
+
+const wishlistButtonText = computed(() => {
+    const existingBook = wishlist.books.find((item) =>
+        item.title === props.book.title
+    );
+    return existingBook ? "Remove from wishlist" : "Add to wishlist";
+});
+
 //price calculations
 const discount = props.book.discount;
 const price = props.book.price;
@@ -47,20 +60,21 @@ const originalPrice = Math.floor(price / (1 - discount/100));
 
 <template>
     <article class="product-info__article">
-        <div class="article-img"><img
-            :src="props.book.image"
-            alt="img"
-            class="jedi"
-        >
-            <button
-                @click="toggleWishlist"
-                id="add-to-wishlist"
+        <client-only>
+            <div class="article-img"><img
+                :src="props.book.image"
+                alt="img"
+                class="jedi"
             >
-                <div class="tooltip">Add to wishlist</div>
-                <svg id="Layer_1" x="0px" y="0px"
-	 width="51px" height="51px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                <button
+                    @click="toggleWishlist"
+                    id="add-to-wishlist"
+                >
+                    <svg id="Layer_1" x="0px" y="0px"
+                         width="51px" height="51px" viewBox="0 0 512 512" enable-background="new 0 0 512 512"
+                         xml:space="preserve">
 <g id="heart_2_">
-	<polygon points="485.328,97.383 413.328,40.055 343.531,34.633 255.656,76.57 238.336,64.586 174.43,34.633
+	<polygon :fill="heartColor" points="485.328,97.383 413.328,40.055 343.531,34.633 255.656,76.57 238.336,64.586 174.43,34.633
 		114.516,38.008 35.961,83.945 12.656,157.164 19.32,227.727 93.875,337.57 164.453,414.773 261.648,479.352 313.578,436.742
 		439.406,325.555 501.312,181.758 	"/>
     <g>
@@ -79,8 +93,10 @@ const originalPrice = Math.floor(price / (1 - discount/100));
 	</g>
 </g>
 </svg>
-            </button>
-        </div>
+                </button>
+                <div id="tooltip">{{ wishlistButtonText }}</div>
+            </div>
+        </client-only>
         <div class="wrapper-content-cart">
             <article class="content-cart">
                 <div class="in-stock-wrapper">
