@@ -1,4 +1,5 @@
 <script setup>
+const {basket, setBasketVisibility, addToCart} = useCartStore();
 const props = defineProps(['modelValue', 'current-page']);
 const emit = defineEmits(['page-clicked']);
 const currentPage = ref(props.currentPage);
@@ -15,6 +16,21 @@ const navigateToProductPage = (book) => {
     });
 };
 
+
+const addToCartHandler = (book) => {
+    const existingBook = basket.books.find((item) =>
+        item.title === book.title);
+    if (existingBook) {
+        existingBook.quantity += 1;
+    } else {
+        addToCart({
+            image: book.image,
+            price: book.price,
+            quantity: 1,
+            title: book.title
+        });
+    }
+};
 </script>
 
 
@@ -24,15 +40,17 @@ const navigateToProductPage = (book) => {
             class="books__sci-fi-div"
             v-for="book in modelValue.data.books.data"
             :key="book.id"
-            @click="navigateToProductPage(book)"
         >
             <div v-if="book.discount"
                  class="discount">
                 <span>{{ book.discount }}%</span>
                 <span class="off">Off</span>
             </div>
-            <NuxtLink href="">
-                <img class="book-img-scifi"
+            <NuxtLink
+                    @click="navigateToProductPage(book)"
+            >
+                <img
+                     class="book-img-scifi"
                      :src="book.image"
                      alt="image"
                 >
@@ -44,7 +62,9 @@ const navigateToProductPage = (book) => {
             </NuxtLink>
             <span class="price-cart_wrapper">${{ book.price }}
                 <span class="cart-add-to_wrapper">
-                <svg id="cart_1" x="0px" y="0px" height="18px" width="18px"
+                <svg
+                        @click="addToCartHandler(book)"
+                        id="cart_1" x="0px" y="0px"
                      viewBox="0 0 128 128"  xml:space="preserve">
                     <g>
 	<ellipse class="st0" cx="57.8" cy="115.4" rx="11.6" ry="11.6"/>

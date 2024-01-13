@@ -95,11 +95,26 @@ body{
             display: flex;
             font-weight: bold;
             font-size: 22px;
+            width: 60px;
             color: #f05356;
             padding-top: 5px;
             span{
-              margin-left: 25px;
-              padding-top: 4px;
+              margin-left: 10px;
+              padding-top: 3px;
+            }
+            .st0{
+              fill: #3a7ca8;
+            }
+            #cart_1{
+              width: 20px;
+            }
+            span:hover{
+              cursor: pointer;
+              scale: 105%;
+            }
+            span:active .st0{
+              fill: green;
+              scale: 105%;
             }
           }
         }
