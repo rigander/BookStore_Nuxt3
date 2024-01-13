@@ -11,7 +11,7 @@ export const useWishListStore = defineStore(
         };
 
         const removeFromWishlist = (book) => {
-            const index = wishlist.books.findIndex((b) => b === book);
+            const index = wishlist.books.findIndex((b) => b.title === book.title);
             if (index !== -1) {
                 wishlist.books.splice(index, 1);
             }

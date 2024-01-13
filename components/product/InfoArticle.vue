@@ -28,19 +28,15 @@ const addToWishlistHandler = () => {
     }
 }
 
-const toggleWishlist = (book) => {
-    const existingBook = wishlist.books.find((b) => b.title === book.title);
-
+const toggleWishlist = () => {
+    const existingBook = wishlist.books.find((item) =>
+        item.title === props.book.title);
     if (existingBook) {
-        removeFromWishlist(book);
+        removeFromWishlist(bookData);
     } else {
-        addToWishlist({
-            image: props.book.image,
-            title: props.book.title,
-            price: props.book.price,
-        });
+        addToWishlistHandler();
     }
-};
+}
 
 //price calculations
 const discount = props.book.discount;
@@ -57,7 +53,7 @@ const originalPrice = Math.floor(price / (1 - discount/100));
             class="jedi"
         >
             <button
-                @click="addToWishlistHandler"
+                @click="toggleWishlist"
                 id="add-to-wishlist"
             >
                 <div class="tooltip">Add to wishlist</div>
