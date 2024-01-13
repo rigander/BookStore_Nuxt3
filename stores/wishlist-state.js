@@ -16,10 +16,16 @@ export const useWishListStore = defineStore(
                 wishlist.books.splice(index, 1);
             }
         };
+
+        const countBooksInWishlist = computed( () => {
+            return wishlist.books.length;
+        })
+
         return{
             wishlist,
             addToWishlist,
-            removeFromWishlist
+            removeFromWishlist,
+            countBooksInWishlist
         }
     },
     {

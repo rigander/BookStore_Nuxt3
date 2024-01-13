@@ -1,7 +1,11 @@
 <script setup>
 const cart = useCartStore();
+const wishlist = useWishListStore();
+const {countBooksInWishlist} = storeToRefs(wishlist);
+
 const {setBasketVisibility} = cart;
 const {totalCost, countBooksInCart} = storeToRefs(cart);
+
 const show = ref(false);
 const emit = defineEmits(['sign-in-visible']);
 const handleSignInEvent = (data) => {
@@ -69,7 +73,9 @@ const handleSignInEvent = (data) => {
                             </div>
                             <div class="wish-list">Wish list</div>
                         </div>
-                        <div class="twenty">20</div>
+                        <client-only>
+                            <div class="twenty">{{ countBooksInWishlist }}</div>
+                        </client-only>
                     </NuxtLink>
                 </div>
             </div>
