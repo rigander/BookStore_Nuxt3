@@ -1,6 +1,6 @@
 <script setup>
 const {basket, setBasketVisibility, addToCart} = useCartStore();
-const {wishlist, addToWishlist, removeFromWishlist} = useWishListStore();
+const {wishlist, addToWishlist, toggleWishlist} = useWishListStore();
 
 const props = defineProps(['book']);
 const addToCartHandler = () => {
@@ -28,7 +28,6 @@ const addToWishlistHandler = () => {
             title: props.book.title,
             price: props.book.price,
         })
-        console.log(wishlist.books);
     }
 }
 
@@ -47,7 +46,7 @@ const originalPrice = Math.floor(price / (1 - discount/100));
             class="jedi"
         >
             <button
-                @click="addToWishlistHandler"
+                @click="toggleWishlist"
                 id="add-to-wishlist"
             >
                 <div class="tooltip">Add to wishlist</div>

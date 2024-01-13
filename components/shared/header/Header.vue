@@ -1,7 +1,7 @@
 <script setup>
 const cart = useCartStore();
 const wishlist = useWishListStore();
-const {countBooksInWishlist} = storeToRefs(wishlist);
+const {countBooksInWishlist, toggleWishlist} = storeToRefs(wishlist);
 
 const {setBasketVisibility} = cart;
 const {totalCost, countBooksInCart} = storeToRefs(cart);
