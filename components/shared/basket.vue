@@ -52,9 +52,14 @@ const totalCost = computed(() => {
                 </div>
                 <div class="total_checkout">
                     <span class="total-price">{{ (totalCost).toFixed(2) }}$</span>
-                    <button class="button basket-button" href="#">
-                        Checkout
-                    </button>
+                    <NuxtLink
+                        to="/checkout"
+                        @click="hideCart"
+                    >
+                        <button class="button basket-button">
+                            Checkout
+                        </button>
+                    </NuxtLink>
                 </div>
             </section>
         </div>

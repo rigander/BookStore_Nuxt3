@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useWishListStore = defineStore(
     'wishlistStore', () => {
-        const wishlist = ref({
+        const wishlist = reactive({
             books: []
         })
 
@@ -17,18 +17,8 @@ export const useWishListStore = defineStore(
             }
         };
 
-        const toggleWishlist = (book) => {
-            const existingBook = wishlist.value.books.find((b) => b.title === book.title);
-
-            if (existingBook) {
-                removeFromWishlist(book);
-            } else {
-                addToWishlist(book);
-            }
-        };
-
         const countBooksInWishlist = computed( () => {
-            return wishlist.value.books.length;
+            return wishlist.books.length;
         })
 
         return{
@@ -36,8 +26,6 @@ export const useWishListStore = defineStore(
             addToWishlist,
             removeFromWishlist,
             countBooksInWishlist,
-            toggleWishlist
-
         }
     },
     {
