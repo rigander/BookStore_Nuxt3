@@ -92,11 +92,15 @@ body{
             height: 159px;
           }
           span{
-            display: block;
+            display: flex;
             font-weight: bold;
             font-size: 22px;
             color: #f05356;
             padding-top: 5px;
+            span{
+              margin-left: 25px;
+              padding-top: 4px;
+            }
           }
         }
         .art{
