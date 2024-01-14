@@ -4,10 +4,7 @@ const route = useRoute();
 </script>
 
 <template>
-    <aside class="categories">
-        <div class="categories__content">
-            <h2 id="categories">Categories</h2>
-            <button>ALL</button>
+    <List>
             <ul
                 v-for="cat in category.data.aside"
                 class="fiction">
@@ -24,6 +21,6 @@ const route = useRoute();
                 </NuxtLink>
                 </li>
             </ul>
-        </div>
-    </aside>
+    </List>
 </template>
+
