@@ -8,16 +8,6 @@ const route = useRoute();
         <div class="categories__content">
             <h2 id="categories">Categories</h2>
             <button>ALL</button>
-            <List
-                :items="category.data.aside"
-                :currentSlug="route.params.slug">
-                <template v-slot="{ item }">
-                    <NuxtLink :to="`/category/${item.slug}`">
-                        {{ item.name }}
-                    </NuxtLink>
-
-                </template>
-            </List>
             <ul
                 v-for="cat in category.data.aside"
                 class="fiction">
