@@ -15,22 +15,6 @@ const navigateToProductPage = (book) => {
         query: { book: JSON.stringify(book) },
     });
 };
-
-
-// const addToCartHandler = (book) => {
-//     const existingBook = basket.books.find((item) =>
-//         item.title === book.title);
-//     if (existingBook) {
-//         existingBook.quantity += 1;
-//     } else {
-//         addToCart({
-//             image: book.image,
-//             price: book.price,
-//             quantity: 1,
-//             title: book.title
-//         });
-//     }
-// };
 </script>
 
 
