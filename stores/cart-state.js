@@ -9,7 +9,7 @@ export const useCartStore = defineStore(
         const setBasketVisibility = (slug) => {
             basket.showBasket = slug;
         };
-        const addToCart = (book) => {
+        const addToCart = (book, bool) => {
             const existingBook = basket.books.find((item) =>
                 item.title === book.title);
             if (existingBook) {
@@ -17,7 +17,7 @@ export const useCartStore = defineStore(
             } else {
                 basket.books.push(book);
             }
-            setBasketVisibility(true);
+            setBasketVisibility(bool);
         };
         const increaseQuantity = (book) => {
             book.quantity += 1;

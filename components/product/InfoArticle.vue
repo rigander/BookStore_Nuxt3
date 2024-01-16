@@ -149,7 +149,7 @@ const originalPrice = Math.floor(price / (1 - discount/100));
                         </span>
                     </div>
                     <button
-                        @click="addToCart(book)"
+                        @click="addToCart(book, true)"
                         id="add-to-cart"
                     >Add to cart</button>
                 </div>

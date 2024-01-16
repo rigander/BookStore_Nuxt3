@@ -17,20 +17,20 @@ const navigateToProductPage = (book) => {
 };
 
 
-const addToCartHandler = (book) => {
-    const existingBook = basket.books.find((item) =>
-        item.title === book.title);
-    if (existingBook) {
-        existingBook.quantity += 1;
-    } else {
-        addToCart({
-            image: book.image,
-            price: book.price,
-            quantity: 1,
-            title: book.title
-        });
-    }
-};
+// const addToCartHandler = (book) => {
+//     const existingBook = basket.books.find((item) =>
+//         item.title === book.title);
+//     if (existingBook) {
+//         existingBook.quantity += 1;
+//     } else {
+//         addToCart({
+//             image: book.image,
+//             price: book.price,
+//             quantity: 1,
+//             title: book.title
+//         });
+//     }
+// };
 </script>
 
 
@@ -63,7 +63,11 @@ const addToCartHandler = (book) => {
             <span class="price-cart_wrapper">${{ book.price }}
                 <span class="cart-add-to_wrapper">
                 <svg
-                        @click="addToCartHandler(book)"
+                        @click="addToCart({
+                        image: book.image,
+                        price: book.price,
+                        quantity: 1,
+                        title: book.title }, false)"
                         id="cart_1" x="0px" y="0px"
                      viewBox="0 0 128 128"  xml:space="preserve">
                     <g>
