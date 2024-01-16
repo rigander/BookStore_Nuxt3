@@ -10,7 +10,14 @@ export const useCartStore = defineStore(
             basket.showBasket = slug;
         };
         const addToCart = (book) => {
-            basket.books.push(book);
+            const existingBook = basket.books.find((item) =>
+                item.title === book.title);
+            if (existingBook) {
+                existingBook.quantity += 1;
+            } else {
+                basket.books.push(book);
+            }
+            setBasketVisibility(true);
         };
         const increaseQuantity = (book) => {
             book.quantity += 1;

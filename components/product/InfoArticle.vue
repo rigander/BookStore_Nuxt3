@@ -3,22 +3,12 @@ const {basket, setBasketVisibility, addToCart} = useCartStore();
 const {wishlist, addToWishlist, removeFromWishlist} = useWishListStore();
 
 const props = defineProps(['book']);
-const bookData = {
+const book = {
     image: props.book.image,
     title: props.book.title,
     price: props.book.price,
     quantity: 1
 }
-const addToCartHandler = () => {
-    const existingBook = basket.books.find((item) =>
-        item.title === props.book.title);
-    if (existingBook) {
-        existingBook.quantity += 1;
-    } else {
-        addToCart(bookData);
-    }
-    setBasketVisibility(true);
-};
 
 const addToWishlistHandler = () => {
     const existingBook = wishlist.books.find((item) =>
@@ -159,7 +149,7 @@ const originalPrice = Math.floor(price / (1 - discount/100));
                         </span>
                     </div>
                     <button
-                        @click="addToCartHandler"
+                        @click="addToCart(book)"
                         id="add-to-cart"
                     >Add to cart</button>
                 </div>
