@@ -1,39 +1,13 @@
 <script setup>
-const {show} = useModalStore();
+const {show, hideModal} = useModalStore();
 
-const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
-const signup = '/signupform';
-
-const signin = async () => {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const {data: {access_token}} = await useFetch(
-        `${apiBaseUrl}/auth/login`,
-        {
-            method: 'post',
-            body: {
-                username,
-                password
-            }
-        });
-
-    const { data: userData, error } = await useFetch(
-        'http://api.book-store.loc/api/user',
-        {
-            method: 'get',
-            headers: {
-                Authorization: `Bearer ${access_token}`
-            }
-        }
-    );
-}
 </script>
 
 
 <template>
     <div
-        @click.stop="hideDialog"
+        @click.stop="hideModal"
         class="dialog"
         v-if="show">
         <div

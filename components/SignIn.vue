@@ -1,18 +1,6 @@
 <script setup>
-const {show} = useModalStore();
+const {show, hideModal, closeModalAndNavigate} = useModalStore();
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
-
-const emit = defineEmits(['update:show'])
-const hideDialog = () => {
-    emit('update:show', false)
-}
-const signup = '/signupform';
-
-const closeModalAndNavigate = (path) => {
-    hideDialog();
-    const router = useRouter();
-    router.push(path);
-}
 
 const signin = async () => {
     const username = document.getElementById('username').value;
@@ -72,7 +60,7 @@ const signin = async () => {
                 </div>
                 <NuxtLink
                     class="create-account"
-                    @click="closeModalAndNavigate(signup)"
+                    @click="closeModalAndNavigate('/signupform')"
                 >
                     Create Account
                 </NuxtLink>

@@ -2,10 +2,21 @@ import { defineStore } from "pinia";
 
 export const useModalStore = defineStore(
     'modalStore', () => {
-        const show = ref(true);
+        const show = ref(false);
+
+        const hideModal = () => {
+            show.value = false;
+        }
+        const closeModalAndNavigate = (path) => {
+            hideModal();
+            const router = useRouter();
+            router.push(path);
+        }
 
         return{
-            show
+            show,
+            hideModal,
+            closeModalAndNavigate
         }
     }
 )
