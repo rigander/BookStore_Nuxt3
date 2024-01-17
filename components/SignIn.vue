@@ -1,5 +1,5 @@
 <script setup>
-const {show, hideModal, closeModalAndNavigate} = useModalStore();
+const {closeModalAndNavigate} = useModalStore();
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const signin = async () => {

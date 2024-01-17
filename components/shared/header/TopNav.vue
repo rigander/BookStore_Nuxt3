@@ -1,14 +1,11 @@
 <script setup>
-const show = ref(false);
-const emit = defineEmits(['show-sign-in']);
-
+const modalStore = useModalStore();
 const nav = [
     {
         name: "Sign in",
         id: "account-nav__sign-in",
         action: () => {
-            show.value = true;
-            emit('show-sign-in', show.value);
+            modalStore.show = true;
         }
     },
     {
