@@ -38,3 +38,4 @@ export const useWishListStore = defineStore(
         storage: persistedState.localStorage,
     }
 )
+
