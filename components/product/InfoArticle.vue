@@ -1,6 +1,6 @@
 <script setup>
 const {basket, setBasketVisibility, addToCart} = useCartStore();
-const {wishlist, addToWishlist, removeFromWishlist} = useWishListStore();
+const {wishlist, toggleWishlist} = useWishListStore();
 
 const props = defineProps(['book']);
 const book = {
@@ -8,24 +8,6 @@ const book = {
     title: props.book.title,
     price: props.book.price,
     quantity: 1
-}
-
-const addToWishlistHandler = () => {
-    const existingBook = wishlist.books.find((item) =>
-        item.title === props.book.title);
-    if (!existingBook) {
-        addToWishlist(bookData);
-    }
-}
-
-const toggleWishlist = () => {
-    const existingBook = wishlist.books.find((item) =>
-        item.title === props.book.title);
-    if (existingBook) {
-        removeFromWishlist(bookData);
-    } else {
-        addToWishlistHandler();
-    }
 }
 
 const heartColor = computed(() => {
@@ -57,7 +39,7 @@ const originalPrice = Math.floor(price / (1 - discount/100));
                 class="jedi"
             >
                 <button
-                    @click="toggleWishlist"
+                    @click="toggleWishlist(book)"
                     id="add-to-wishlist"
                 >
                     <svg id="Layer_1" x="0px" y="0px"
