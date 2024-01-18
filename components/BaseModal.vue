@@ -1,5 +1,5 @@
 <script setup>
-const {show, hideModal} = useModalStore();
+const modalStore = useModalStore();
 
 
 </script>
@@ -7,9 +7,9 @@ const {show, hideModal} = useModalStore();
 
 <template>
     <div
-        @click.stop="hideModal"
+        @click.stop="modalStore.hideModal()"
         class="dialog"
-        v-if="show">
+        v-if="modalStore.show">
         <div
             @click.stop
             class="dialog__content">
