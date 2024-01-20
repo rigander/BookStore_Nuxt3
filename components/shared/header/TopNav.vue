@@ -1,6 +1,5 @@
 <script setup>
 const modalStore = useModalStore();
-const topNavStore = useTopNavState();
 const route = useRoute();
 const isSignUpPage = route.name === 'signupform';
 const nav = [
@@ -34,6 +33,9 @@ const nav = [
         id: "account-nav__help"
     },
 ]
+const shouldRenderMenuItem = (menuItem) => {
+    return !(route.name === 'signupform' && menuItem.name === 'Sign in');
+};
 </script>
 
 
@@ -44,7 +46,7 @@ const nav = [
                 <li
                     v-for="n in nav"
                 ><NuxtLink
-                    v-if="topNavStore.shouldRenderMenuItem(n)"
+                    v-if="shouldRenderMenuItem(n)"
                     class="hover_it"
                     :id="n.id"
                     :to="n.link"

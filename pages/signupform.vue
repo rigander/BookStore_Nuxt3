@@ -1,8 +1,6 @@
 <script setup>
-definePageMeta({
-    middleware: 'update-header-state'
-})
 const modalStore = useModalStore();
+
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
 
