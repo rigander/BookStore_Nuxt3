@@ -35,6 +35,12 @@
                             <span>English</span>
                         </div>
                     </div>
+                    <div class="personal-data_p3">
+                        <div class="p-d_email">
+                            <h2>Email</h2>
+                            <span>rabbitcook@gmail.com</span>
+                        </div>
+                    </div>
                     <button class="p-d_edit-data">
                         Edit
                     </button>
@@ -55,7 +61,7 @@
     width: 1280px;
 }
 .personal-data_wrapper{
-    height: 280px;
+    height: 380px;
     width: 1200px;
     border: 1px solid #bdbdbe;
     border-radius: 2px;
@@ -81,7 +87,7 @@
         font-weight: bold;
         background-color: #7eb15c;
         border-radius: 2px;
-        margin-top: 30px;
+        margin-top: 90px;
         letter-spacing: 2px;
     }
 }
@@ -128,5 +134,14 @@
 .p-d_language{
     margin-right: 0;
 }
-
+.p-d_email{
+    h2{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+    span{
+        font-size: 19px;
+    }
+}
 </style>
