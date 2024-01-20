@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useModalStore = defineStore(
     'modalStore', () => {
         const show = ref(false);
+        const isSignUpPage = ref(false);
 
         const hideModal = () => {
             show.value = false;
@@ -15,6 +16,7 @@ export const useModalStore = defineStore(
 
         return{
             show,
+            isSignUpPage,
             hideModal,
             closeModalAndNavigate
         }

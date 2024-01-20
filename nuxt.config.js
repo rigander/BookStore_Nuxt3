@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     'nuxt-swiper',
-    '@vee-validate/nuxt'
+    '@vee-validate/nuxt',
+    '@vueuse/nuxt'
   ],
   pinia: {
     autoImports:["defineStore"]

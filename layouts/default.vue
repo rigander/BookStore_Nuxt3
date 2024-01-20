@@ -1,6 +1,5 @@
 <script setup>
 const {apiBaseUrl} = useApiFetch();
-
 const {data: category} = await useFetch(`${apiBaseUrl}/categories`);
 const catFooter = category.value.data.footer;
 
