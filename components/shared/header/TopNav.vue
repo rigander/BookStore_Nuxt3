@@ -1,18 +1,27 @@
 <script setup>
 const modalStore = useModalStore();
+const route = useRoute();
+const isSignUpPage = route.name === 'signupform';
 const nav = [
     {
         name: "Sign in",
         id: "account-nav__sign-in",
         action: () => {
-            modalStore.show = true;
+            if (!isSignUpPage) {
+                modalStore.show = true;
+            }
         }
     },
     {
         link: "/",
-        name: "My Account",
+        name: "Create Account",
         id: "account-nav__my-account"
     },
+    // {
+    //     link: "/",
+    //     name: "My Account",
+    //     id: "account-nav__my-account"
+    // },
     {
         link: "/",
         name: "Order Status",

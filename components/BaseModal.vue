@@ -1,7 +1,6 @@
 <script setup>
 const modalStore = useModalStore();
 
-
 </script>
 
 
