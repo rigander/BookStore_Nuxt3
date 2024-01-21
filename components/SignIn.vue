@@ -10,7 +10,10 @@ configure({
     validateOnInput: false,
     validateOnModelUpdate: false,
 });
-
+const formData =ref({
+    username: '',
+    password: ''
+})
 const signin = async () => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -41,30 +44,35 @@ const signin = async () => {
 
 <template>
     <BaseModal>
-        <form
+        <VeeForm
             class="dialog-form"
             action="">
             <h1>Sign In</h1>
             <hr>
             <div class="sign-in__container">
                 <div class="sign-in__username">
-                    <span class="invalidUserName validUserName"></span>
+                    <VeeErrorMessage name="name" class="error_fill-up"/>
                     <label for="login">Username</label>
-                    <input class="all-inputs username" minlength="2"
-                           placeholder=""
-                           id="username" name="username"
+                    <VeeField
+                           v-model="formData.username"
+                           class="all-inputs username"
+                           id="username"
+                           name="username"
                            type="text">
+                    </VeeField>
                 </div>
                 <NuxtLink>
                     <div class="forgot-pass">Forgot password?</div>
                 </NuxtLink>
                 <div class="sign-in__password">
-                    <span class="invalidPassword validPassword"></span>
+                    <VeeErrorMessage name="name" class="error_fill-up"/>
                     <label for="login">Password</label>
-                    <input class="all-inputs password" minlength="2"
-                           placeholder=""
+                    <VeeField
+                           v-model="formData.password"
+                           class="all-inputs password"
                            id="password" name="password"
                            type="text">
+                    </VeeField>
                 </div>
                 <div class="sign-in-button">
                     <input name="signInButton" class="sign-in-but" value="Sing In" type="submit">
@@ -76,7 +84,7 @@ const signin = async () => {
                     Create Account
                 </NuxtLink>
             </div>
-        </form>
+        </VeeForm>
     </BaseModal>
 </template>
 
