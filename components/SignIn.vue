@@ -1,19 +1,49 @@
 <script setup>
 const {closeModalAndNavigate} = useModalStore();
 const {apiBaseUrl} = useApiFetch();
-import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
-
 configure({
     validateOnBlur: true,
     validateOnChange: true,
     validateOnInput: false,
     validateOnModelUpdate: false,
 });
+const initialValues = { username:"", password: ""};
+
 const formData =ref({
     username: '',
     password: ''
 })
+const handleSuccess = () => {
+    formData.value = { ...initialValues };
+    const router = useRouter();
+    router.push('/');
+}
+const handleError = (error) => {
+    const serverErrors = error.value.data.errors;
+    console.log(serverErrors);
+};
+const submitSignInform = async () => {
+    try {
+        const {data: responseData, error} = await useFetch(
+            `${apiBaseUrl}/auth/login`,
+            {
+                method: 'post',
+                body: {
+                    username: formData.value.username,
+                    password: formData.value.password,
+                }
+            }
+        );
+        if (!error.value) {
+            handleSuccess();
+        } else {
+            handleError(error);
+        }
+    } catch (error) {
+        console.error('An unexpected error occurred:', error);
+    }
+}
 const signin = async () => {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
@@ -51,7 +81,7 @@ const signin = async () => {
             <hr>
             <div class="sign-in__container">
                 <div class="sign-in__username">
-                    <VeeErrorMessage name="name" class="error_fill-up"/>
+                    <VeeErrorMessage name="username" class="error_fill-up"/>
                     <label for="login">Username</label>
                     <VeeField
                            v-model="formData.username"
@@ -65,7 +95,7 @@ const signin = async () => {
                     <div class="forgot-pass">Forgot password?</div>
                 </NuxtLink>
                 <div class="sign-in__password">
-                    <VeeErrorMessage name="name" class="error_fill-up"/>
+                    <VeeErrorMessage name="password" class="error_fill-up"/>
                     <label for="login">Password</label>
                     <VeeField
                            v-model="formData.password"
