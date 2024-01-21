@@ -8,16 +8,16 @@ configure({
     validateOnInput: false,
     validateOnModelUpdate: false,
 });
-const initialValues = { username:"", password: ""};
+const initialValues = { email:"", password: ""};
 
 const formData =ref({
-    username: '',
+    email: '',
     password: ''
 })
 const handleSuccess = () => {
     formData.value = { ...initialValues };
-    const router = useRouter();
-    router.push('/');
+    closeModalAndNavigate('/');
+
 }
 const handleError = (error) => {
     const serverErrors = error.value.data.errors;
@@ -30,13 +30,14 @@ const submitSignInform = async () => {
             {
                 method: 'post',
                 body: {
-                    username: formData.value.username,
+                    email: formData.value.email,
                     password: formData.value.password,
                 }
             }
         );
         if (!error.value) {
             handleSuccess();
+            console.log(responseData.value.token.value);
         } else {
             handleError(error);
         }
@@ -56,8 +57,6 @@ const signin = async () => {
                 password
             }
         });
-    const Username = document.getElementById('username').value;
-    console.log(Username);
 
     const { data: userData, error } = await useFetch(
         'http://api.book-store.loc/api/user',
@@ -75,6 +74,9 @@ const signin = async () => {
 <template>
     <BaseModal>
         <VeeForm
+            v-slot="{ meta }"
+            :initial-values="initialValues"
+            @submit="submitSignInform"
             class="dialog-form"
             action="">
             <h1>Sign In</h1>
@@ -82,13 +84,13 @@ const signin = async () => {
             <div class="sign-in__container">
                 <div class="sign-in__username">
                     <VeeErrorMessage name="username" class="error_fill-up"/>
-                    <label for="login">Username</label>
+                    <label for="login">Email</label>
                     <VeeField
-                           v-model="formData.username"
+                           v-model="formData.email"
                            class="all-inputs username"
                            id="username"
-                           name="username"
-                           type="text">
+                           name="email"
+                           type="email">
                     </VeeField>
                 </div>
                 <NuxtLink>
@@ -105,7 +107,11 @@ const signin = async () => {
                     </VeeField>
                 </div>
                 <div class="sign-in-button">
-                    <input name="signInButton" class="sign-in-but" value="Sing In" type="submit">
+                    <input name="signInButton"
+                           class="sign-in-but"
+                           value="Sing In"
+                           type="submit"
+                    >
                 </div>
                 <NuxtLink
                     class="create-account"
