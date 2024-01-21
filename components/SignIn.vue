@@ -1,6 +1,15 @@
 <script setup>
 const {closeModalAndNavigate} = useModalStore();
-const apiBaseUrl = useRuntimeConfig().public.apiBase;
+const {apiBaseUrl} = useApiFetch();
+import {object, string, ref as yupRef, number, boolean} from "yup";
+import { configure } from "vee-validate";
+
+configure({
+    validateOnBlur: true,
+    validateOnChange: true,
+    validateOnInput: false,
+    validateOnModelUpdate: false,
+});
 
 const signin = async () => {
     const username = document.getElementById('username').value;
@@ -14,6 +23,8 @@ const signin = async () => {
                 password
             }
         });
+    const Username = document.getElementById('username').value;
+    console.log(Username);
 
     const { data: userData, error } = await useFetch(
         'http://api.book-store.loc/api/user',

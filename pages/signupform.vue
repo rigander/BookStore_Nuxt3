@@ -1,6 +1,6 @@
 <script setup>
 const modalStore = useModalStore();
-
+const {apiBaseUrl} = useApiFetch();
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
 
@@ -60,7 +60,6 @@ const formData =ref({
     password: '',
     password_confirmation: '',
 })
-const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 // Function to handle successful form submission
 const handleSuccess = () => {
