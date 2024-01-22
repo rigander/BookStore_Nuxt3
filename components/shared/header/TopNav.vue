@@ -2,38 +2,18 @@
 const modalStore = useModalStore();
 const route = useRoute();
 const isSignUpPage = route.name === 'signupform';
-// const storedUserData = JSON.parse(localStorage.getItem('userData'));
-const nav = [
-    {
-        name: "Sign in",
-        id: "account-nav__sign-in",
-        action: () => {
-            if (!isSignUpPage) {
-                modalStore.show = true;
-            }
-        },
-    },
-    {
-        link: "/signupform",
-        name: "Create Account",
-        id: "account-nav__my-account"
-    },
-    // {
-    //     link: "/",
-    //     name: "My Account",
-    //     id: "account-nav__my-account"
-    // },
-    {
-        link: "/",
-        name: "Order Status",
-        id: "account-nav__order-status"
-    },
-    {
-        link: "/",
-        name: "Help",
-        id: "account-nav__help"
-    },
-]
+const showModal = () => {
+    if (!isSignUpPage) {
+        modalStore.show = true;
+    }
+}
+const checkIfLoggedIn = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('userData')) {
+        return true;
+    }
+    return false;
+}
+
 const shouldRenderMenuItem = (menuItem) => {
     return !(route.name === 'signupform' && menuItem.name === 'Sign in');
 };
@@ -46,14 +26,42 @@ const shouldRenderMenuItem = (menuItem) => {
         <nav class="account-nav">
             <ul>
                 <li
-                    v-for="n in nav"
-                ><NuxtLink
-                    v-if="shouldRenderMenuItem(n)"
+                    v-if="shouldRenderMenuItem('Sign in')"
                     class="hover_it"
-                    :id="n.id"
-                    :to="n.link"
-                    @click="n.action"
-                >{{ n.name }}</NuxtLink></li>
+                    @click="showModal"
+                >
+                    <NuxtLink>Sign in</NuxtLink>
+                </li>
+                <li
+                    v-if="checkIfLoggedIn()"
+                    class="hover_it"
+                >
+                    <NuxtLink>Sign out</NuxtLink>
+                </li>
+                <li
+                    class="hover_it"
+                >
+                    <NuxtLink
+                        to="/signupform"
+                    >Create Account</NuxtLink>
+                </li>
+                <li
+                    class="hover_it"
+                >
+                    <NuxtLink
+                        to="/profile"
+                    >My Profile</NuxtLink>
+                </li>
+                <li
+                    class="hover_it"
+                >
+                    <NuxtLink>Order Status</NuxtLink>
+                </li>
+                <li
+                    class="hover_it"
+                >
+                    <NuxtLink>Help</NuxtLink>
+                </li>
             </ul>
         </nav>
     </div>
