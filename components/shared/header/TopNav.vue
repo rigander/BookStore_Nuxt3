@@ -52,7 +52,7 @@ const shouldRenderMenuItem = () => {
                     >
                         <NuxtLink
                             to="/profile"
-                        >My Profile
+                        >My Account
                         </NuxtLink>
                     </li>
                     <li

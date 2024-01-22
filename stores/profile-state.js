@@ -13,10 +13,13 @@ export const useProfileStore = defineStore(
 
         const setToken = (token) => {
             state.token = token;
+            console.log(token);
         }
 
         const setUserData = (userData) => {
             state.userData = userData;
+            console.log(userData);
+
         }
 
         const setErrorMessage = (errorMessage) => {
@@ -36,5 +39,9 @@ export const useProfileStore = defineStore(
             setErrorMessage,
             clearState
         };
+    },
+    {
+        persist: true,
+        storage: persistedState.localStorage,
     }
 )

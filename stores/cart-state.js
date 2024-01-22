@@ -53,7 +53,7 @@ export const useCartStore = defineStore(
         }
     },
 {
-    persist: true,
+        persist: true,
         storage: persistedState.localStorage,
 }
 )

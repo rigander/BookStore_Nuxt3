@@ -1,6 +1,7 @@
 <script setup>
 const {closeModalAndNavigate} = useModalStore();
 const {apiBaseUrl} = useApiFetch();
+const{state, setUserData, setToken, setErrorMessage} = useProfileStore();
 import { configure } from "vee-validate";
 configure({
     validateOnBlur: true,
@@ -27,8 +28,8 @@ const handleSuccess = (responseData) => {
         phone,
         email_verified_at
     };
-    localStorage.setItem('token', token);
-    localStorage.setItem('userData', JSON.stringify(userData));
+    setToken(token);
+    setUserData(userData);
 }
 
 const errorMessageServ = ref();
