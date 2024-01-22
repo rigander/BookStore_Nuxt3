@@ -14,11 +14,23 @@ const formData =ref({
     email: '',
     password: ''
 })
-const handleSuccess = () => {
+
+const handleSuccess = (responseData) => {
     formData.value = { ...initialValues };
     closeModalAndNavigate('/');
-
+    const { id, name, email, phone, email_verified_at } = responseData.value.data;
+    const token = responseData.value.token.value;
+    const userData = {
+        id,
+        name,
+        email,
+        phone,
+        email_verified_at
+    };
+    localStorage.setItem('token', token);
+    localStorage.setItem('userData', JSON.stringify(userData));
 }
+
 const handleError = (error) => {
     const serverErrors = error.value.data.errors;
     console.log(serverErrors);
@@ -36,8 +48,7 @@ const submitSignInform = async () => {
             }
         );
         if (!error.value) {
-            handleSuccess();
-            console.log(responseData.value.token.value);
+            handleSuccess(responseData);
         } else {
             handleError(error);
         }
