@@ -1,24 +1,23 @@
 import { defineStore } from "pinia";
-import {object} from "yup";
 
 export const useProfileStore = defineStore(
     'ProfileStore', () => {
 
-        const state = {
+        const state = reactive({
             userData: null,
             token: '',
             errorMessage: ''
-        }
+        });
 
 
         const setToken = (token) => {
             state.token = token;
-            console.log(token);
+            console.log("Token set:", token);
         }
 
         const setUserData = (userData) => {
             state.userData = userData;
-            console.log(userData);
+            console.log("UserData set:", userData);
 
         }
 
