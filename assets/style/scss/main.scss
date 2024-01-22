@@ -185,6 +185,10 @@ $ff:SegoeWP;
     margin-left: 0;
     margin-bottom: 5px;
     color: white;
+    padding: 3px;
+  }
+  .all-inputs:hover{
+    cursor: default;
   }
 }
 
@@ -217,7 +221,7 @@ $ff:SegoeWP;
   color: #bfbfc1;
   margin: auto;
   background: rgb(43,113,45);
-  background: radial-gradient(circle, rgba(43,113,45,1) 0%, rgba(67,84,67,1) 68%, rgba(77,95,83,1) 100%);
+  background: radial-gradient(circle, rgb(82, 82, 83) 0%, rgb(51, 53, 52) 100%);
   border-radius: 10px;
   height: 600px;
   width: 450px;
@@ -241,10 +245,12 @@ $ff:SegoeWP;
   color: #f57375;
 }
 .sign-in-but{
-  margin: 9px 0 0 0;
+  margin: 19px 0 0 0;
   width: 290px;
-  height: 23px;
-  font-size: 14px;
+  height: 30px;
+  font-size: 18px;
+  background-color: #2e5128;
+  border: none;
 }
 .sign-in-but:hover{
   cursor: pointer;
@@ -261,4 +267,12 @@ $ff:SegoeWP;
 }
 .create-account:active{
   color: #f57375;
+}
+.create-account:hover{
+  cursor: pointer;
+}
+.error_fill-up__serv{
+  color: #f48b53;
+  font-size: 18px;
+  margin-bottom: 10px;
 }

@@ -31,9 +31,13 @@ const handleSuccess = (responseData) => {
     localStorage.setItem('userData', JSON.stringify(userData));
 }
 
+const errorMessageServ = ref();
 const handleError = (error) => {
     const serverErrors = error.value.data.errors;
-    console.log(serverErrors);
+    if (serverErrors.email) {
+
+         errorMessageServ.value = serverErrors.email[0];
+    }
 };
 const submitSignInform = async () => {
     try {
@@ -69,9 +73,9 @@ const submitSignInform = async () => {
             action="">
             <h1>Sign In</h1>
             <hr>
+            <div class="error_fill-up__serv">{{ errorMessageServ }}</div>
             <div class="sign-in__container">
                 <div class="sign-in__username">
-                    <VeeErrorMessage name="username" class="error_fill-up"/>
                     <label for="login">Email</label>
                     <VeeField
                            v-model="formData.email"
@@ -85,7 +89,6 @@ const submitSignInform = async () => {
                     <div class="forgot-pass">Forgot password?</div>
                 </NuxtLink>
                 <div class="sign-in__password">
-                    <VeeErrorMessage name="password" class="error_fill-up"/>
                     <label for="login">Password</label>
                     <VeeField
                            v-model="formData.password"
