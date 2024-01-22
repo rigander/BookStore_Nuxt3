@@ -14,8 +14,8 @@ const checkIfLoggedIn = () => {
     return false;
 }
 
-const shouldRenderMenuItem = (menuItem) => {
-    return !(route.name === 'signupform' && menuItem.name === 'Sign in');
+const shouldRenderMenuItem = () => {
+     return !(route.name === 'signupform');
 };
 
 </script>
@@ -23,47 +23,51 @@ const shouldRenderMenuItem = (menuItem) => {
 
 <template>
     <div class="account-nav-container">
-        <nav class="account-nav">
-            <ul>
-                <li
-                    v-if="shouldRenderMenuItem('Sign in')"
-                    class="hover_it"
-                    @click="showModal"
-                >
-                    <NuxtLink>Sign in</NuxtLink>
-                </li>
-                <li
-                    v-if="checkIfLoggedIn()"
-                    class="hover_it"
-                >
-                    <NuxtLink>Sign out</NuxtLink>
-                </li>
-                <li
-                    class="hover_it"
-                >
-                    <NuxtLink
-                        to="/signupform"
-                    >Create Account</NuxtLink>
-                </li>
-                <li
-                    class="hover_it"
-                >
-                    <NuxtLink
-                        to="/profile"
-                    >My Profile</NuxtLink>
-                </li>
-                <li
-                    class="hover_it"
-                >
-                    <NuxtLink>Order Status</NuxtLink>
-                </li>
-                <li
-                    class="hover_it"
-                >
-                    <NuxtLink>Help</NuxtLink>
-                </li>
-            </ul>
-        </nav>
+        <client-only>
+            <nav class="account-nav">
+                <ul>
+                    <li
+                        v-if="shouldRenderMenuItem()"
+                        class="hover_it"
+                        @click="showModal"
+                    >
+                        <NuxtLink>Sign in</NuxtLink>
+                    </li>
+                    <li
+                        v-if="checkIfLoggedIn()"
+                        class="hover_it"
+                    >
+                        <NuxtLink>Sign out</NuxtLink>
+                    </li>
+                    <li
+                        class="hover_it"
+                    >
+                        <NuxtLink
+                            to="/signupform"
+                        >Create Account
+                        </NuxtLink>
+                    </li>
+                    <li
+                        class="hover_it"
+                    >
+                        <NuxtLink
+                            to="/profile"
+                        >My Profile
+                        </NuxtLink>
+                    </li>
+                    <li
+                        class="hover_it"
+                    >
+                        <NuxtLink>Order Status</NuxtLink>
+                    </li>
+                    <li
+                        class="hover_it"
+                    >
+                        <NuxtLink>Help</NuxtLink>
+                    </li>
+                </ul>
+            </nav>
+        </client-only>
     </div>
 </template>
 
