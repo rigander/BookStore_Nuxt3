@@ -2,6 +2,7 @@
 const modalStore = useModalStore();
 const route = useRoute();
 const isSignUpPage = route.name === 'signupform';
+// const storedUserData = JSON.parse(localStorage.getItem('userData'));
 const nav = [
     {
         name: "Sign in",
@@ -36,6 +37,7 @@ const nav = [
 const shouldRenderMenuItem = (menuItem) => {
     return !(route.name === 'signupform' && menuItem.name === 'Sign in');
 };
+
 </script>
 
 
