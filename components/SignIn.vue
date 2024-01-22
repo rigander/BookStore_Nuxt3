@@ -36,7 +36,6 @@ const errorMessageServ = ref();
 const handleError = (error) => {
     const serverErrors = error.value.data.errors;
     if (serverErrors.email) {
-
          errorMessageServ.value = serverErrors.email[0];
     }
 };

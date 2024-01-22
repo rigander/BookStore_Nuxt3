@@ -1,5 +1,6 @@
 <script setup>
 const modalStore = useModalStore();
+const {state} = useProfileStore();
 const route = useRoute();
 const isSignUpPage = route.name === 'signupform';
 const showModal = () => {
@@ -8,7 +9,7 @@ const showModal = () => {
     }
 }
 const checkIfLoggedIn = () => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('userData')) {
+    if (state.token) {
         return true;
     }
     return false;
