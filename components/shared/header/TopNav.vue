@@ -1,24 +1,9 @@
 <script setup>
 const modalStore = useModalStore();
-const {state} = useProfileStore();
-const route = useRoute();
-const isSignUpPage = route.name === 'signupform';
+const topNavStore = useTopNavStore();
 const showModal = () => {
-    if (!isSignUpPage) {
         modalStore.show = true;
-    }
 }
-const checkIfLoggedIn = () => {
-    if (state.token) {
-        return true;
-    }
-    return false;
-}
-
-const shouldRenderMenuItem = () => {
-     return !(route.name === 'signupform');
-};
-
 </script>
 
 
@@ -28,19 +13,20 @@ const shouldRenderMenuItem = () => {
             <nav class="account-nav">
                 <ul>
                     <li
-                        v-if="shouldRenderMenuItem()"
+                        v-if="topNavStore.showSignIn"
                         class="hover_it"
                         @click="showModal"
                     >
                         <NuxtLink>Sign in</NuxtLink>
                     </li>
                     <li
-                        v-if="checkIfLoggedIn()"
+                        v-if="topNavStore.showSignOut"
                         class="hover_it"
                     >
                         <NuxtLink>Sign out</NuxtLink>
                     </li>
                     <li
+                        v-if="topNavStore.showCreateAccount"
                         class="hover_it"
                     >
                         <NuxtLink
@@ -49,6 +35,7 @@ const shouldRenderMenuItem = () => {
                         </NuxtLink>
                     </li>
                     <li
+                        v-if="topNavStore.showMyAccount"
                         class="hover_it"
                     >
                         <NuxtLink
@@ -59,7 +46,10 @@ const shouldRenderMenuItem = () => {
                     <li
                         class="hover_it"
                     >
-                        <NuxtLink>Order Status</NuxtLink>
+                        <NuxtLink
+                            to="/checkout"
+                        >Order Status
+                        </NuxtLink>
                     </li>
                     <li
                         class="hover_it"
