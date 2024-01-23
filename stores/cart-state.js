@@ -52,8 +52,8 @@ export const useCartStore = defineStore(
             totalCost
         }
     },
-{
+    {
         persist: true,
         storage: persistedState.localStorage,
-}
+    }
 )

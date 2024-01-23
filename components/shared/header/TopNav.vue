@@ -44,6 +44,7 @@ const showModal = () => {
                         </NuxtLink>
                     </li>
                     <li
+                        v-if="topNavStore.showBooksInCart"
                         class="hover_it"
                     >
                         <NuxtLink
