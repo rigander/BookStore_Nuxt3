@@ -5,6 +5,10 @@ export const useModalStore = defineStore(
         const show = ref(false);
         const isSignUpPage = ref(false);
 
+        const showModal = () => {
+            show.value = true;
+        }
+
         const hideModal = () => {
             show.value = false;
         }
@@ -17,6 +21,7 @@ export const useModalStore = defineStore(
         return{
             show,
             isSignUpPage,
+            showModal,
             hideModal,
             closeModalAndNavigate
         }

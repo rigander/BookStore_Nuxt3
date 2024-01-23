@@ -1,3 +1,9 @@
+<script setup>
+definePageMeta({
+    middleware: 'auth'
+})
+</script>
+
 <template>
     <div class="profile_wrapper">
         <div class="profile">
@@ -50,9 +56,6 @@
     </div>
 </template>
 
-<script setup>
-
-</script>
 
 <style lang="scss" scoped>
 .profile{
