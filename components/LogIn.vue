@@ -100,7 +100,7 @@ const submitSignInform = async () => {
                 <div class="sign-in-button">
                     <input name="signInButton"
                            class="sign-in-but"
-                           value="Sing In"
+                           value="Log In"
                            type="submit"
                     >
                 </div>

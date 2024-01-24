@@ -2,6 +2,7 @@
 const {apiBaseUrl} = useApiFetch();
 const {data: category} = await useFetch(`${apiBaseUrl}/categories`);
 const catFooter = category.value.data.footer;
+const TopNavStore = useTopNavStore();
 
 const {data: booksBS} = await useFetch(`${apiBaseUrl}/category/best-sellers/books`);
 
@@ -23,7 +24,7 @@ const handleSignInShowEvent = (data) => {
 <template>
     <div class="main-wrapper">
         <LogIn v-model:show="dialogVisible"/>
-        <LogOut/>
+        <LogOut v-if="TopNavStore.showLogOutDialog"/>
         <SharedHeader
             @sign-in-visible="handleSignInShowEvent"
         />

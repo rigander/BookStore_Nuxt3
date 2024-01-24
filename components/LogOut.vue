@@ -1,14 +1,53 @@
 <script setup>
+const TopNavStore = useTopNavStore();
+const {apiBaseUrl} = useApiFetch();
+const profileStore = useProfileStore();
 
+const handleSuccess = () => {
+    profileStore.state.userData = null;
+    profileStore.state.token = '';
+    TopNavStore.toggleLogOut();
+}
+const submitLogOut = async () => {
+    try {
+         const {data, error} = await useFetch(
+            `${apiBaseUrl}/auth/logout`,
+            {
+                method: 'post',
+                headers: {
+                    'Authorization': `Bearer ${profileStore.state.token}`
+                }
+            }
+        );
+        if (data) {
+            handleSuccess();
+        }
+    }
+    catch (error) {
+        console.error('An unexpected error occurred:', error);
+    }
+}
 </script>
 
 <template>
-    <div class="log-out_wrapper">
-            <VeeForm class="log-out_form">
+    <div
+            @click.stop="TopNavStore.toggleLogOut"
+            class="log-out_wrapper">
+            <VeeForm
+                    @click.stop
+                    @submit="submitLogOut"
+                    class="log-out_form">
                 <h1>Do you wish to log out from your account ?</h1>
                 <div class="log-out_yes-no">
-                    <button>Yes</button>
-                    <button>No</button>
+                    <button
+                            type="submit"
+                    >Yes
+                    </button>
+                    <button
+                            type="button"
+                            @click.stop="TopNavStore.toggleLogOut"
+                    >No
+                    </button>
                 </div>
             </VeeForm>
     </div>

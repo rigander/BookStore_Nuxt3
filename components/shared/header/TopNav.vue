@@ -17,21 +17,21 @@ const showModal = () => {
                         class="hover_it"
                         @click="showModal"
                     >
-                        <NuxtLink>Sign in</NuxtLink>
+                        <NuxtLink>Log in</NuxtLink>
                     </li>
                     <li
                         v-if="topNavStore.showSignOut"
+                        @click="topNavStore.toggleLogOut"
                         class="hover_it"
                     >
                         <NuxtLink>Log out</NuxtLink>
                     </li>
                     <li
-                        v-if="topNavStore.showCreateAccount"
                         class="hover_it"
                     >
                         <NuxtLink
                             to="/signupform"
-                        >Create Account
+                        >Sign up
                         </NuxtLink>
                     </li>
                     <li
