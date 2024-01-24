@@ -5,7 +5,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     const token = state.token;
 
     if (to.fullPath === profileRoute) {
-        if (token) {
+        if (!token) {
             if (to.path !== '/'){
                 modalStore.showModal();
                 return navigateTo('/');

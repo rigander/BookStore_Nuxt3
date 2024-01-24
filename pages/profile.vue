@@ -2,6 +2,8 @@
 definePageMeta({
     middleware: 'auth'
 })
+const profileStore = useProfileStore();
+const userData = profileStore.state.userData;
 </script>
 
 <template>
@@ -20,11 +22,7 @@ definePageMeta({
                         </div>
                         <div class="p-d_name p-d_p1">
                             <h2>Name</h2>
-                            <span>Eric</span>
-                        </div>
-                        <div class="p-d_second-name p-d_p2">
-                            <h2>Second Name</h2>
-                            <span>Jacob</span>
+                            <span>{{ userData.name }}</span>
                         </div>
                     </div>
                     <div class="personal-data_p2">
@@ -33,18 +31,14 @@ definePageMeta({
                             <span>17 october 2987</span>
                         </div>
                         <div class="p-d_sex p-d_p1">
-                            <h2>Sex</h2>
-                            <span>Male</span>
-                        </div>
-                        <div class="p-d_language p-d_p2">
-                            <h2>Preferred language</h2>
-                            <span>English</span>
+                            <h2>Phone</h2>
+                            <span>{{ userData.phone }}</span>
                         </div>
                     </div>
                     <div class="personal-data_p3">
                         <div class="p-d_email">
                             <h2>Email</h2>
-                            <span>rabbitcook@gmail.com</span>
+                            <span>{{ userData.email }}</span>
                         </div>
                     </div>
                     <button class="p-d_edit-data">
