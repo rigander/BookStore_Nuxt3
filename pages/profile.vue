@@ -4,6 +4,7 @@ definePageMeta({
 })
 const profileStore = useProfileStore();
 const userData = profileStore.state.userData;
+
 </script>
 
 <template>
