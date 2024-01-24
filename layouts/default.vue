@@ -22,7 +22,8 @@ const handleSignInShowEvent = (data) => {
 
 <template>
     <div class="main-wrapper">
-        <SignIn v-model:show="dialogVisible"/>
+        <LogIn v-model:show="dialogVisible"/>
+        <LogOut/>
         <SharedHeader
             @sign-in-visible="handleSignInShowEvent"
         />

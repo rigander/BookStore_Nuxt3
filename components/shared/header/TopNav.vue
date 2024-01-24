@@ -23,7 +23,7 @@ const showModal = () => {
                         v-if="topNavStore.showSignOut"
                         class="hover_it"
                     >
-                        <NuxtLink>Sign out</NuxtLink>
+                        <NuxtLink>Log out</NuxtLink>
                     </li>
                     <li
                         v-if="topNavStore.showCreateAccount"
