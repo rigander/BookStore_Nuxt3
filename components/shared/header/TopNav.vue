@@ -27,6 +27,7 @@ const showModal = () => {
                         <NuxtLink>Log out</NuxtLink>
                     </li>
                     <li
+                        v-if="topNavStore.showSignIn"
                         class="hover_it"
                     >
                         <NuxtLink

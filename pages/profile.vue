@@ -3,8 +3,7 @@ definePageMeta({
     middleware: 'auth'
 })
 const profileStore = useProfileStore();
-const userData = profileStore.state.userData;
-
+const userData = profileStore.state.userData.data;
 </script>
 
 <template>

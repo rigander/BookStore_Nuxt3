@@ -7,7 +7,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
     const modalStore = useModalStore();
     const token = state.token;
     const handleSuccess = (responseData) => {
-        console.log(responseData);
         profileStore.setUserData(responseData);
     }
     const handleError = (error) => {

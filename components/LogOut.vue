@@ -2,11 +2,12 @@
 const TopNavStore = useTopNavStore();
 const {apiBaseUrl} = useApiFetch();
 const profileStore = useProfileStore();
-
+const router = useRouter();
 const handleSuccess = () => {
     profileStore.state.userData = null;
     profileStore.state.token = '';
     TopNavStore.toggleLogOut();
+    router.push('/');
 }
 const submitLogOut = async () => {
     try {
