@@ -56,7 +56,10 @@ const showModal = () => {
                     <li
                         class="hover_it"
                     >
-                        <NuxtLink>Help</NuxtLink>
+                        <NuxtLink
+                            to="/help"
+                        >Help
+                        </NuxtLink>
                     </li>
                 </ul>
             </nav>
