@@ -16,6 +16,12 @@ const navigateToProductPage = (book) => {
         query: { book: JSON.stringify(book) },
     });
 };
+
+const heartColor = (book) =>  {
+    return wishlist.books.some((item) => item.title === book.title)
+        ? "#e55053"
+        : "#3a7ca8";
+};
 </script>
 
 
@@ -74,7 +80,7 @@ const navigateToProductPage = (book) => {
                     <svg id="Layer_1" x="0px" y="0px"
                          width="20px" height="20px" viewBox="0 0 512 512" enable-background="new 0 0 512 512"
                          xml:space="preserve">
-<g id="heart_2_">
+<g id="heart_2_" :fill="heartColor(book)">
 	<polygon points="485.328,97.383 413.328,40.055 343.531,34.633 255.656,76.57 238.336,64.586 174.43,34.633
 		114.516,38.008 35.961,83.945 12.656,157.164 19.32,227.727 93.875,337.57 164.453,414.773 261.648,479.352 313.578,436.742
 		439.406,325.555 501.312,181.758 	"/>
@@ -113,4 +119,8 @@ const navigateToProductPage = (book) => {
         />
     </div>
 </template>
+
+<style lang="scss" scoped>
+
+</style>
 
