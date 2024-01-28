@@ -1,9 +1,6 @@
 <script setup>
 const modalStore = useModalStore();
 const topNavStore = useTopNavStore();
-const showModal = () => {
-        modalStore.show = true;
-}
 </script>
 
 
@@ -15,7 +12,7 @@ const showModal = () => {
                     <li
                         v-if="topNavStore.showSignIn"
                         class="hover_it"
-                        @click="showModal"
+                        @click="modalStore.showModal"
                     >
                         <NuxtLink>Log in</NuxtLink>
                     </li>

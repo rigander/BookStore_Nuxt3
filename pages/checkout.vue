@@ -1,11 +1,19 @@
 <script setup>
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
+const checkToken = useTopNavStore();
 const cart = useCartStore();
 
 const showDeliveryAddress = ref(false);
 const handleShowDeliveryAddress = () => {
     showDeliveryAddress.value = !showDeliveryAddress.value;
+}
+
+const handleCheckout = () => {
+    if(checkToken.showMyAccount){
+        console.log('token-ok');
+    }
+
 }
 </script>
 
@@ -85,8 +93,10 @@ const handleShowDeliveryAddress = () => {
                 <h1>Total</h1>
                 <div class="total_cost">{{ cart.totalCost }} $</div>
             </div>
-            <button>
-                I confirm the order
+            <button
+
+            >
+                Checkout
             </button>
             <div><p>By confirming the order, I accept the terms and
                 conditions, including the provisions on the collection
