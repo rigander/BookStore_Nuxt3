@@ -55,6 +55,7 @@ const heartColor = (book) =>  {
                 <span class="cart-add-to_wrapper">
                 <svg
                         @click="addToCart({
+                        book_id: book.id,
                         image: book.image,
                         price: book.price,
                         quantity: 1,

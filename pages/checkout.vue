@@ -1,20 +1,44 @@
 <script setup>
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
-const checkToken = useTopNavStore();
+const {apiBaseUrl} = useApiFetch()
+const profileStore = useProfileStore();
+const token = profileStore.state.token;
+const modalStore = useModalStore();
 const cart = useCartStore();
 
 const showDeliveryAddress = ref(false);
 const handleShowDeliveryAddress = () => {
     showDeliveryAddress.value = !showDeliveryAddress.value;
 }
-
-const handleCheckout = () => {
-    if(checkToken.showMyAccount){
-        console.log('token-ok');
+const submitOrder = async () => {
+    try {
+        const {data: responseData, error} = await useFetch(
+            `${apiBaseUrl}/checkout`,
+            {
+                method: 'post',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                body: {
+                    books: cart.basket.books,
+                    delivery_method: 'meest',
+                    payment_method: 'visa',
+                }
+            }
+        );
+    } catch (error) {
+        console.error('An unexpected error occurred:', error);
     }
-
 }
+const handleCheckout = () => {
+    if(token){
+         submitOrder();
+        return
+    }
+    modalStore.showModal();
+}
+
 </script>
 
 <template>
@@ -29,14 +53,16 @@ const handleCheckout = () => {
             <div class="checkout-orders">
                 <h1>Order</h1>
                 <div class="checkout-order_merch__container">
-                    <div
-                        v-for="book in cart.basket.books"
-                        class="checkout-order_merch">
-                        <img :src="book.image" alt="img">
-                        <span class="checkout-book_name">{{ book.title }}</span>
-                        <span class="checkout_quantity">{{ book.quantity }} pc.</span>
-                        <span class="cost">{{ (book.price * book.quantity).toFixed(2) }}$</span>
-                    </div>
+                    <client-only>
+                        <div
+                            v-for="book in cart.basket.books"
+                            class="checkout-order_merch">
+                            <img :src="book.image" alt="img">
+                            <span class="checkout-book_name">{{ book.title }}</span>
+                            <span class="checkout_quantity">{{ book.quantity }} pc.</span>
+                            <span class="cost">{{ (book.price * book.quantity).toFixed(2) }}$</span>
+                        </div>
+                    </client-only>
                     <div
                         @click="cart.setBasketVisibility(true)"
                         id="edit-products">Edit products
@@ -91,10 +117,12 @@ const handleCheckout = () => {
             </div>
             <div class="checkout_total-cost">
                 <h1>Total</h1>
-                <div class="total_cost">{{ cart.totalCost }} $</div>
+                <client-only>
+                    <div class="total_cost">{{ cart.totalCost }} $</div>
+                </client-only>
             </div>
             <button
-
+                @click.prevent="handleCheckout"
             >
                 Checkout
             </button>

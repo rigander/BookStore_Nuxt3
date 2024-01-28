@@ -17,6 +17,7 @@ export const useTopNavStore = defineStore(
             showMyAccount: computed(() => token.value),
             showBooksInCart: computed(() => booksInCart.value.length > 0),
             showLogOutDialog,
+            token,
             toggleLogOut
         };
     }

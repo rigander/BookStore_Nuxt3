@@ -4,6 +4,7 @@ const {wishlist, toggleWishlist} = useWishListStore();
 
 const props = defineProps(['book']);
 const book = {
+    book_id: props.book.id,
     image: props.book.image,
     title: props.book.title,
     price: props.book.price,
