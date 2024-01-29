@@ -38,8 +38,8 @@ const payment_method = [
         slug: 'cash',
     },
 ];
-const selectedPaymentMethod = ref('');
-const selectedDeliveryMethod = ref('');
+const selectedPaymentMethod = ref('visa');
+const selectedDeliveryMethod = ref('nova_poshta');
 const showDeliveryAddress = ref(false);
 const handleShowDeliveryAddress = () => {
     showDeliveryAddress.value = !showDeliveryAddress.value;
@@ -81,7 +81,7 @@ const handleCheckout = () => {
             <div class="your_contact-details">
                 <label class="label__name_family-name" for="name-surname">Your contact details</label>
                 <VeeField class="name_family-name" name="name-surname" type="text" placeholder="Name Surname"/>
-                <VeeField class="home-city" name="home-city" type="text" placeholder="Home City"/>
+                <VeeField class="email_checkout" name="email" type="email" placeholder="Email"/>
             </div>
             <div class="checkout-orders">
                 <h1>Order</h1>
@@ -236,8 +236,8 @@ const handleCheckout = () => {
 .name_family-name{
     height: 25px;
 }
-.home-city{
-    height: 40px;
+.email_checkout{
+    height: 25px;
 }
 .label__name_family-name{
     color: #3f3f40;
