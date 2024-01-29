@@ -6,7 +6,40 @@ const profileStore = useProfileStore();
 const token = profileStore.state.token;
 const modalStore = useModalStore();
 const cart = useCartStore();
-
+const delivery_method = [
+    {
+        name: 'Нова Пошта',
+        slug: 'nova_poshta',
+    },
+    {
+        name: 'Meest Express',
+        slug: 'meest',
+    },
+    {
+        name: 'Укр Пошта',
+        slug: 'ukr_poshta'
+    }
+];
+const payment_method = [
+    {
+        name: 'Visa',
+        slug: 'visa',
+    },
+    {
+        name: 'MasterCard',
+        slug: 'mastercard',
+    },
+    {
+        name: 'American Express',
+        slug: 'am_express',
+    },
+    {
+        name: 'Payment upon delivery',
+        slug: 'cash',
+    },
+];
+const selectedPaymentMethod = ref('');
+const selectedDeliveryMethod = ref('');
 const showDeliveryAddress = ref(false);
 const handleShowDeliveryAddress = () => {
     showDeliveryAddress.value = !showDeliveryAddress.value;
@@ -22,8 +55,8 @@ const submitOrder = async () => {
                 },
                 body: {
                     books: cart.basket.books,
-                    delivery_method: 'meest',
-                    payment_method: 'visa',
+                    delivery_method: selectedDeliveryMethod,
+                    payment_method: selectedPaymentMethod,
                 }
             }
         );
@@ -77,9 +110,15 @@ const handleCheckout = () => {
                             <label for="self-pickup">Pick up in person from post office</label>
                             <input type="checkbox" name="self-pickup">
                         </div>
-                        <select name="address" id="delivery-address">
-                            <option value="">Office no1. Wall street</option>
-                            <option value="">Office no2. Sunny street</option>
+                        <select
+                            v-model="selectedDeliveryMethod"
+                            name="delivery_method"
+                            id="delivery-method">
+                            <option
+                                v-for="del_meth in delivery_method"
+                                :value="del_meth.slug">
+                                {{ del_meth.name }}
+                            </option>
                         </select>
                     </div>
                     <div class="checkout_courier-delivery">
@@ -106,9 +145,15 @@ const handleCheckout = () => {
             </div>
             <div class="payment">
                 <h1>Payment</h1>
-                <select name="pay-method" id="pay-method">
-                    <option value="text">Payment upon delivery</option>
-                    <option value="text">Payment by Visa/MasterCard </option>
+                <select
+                    v-model="selectedPaymentMethod"
+                    name="pay-method"
+                    id="pay-method">
+                    <option
+                        v-for="pay_meth in payment_method"
+                        :value="pay_meth.slug">
+                        {{ pay_meth.name }}
+                    </option>
                 </select>
                 <label for="receiver">Receiver</label>
                 <input type="text" name="receiver">
@@ -262,7 +307,7 @@ const handleCheckout = () => {
     padding-bottom: 5px;
     padding-left: 4px;
 }
-#delivery-address{
+#delivery-method{
     width: 450px;
 }
 #edit-products:hover{
