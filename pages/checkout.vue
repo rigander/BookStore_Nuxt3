@@ -4,6 +4,9 @@ import { configure } from "vee-validate";
 const {apiBaseUrl} = useApiFetch()
 const profileStore = useProfileStore();
 const token = profileStore.state.token;
+const name = profileStore.state.userData ? profileStore.state.userData.name : '';
+const email = profileStore.state.userData ? profileStore.state.userData.email : '';
+const phone = profileStore.state.userData ? profileStore.state.userData.phone : '';
 const modalStore = useModalStore();
 const cart = useCartStore();
 const delivery_method = [
@@ -80,8 +83,9 @@ const handleCheckout = () => {
             <h1 class="order-placement-header">Order placement</h1>
             <div class="your_contact-details">
                 <label class="label__name_family-name" for="name-surname">Your contact details</label>
-                <VeeField class="name_family-name" name="name-surname" type="text" placeholder="Name Surname"/>
-                <VeeField class="email_checkout" name="email" type="email" placeholder="Email"/>
+                <VeeField v-model="name" class="name_family-name" name="name-surname" type="text" placeholder="Name Surname"/>
+                <VeeField v-model="email" class="email_checkout" name="email" type="email" placeholder="Email"/>
+                <VeeField v-model="phone" class="mobile-phone_checkout" name="phone" type="phone" placeholder="Phone"/>
             </div>
             <div class="checkout-orders">
                 <h1>Order</h1>
