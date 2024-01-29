@@ -64,7 +64,7 @@ const submitSignInform = async () => {
 
 
 <template>
-    <BaseModal>
+    <Modal>
         <VeeForm
             v-slot="{ meta }"
             :initial-values="initialValues"
@@ -112,7 +112,7 @@ const submitSignInform = async () => {
                 </NuxtLink>
             </div>
         </VeeForm>
-    </BaseModal>
+    </Modal>
 </template>
 
 

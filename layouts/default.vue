@@ -33,7 +33,7 @@ const handleSignInShowEvent = (data) => {
             :cat-footer="catFooter"
         />
         <Teleport to="body">
-            <SharedBasket/>
+            <ModalBasket/>
         </Teleport>
     </div>
 </template>
