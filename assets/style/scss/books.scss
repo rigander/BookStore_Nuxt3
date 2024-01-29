@@ -1,0 +1,51 @@
+.books__sci-fi{
+  position: relative;
+  height: 822px;
+}
+.books__sci-fi-div {
+  display: flex;
+  align-items: center;
+  min-height: 150px;
+  margin-top: 10px;
+  display: -webkit-box;
+}
+.books-p{
+  padding-top: 8px;
+  padding-left: 5px;
+  height: 40px;
+  width: 120px;
+  overflow: hidden;
+}
+.books-p:hover{
+  cursor: pointer;
+}
+.long-text {
+  height: auto;
+  overflow: visible;
+}
+.short-text {
+  width: 95px;
+}
+.pagination-container{
+  padding-top: 25px;
+  margin-left: 520px;
+  position: absolute;
+  bottom: 0;
+}
+.btn {
+  height: 28px;
+  width: 24px;
+  border: none;
+  cursor: pointer;
+  color: #5b5b5b;
+}
+.back-btn {
+  color: transparent;
+}
+.next-btn {
+  color: transparent;
+}
+.btn-active {
+  border: 1px solid #bdbdbe;
+  border-bottom: 4px solid #93bb6b;
+}
