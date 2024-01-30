@@ -43,7 +43,8 @@ export default defineNuxtConfig({
     "~/assets/style/scss/logout.scss",
     "~/assets/style/scss/login.scss",
     "~/assets/style/scss/help.scss",
-    "~/assets/style/scss/basket.scss"
+    "~/assets/style/scss/basket.scss",
+    "~/assets/style/scss/background.scss",
   ],
   runtimeConfig: {
     public: {
