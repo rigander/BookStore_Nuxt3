@@ -19,7 +19,9 @@ const totalCost = computed(() => {
             class="basket-dialog_content">
             <div class="cart-image_box">
                 <img src="/img/cart_icon2.svg" alt="cart">
-                <a href="#" class="close-modal"/>
+                <a
+                    @click="hideCart"
+                    href="#" class="close-modal"/>
             </div>
             <section class="modal-basket">
                 <div class="added-item_cont">
