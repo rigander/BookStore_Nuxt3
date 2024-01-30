@@ -26,11 +26,18 @@ export const useWishListStore = defineStore(
             return wishlist.books.length;
         })
 
+        const heartColor = (book) =>  {
+            return wishlist.books.some((item) => item.title === book.title)
+                ? "#e55053"
+                : "#3a7ca8";
+        };
+
         return{
             wishlist,
             toggleWishlist,
             countBooksInWishlist,
-            removeFromWishlist
+            removeFromWishlist,
+            heartColor
         }
     },
     {
