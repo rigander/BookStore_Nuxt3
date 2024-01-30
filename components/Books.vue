@@ -1,6 +1,5 @@
 <script setup>
-const {basket, setBasketVisibility, addToCart} = useCartStore();
-const {wishlist, toggleWishlist, heartColor} = useWishListStore();
+const {toggleWishlist} = useWishListStore();
 const props = defineProps(['modelValue', 'current-page']);
 const emit = defineEmits(['page-clicked']);
 const currentPage = ref(props.currentPage);
@@ -16,7 +15,6 @@ const navigateToProductPage = (book) => {
         query: { book: JSON.stringify(book) },
     });
 };
-
 
 </script>
 
