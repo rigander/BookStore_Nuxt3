@@ -22,6 +22,7 @@ const handleSignInShowEvent = (data) => {
 
 
 <template>
+    <SharedBackground/>
     <div class="main-wrapper">
         <ModalLogIn v-model:show="dialogVisible"/>
         <ModalLogOut v-if="TopNavStore.showLogOutDialog"/>

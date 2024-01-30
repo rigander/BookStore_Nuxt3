@@ -7,13 +7,48 @@
   src: url("/assets/fonts/Segoe WP Regular.ttf");
 }
 
+// background
+.background{
+  position: absolute;
+  z-index: -1;
+}
+.header-bg-top{
+  height: 28px;
+  width: 100vw;
+  background-color: #424242;
+}
+.header-bg-bottom{
+  height: 112px;
+  width: 100vw;
+  background-color: #f2f2f3;
+}
+.main-nav-bg{
+  height: 40px;
+  border-top: 1px solid #424242;
+  border-bottom: 1px solid #424242;
+}
+.main-bg{
+  height: 1223px;
+}
+.footer-bg-top{
+  width: 100vw;
+  height: 354px;
+  background-color: #434243;
+}
+.footer-bg-bottom{
+  height: 160px;
+  background-color: #303133;
+}
+
 $ff:SegoeWP;
 @import "header";
 @import "slide-bar";
 @import "aside-left";
 .main-wrapper{
-  width: 1280px;
   display: flex;
+  margin: auto;
+  font-family: $ff;
+  width: 1280px;
   flex-wrap: wrap;
 }
 .main-content-wrapper{
