@@ -39,7 +39,20 @@ const handleError = (error) => {
          errorMessageServ.value = serverErrors.email[0];
     }
 };
+const csrfRequest = async () => {
+    await useFetch(
+        `http://api.book-store.loc/sanctum/csrf-cookie`,
+        {
+            method: 'get',
+            headers: {
+                'X-XSRF-TOKEN': 'token'
+            },
+                credentials: 'include'
+        }
+    )
+}
 const submitSignInform = async () => {
+    await csrfRequest();
     try {
         const {data: responseData, error} = await useFetch(
             `${apiBaseUrl}/auth/login`,
