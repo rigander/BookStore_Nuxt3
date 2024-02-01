@@ -1,7 +1,7 @@
 <script setup>
-const {closeModalAndNavigate} = useModalStore();
-const {apiBaseUrl} = useApiFetch();
-const{state, setUserData, setToken, setErrorMessage} = useProfileStore();
+const { closeModalAndNavigate } = useModalStore();
+const { apiBaseUrl } = useApiFetch();
+const{ state, setUserData, setToken, setErrorMessage } = useProfileStore();
 import { configure } from "vee-validate";
 configure({
     validateOnBlur: true,
@@ -33,11 +33,10 @@ const handleSuccess = (responseData) => {
 }
 
 const errorMessageServ = ref();
+const csrfToken = useCookie( 'XSRF-TOKEN');
 const handleError = (error) => {
     const serverErrors = error.value.data.errors;
-    if (serverErrors.email) {
-         errorMessageServ.value = serverErrors.email[0];
-    }
+    console.log(serverErrors);
 };
 const csrfRequest = async () => {
     await useFetch(
@@ -52,24 +51,30 @@ const csrfRequest = async () => {
     )
 }
 const submitSignInform = async () => {
-    await csrfRequest();
+    console.log(csrfToken.value);
     try {
+        if (!csrfToken.value) {
+            await csrfRequest();
+        }
+        console.log(csrfToken.value);
         const {data: responseData, error} = await useFetch(
-            `${apiBaseUrl}/auth/login`,
-            {
-                method: 'post',
-                body: {
-                    email: formData.value.email,
-                    password: formData.value.password,
+                `${apiBaseUrl}/auth/login`,
+                {
+                    method: 'post',
+                    headers: {
+                        'X-XSRF-TOKEN': csrfToken,
+                    },
+                    body: {
+                        email: formData.value.email,
+                        password: formData.value.password,
+                    }
                 }
-            }
-        );
+            );
         if (!error.value) {
             handleSuccess(responseData);
-        } else {
-            handleError(error);
         }
     } catch (error) {
+        handleError(error);
         console.error('An unexpected error occurred:', error);
     }
 }
