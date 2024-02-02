@@ -1,4 +1,36 @@
 <script setup>
+// const csrfRequestUAD = async () => {
+//     const { data: crfTok } = await useAsyncData(
+//         'csrfTok', () => {
+//             $fetch('http://api.book-store.loc/sanctum/csrf-cookie', {
+//                 method: 'GET',
+//                 headers: {
+//                     'X-XSRF-TOKEN': 'token'
+//                 },
+//                 credentials: 'include'
+//             })
+//         }
+//     )
+// }
+// const submitSignIn =  async () => {
+//     await useFetch(
+//         `${apiBaseUrl}/auth/login`,
+//         {
+//             method: 'post',
+//             headers: {
+//                 'X-XSRF-TOKEN': csrfToken,
+//             },
+//             body: {
+//                 email: formData.value.email,
+//                 password: formData.value.password,
+//             },
+//             credentials: 'include'
+//         }
+//     );
+// }
+//
+//
+
 const { closeModalAndNavigate } = useModalStore();
 const { apiBaseUrl } = useApiFetch();
 const{ state, setUserData, setToken, setErrorMessage } = useProfileStore();
@@ -31,33 +63,32 @@ const handleSuccess = (responseData) => {
     setToken(token);
     setUserData(userData);
 }
-
 const errorMessageServ = ref();
+
+
 const csrfToken = useCookie( 'XSRF-TOKEN');
-const handleError = (error) => {
-    const serverErrors = error.value.data.errors;
-    console.log(serverErrors);
-};
 const csrfRequest = async () => {
-    await useFetch(
-        `http://api.book-store.loc/sanctum/csrf-cookie`,
-        {
-            method: 'get',
-            headers: {
-                'X-XSRF-TOKEN': 'token'
-            },
-                credentials: 'include'
+    if (csrfToken.value) {
+        return console.log(csrfToken.value);
+    } else {
+        try {
+            const {data, error} = await useFetch(
+                `http://api.book-store.loc/sanctum/csrf-cookie`,
+                {
+                    method: 'get',
+                    headers: {
+                        'X-XSRF-TOKEN': 'token'
+                    },
+                    credentials: 'include'
+                }
+            );
+        } catch (error) {
+            console.error("Error fetching CSRF token:", error.value);
         }
-    )
-}
+    }
+};
 const submitSignInform = async () => {
-    console.log(csrfToken.value);
-    try {
-        if (!csrfToken.value) {
-            await csrfRequest();
-        }
-        console.log(csrfToken.value);
-        const {data: responseData, error} = await useFetch(
+            const {data: responseData, error} = await useFetch(
                 `${apiBaseUrl}/auth/login`,
                 {
                     method: 'post',
@@ -67,17 +98,21 @@ const submitSignInform = async () => {
                     body: {
                         email: formData.value.email,
                         password: formData.value.password,
-                    }
+                    },
+                    credentials: 'include'
                 }
             );
         if (!error.value) {
             handleSuccess(responseData);
         }
-    } catch (error) {
-        handleError(error);
-        console.error('An unexpected error occurred:', error);
+        if (error.value) {
+            console.error(error.value.data.message);
     }
 }
+const handleSubmitSignInForm = async () => {
+    await csrfRequest();
+    await submitSignInform();
+};
 </script>
 
 
@@ -86,7 +121,7 @@ const submitSignInform = async () => {
         <VeeForm
             v-slot="{ meta }"
             :initial-values="initialValues"
-            @submit="submitSignInform"
+            @submit="handleSubmitSignInForm"
             class="dialog-form"
             action="">
             <h1>Sign In</h1>
