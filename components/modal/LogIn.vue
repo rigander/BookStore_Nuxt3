@@ -48,14 +48,13 @@ const csrfRequest = async () => {
 };
 const submitSignInform = async () => {
     const cookie = document.cookie;
-    const xsrfToken = cookie.replace("XSRF-TOKEN=", "");
-    const decodedValue = decodeURIComponent(xsrfToken);
+    const xsrfToken = decodeURIComponent(cookie.replace("XSRF-TOKEN=", ""));
     const {data: responseData, error} = await useFetch(
                 `${apiBaseUrl}/api/auth/login`,
                 {
                     method: 'post',
                     headers: {
-                        'X-XSRF-TOKEN': decodedValue,
+                        'X-XSRF-TOKEN': xsrfToken,
                     },
                     body: {
                         email: formData.value.email,
