@@ -84,7 +84,9 @@ const handleError = (error) => {
 };
 
 // Function to submit the form data to the server
+const csrfToken = useCookie( 'XSRF-TOKEN');
 const submitForm = async () => {
+    const csrfTokenValue = csrfToken.value;
     try {
     const {data: responseData, error} = await useFetch(
         `${apiBaseUrl}/auth/register`,
@@ -96,7 +98,11 @@ const submitForm = async () => {
                 phone: formData.value.phone,
                 password: formData.value.password,
                 password_confirmation: formData.value.password_confirmation,
-            }
+            },
+            headers: {
+                'X-XSRF-TOKEN': csrfTokenValue,
+            },
+            credentials: 'include'
         }
     );
     if (!error.value) {
