@@ -34,7 +34,7 @@ const handleSuccess = (responseData) => {
 const csrfToken = useCookie( 'XSRF-TOKEN').value;
 const csrfRequest = async () => {
     if (!csrfToken) {
-        const { error } = await useFetch(
+        const { data, error } = await useFetch(
             `${apiBaseUrl}/sanctum/csrf-cookie`,
             {
                 credentials: 'include',
@@ -47,12 +47,15 @@ const csrfRequest = async () => {
     }
 };
 const submitSignInform = async () => {
+    const cookie = document.cookie;
+    const xsrfToken = cookie.replace("XSRF-TOKEN=", "");
+    const decodedValue = decodeURIComponent(xsrfToken);
     const {data: responseData, error} = await useFetch(
                 `${apiBaseUrl}/api/auth/login`,
                 {
                     method: 'post',
                     headers: {
-                        'X-XSRF-TOKEN': csrfToken,
+                        'X-XSRF-TOKEN': decodedValue,
                     },
                     body: {
                         email: formData.value.email,
