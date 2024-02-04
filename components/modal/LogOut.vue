@@ -20,7 +20,8 @@ const submitLogOut = async () => {
                     'Authorization': `Bearer ${profileStore.state.token}`,
                     'X-XSRF-TOKEN': csrfToken,
                 },
-                credentials: 'include'
+                credentials: 'include',
+                cache: false
             }
         );
         if (data) {

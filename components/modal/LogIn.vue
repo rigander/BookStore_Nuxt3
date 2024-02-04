@@ -37,7 +37,8 @@ const csrfRequest = async () => {
         const { error } = await useFetch(
             `${apiBaseUrl}/sanctum/csrf-cookie`,
             {
-                credentials: 'include'
+                credentials: 'include',
+                cache: false
             }
         );
         if (error.value) {
@@ -57,7 +58,8 @@ const submitSignInform = async () => {
                         email: formData.value.email,
                         password: formData.value.password,
                     },
-                    credentials: 'include'
+                    credentials: 'include',
+                    cache: false
                 }
             );
         if (!error.value) {
@@ -70,8 +72,9 @@ const submitSignInform = async () => {
 
 
 const handleSubmitSignIn = async () => {
-    await csrfRequest();
-    await submitSignInform();
+    csrfRequest().then( async () => {
+      await submitSignInform();
+    })
 };
 </script>
 
