@@ -9,6 +9,7 @@ const handleSuccess = () => {
     TopNavStore.toggleLogOut();
     router.push('/');
 }
+const csrfToken = useCookie( 'XSRF-TOKEN').value;
 const submitLogOut = async () => {
     try {
          const {data, error} = await useFetch(
@@ -16,8 +17,10 @@ const submitLogOut = async () => {
             {
                 method: 'post',
                 headers: {
-                    'Authorization': `Bearer ${profileStore.state.token}`
-                }
+                    'Authorization': `Bearer ${profileStore.state.token}`,
+                    'X-XSRF-TOKEN': csrfToken,
+                },
+                credentials: 'include'
             }
         );
         if (data) {

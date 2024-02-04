@@ -35,7 +35,7 @@ const csrfToken = useCookie( 'XSRF-TOKEN').value;
 const csrfRequest = async () => {
     if (!csrfToken) {
         const { error } = await useFetch(
-            `http://api.book-store.loc/sanctum/csrf-cookie`,
+            `${apiBaseUrl}/sanctum/csrf-cookie`,
             {
                 credentials: 'include'
             }
@@ -46,13 +46,12 @@ const csrfRequest = async () => {
     }
 };
 const submitSignInform = async () => {
-    const csrfTokenValue = csrfToken.value;
     const {data: responseData, error} = await useFetch(
-                `${apiBaseUrl}/auth/login`,
+                `${apiBaseUrl}/api/auth/login`,
                 {
                     method: 'post',
                     headers: {
-                        'X-XSRF-TOKEN': csrfTokenValue,
+                        'X-XSRF-TOKEN': csrfToken,
                     },
                     body: {
                         email: formData.value.email,
@@ -82,7 +81,7 @@ const handleSubmitSignIn = async () => {
         <VeeForm
             v-slot="{ meta }"
             :initial-values="initialValues"
-            @submit="submitSignInform"
+            @submit="handleSubmitSignIn"
             class="dialog-form"
             action="">
             <h1>Sign In</h1>
