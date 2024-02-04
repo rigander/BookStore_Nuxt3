@@ -47,14 +47,13 @@ const csrfRequest = async () => {
     }
 };
 const submitSignInform = async () => {
-    const cookie = document.cookie;
-    const xsrfToken = decodeURIComponent(cookie.replace("XSRF-TOKEN=", ""));
+    const XSRFToken = useCookie( 'XSRF-TOKEN').value;
     const {data: responseData, error} = await useFetch(
                 `${apiBaseUrl}/api/auth/login`,
                 {
                     method: 'post',
                     headers: {
-                        'X-XSRF-TOKEN': xsrfToken,
+                        'X-XSRF-TOKEN': XSRFToken,
                     },
                     body: {
                         email: formData.value.email,
@@ -71,12 +70,9 @@ const submitSignInform = async () => {
             console.error(error.value.data.message);
     }
 }
-
-
 const handleSubmitSignIn = async () => {
-    csrfRequest().then( async () => {
+      await csrfRequest()
       await submitSignInform();
-    })
 };
 </script>
 
