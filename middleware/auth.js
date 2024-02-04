@@ -16,7 +16,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     const submitGetUser = async () => {
         try {
             const {data: responseData, error} = await useFetch(
-                `${apiBaseUrl}/user`,
+                `${apiBaseUrl}/api/user`,
                 {
                     method: 'get',
                     headers: {

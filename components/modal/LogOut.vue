@@ -12,7 +12,7 @@ const handleSuccess = () => {
 const submitLogOut = async () => {
     try {
          const {data, error} = await useFetch(
-            `${apiBaseUrl}/auth/logout`,
+            `${apiBaseUrl}/api/auth/logout`,
             {
                 method: 'post',
                 headers: {

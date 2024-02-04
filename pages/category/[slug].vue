@@ -1,14 +1,14 @@
 <script setup>
+const {apiBaseUrl} = useApiFetch();
 const currentPage = ref(1);
 const route = useRoute();
 const booksStore = ref({});
 const curCategory = route.params.slug;
 const id = route.params.id;
-const apiBaseUrl = useRuntimeConfig().public.apiBase;
 
 const fetchData = async () => {
     const { data } = await useFetch(
-        `${apiBaseUrl}/category/${curCategory}/books`,
+        `${apiBaseUrl}/api/category/${curCategory}/books`,
         { cache: false,
           query: {page: currentPage.value}
         }

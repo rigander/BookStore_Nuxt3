@@ -1,6 +1,6 @@
 <script setup>
-const { closeModalAndNavigate } = useModalStore();
 const { apiBaseUrl } = useApiFetch();
+const { closeModalAndNavigate } = useModalStore();
 const{ state, setUserData, setToken, setErrorMessage } = useProfileStore();
 import { configure } from "vee-validate";
 configure({
@@ -31,10 +31,10 @@ const handleSuccess = (responseData) => {
     setUserData(userData);
 }
 
-const csrfToken = useCookie( 'XSRF-TOKEN');
+const csrfToken = useCookie( 'XSRF-TOKEN').value;
 const csrfRequest = async () => {
-    if (!csrfToken.value) {
-        const {data, error} = await useFetch(
+    if (!csrfToken) {
+        const { error } = await useFetch(
             `http://api.book-store.loc/sanctum/csrf-cookie`,
             {
                 credentials: 'include'
@@ -82,7 +82,7 @@ const handleSubmitSignIn = async () => {
         <VeeForm
             v-slot="{ meta }"
             :initial-values="initialValues"
-            @submit="csrfRequest"
+            @submit="submitSignInform"
             class="dialog-form"
             action="">
             <h1>Sign In</h1>

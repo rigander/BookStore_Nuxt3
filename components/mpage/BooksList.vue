@@ -6,11 +6,11 @@ const option = reactive({
 const emit = defineEmits(['book-clicked-to-index']);
 const currentPage = ref(1);
 const booksStore = ref({});
-const { data: categories } = await useFetch(`${apiBaseUrl}/categories`);
+const { data: categories } = await useFetch(`${apiBaseUrl}/api/categories`);
 
 const fetchData = async () => {
     const { data } = await useFetch(
-        `${apiBaseUrl}/category/${option.genre}/books`,
+        `${apiBaseUrl}/api/category/${option.genre}/books`,
         { cache: false,
           query: {page: currentPage.value}
         }
@@ -62,66 +62,6 @@ const changeGenre = (event, genre) => {
 </template>
 
 <style lang="scss" scoped>
-.product-list__nav_new{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 39px;
-}
-.product-list__nav_ul{
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-.big-box{
-  width: 243px;
-  height: 40px;
-  border-bottom: 1px solid #d4d4d5;
-  border-top: 1px solid white;
-  border-right: 1px solid white;
-  margin-top: -1px;
-  margin-right: -1px;
-  margin-left: 1px;
-}
-.option{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  width: 140px;
-  height: 39px;
-  border: 1px solid #d8dce0;
-  border-left: none;
-  border-top: none;
-  text-shadow: 0.5px 0.9px 0 #fff;
-  font-size: 17px;
-  font-weight: 300;
-  color: #6b6969;
-  margin-right: -1px;
-  background-color: #e1e4e8;
-}
-.option:hover{
-  font-size: 18px;
-}
-.active{
-  border-bottom: none;
-  background-color: transparent;
-  font-weight: bold;
-  color: #3f3f40;
-}
-#componentContainer{
-    width: 170px;
-    align-self: flex-end;
-    margin-left: 600px;
-    margin-top: 20px;
-}
-.long-text {
-    height: auto;
-    overflow: visible;
-}
-.short-text {
-    width: 80px;
-}
 
 </style>
 

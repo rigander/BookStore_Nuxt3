@@ -89,7 +89,7 @@ const submitForm = async () => {
     const csrfTokenValue = csrfToken.value;
     try {
     const {data: responseData, error} = await useFetch(
-        `${apiBaseUrl}/auth/register`,
+        `${apiBaseUrl}/api/auth/register`,
         {
             method: 'post',
             body: {

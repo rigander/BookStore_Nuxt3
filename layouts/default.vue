@@ -1,10 +1,10 @@
 <script setup>
 const {apiBaseUrl} = useApiFetch();
-const {data: category} = await useFetch(`${apiBaseUrl}/categories`);
+const {data: category} = await useFetch(`${apiBaseUrl}/api/categories`);
 const catFooter = category.value.data.footer;
 const TopNavStore = useTopNavStore();
 
-const {data: booksBS} = await useFetch(`${apiBaseUrl}/category/best-sellers/books`);
+const {data: booksBS} = await useFetch(`${apiBaseUrl}/api/category/best-sellers/books`);
 
 provide('booksBS', {
     booksBS
