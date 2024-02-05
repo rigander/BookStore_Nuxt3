@@ -3,6 +3,9 @@ import { resolve } from "path";
 // @ts-ignore
 // @ts-ignore
 export default defineNuxtConfig({
+  app:{
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
   devtools: { enabled: true },
   modules: [
     '@pinia/nuxt',

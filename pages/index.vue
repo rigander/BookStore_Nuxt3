@@ -4,9 +4,11 @@
 
 
 <template>
-    <MpageBanners/>
-    <SharedAsideNav/>
-    <MpageBooksList/>
+    <div>
+        <MpageBanners/>
+        <SharedAsideNav/>
+        <MpageBooksList/>
+    </div>
 </template>
 
 

@@ -27,21 +27,23 @@ const updateCurrentPage = (newPage) => {
 
 
 <template>
-    <SharedAsideNav/>
-    <main id="main-content-wrapper-scifi">
-        <div class="books-li_container-scifi">
-            <section class="product-list-scifi">
-                <div class="title_sci-fi">
-                    <h4>{{ booksStore.data.name }}</h4>
-                </div>
-                <Books
-                    v-model="booksStore"
-                    @page-clicked="updateCurrentPage"
-                    :current-page="currentPage"
-                />
-            </section>
-        </div>
-    </main>
+    <div>
+        <SharedAsideNav/>
+        <main id="main-content-wrapper-scifi">
+            <div class="books-li_container-scifi">
+                <section class="product-list-scifi">
+                    <div class="title_sci-fi">
+                        <h4>{{ booksStore.data.name }}</h4>
+                    </div>
+                    <Books
+                        v-model="booksStore"
+                        @page-clicked="updateCurrentPage"
+                        :current-page="currentPage"
+                    />
+                </section>
+            </div>
+        </main>
+    </div>
 </template>
 
 
