@@ -1,7 +1,14 @@
 //FOOTER
-
 footer{
-  width: 1280px;
+  :hover{
+    user-select: none;
+  }
+}
+.active_footer{
+  background-color: black;
+}
+footer{
+  width: 100vw;
   order: 5;
   display: flex;
   flex-direction: column;
