@@ -27,7 +27,7 @@ const updateCurrentPage = (newPage) => {
 
 
 <template>
-    <div>
+    <div class="slug-wrapper">
         <SharedAsideNav/>
         <main id="main-content-wrapper-scifi">
             <div class="books-li_container-scifi">

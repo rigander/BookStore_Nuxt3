@@ -20,7 +20,6 @@ const handleSignInShowEvent = (data) => {
 
 </script>
 
-
 <template>
     <SharedHeader @sign-in-visible="handleSignInShowEvent"/>
     <div class="main-wrapper">
