@@ -47,7 +47,6 @@ export default defineNuxtConfig({
     "~/assets/style/scss/login.scss",
     "~/assets/style/scss/help.scss",
     "~/assets/style/scss/basket.scss",
-    "~/assets/style/scss/background.scss",
     "~/assets/style/scss/checkout.scss",
     "~/assets/style/scss/bookslist.scss"
   ],

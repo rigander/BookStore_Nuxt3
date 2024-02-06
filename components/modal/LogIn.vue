@@ -30,9 +30,8 @@ const handleSuccess = (responseData) => {
     setToken(token);
     setUserData(userData);
 }
-
-const csrfToken = useCookie( 'XSRF-TOKEN').value;
 const csrfRequest = async () => {
+    const csrfToken = useCookie( 'XSRF-TOKEN').value;
     if (!csrfToken) {
         const { data, error } = await useFetch(
             `${apiBaseUrl}/sanctum/csrf-cookie`,

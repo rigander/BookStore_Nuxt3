@@ -13,9 +13,9 @@ $ff:SegoeWP;
 @import "aside-left";
 .main-wrapper{
   display: flex;
-  margin: auto;
+  justify-content: center;
   font-family: $ff;
-  width: 1280px;
+  width: 100vw;
   flex-wrap: wrap;
 }
 .main-content-wrapper{
