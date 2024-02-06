@@ -298,15 +298,18 @@ header{
         padding: 0 10px 0 10px;
         text-decoration: none;
         color: #5b5b5b;
+        font-weight: bold;
         &:hover{
           color: #ff0000;
-          font-weight: bold;
         }
         &:active{
           background-image: linear-gradient(to top, #79b260, #92d774);
           color: white;
         }
       }
+    }
+    li:hover{
+      background-color: #98d56f;
     }
   }
 }
