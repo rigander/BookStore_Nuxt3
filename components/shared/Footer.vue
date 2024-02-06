@@ -19,7 +19,7 @@ const cardsImages = [
                     <ul>
                         <li
                             v-for="item in category.subCategories"
-                            :class="{ active: route.params.slug === item.slug }"
+                            :class="{ activeCatFooter: route.params.slug === item.slug }"
                         >
                             <NuxtLink
                                 :to="`/category/${item.slug}`"

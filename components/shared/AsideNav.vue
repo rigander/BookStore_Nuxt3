@@ -11,7 +11,7 @@ const route = useRoute();
                 <li class="list-title">{{ cat.name }}</li>
                 <li
                     v-for="item in cat.subCategories"
-                    :class="{ active: route.params.slug === item.slug }"
+                    :class="{ activeCategory: route.params.slug === item.slug }"
                 ><NuxtLink
                     :to="`/category/${item.slug}`"
                 >

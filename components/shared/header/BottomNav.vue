@@ -14,7 +14,7 @@ const { category } = inject('categories');
                     :key="item.id"
                     :class="{
                         'bottom-nav': true,
-                         active: route.params.slug === item.slug
+                         activeCategory: route.params.slug === item.slug
                     }"
                 >
                     <NuxtLink
