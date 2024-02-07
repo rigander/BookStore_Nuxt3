@@ -9,6 +9,8 @@ $cw:996px;
 $ff:SegoeWP;
 
 .slug-wrapper{
+  display: flex;
+  font-family: $ff;
   width: 1280px;
 }
 @import "header";
