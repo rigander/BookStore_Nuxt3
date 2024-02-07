@@ -23,8 +23,12 @@ const handleSignInShowEvent = (data) => {
 <template>
     <SharedHeader @sign-in-visible="handleSignInShowEvent"/>
     <div class="main-wrapper">
+        <Teleport to="body">
         <ModalLogIn v-model:show="dialogVisible"/>
+        </Teleport>
+        <Teleport to="body">
         <ModalLogOut v-if="TopNavStore.showLogOutDialog"/>
+        </Teleport>
         <slot/>
         <Teleport to="body">
             <ModalBasket/>

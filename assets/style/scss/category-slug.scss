@@ -11,7 +11,7 @@ $ff:SegoeWP;
 .slug-wrapper{
   display: flex;
   font-family: $ff;
-  width: 1280px;
+  min-width: 1280px;
 }
 @import "header";
 #main-content-wrapper-scifi{
@@ -43,6 +43,7 @@ $ff:SegoeWP;
       .books__sci-fi{
         display: flex;
         flex-wrap: wrap;
+        overflow: hidden;
         justify-content: space-between;
         align-items: center;
         padding: 0 5px 0 5px;
