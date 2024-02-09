@@ -1,6 +1,6 @@
 <script setup>
 const TopNavStore = useTopNavStore();
-const {apiBaseUrl, csrfRequest} = useApiFetch();
+const {apiBaseUrl, csrfRequest, useFetchPost} = useApiFetch();
 const profileStore = useProfileStore();
 const router = useRouter();
 const handleSuccess = () => {
@@ -10,25 +10,19 @@ const handleSuccess = () => {
     router.push('/');
 }
 const submitLogOut = async () => {
-    try {
-         const {data, error} = await useFetch(
-            `${apiBaseUrl}/api/auth/logout`,
+    await csrfRequest();
+    const { data, error } = await useFetchPost(
+            '/api/auth/logout',
+            null,
             {
-                method: 'post',
                 headers: {
                     'Authorization': `Bearer ${profileStore.state.token}`,
-                    'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value,
+                    'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value
                 },
-                credentials: 'include',
-                cache: false
             }
-        );
-        if (data) {
-            handleSuccess();
-        }
-    }
-    catch (error) {
-        console.error('An unexpected error occurred:', error);
+        )
+    if (data) {
+        handleSuccess();
     }
 }
 </script>
