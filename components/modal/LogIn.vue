@@ -1,5 +1,5 @@
 <script setup>
-const { apiBaseUrl } = useApiFetch();
+const { apiBaseUrl, csrfRequest, useFetchPost } = useApiFetch();
 const { closeModalAndNavigate } = useModalStore();
 const{ state, setUserData, setToken, setErrorMessage } = useProfileStore();
 import { configure } from "vee-validate";
@@ -30,47 +30,24 @@ const handleSuccess = (responseData) => {
     setToken(token);
     setUserData(userData);
 }
-const csrfRequest = async () => {
-    const csrfToken = useCookie( 'XSRF-TOKEN').value;
-    if (!csrfToken) {
-        const { data, error } = await useFetch(
-            `${apiBaseUrl}/sanctum/csrf-cookie`,
-            {
-                credentials: 'include',
-                cache: false
-            }
-        );
-        if (error.value) {
-            console.error("Error fetching CSRF token:", error.value);
-        }
-    }
-};
+
 const submitSignInform = async () => {
-    const XSRFToken = useCookie( 'XSRF-TOKEN').value;
-    const {data: responseData, error} = await useFetch(
-                `${apiBaseUrl}/api/auth/login`,
-                {
-                    method: 'post',
-                    headers: {
-                        'X-XSRF-TOKEN': XSRFToken,
-                    },
-                    body: {
-                        email: formData.value.email,
-                        password: formData.value.password,
-                    },
-                    credentials: 'include',
-                    cache: false
+    const { data, error } = await useFetchPost(
+        `/api/auth/login`,
+          {
+            email: formData.value.email,
+            password: formData.value.password,
                 }
-            );
-        if (!error.value) {
-            handleSuccess(responseData);
-        }
-        if (error.value) {
-            console.error(error.value.data.message);
+    )
+    if (!error.value) {
+        handleSuccess(data);
+    }
+    if (error.value) {
+        console.error(error.value.data.message);
     }
 }
 const handleSubmitSignIn = async () => {
-      await csrfRequest()
+      await csrfRequest();
       await submitSignInform();
 };
 </script>

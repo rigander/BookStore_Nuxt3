@@ -1,6 +1,6 @@
 <script setup>
 const TopNavStore = useTopNavStore();
-const {apiBaseUrl} = useApiFetch();
+const {apiBaseUrl, csrfRequest} = useApiFetch();
 const profileStore = useProfileStore();
 const router = useRouter();
 const handleSuccess = () => {
@@ -9,7 +9,6 @@ const handleSuccess = () => {
     TopNavStore.toggleLogOut();
     router.push('/');
 }
-const csrfToken = useCookie( 'XSRF-TOKEN').value;
 const submitLogOut = async () => {
     try {
          const {data, error} = await useFetch(
@@ -18,7 +17,7 @@ const submitLogOut = async () => {
                 method: 'post',
                 headers: {
                     'Authorization': `Bearer ${profileStore.state.token}`,
-                    'X-XSRF-TOKEN': csrfToken,
+                    'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value,
                 },
                 credentials: 'include',
                 cache: false
