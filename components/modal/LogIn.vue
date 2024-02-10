@@ -55,53 +55,60 @@ const handleSubmitSignIn = async () => {
 
 <template>
     <Modal>
-        <VeeForm
-            v-slot="{ meta }"
-            :initial-values="initialValues"
-            @submit="handleSubmitSignIn"
-            class="dialog-form"
-            action="">
-            <h1>Sign In</h1>
-            <hr>
-            <div class="error_fill-up__serv">{{ errorMessageServ }}</div>
-            <div class="sign-in__container">
-                <div class="sign-in__username">
-                    <label for="login">Email</label>
-                    <VeeField
-                           v-model="formData.email"
-                           class="all-inputs username"
-                           id="username"
-                           name="email"
-                           type="email">
-                    </VeeField>
-                </div>
-                <NuxtLink>
-                    <div class="forgot-pass">Forgot password?</div>
-                </NuxtLink>
-                <div class="sign-in__password">
-                    <label for="login">Password</label>
-                    <VeeField
-                           v-model="formData.password"
-                           class="all-inputs password"
-                           id="password" name="password"
-                           type="text">
-                    </VeeField>
-                </div>
-                <div class="sign-in-button">
-                    <input name="signInButton"
-                           class="sign-in-but"
-                           value="Log In"
-                           type="submit"
+        <div
+            @click.stop
+            class="dialog__content">
+            <div class="white-rabbit__container"><img
+                class="white-rabbit"
+                src="/img/Chromatic-Floral-Rabbit.svg" alt="white-rabbit"></div>
+            <VeeForm
+                v-slot="{ meta }"
+                :initial-values="initialValues"
+                @submit="handleSubmitSignIn"
+                class="dialog-form"
+                action="">
+                <h1>Sign In</h1>
+                <hr>
+                <div class="error_fill-up__serv">{{ errorMessageServ }}</div>
+                <div class="sign-in__container">
+                    <div class="sign-in__username">
+                        <label for="login">Email</label>
+                        <VeeField
+                            v-model="formData.email"
+                            class="all-inputs username"
+                            id="username"
+                            name="email"
+                            type="email">
+                        </VeeField>
+                    </div>
+                    <NuxtLink>
+                        <div class="forgot-pass">Forgot password?</div>
+                    </NuxtLink>
+                    <div class="sign-in__password">
+                        <label for="login">Password</label>
+                        <VeeField
+                            v-model="formData.password"
+                            class="all-inputs password"
+                            id="password" name="password"
+                            type="text">
+                        </VeeField>
+                    </div>
+                    <div class="sign-in-button">
+                        <input name="signInButton"
+                               class="sign-in-but"
+                               value="Log In"
+                               type="submit"
+                        >
+                    </div>
+                    <NuxtLink
+                        class="create-account"
+                        @click="closeModalAndNavigate('/signupform')"
                     >
+                        Create Account
+                    </NuxtLink>
                 </div>
-                <NuxtLink
-                    class="create-account"
-                    @click="closeModalAndNavigate('/signupform')"
-                >
-                    Create Account
-                </NuxtLink>
-            </div>
-        </VeeForm>
+            </VeeForm>
+        </div>
     </Modal>
 </template>
 

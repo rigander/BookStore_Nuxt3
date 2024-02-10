@@ -12,6 +12,9 @@ export const useModalStore = defineStore(
         const hideModal = () => {
             show.value = false;
         }
+        const toggleModal = () => {
+            show.value = !show.value;
+        }
         const closeModalAndNavigate = (path) => {
             hideModal();
             const router = useRouter();
@@ -23,6 +26,7 @@ export const useModalStore = defineStore(
             isSignUpPage,
             showModal,
             hideModal,
+            toggleModal,
             closeModalAndNavigate
         }
     }

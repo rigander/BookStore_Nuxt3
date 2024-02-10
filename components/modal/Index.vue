@@ -6,17 +6,10 @@ const modalStore = useModalStore();
 
 <template>
     <div
-        @click.stop="modalStore.hideModal()"
+        @click.stop="modalStore.toggleModal()"
         class="dialog"
         v-if="modalStore.show">
-        <div
-            @click.stop
-            class="dialog__content">
-            <div class="white-rabbit__container"><img
-                class="white-rabbit"
-                src="/img/Chromatic-Floral-Rabbit.svg" alt="white-rabbit"></div>
-            <slot></slot>
-        </div>
+        <slot></slot>
     </div>
 </template>
 
