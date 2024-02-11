@@ -3,6 +3,7 @@ const {apiBaseUrl} = useApiFetch();
 const {data: category} = await useFetch(`${apiBaseUrl}/api/categories`);
 const catFooter = category.value.data.footer;
 const TopNavStore = useTopNavStore();
+const modalStore = useModalStore();
 
 const {data: booksBS} = await useFetch(`${apiBaseUrl}/api/category/best-sellers/books`);
 
@@ -24,10 +25,10 @@ const handleSignInShowEvent = (data) => {
     <SharedHeader @sign-in-visible="handleSignInShowEvent"/>
     <div class="main-wrapper">
         <Teleport to="body">
-        <ModalLogIn v-model:show="dialogVisible"/>
+        <ModalLogIn v-if="modalStore.showLogin"/>
         </Teleport>
         <Teleport to="body">
-        <ModalLogOut v-if="TopNavStore.showLogOutDialog"/>
+        <ModalLogOut v-if="modalStore.showLogout"/>
         </Teleport>
         <slot/>
         <Teleport to="body">

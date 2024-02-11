@@ -3,6 +3,7 @@ const TopNavStore = useTopNavStore();
 const {apiBaseUrl, csrfRequest, useFetchPost} = useApiFetch();
 const profileStore = useProfileStore();
 const router = useRouter();
+const modalStore = useModalStore();
 const handleSuccess = () => {
     profileStore.state.userData = null;
     profileStore.state.token = '';
@@ -28,27 +29,28 @@ const submitLogOut = async () => {
 </script>
 
 <template>
-    <div
-            @click.stop="TopNavStore.toggleLogOut"
-            class="log-out_wrapper">
-            <VeeForm
+    <Modal>
+            <div
+                class="log-out_wrapper">
+                <VeeForm
                     @click.stop
                     @submit="submitLogOut"
                     class="log-out_form">
-                <h1>Do you wish to log out from your account ?</h1>
-                <div class="log-out_yes-no">
-                    <button
+                    <h1>Do you wish to log out from your account ?</h1>
+                    <div class="log-out_yes-no">
+                        <button
                             type="submit"
-                    >Yes
-                    </button>
-                    <button
+                        >Yes
+                        </button>
+                        <button
                             type="button"
                             @click.stop="TopNavStore.toggleLogOut"
-                    >No
-                    </button>
-                </div>
-            </VeeForm>
-    </div>
+                        >No
+                        </button>
+                    </div>
+                </VeeForm>
+            </div>
+    </Modal>
 </template>
 
 <style lang="scss" scoped>

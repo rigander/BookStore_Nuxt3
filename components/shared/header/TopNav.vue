@@ -1,6 +1,11 @@
 <script setup>
 const modalStore = useModalStore();
 const topNavStore = useTopNavStore();
+const ModalVisibility = (showModal, hideModal) => {
+    modalStore.showModal();
+    modalStore[showModal] = true;
+    modalStore[hideModal] = false;
+}
 </script>
 
 
@@ -10,15 +15,15 @@ const topNavStore = useTopNavStore();
             <nav class="account-nav">
                 <ul>
                     <li
-                        v-if="topNavStore.showSignIn"
+                        v-if="topNavStore.showLogIn"
                         class="hover_it"
-                        @click="modalStore.showModal"
+                        @click="ModalVisibility('showLogin', 'showLogout')"
                     >
                         <NuxtLink>Log in</NuxtLink>
                     </li>
                     <li
-                        v-if="topNavStore.showSignOut"
-                        @click="topNavStore.toggleLogOut"
+                        v-if="topNavStore.showLogOut"
+                        @click="ModalVisibility('showLogout', 'showLogin')"
                         class="hover_it"
                     >
                         <NuxtLink>Log out</NuxtLink>

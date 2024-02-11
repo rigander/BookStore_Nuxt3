@@ -1,12 +1,15 @@
 <script setup>
 const modalStore = useModalStore();
+const toggleModal = () => {
+    modalStore.toggleModal();
+}
 
 </script>
 
 
 <template>
     <div
-        @click.stop="modalStore.toggleModal()"
+        @click.stop="toggleModal"
         class="dialog"
         v-if="modalStore.show">
         <slot></slot>

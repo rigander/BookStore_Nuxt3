@@ -11,8 +11,8 @@ export const useTopNavStore = defineStore(
             showLogOutDialog.value = !showLogOutDialog.value;
         }
         return {
-            showSignIn: computed(() => !token.value),
-            showSignOut: computed(() => token.value),
+            showLogIn: computed(() => !token.value),
+            showLogOut: computed(() => token.value),
             showCreateAccount: computed(() => !token.value),
             showMyAccount: computed(() => token.value),
             showBooksInCart: computed(() => booksInCart.value.length > 0),
