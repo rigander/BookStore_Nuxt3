@@ -28,9 +28,6 @@ const handleSignInShowEvent = (data) => {
             <ModalLogIn v-if="modalStore.showLogin"/>
         </Teleport>
         <Teleport to="body">
-            <ModalLogOut v-if="modalStore.showLogout"/>
-        </Teleport>
-        <Teleport to="body">
             <ModalCart v-if="modalStore.showCart"/>
         </Teleport>
         <slot/>
