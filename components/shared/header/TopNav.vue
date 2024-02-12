@@ -3,10 +3,9 @@ const modalStore = useModalStore();
 const topNavStore = useTopNavStore();
 const {csrfRequest, useFetchPost} = useApiFetch();
 const profileStore = useProfileStore();
-const ModalVisibility = (showModal, hideModal, hideCart) => {
+const ModalVisibility = (showModal, hideCart) => {
     modalStore.showModal();
     modalStore[showModal] = true;
-    modalStore[hideModal] = false;
     modalStore[hideCart] = false;
 }
 const handleSuccess = () => {
@@ -41,7 +40,7 @@ const submitLogOut = async () => {
                     <li
                         v-if="topNavStore.showLogIn"
                         class="hover_it"
-                        @click="ModalVisibility('showLogin', 'showLogout', 'showCart')"
+                        @click="ModalVisibility('showLogin',  'showCart')"
                     >
                         <NuxtLink>Log in</NuxtLink>
                     </li>
@@ -93,9 +92,6 @@ const submitLogOut = async () => {
     </div>
     <Teleport to="body">
         <ModalLogIn v-if="modalStore.showLogin"/>
-    </Teleport>
-    <Teleport to="body">
-        <ModalCart v-if="modalStore.showCart"/>
     </Teleport>
 </template>
 

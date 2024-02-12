@@ -7,7 +7,6 @@ const cartVisibility = () => {
     modalStore.showModal();
     modalStore.showCart = true;
     modalStore.showLogin = false;
-    modalStore.showLogout = false;
 }
 const {totalCost, countBooksInCart} = storeToRefs(cartStore);
 </script>
@@ -39,6 +38,9 @@ const {totalCost, countBooksInCart} = storeToRefs(cartStore);
                             <div class="cart">
                                 <img src="/img/header/green%20cart.png" alt="cart">
                             </div>
+                            <Teleport to="body">
+                                <ModalCart v-if="modalStore.showCart"/>
+                            </Teleport>
                             <client-only>
                                 <div class="items">
                                     Your cart
