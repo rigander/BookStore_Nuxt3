@@ -3,12 +3,8 @@ import { defineStore } from "pinia";
 export const useCartStore = defineStore(
     'cartStore', () => {
         const basket = reactive({
-            showBasket: false,
             books: []
         })
-        const setBasketVisibility = (slug) => {
-            basket.showBasket = slug;
-        };
         const addToCart = (book, bool) => {
             const existingBook = basket.books.find((item) =>
                 item.title === book.title);
@@ -17,7 +13,6 @@ export const useCartStore = defineStore(
             } else {
                 basket.books.push(book);
             }
-            setBasketVisibility(bool);
         };
         const increaseQuantity = (book) => {
             book.quantity += 1;
@@ -27,9 +22,6 @@ export const useCartStore = defineStore(
                 book.quantity -= 1;
             }
         };
-        const hideCart = () => {
-            basket.showBasket = false;
-        }
         const removeFromCart = (book) => {
             const index = basket.books.findIndex((b) => b === book);
             if (index !== -1) {
@@ -42,12 +34,10 @@ export const useCartStore = defineStore(
 
         return{
             basket,
-            setBasketVisibility,
             addToCart,
             increaseQuantity,
             reduceQuantity,
             removeFromCart,
-            hideCart,
             countBooksInCart,
             totalCost
         }

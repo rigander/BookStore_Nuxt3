@@ -2,10 +2,15 @@
 const cart = useCartStore();
 const wishlist = useWishListStore();
 const {countBooksInWishlist, toggleWishlist} = storeToRefs(wishlist);
-
+const modalStore = useModalStore();
+const cartVisibility = () => {
+    modalStore.showModal();
+    modalStore.showCart = true;
+    modalStore.showLogin = false;
+    modalStore.showLogout = false;
+}
 const {setBasketVisibility} = cart;
 const {totalCost, countBooksInCart} = storeToRefs(cart);
-
 const show = ref(false);
 const emit = defineEmits(['sign-in-visible']);
 const handleSignInEvent = (data) => {
@@ -37,7 +42,7 @@ const handleSignInEvent = (data) => {
                     </div>
                     <div class="header-content__your-cart">
                         <div
-                            @click="setBasketVisibility(true)"
+                            @click="cartVisibility"
                             class="my-cart">
                             <div class="cart">
                                 <img src="/img/header/green%20cart.png" alt="cart">

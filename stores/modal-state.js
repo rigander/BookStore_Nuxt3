@@ -6,8 +6,9 @@ export const useModalStore = defineStore(
         const isSignUpPage = ref(false);
         const showLogout = ref(false);
         const showLogin = ref(false);
+        const showCart = ref(false)
         const showModal = () => {
-            show.value = true;
+           show.value = true;
         }
         const hideModal = () => {
             show.value = false;
@@ -29,7 +30,8 @@ export const useModalStore = defineStore(
             toggleModal,
             closeModalAndNavigate,
             showLogout,
-            showLogin
+            showLogin,
+            showCart
         }
     }
 )

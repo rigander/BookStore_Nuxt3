@@ -25,15 +25,15 @@ const handleSignInShowEvent = (data) => {
     <SharedHeader @sign-in-visible="handleSignInShowEvent"/>
     <div class="main-wrapper">
         <Teleport to="body">
-        <ModalLogIn v-if="modalStore.showLogin"/>
+            <ModalLogIn v-if="modalStore.showLogin"/>
         </Teleport>
         <Teleport to="body">
-        <ModalLogOut v-if="modalStore.showLogout"/>
+            <ModalLogOut v-if="modalStore.showLogout"/>
+        </Teleport>
+        <Teleport to="body">
+            <ModalCart v-if="modalStore.showCart"/>
         </Teleport>
         <slot/>
-        <Teleport to="body">
-            <ModalBasket/>
-        </Teleport>
     </div>
     <SharedFooter :cat-footer="catFooter"/>
 </template>

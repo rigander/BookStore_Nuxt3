@@ -1,14 +1,12 @@
 <script setup>
-const TopNavStore = useTopNavStore();
-const {apiBaseUrl, csrfRequest, useFetchPost} = useApiFetch();
+const {csrfRequest, useFetchPost} = useApiFetch();
 const profileStore = useProfileStore();
 const router = useRouter();
 const modalStore = useModalStore();
 const handleSuccess = () => {
     profileStore.state.userData = null;
     profileStore.state.token = '';
-    TopNavStore.toggleLogOut();
-    router.push('/');
+    modalStore.closeModalAndNavigate('/');
 }
 const submitLogOut = async () => {
     await csrfRequest();
@@ -44,7 +42,7 @@ const submitLogOut = async () => {
                         </button>
                         <button
                             type="button"
-                            @click.stop="TopNavStore.toggleLogOut"
+                            @click.stop="modalStore.hideModal"
                         >No
                         </button>
                     </div>
