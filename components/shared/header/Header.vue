@@ -1,7 +1,7 @@
 <script setup>
-const cart = useCartStore();
+const cartStore = useCartStore();
 const wishlist = useWishListStore();
-const {countBooksInWishlist, toggleWishlist} = storeToRefs(wishlist);
+const {countBooksInWishlist} = storeToRefs(wishlist);
 const modalStore = useModalStore();
 const cartVisibility = () => {
     modalStore.showModal();
@@ -9,21 +9,13 @@ const cartVisibility = () => {
     modalStore.showLogin = false;
     modalStore.showLogout = false;
 }
-const {setBasketVisibility} = cart;
-const {totalCost, countBooksInCart} = storeToRefs(cart);
-const show = ref(false);
-const emit = defineEmits(['sign-in-visible']);
-const handleSignInEvent = (data) => {
-    emit("sign-in-visible", show.value = data)
-}
+const {totalCost, countBooksInCart} = storeToRefs(cartStore);
 </script>
 
 <template>
     <header>
         <div class="header-layout">
-            <SharedHeaderTopNav
-                @show-sign-in="handleSignInEvent"
-            />
+            <SharedHeaderTopNav />
             <div class="header-content-container">
                 <div class="header-content">
                     <NuxtLink

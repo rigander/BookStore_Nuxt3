@@ -91,6 +91,12 @@ const submitLogOut = async () => {
             </nav>
         </client-only>
     </div>
+    <Teleport to="body">
+        <ModalLogIn v-if="modalStore.showLogin"/>
+    </Teleport>
+    <Teleport to="body">
+        <ModalCart v-if="modalStore.showCart"/>
+    </Teleport>
 </template>
 
 <style lang="scss">
