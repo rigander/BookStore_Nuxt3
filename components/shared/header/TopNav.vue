@@ -42,14 +42,17 @@ const submitLogOut = async () => {
                         class="hover_it"
                         @click="ModalVisibility('showLogin',  'showCart')"
                     >
-                        <NuxtLink>Log in</NuxtLink>
+                        <button>Log in</button>
+                        <Teleport to="body">
+                            <ModalLogIn v-if="modalStore.showLogin"/>
+                        </Teleport>
                     </li>
                     <li
                         v-if="topNavStore.showLogOut"
                         @click="submitLogOut"
                         class="hover_it"
                     >
-                        <NuxtLink>Log out</NuxtLink>
+                        <button>Log out</button>
                     </li>
                     <li
                         v-if="topNavStore.showSignUp"
@@ -90,12 +93,9 @@ const submitLogOut = async () => {
             </nav>
         </client-only>
     </div>
-    <Teleport to="body">
-        <ModalLogIn v-if="modalStore.showLogin"/>
-    </Teleport>
 </template>
 
-<style lang="scss">
+<style lang="scss" >
 .hover_it:hover{
     cursor: pointer;
 }
