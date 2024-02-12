@@ -1,6 +1,7 @@
 <script setup>
 const { apiBaseUrl, csrfRequest, useFetchPost } = useApiFetch();
 const { closeModalAndNavigate } = useModalStore();
+const modalStore = useModalStore();
 const{ state, setUserData, setToken, setErrorMessage } = useProfileStore();
 import { configure } from "vee-validate";
 configure({
@@ -50,11 +51,18 @@ const handleSubmitSignIn = async () => {
       await csrfRequest();
       await submitSignInform();
 };
+const closeLogIn = () => {
+        modalStore.hideModal();
+        modalStore.showLogin = false;
+}
 </script>
 
 
 <template>
     <Modal>
+        <a
+            @click="modalStore.closeModal(showLogin)"
+            href="#" class="close-modal"/>
         <div
             @click.stop
             class="dialog__content">

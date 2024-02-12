@@ -1,11 +1,34 @@
 <script setup>
 const modalStore = useModalStore();
 const topNavStore = useTopNavStore();
+const {csrfRequest, useFetchPost} = useApiFetch();
+const profileStore = useProfileStore();
 const ModalVisibility = (showModal, hideModal, hideCart) => {
     modalStore.showModal();
     modalStore[showModal] = true;
     modalStore[hideModal] = false;
     modalStore[hideCart] = false;
+}
+const handleSuccess = () => {
+    profileStore.state.userData = null;
+    profileStore.state.token = '';
+    modalStore.closeModalAndNavigate('/');
+}
+const submitLogOut = async () => {
+    await csrfRequest();
+    const { data, error } = await useFetchPost(
+        '/api/auth/logout',
+        null,
+        {
+            headers: {
+                'Authorization': `Bearer ${profileStore.state.token}`,
+                'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value
+            },
+        }
+    )
+    if (data) {
+        handleSuccess();
+    }
 }
 </script>
 
@@ -24,7 +47,7 @@ const ModalVisibility = (showModal, hideModal, hideCart) => {
                     </li>
                     <li
                         v-if="topNavStore.showLogOut"
-                        @click="ModalVisibility('showLogout', 'showLogin', 'showCart')"
+                        @click="submitLogOut"
                         class="hover_it"
                     >
                         <NuxtLink>Log out</NuxtLink>

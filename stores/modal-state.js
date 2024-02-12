@@ -21,6 +21,10 @@ export const useModalStore = defineStore(
             const router = useRouter();
             router.push(path);
         }
+        const closeModal = (modal) => {
+            hideModal();
+            modal.value = false;
+        }
 
         return{
             show,
@@ -31,7 +35,8 @@ export const useModalStore = defineStore(
             closeModalAndNavigate,
             showLogout,
             showLogin,
-            showCart
+            showCart,
+            closeModal
         }
     }
 )
