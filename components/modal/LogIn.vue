@@ -61,7 +61,7 @@ const handleSubmitSignIn = async () => {
             class="dialog__content">
             <a
                 @click="modalStore.showLogin = false"
-                href="#" class="close-modal"/>
+                href="#" class="close-modal close-login"/>
             <div class="white-rabbit__container"><img
                 class="white-rabbit"
                 src="/img/Chromatic-Floral-Rabbit.svg" alt="white-rabbit"></div>

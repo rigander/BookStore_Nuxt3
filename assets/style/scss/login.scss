@@ -61,7 +61,7 @@
   background: radial-gradient(circle, rgb(82, 82, 83) 0%, rgb(51, 53, 52) 100%);
   border-radius: 10px;
   height: 600px;
-  width: 450px;
+  width: 400px;
 }
 .sign-in__container{
   display: flex;
@@ -117,7 +117,7 @@
   font-size: 18px;
   margin-bottom: 10px;
 }
-a{
+.close-login{
   align-self: flex-end;
   margin: 5px;
 }
