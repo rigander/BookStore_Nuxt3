@@ -1,4 +1,9 @@
+@font-face {
+  font-family: SegoeWP;
+  src: url("/assets/fonts/Segoe WP Regular.ttf");
+}
 .dialog-form{
+  font-family: "Segoe WP", sans-serif;
   padding: 15px;
   h1{
     font-weight: bold;
@@ -66,7 +71,7 @@
   width: 300px;
 }
 .forgot-pass{
-  margin-left: 190px;
+  margin-left: 180px;
   font-size: 14px;
   text-decoration: underline;
 }
@@ -79,17 +84,21 @@
 .sign-in-but{
   margin: 19px 0 0 0;
   width: 290px;
-  height: 30px;
+  height: 40px;
   font-size: 18px;
-  background-color: #2e5128;
+  background-color: #6db661;
   border: none;
+  color: #3c3f41;
+  font-weight: bold;
 }
 .sign-in-but:hover{
   cursor: pointer;
+  background: rgb(32,140,34);
+  background: linear-gradient(0deg, rgba(32,140,34,1) 50%, rgba(9,196,9,1) 82%);
 }
 .sign-in-but:active{
   background-color: #92d774;
-  color: #3f3f40;
+  color: #d5d5da;
 }
 .create-account{
   text-decoration: underline;
@@ -107,4 +116,8 @@
   color: #f48b53;
   font-size: 18px;
   margin-bottom: 10px;
+}
+a{
+  align-self: flex-end;
+  margin: 5px;
 }

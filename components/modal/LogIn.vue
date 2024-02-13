@@ -56,12 +56,12 @@ const handleSubmitSignIn = async () => {
 
 <template>
     <Modal>
-        <a
-            @click="modalStore.showLogin = false"
-            href="#" class="close-modal"/>
         <div
             @click.stop
             class="dialog__content">
+            <a
+                @click="modalStore.showLogin = false"
+                href="#" class="close-modal"/>
             <div class="white-rabbit__container"><img
                 class="white-rabbit"
                 src="/img/Chromatic-Floral-Rabbit.svg" alt="white-rabbit"></div>
