@@ -51,17 +51,15 @@ const handleSubmitSignIn = async () => {
       await csrfRequest();
       await submitSignInform();
 };
-const closeLogIn = () => {
-        modalStore.hideModal();
-        modalStore.showLogin = false;
-}
 </script>
 
 
 <template>
-    <Modal>
+    <Modal
+        @click.stop="modalStore.showLogin = false"
+    >
         <a
-            @click="modalStore.closeModal(showLogin)"
+            @click="modalStore.showLogin = false"
             href="#" class="close-modal"/>
         <div
             @click.stop

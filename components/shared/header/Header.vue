@@ -3,11 +3,6 @@ const cartStore = useCartStore();
 const wishlist = useWishListStore();
 const {countBooksInWishlist} = storeToRefs(wishlist);
 const modalStore = useModalStore();
-const cartVisibility = () => {
-    modalStore.showModal();
-    modalStore.showCart = true;
-    modalStore.showLogin = false;
-}
 const {totalCost, countBooksInCart} = storeToRefs(cartStore);
 </script>
 
@@ -33,7 +28,7 @@ const {totalCost, countBooksInCart} = storeToRefs(cartStore);
                     </div>
                     <div class="header-content__your-cart">
                         <div
-                            @click="cartVisibility"
+                            @click="modalStore.showCart = true"
                             class="my-cart">
                             <div class="cart">
                                 <img src="/img/header/green%20cart.png" alt="cart">

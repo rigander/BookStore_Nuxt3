@@ -3,11 +3,7 @@ const modalStore = useModalStore();
 const topNavStore = useTopNavStore();
 const {csrfRequest, useFetchPost} = useApiFetch();
 const profileStore = useProfileStore();
-const ModalVisibility = (showModal, hideCart) => {
-    modalStore.showModal();
-    modalStore[showModal] = true;
-    modalStore[hideCart] = false;
-}
+const show = ref(false);
 const handleSuccess = () => {
     profileStore.state.userData = null;
     profileStore.state.token = '';
@@ -40,7 +36,7 @@ const submitLogOut = async () => {
                     <li
                         v-if="topNavStore.showLogIn"
                         class="hover_it"
-                        @click="ModalVisibility('showLogin',  'showCart')"
+                        @click="modalStore.showLogin = true"
                     >
                         <button>Log in</button>
                         <Teleport to="body">

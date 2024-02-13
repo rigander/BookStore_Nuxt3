@@ -7,14 +7,16 @@ const totalCost = computed(() => {
 </script>
 
 <template>
-    <Modal>
+    <Modal
+        @click.stop="modalStore.showCart = false"
+    >
             <div
                 @click.stop
                 class="basket-dialog_content">
                 <div class="cart-image_box">
                     <img src="/img/cart_icon2.svg" alt="cart">
                     <a
-                        @click="modalStore.hideModal"
+                        @click="modalStore.showCart = false"
                         href="#" class="close-modal"/>
                 </div>
                 <section class="modal-basket">
