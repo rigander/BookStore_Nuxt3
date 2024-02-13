@@ -55,9 +55,7 @@ const handleSubmitSignIn = async () => {
 
 
 <template>
-    <Modal
-        @click.stop="modalStore.showLogin = false"
-    >
+    <Modal>
         <a
             @click="modalStore.showLogin = false"
             href="#" class="close-modal"/>

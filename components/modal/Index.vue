@@ -1,10 +1,13 @@
 <script setup>
-
+const modalStore = useModalStore();
 </script>
 
 
 <template>
-    <div class="dialog">
+    <div
+        @click.stop="modalStore.showCart = false;
+                     modalStore.showLogin = false;"
+        class="dialog">
         <slot></slot>
     </div>
 </template>

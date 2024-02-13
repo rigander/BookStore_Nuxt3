@@ -7,9 +7,7 @@ const totalCost = computed(() => {
 </script>
 
 <template>
-    <Modal
-        @click.stop="modalStore.showCart = false"
-    >
+    <Modal>
             <div
                 @click.stop
                 class="basket-dialog_content">
