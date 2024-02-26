@@ -7,14 +7,13 @@ const totalCost = computed(() => {
 </script>
 
 <template>
-    <Modal>
             <div
                 @click.stop
                 class="basket-dialog_content">
                 <div class="cart-image_box">
                     <img src="/img/cart_icon2.svg" alt="cart">
                     <a
-                        @click="modalStore.showCart = false"
+                        @click="modalStore.closeModal('cart')"
                         href="#" class="close-modal"/>
                 </div>
                 <section class="modal-basket">
@@ -50,8 +49,7 @@ const totalCost = computed(() => {
                     <div class="total_checkout">
                         <span class="total-price">{{ (totalCost).toFixed(2) }}$</span>
                         <NuxtLink
-                            to="/checkout"
-                            @click="modalStore.hideModal"
+                            @click="modalStore.closeModalAndNavigate('/checkout')"
                         >
                             <button class="button basket-button">
                                 Checkout
@@ -60,7 +58,6 @@ const totalCost = computed(() => {
                     </div>
                 </section>
             </div>
-    </Modal>
 </template>
 
 <style lang="scss" scoped>

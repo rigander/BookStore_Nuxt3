@@ -1,15 +1,18 @@
 <script setup>
 const modalStore = useModalStore();
+const props = defineProps({
+    modalKey: String
+})
 </script>
 
 
 <template>
-    <div
-        @click.stop="modalStore.showCart = false;
-                     modalStore.showLogin = false;"
+    <dialog
+        v-if="modalStore.modalActive[modalKey]"
+        @click.stop="modalStore.toggleModal(modalKey)"
         class="dialog">
         <slot></slot>
-    </div>
+    </dialog>
 </template>
 
 

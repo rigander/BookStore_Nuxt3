@@ -4,10 +4,18 @@ export const useModalStore = defineStore(
     'modalStore', () => {
         const show = ref(false);
         const isSignUpPage = ref(false);
-        const showLogin = ref(false);
-        const showCart = ref(false);
+        const modalActive = reactive({});
+        const openModal = (key) => {
+            modalActive[key] = true;
+        };
+        const closeModal = (key) => {
+            modalActive[key] = false;
+        };
+        const toggleModal = (key) => {
+            modalActive[key] = !modalActive[key];
+        };
         const closeModalAndNavigate = (path) => {
-            showLogin.value = false;
+            modalActive.value = false;
             const router = useRouter();
             router.push(path);
         }
@@ -16,8 +24,10 @@ export const useModalStore = defineStore(
             show,
             isSignUpPage,
             closeModalAndNavigate,
-            showLogin,
-            showCart,
+            modalActive,
+            toggleModal,
+            openModal,
+            closeModal
         }
     }
 )

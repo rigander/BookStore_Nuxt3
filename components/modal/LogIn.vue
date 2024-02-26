@@ -55,12 +55,11 @@ const handleSubmitSignIn = async () => {
 
 
 <template>
-    <Modal>
         <div
             @click.stop
             class="dialog__content">
             <a
-                @click="modalStore.showLogin = false"
+                @click="modalStore.closeModal('login')"
                 href="#" class="close-modal close-login"/>
             <div class="white-rabbit__container"><img
                 class="white-rabbit"
@@ -113,7 +112,6 @@ const handleSubmitSignIn = async () => {
                 </div>
             </VeeForm>
         </div>
-    </Modal>
 </template>
 
 

@@ -1,5 +1,6 @@
 <script setup>
 const {toggleWishlist} = useWishListStore();
+const {bookData} = useProductBookStore();
 const props = defineProps(['modelValue', 'current-page']);
 const emit = defineEmits(['page-clicked']);
 const currentPage = ref(props.currentPage);

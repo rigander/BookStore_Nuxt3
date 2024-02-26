@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 const items = [
     {
         name: "Home",

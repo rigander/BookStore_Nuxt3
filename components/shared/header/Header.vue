@@ -28,13 +28,15 @@ const {totalCost, countBooksInCart} = storeToRefs(cartStore);
                     </div>
                     <div class="header-content__your-cart">
                         <div
-                            @click="modalStore.showCart = true"
+                            @click="modalStore.toggleModal('cart')"
                             class="my-cart">
                             <div class="cart">
                                 <img src="/img/header/green%20cart.png" alt="cart">
                             </div>
                             <Teleport to="body">
-                                <ModalCart v-if="modalStore.showCart"/>
+                                <Modal  :modalKey="'cart'">                               >
+                                    <ModalCart/>
+                                </Modal>
                             </Teleport>
                             <client-only>
                                 <div class="items">

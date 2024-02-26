@@ -36,11 +36,13 @@ const submitLogOut = async () => {
                     <li
                         v-if="topNavStore.showLogIn"
                         class="hover_it"
-                        @click="modalStore.showLogin = true"
+                        @click="modalStore.toggleModal('login')"
                     >
                         <button>Log in</button>
                         <Teleport to="body">
-                            <ModalLogIn v-if="modalStore.showLogin"/>
+                            <Modal :modalKey="'login'">
+                                <ModalLogIn/>
+                            </Modal>
                         </Teleport>
                     </li>
                     <li
