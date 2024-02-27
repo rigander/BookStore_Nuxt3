@@ -7,12 +7,12 @@ const props = defineProps({
 
 
 <template>
-    <dialog
+    <div
         v-if="modalStore.modalActive[modalKey]"
-        @click.stop="modalStore.toggleModal(modalKey)"
+        @click="modalStore.toggleModal(modalKey)"
         class="dialog">
         <slot></slot>
-    </dialog>
+    </div>
 </template>
 
 

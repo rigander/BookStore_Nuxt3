@@ -105,7 +105,7 @@ const handleSubmitSignIn = async () => {
                     </div>
                     <NuxtLink
                         class="create-account"
-                        @click="closeModalAndNavigate('/signupform')"
+                        @click="closeModalAndNavigate('/signupform', 'login')"
                     >
                         Create Account
                     </NuxtLink>

@@ -14,8 +14,8 @@ export const useModalStore = defineStore(
         const toggleModal = (key) => {
             modalActive[key] = !modalActive[key];
         };
-        const closeModalAndNavigate = (path) => {
-            modalActive.value = false;
+        const closeModalAndNavigate = (path, key) => {
+            modalActive[key] = false;
             const router = useRouter();
             router.push(path);
         }
