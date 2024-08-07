@@ -13,29 +13,37 @@ const photos = [
     <div class="main-slider">
         <div class="main-slider__wrapper">
                 <Swiper class="black-slider"
-                        :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperNavigation]"
+                        :modules="[
+                          SwiperAutoplay, SwiperEffectCreative,
+                          SwiperNavigation, SwiperPagination,
+                        ]"
+                        :pagination = "{
+                          dynamicBullets: true,
+                        }"
                         :navigation="{
                           enabled: true,
                         }"
                         :slides-per-view="1"
                         :loop="true"
+                        :grabCursor="true"
                         :effect="'creative'"
                         :autoplay="{
-                          delay: 3000,
+                          delay: 4000,
                           disableOnInteraction: true,
                       }"
                         :creative-effect="{
                         prev: {
-                          shadow: false,
-                          translate: ['-20%', 0, -1],
+                          shadow: true,
+                          translate: ['-20%', 0, -800],
                         },
                         next: {
-                          translate: ['100%', 0, 0],
+                          shadow: true,
+                          translate: ['120%', 0, -800],
                         },
                       }"
                 >
                     <SwiperSlide
-                        v-for="photo in photos">
+                            v-for="photo in photos">
                         <img :src="photo" alt="">
                     </SwiperSlide>
                 </Swiper>

@@ -14,11 +14,10 @@
   margin-top: 14px;
 }
 .main-slider{
-  .main-slider__wrapper{
-    width: 714px;
+  .main-slider__wrapper {
+    width: 100%;
+    max-width: 714px;
     height: 304px;
-    display: flex;
-    justify-content: space-around;
   }
   .left{
     align-self: center;
