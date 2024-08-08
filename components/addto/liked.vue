@@ -5,7 +5,9 @@ const { book } = defineProps(['book']);
 
 
 <template>
-        <span :class="heartColor(book)"></span>
+        <ClientOnly>
+                <span :class="heartColor(book)"></span>
+        </ClientOnly>
 </template>
 
 

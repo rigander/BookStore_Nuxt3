@@ -4,6 +4,7 @@ const { book } = defineProps(['book']);
 </script>
 
 <template>
+        <ClientOnly>
         <span
             :class="isBookInCart(book)"
             @click="addToCart({
@@ -14,6 +15,7 @@ const { book } = defineProps(['book']);
                         title: book.title })">
 
         </span>
+        </ClientOnly>
 </template>
 
 <style lang="scss" scoped>
