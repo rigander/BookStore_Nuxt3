@@ -5,7 +5,7 @@ export const useCartStore = defineStore(
         const basket = reactive({
             books: []
         })
-        const addToCart = (book, bool) => {
+        const addToCart = (book) => {
             const existingBook = basket.books.find((item) =>
                 item.title === book.title);
             if (existingBook) {

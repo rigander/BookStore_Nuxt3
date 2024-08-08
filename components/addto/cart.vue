@@ -5,13 +5,13 @@ const { book } = defineProps(['book']);
 
 <template>
         <span
-            class="add-to-cart"
+            class="add-to-cart-grey"
             @click="addToCart({
                         book_id: book.id,
                         image: book.image,
                         price: book.price,
                         quantity: 1,
-                        title: book.title }, false)">
+                        title: book.title })">
 
         </span>
 </template>
