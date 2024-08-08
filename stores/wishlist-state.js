@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import {defineStore, skipHydrate} from "pinia";
 
 export const useWishListStore = defineStore(
     'wishlistStore', () => {
@@ -28,8 +28,8 @@ export const useWishListStore = defineStore(
 
         const heartColor = (book) =>  {
             return wishlist.books.some((item) => item.title === book.title)
-                ? "#e55053"
-                : "#3a7ca8";
+                ? "orange-heart"
+                : "dark-heart";
         };
 
         return{

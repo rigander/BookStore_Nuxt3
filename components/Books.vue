@@ -49,14 +49,14 @@ const navigateToProductPage = (book) => {
             </NuxtLink>
             <span class="price-cart_wrapper">${{ book.price }}
                 <span class="cart-add-to_wrapper">
-                    <SvgCart :book="book"/>
+                    <addto-cart :book="book"/>
                 </span>
                 <span class="toggle-wishlist">
                     <button
                             @click="toggleWishlist(book)"
                             id="add-to-wishlist-index"
                     >
-                    <SvgHeart :book="book"/>
+                    <addto-liked :book="book"/>
                 </button>
                 </span>
             </span>

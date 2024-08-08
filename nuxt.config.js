@@ -35,7 +35,7 @@ export default defineNuxtConfig({
   },
   imports: { dirs: ["./stores"] },
   alias: {
-    "assets": "/<srcDir>/assets"
+    "@": resolve(__dirname, "/"),
   },
   css: [
     "~/assets/style/scss/main.scss",
