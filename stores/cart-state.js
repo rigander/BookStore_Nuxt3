@@ -14,6 +14,13 @@ export const useCartStore = defineStore(
                 basket.books.push(book);
             }
         };
+        const isBookInCart = (book) => {
+            const existingBook = basket.books.some((item) =>
+                item.title === book.title);
+            if (existingBook) {
+                return 'add-to-cart-green'
+            } else return 'add-to-cart-grey'
+        };
         const increaseQuantity = (book) => {
             book.quantity += 1;
         };
@@ -39,7 +46,8 @@ export const useCartStore = defineStore(
             reduceQuantity,
             removeFromCart,
             countBooksInCart,
-            totalCost
+            totalCost,
+            isBookInCart
         }
     },
     {

@@ -1,11 +1,11 @@
 <script setup>
-const { addToCart } = useCartStore();
+const { addToCart, isBookInCart } = useCartStore();
 const { book } = defineProps(['book']);
 </script>
 
 <template>
         <span
-            class="add-to-cart-grey"
+            :class="isBookInCart(book)"
             @click="addToCart({
                         book_id: book.id,
                         image: book.image,
