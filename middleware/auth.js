@@ -36,7 +36,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (to.fullPath === profileRoute || to.fullPath === checkoutRoute) {
         if (!token) {
             if (to.path !== '/'){
-                modalStore.showModal();
                 return navigateTo('/');
             }
         }
