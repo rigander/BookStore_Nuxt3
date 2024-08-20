@@ -2,8 +2,29 @@
 definePageMeta({
     middleware: 'auth'
 })
-const profileStore = useProfileStore();
-const userData = profileStore.state.userData.data;
+const useFetchGet = async (endpoint, options = {}, needAuthorize = false) => {
+
+    const opts = {
+        baseURL: useRuntimeConfig().public.apiBase,
+        method: "GET",
+        ... options,
+        transform: (_data) => _data.data
+    };
+
+    if (endpoint !== '/sanctum/csrf-cookie'){
+        endpoint = `/api${endpoint}`;
+    }
+
+    if (needAuthorize){
+        const auth = useCookie('ProfileStore');
+        if(auth.value && auth.value.state.token){
+            opts.headers = {'Authorization' : `Bearer ${auth.value.state.token}`};
+        }
+    }
+    await useFetch(endpoint, opts);
+};
+const { data, error } = await useFetchGet('/user', true);
+console.log(data);
 </script>
 
 <template>
@@ -22,7 +43,7 @@ const userData = profileStore.state.userData.data;
                         </div>
                         <div class="p-d_name p-d_p1">
                             <h2>Name</h2>
-                            <span>{{ userData.name }}</span>
+                            <span>{{ data.userData.name }}</span>
                         </div>
                     </div>
                     <div class="personal-data_p2">
@@ -32,13 +53,13 @@ const userData = profileStore.state.userData.data;
                         </div>
                         <div class="p-d_sex p-d_p1">
                             <h2>Phone</h2>
-                            <span>{{ userData.phone }}</span>
+                            <span>{{ data.userData.phone }}</span>
                         </div>
                     </div>
                     <div class="personal-data_p3">
                         <div class="p-d_email">
                             <h2>Email</h2>
-                            <span>{{ userData.email }}</span>
+                            <span>{{ data.userData.email }}</span>
                         </div>
                     </div>
                     <button class="p-d_edit-data">

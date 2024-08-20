@@ -8,6 +8,10 @@ export const useProfileStore = defineStore(
             errorMessage: ''
         });
 
+        const isAuthorized = computed(() => {
+            return state.token !== null;
+        });
+
         const setToken = (token) => {
             state.token = token;
         }
@@ -31,11 +35,15 @@ export const useProfileStore = defineStore(
             setToken,
             setUserData,
             setErrorMessage,
-            clearState
+            clearState,
+            isAuthorized
         };
     },
     {
         persist: true,
-        storage: persistedState.localStorage,
+        storage: persistedState.cookiesWithOptions({
+            sameSite: 'strict',
+            expires: 7,
+        }),
     }
 )

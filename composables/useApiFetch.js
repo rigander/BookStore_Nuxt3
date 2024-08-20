@@ -15,11 +15,26 @@ export const useApiFetch = () => {
             }
         }
     };
-    const useFetchGet = async (url, options = {}) => {
-        const { data, error } = await useFetch( `${apiBaseUrl}${url}`,
-            options
-        );
-        return { data, error };
+    const useFetchGet = async (endpoint, options = {}, needAuthorize = false) => {
+
+        const opts = {
+            baseURL: useRuntimeConfig().public.apiBase,
+            method: "GET",
+            ... options,
+            transform: (_data) => _data.data
+        };
+
+        if (endpoint !== '/sanctum/csrf-cookie'){
+            endpoint = `/api${endpoint}`;
+        }
+
+        if (needAuthorize){
+            const auth = useCookie('ProfileStore');
+            if(auth.value && auth.value.state.token){
+                opts.headers = {'Authorization' : `Bearer ${auth.value.state.token}`};
+            }
+        }
+        await useFetch(endpoint, opts);
     };
     const useFetchPost = async (url, body, options = {}) => {
         const defaultOptions = {
@@ -44,7 +59,7 @@ export const useApiFetch = () => {
     return {
         apiBaseUrl,
         csrfRequest,
-        useFetchGet,
-        useFetchPost
+        useFetchPost,
+        useFetchGet
     }
 }

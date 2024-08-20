@@ -25,7 +25,7 @@ export default defineNuxtConfig({
     autoImports:["defineStore"]
   },
   piniaPersistedstate: {
-    storage: 'localStorage'
+    storage: 'cookies'
   },
   swiper: {
     prefix: 'Swiper',
