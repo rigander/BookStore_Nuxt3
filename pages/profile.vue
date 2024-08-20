@@ -5,8 +5,7 @@ definePageMeta({
 
 const { useFetchGet } = useApiFetch();
 const { data, error } = await useFetchGet('/user', true);
-console.log(data.value);
-console.log('done');
+const user = data.value;
 </script>
 
 <template>
@@ -25,7 +24,7 @@ console.log('done');
                         </div>
                         <div class="p-d_name p-d_p1">
                             <h2>Name</h2>
-                            <span>{{ data.userData.name }}</span>
+                            <span>{{ user.name }}</span>
                         </div>
                     </div>
                     <div class="personal-data_p2">
@@ -35,13 +34,13 @@ console.log('done');
                         </div>
                         <div class="p-d_sex p-d_p1">
                             <h2>Phone</h2>
-                            <span>{{ data.userData.phone }}</span>
+                            <span>{{ user.phone }}</span>
                         </div>
                     </div>
                     <div class="personal-data_p3">
                         <div class="p-d_email">
                             <h2>Email</h2>
-                            <span>{{ data.userData.email }}</span>
+                            <span>{{ user.email }}</span>
                         </div>
                     </div>
                     <button class="p-d_edit-data">

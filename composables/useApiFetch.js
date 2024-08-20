@@ -34,7 +34,7 @@ export const useApiFetch = () => {
                 opts.headers = {'Authorization' : `Bearer ${auth.value.state.token}`};
             }
         }
-        await useFetch(endpoint, opts);
+        return await useFetch(endpoint, opts);
     };
     const useFetchPost = async (url, body, options = {}) => {
         const defaultOptions = {
