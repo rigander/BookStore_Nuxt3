@@ -15,7 +15,7 @@ export const useApiFetch = () => {
             }
         }
     };
-    const useFetchGet = async (endpoint, options = {}, needAuthorize = false) => {
+    const useFetchGet = async (endpoint,  needAuthorize = false, options = {}) => {
 
         const opts = {
             baseURL: useRuntimeConfig().public.apiBase,

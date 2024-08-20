@@ -2,29 +2,11 @@
 definePageMeta({
     middleware: 'auth'
 })
-const useFetchGet = async (endpoint, options = {}, needAuthorize = false) => {
 
-    const opts = {
-        baseURL: useRuntimeConfig().public.apiBase,
-        method: "GET",
-        ... options,
-        transform: (_data) => _data.data
-    };
-
-    if (endpoint !== '/sanctum/csrf-cookie'){
-        endpoint = `/api${endpoint}`;
-    }
-
-    if (needAuthorize){
-        const auth = useCookie('ProfileStore');
-        if(auth.value && auth.value.state.token){
-            opts.headers = {'Authorization' : `Bearer ${auth.value.state.token}`};
-        }
-    }
-    await useFetch(endpoint, opts);
-};
+const { useFetchGet } = useApiFetch();
 const { data, error } = await useFetchGet('/user', true);
-console.log(data);
+console.log(data.value);
+console.log('done');
 </script>
 
 <template>
