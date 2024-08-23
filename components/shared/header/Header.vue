@@ -34,7 +34,7 @@ const {totalCost, countBooksInCart} = storeToRefs(cartStore);
                                 <img src="/img/header/green%20cart.png" alt="cart">
                             </div>
                             <Teleport to="body">
-                                <Modal  :modalKey="'cart'">                               >
+                                <Modal  :modalKey="'cart'">
                                     <ModalCart/>
                                 </Modal>
                             </Teleport>

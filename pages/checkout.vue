@@ -74,7 +74,7 @@ const handleCheckout = () => {
          submitOrder();
         return
     }
-    modalStore.showModal();
+    modalStore.openModal('login');
 }
 
 </script>
@@ -103,9 +103,14 @@ const handleCheckout = () => {
                         </div>
                     </client-only>
                     <div
-                        @click="cart.setBasketVisibility(true)"
+                        @click="modalStore.openModal('cart')"
                         id="edit-products">Edit products
                     </div>
+                    <Teleport to="body">
+                        <Modal  :modalKey="'cart'">                               >
+                            <ModalCart/>
+                        </Modal>
+                    </Teleport>
                 </div>
             </div>
             <div class="delivery_to-post__wrapper">
