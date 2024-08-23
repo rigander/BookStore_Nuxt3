@@ -2,7 +2,8 @@
 const {basket, removeFromCart, increaseQuantity, reduceQuantity} = useCartStore();
 const modalStore = useModalStore();
 const totalCost = computed(() => {
-    return basket.books.reduce((total, book) => total + book.price * book.quantity, 0);
+    return basket.books.reduce((total, book) =>
+        total + book.price * book.quantity, 0);
 });
 </script>
 

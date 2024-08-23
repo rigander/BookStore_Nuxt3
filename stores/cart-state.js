@@ -51,7 +51,7 @@ export const useCartStore = defineStore(
         }
     },
     {
-        persist: true,
-        storage: persistedState.localStorage,
-    }
-)
+        persist: {
+            storage: persistedState.localStorage,
+        }
+    })

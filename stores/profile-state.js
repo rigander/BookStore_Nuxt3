@@ -41,9 +41,5 @@ export const useProfileStore = defineStore(
     },
     {
         persist: true,
-        storage: persistedState.cookiesWithOptions({
-            sameSite: 'strict',
-            expires: 7,
-        }),
     }
 )
