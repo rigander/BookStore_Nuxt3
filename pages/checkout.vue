@@ -106,11 +106,6 @@ const handleCheckout = () => {
                         @click="modalStore.openModal('cart')"
                         id="edit-products">Edit products
                     </div>
-                    <Teleport to="body">
-                        <Modal  :modalKey="'cart'">                               >
-                            <ModalCart/>
-                        </Modal>
-                    </Teleport>
                 </div>
             </div>
             <div class="delivery_to-post__wrapper">

@@ -16,7 +16,6 @@ export const useCategoryStore = defineStore(
         };
     },
     {
-        persist: true,
-        storage: persistedState.localStorage,
+        persist: true
     }
     );
