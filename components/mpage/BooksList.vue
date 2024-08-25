@@ -6,20 +6,11 @@ const option = reactive({
 });
 const emit = defineEmits(['book-clicked-to-index']);
 const currentPage = ref(1);
-const booksStore = ref({});
 const { data: categories } = await useFetchGet('/categories');
-const { data: books } = await useFetchGet(`/category/${option.genre}/books`);
-console.log(books);
-const fetchData = async () => {
-    const { data } = await useFetch(
-        `${apiBaseUrl}/api/category/${option.genre}/books`,
-        { cache: false,
-          query: {page: currentPage.value}
-        }
-    );
-    booksStore.value = data.value;
-};
-await fetchData();
+const { data: booksStore } = await useFetchGet(
+    `/category/${option.genre}/books`,
+    false,
+    {cache: false, query: {page: currentPage.value}});
 
 const updateCurrentPage = (newPage) => {
     currentPage.value = newPage;

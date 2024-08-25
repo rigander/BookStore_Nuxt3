@@ -24,7 +24,7 @@ const navigateToProductPage = (book) => {
     <div class="books__sci-fi">
         <div
             class="books__sci-fi-div"
-            v-for="book in modelValue.data.books.data"
+            v-for="book in modelValue.books.data"
             :key="book.id"
         >
             <div v-if="book.discount"
