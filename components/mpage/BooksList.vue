@@ -1,13 +1,15 @@
 <script setup>
 const {apiBaseUrl} = useApiFetch();
+const {useFetchGet} = useApiFetch();
 const option = reactive({
     genre: 'best-sellers',
 });
 const emit = defineEmits(['book-clicked-to-index']);
 const currentPage = ref(1);
 const booksStore = ref({});
-const { data: categories } = await useFetch(`${apiBaseUrl}/api/categories`);
-
+const { data: categories } = await useFetchGet('/categories');
+const { data: books } = await useFetchGet(`/category/${option.genre}/books`);
+console.log(books);
 const fetchData = async () => {
     const { data } = await useFetch(
         `${apiBaseUrl}/api/category/${option.genre}/books`,
@@ -40,7 +42,7 @@ const changeGenre = (event, genre) => {
                 <div class="product-list__nav_new">
                     <ul class="product-list__nav_ul">
                         <li
-                                v-for="(item, index) in categories.data.featured"
+                                v-for="(item, index) in categories.featured"
                                 :key="index"
                                 :class="option.genre === item.slug && 'active'"
                                 @click="changeGenre($event, item.slug)"

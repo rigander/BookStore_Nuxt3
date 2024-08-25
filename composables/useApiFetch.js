@@ -18,7 +18,7 @@ export const useApiFetch = () => {
     const useFetchGet = async (endpoint,  needAuthorize = false, options = {}) => {
 
         const opts = {
-            baseURL: useRuntimeConfig().public.apiBase,
+            baseURL: apiBaseUrl,
             method: "GET",
             ... options,
             transform: (_data) => _data.data
