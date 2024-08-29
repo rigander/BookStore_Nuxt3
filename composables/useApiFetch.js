@@ -36,6 +36,7 @@ export const useApiFetch = () => {
         }
         return await useFetch(endpoint, opts);
     };
+
     const useFetchPost = async (url, body, options = {}) => {
         const defaultOptions = {
             method: 'post',

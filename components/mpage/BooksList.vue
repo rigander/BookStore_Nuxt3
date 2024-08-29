@@ -1,26 +1,21 @@
 <script setup>
-const {apiBaseUrl} = useApiFetch();
 const {useFetchGet} = useApiFetch();
 const option = reactive({
     genre: 'best-sellers',
 });
 const emit = defineEmits(['book-clicked-to-index']);
 const currentPage = ref(1);
+// Fetching a category list
 const { data: categories } = await useFetchGet('/categories');
-const { data: booksStore } = await useFetchGet(
-    `/category/${option.genre}/books`,
-    false,
-    {cache: false, query: {page: currentPage.value}});
 
 const updateCurrentPage = (newPage) => {
-    currentPage.value = newPage;
-    fetchData();
+    // currentPage.value = newPage;
+    fetchBooks(newPage);
 };
 const changeGenre = (event, genre) => {
     event.preventDefault();
     option.genre = genre;
-    currentPage.value = 1;
-    fetchData();
+    fetchBooks(1, genre);
 };
 
 </script>
@@ -45,9 +40,8 @@ const changeGenre = (event, genre) => {
                     <div class="big-box"></div>
                 </div>
                 <Books
-                    v-model="booksStore"
-                    @page-clicked="updateCurrentPage"
                     :current-page="currentPage"
+                    :active-category="option.genre"
                 />
             </section>
         </div>
