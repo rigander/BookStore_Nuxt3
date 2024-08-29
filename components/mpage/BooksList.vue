@@ -1,21 +1,16 @@
 <script setup>
 const {useFetchGet} = useApiFetch();
 const option = reactive({
-    genre: 'best-sellers',
+    category: 'best-sellers',
 });
 const emit = defineEmits(['book-clicked-to-index']);
-const currentPage = ref(1);
+
 // Fetching a category list
 const { data: categories } = await useFetchGet('/categories');
 
-const updateCurrentPage = (newPage) => {
-    // currentPage.value = newPage;
-    fetchBooks(newPage);
-};
-const changeGenre = (event, genre) => {
+const changeGenre = (event, category) => {
     event.preventDefault();
-    option.genre = genre;
-    fetchBooks(1, genre);
+    option.category = category;
 };
 
 </script>
@@ -28,20 +23,19 @@ const changeGenre = (event, genre) => {
                 <div class="product-list__nav_new">
                     <ul class="product-list__nav_ul">
                         <li
-                                v-for="(item, index) in categories.featured"
+                                v-for="(category, index) in categories.featured"
                                 :key="index"
-                                :class="option.genre === item.slug && 'active'"
-                                @click="changeGenre($event, item.slug)"
+                                :class="option.category === category.slug && 'active'"
+                                @click="changeGenre($event, category.slug)"
                                 class="option product-list__nav__li"
                         >
-                            <div><a href="">{{ item.name }}</a></div>
+                            <div><a href="">{{ category.name }}</a></div>
                         </li>
                     </ul>
                     <div class="big-box"></div>
                 </div>
                 <Books
-                    :current-page="currentPage"
-                    :active-category="option.genre"
+                    :active-category="option.category"
                 />
             </section>
         </div>
