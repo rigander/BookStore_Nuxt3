@@ -1,10 +1,10 @@
 <script setup>
 const {useFetchGet} = useApiFetch();
-const option = toRef({
+const option = reactive({
     category: 'best-sellers',
 });
 const emit = defineEmits(['book-clicked-to-index']);
-console.log(option.value.category);
+
 // Fetching a category list
 const { data: categories } = await useFetchGet('/categories');
 

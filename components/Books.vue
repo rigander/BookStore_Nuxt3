@@ -2,8 +2,7 @@
 const {useFetchGet} = useApiFetch();
 const {toggleWishlist} = useWishListStore();
 const {bookData} = useProductBookStore();
-const props = defineProps(['active-category']);
-const activeCategory = ref(props['active-category']);
+const props = defineProps(['activeCategory']);
 const currentPage = ref(1);
 const router = useRouter();
 const books = ref([]);
@@ -20,12 +19,11 @@ const fetchBooks = async (page = 1, category = 'best-sellers') => {
     );
     books.value = data.value.books.data;
 };
-fetchBooks(currentPage.value, props['active-category']);
+fetchBooks(currentPage.value, props.activeCategory);
 
-watch(() => props['active-category'], (newCategory) => {
-    console.log("Active category changed to:", newCategory);
+watch(() => props.activeCategory, (newCategory) => {
     fetchBooks(currentPage.value, newCategory);
-}, { immediate: true });
+});
 
 const navigateToProductPage = (book) => {
     router.push({
