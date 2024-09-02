@@ -3,16 +3,15 @@ const {useFetchGet} = useApiFetch();
 const option = reactive({
     category: 'best-sellers',
 });
-const emit = defineEmits(['book-clicked-to-index']);
 
 // Fetching a category list
 const { data: categories } = await useFetchGet('/categories');
 
+// Choose desired category
 const changeGenre = (event, category) => {
     event.preventDefault();
     option.category = category;
 };
-
 </script>
 
 

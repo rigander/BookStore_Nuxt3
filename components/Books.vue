@@ -22,7 +22,8 @@ const fetchBooks = async (page = 1, category = 'best-sellers') => {
 fetchBooks(currentPage.value, props.activeCategory);
 
 watch(() => props.activeCategory, (newCategory) => {
-    fetchBooks(currentPage.value, newCategory);
+    fetchBooks(1, newCategory);
+    currentPage.value = 1;
 });
 
 const navigateToProductPage = (book) => {
