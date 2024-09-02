@@ -6,7 +6,7 @@ const props = defineProps(['activeCategory']);
 const currentPage = ref(1);
 const router = useRouter();
 const books = ref([]);
-console.log("Initial active category:", props['active-category']);
+
 // Fetching a list of books for the selected category
 const fetchBooks = async (page = 1, category = 'best-sellers') => {
     const { data } = await useFetchGet(
