@@ -2,13 +2,13 @@
 const {useFetchGet} = useApiFetch();
 const {toggleWishlist} = useWishListStore();
 const {bookData} = useProductBookStore();
-const props = defineProps(['activeCategory']);
+const props = defineProps(['modelValue']);
+const emit = defineEmits(['update:modelValue']);
 const currentPage = ref(1);
 const router = useRouter();
-const books = ref([]);
 
 // Fetching a list of books for the selected category
-const fetchBooks = async (page = 1, category = 'best-sellers') => {
+const fetchBooksPaginate = async (page = 1, category) => {
     const { data } = await useFetchGet(
         `/category/${category}/books`,
         false,
@@ -17,14 +17,11 @@ const fetchBooks = async (page = 1, category = 'best-sellers') => {
             query: { page: page }
         }
     );
-    books.value = data.value.books.data;
+    if (data.value) {
+        console.log(data.value);
+        emit('update:modelValue', data.value);
+    }
 };
-fetchBooks(currentPage.value, props.activeCategory);
-
-watch(() => props.activeCategory, (newCategory) => {
-    fetchBooks(1, newCategory);
-    currentPage.value = 1;
-});
 
 const navigateToProductPage = (book) => {
     router.push({
@@ -39,7 +36,7 @@ const navigateToProductPage = (book) => {
         <div class="books__sci-fi">
             <div
                 class="books__sci-fi-div"
-                v-for="book in books"
+                v-for="book in props.modelValue.value.books.data"
                 :key="book.id"
             >
                 <div v-if="book.discount"
@@ -78,7 +75,7 @@ const navigateToProductPage = (book) => {
             </div>
             <div id="block"></div>
             <vue-awesome-paginate
-                @click="fetchBooks(currentPage, activeCategory)"
+                @click="fetchBooksPaginate(currentPage, props.modelValue.option)"
                 :total-items="100"
                 v-model="currentPage"
                 :items-per-page="15"
