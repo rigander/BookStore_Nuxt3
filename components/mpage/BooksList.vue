@@ -40,7 +40,7 @@ const changeGenre = (event, genreSlug) => {
                                 v-for="(genre, index) in categories.featured"
                                 :key="index"
                                 :class="category.value.slug === genre.slug && 'active'"
-                                @click="changeGenre($event, category.slug)"
+                                @click="changeGenre($event, genre.slug)"
                                 class="option product-list__nav__li"
                         >
                             <div><a href="">{{ genre.name }}</a></div>
