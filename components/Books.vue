@@ -18,7 +18,6 @@ const fetchBooksPaginate = async (page = 1, category) => {
         }
     );
     if (data.value) {
-        console.log(data.value.books);
         emit('update:modelValue', data.value);
     }
 };
@@ -36,7 +35,7 @@ const navigateToProductPage = (book) => {
         <div class="books__sci-fi">
             <div
                 class="books__sci-fi-div"
-                v-for="book in props.modelValue.value.books.data"
+                v-for="book in props.modelValue.books.data"
                 :key="book.id"
             >
                 <div v-if="book.discount"
@@ -75,7 +74,7 @@ const navigateToProductPage = (book) => {
             </div>
             <div id="block"></div>
             <vue-awesome-paginate
-                @click="fetchBooksPaginate(currentPage, props.modelValue.value.slug)"
+                @click="fetchBooksPaginate(currentPage, props.modelValue.slug)"
                 :total-items="100"
                 v-model="currentPage"
                 :items-per-page="15"

@@ -1,6 +1,6 @@
 <script setup>
 const {useFetchGet} = useApiFetch();
-const category = reactive({ });
+const category = ref(null);
 
 // Fetching a category list
 const { data: categories } = await useFetchGet('/categories');
@@ -39,7 +39,7 @@ const changeGenre = (event, genreSlug) => {
                         <li
                                 v-for="(genre, index) in categories.featured"
                                 :key="index"
-                                :class="category.value.slug === genre.slug && 'active'"
+                                :class="category.slug === genre.slug && 'active'"
                                 @click="changeGenre($event, genre.slug)"
                                 class="option product-list__nav__li"
                         >
