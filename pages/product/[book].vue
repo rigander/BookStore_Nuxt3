@@ -1,7 +1,5 @@
 <script setup >
-const route = useRoute();
-const book = JSON.parse(route.query.book);
-
+const {bookData} = useProductBookStore();
 </script>
 
 
@@ -11,7 +9,7 @@ const book = JSON.parse(route.query.book);
             <section class="product-info">
                 <ProductBreadcrumps/>
                 <ProductInfoArticle
-                    :book="book"
+                    :book="bookData"
                 />
             </section>
             <div class="container-lower">

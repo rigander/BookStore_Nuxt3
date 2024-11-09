@@ -1,7 +1,7 @@
 <script setup>
 const {useFetchGet} = useApiFetch();
 const {toggleWishlist} = useWishListStore();
-const {bookData} = useProductBookStore();
+const {setBookData} = useProductBookStore();
 const props = defineProps(['modelValue']);
 const emit = defineEmits(['update:modelValue']);
 const currentPage = ref(1);
@@ -22,12 +22,6 @@ const fetchBooksPaginate = async (page = 1, category) => {
     }
 };
 
-const navigateToProductPage = (book) => {
-    router.push({
-        path: `/product/${encodeURIComponent(book.id)}`,
-        query: { book: JSON.stringify(book) },
-    });
-};
 </script>
 
 <template>
@@ -44,7 +38,8 @@ const navigateToProductPage = (book) => {
                     <span class="off">Off</span>
                 </div>
                 <NuxtLink
-                    @click="navigateToProductPage(book)"
+                    :to="{ name: 'product-book', params: { book: book.id }}"
+                    @click.prevent="setBookData(book)"
                 >
                     <img
                         class="book-img-scifi"
