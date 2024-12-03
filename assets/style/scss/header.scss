@@ -201,6 +201,10 @@ header{
       @extend%black-button-styles;
     }
   }
+  .checkout-button[aria-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
 }
 .header-content__wish-list{
   display: flex;
