@@ -1,5 +1,7 @@
 export const useApiFetch = () => {
     const apiBaseUrl = useRuntimeConfig().public.apiBase;
+    const modalStore = useModalStore();
+    const profileStore = useProfileStore();
     const csrfRequest = async () => {
         const csrfToken = useCookie( 'XSRF-TOKEN').value;
         if (!csrfToken) {
@@ -57,10 +59,30 @@ export const useApiFetch = () => {
         return { data, error };
     };
 
+    const submitLogOut = async () => {
+        await csrfRequest();
+        const { data, error } = await useFetchPost(
+            '/api/auth/logout',
+            null,
+            {
+                headers: {
+                    'Authorization': `Bearer ${profileStore.state.token}`,
+                    'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value
+                },
+            }
+        )
+        if (data) {
+            profileStore.state.userData = null;
+            profileStore.state.token = '';
+            modalStore.closeModalAndNavigate('/', 'login');
+        }
+    }
+
     return {
         apiBaseUrl,
         csrfRequest,
         useFetchPost,
-        useFetchGet
+        useFetchGet,
+        submitLogOut
     }
 }

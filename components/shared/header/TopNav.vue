@@ -1,30 +1,7 @@
 <script setup>
 const modalStore = useModalStore();
 const topNavStore = useTopNavStore();
-const {csrfRequest, useFetchPost} = useApiFetch();
-const profileStore = useProfileStore();
-const show = ref(false);
-const handleSuccess = () => {
-    profileStore.state.userData = null;
-    profileStore.state.token = '';
-    modalStore.closeModalAndNavigate('/', 'login');
-}
-const submitLogOut = async () => {
-    await csrfRequest();
-    const { data, error } = await useFetchPost(
-        '/api/auth/logout',
-        null,
-        {
-            headers: {
-                'Authorization': `Bearer ${profileStore.state.token}`,
-                'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value
-            },
-        }
-    )
-    if (data) {
-        handleSuccess();
-    }
-}
+const {submitLogOut} = useApiFetch();
 </script>
 
 
