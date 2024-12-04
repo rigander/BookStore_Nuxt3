@@ -7,7 +7,7 @@ const show = ref(false);
 const handleSuccess = () => {
     profileStore.state.userData = null;
     profileStore.state.token = '';
-    modalStore.closeModalAndNavigate('/');
+    modalStore.closeModalAndNavigate('/', 'login');
 }
 const submitLogOut = async () => {
     await csrfRequest();
