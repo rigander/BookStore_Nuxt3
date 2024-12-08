@@ -1,7 +1,7 @@
 <script setup>
 const modalStore = useModalStore();
 const topNavStore = useTopNavStore();
-const {submitLogOut} = useApiFetch();
+const {logout} = useAuth();
 </script>
 
 
@@ -24,7 +24,7 @@ const {submitLogOut} = useApiFetch();
                     </li>
                     <li
                         v-if="topNavStore.showLogOut"
-                        @click="submitLogOut"
+                        @click="logout"
                         class="hover_it"
                     >
                         <button>Log out</button>

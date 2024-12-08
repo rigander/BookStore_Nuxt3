@@ -1,6 +1,7 @@
 export const useAuth = () => {
     const { csrfRequest, useFetchPost } = useApiFetch();
     const { closeModalAndNavigate } = useModalStore();
+    const profileStore = useProfileStore();
     const { setUserData, setToken } = useProfileStore();
     const errorMessageServ = ref(null);
 
@@ -32,8 +33,28 @@ export const useAuth = () => {
         }
     };
 
+    const logout = async () => {
+        await csrfRequest();
+        const { data, error } = await useFetchPost(
+            '/api/auth/logout',
+            null,
+            {
+                headers: {
+                    'Authorization': `Bearer ${profileStore.state.token}`,
+                    'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value
+                },
+            }
+        )
+        if (data) {
+            profileStore.state.userData = null;
+            profileStore.state.token = '';
+            closeModalAndNavigate('/', 'login');
+        }
+    }
+
     return {
         login,
+        logout,
         errorMessageServ,
     };
 };
