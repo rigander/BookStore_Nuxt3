@@ -1,8 +1,8 @@
 <script setup>
-const { apiBaseUrl, csrfRequest, useFetchPost } = useApiFetch();
+const { csrfRequest, useFetchPost } = useApiFetch();
 const { closeModalAndNavigate } = useModalStore();
 const modalStore = useModalStore();
-const{ state, setUserData, setToken, setErrorMessage } = useProfileStore();
+const{ setUserData, setToken } = useProfileStore();
 import { configure } from "vee-validate";
 configure({
     validateOnBlur: true,
@@ -32,7 +32,7 @@ const handleSuccess = (responseData) => {
     setUserData(userData);
 }
 
-const submitSignInform = async () => {
+const submitLogIn = async () => {
     const { data, error } = await useFetchPost(
         `/api/auth/login`,
           {
@@ -47,9 +47,9 @@ const submitSignInform = async () => {
         console.error(error.value.data.message);
     }
 }
-const handleSubmitSignIn = async () => {
+const handleLogIn = async () => {
       await csrfRequest();
-      await submitSignInform();
+      await submitLogIn();
 };
 </script>
 
@@ -67,7 +67,7 @@ const handleSubmitSignIn = async () => {
             <VeeForm
                 v-slot="{ meta }"
                 :initial-values="initialValues"
-                @submit="handleSubmitSignIn"
+                @submit="handleLogIn"
                 class="dialog-form"
                 action="">
                 <h1>Sign In</h1>
@@ -113,8 +113,3 @@ const handleSubmitSignIn = async () => {
             </VeeForm>
         </div>
 </template>
-
-
-<style lang="scss" scoped>
-
-</style>
