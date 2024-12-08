@@ -1,55 +1,14 @@
 <script setup>
-const { csrfRequest, useFetchPost } = useApiFetch();
-const { closeModalAndNavigate } = useModalStore();
 const modalStore = useModalStore();
-const{ setUserData, setToken } = useProfileStore();
-import { configure } from "vee-validate";
-configure({
-    validateOnBlur: true,
-    validateOnChange: true,
-    validateOnInput: false,
-    validateOnModelUpdate: false,
-});
-const errorMessageServ = ref();
-const initialValues = { email:"", password: ""};
-const formData =ref({
-    email: '',
-    password: ''
-})
-const handleSuccess = (responseData) => {
-    formData.value = { ...initialValues };
-    closeModalAndNavigate('/');
-    const { id, name, email, phone, email_verified_at } = responseData.value.data;
-    const token = responseData.value.token.value;
-    const userData = {
-        id,
-        name,
-        email,
-        phone,
-        email_verified_at
-    };
-    setToken(token);
-    setUserData(userData);
-}
+const { login, errorMessageServ } = useAuth();
 
-const submitLogIn = async () => {
-    const { data, error } = await useFetchPost(
-        `/api/auth/login`,
-          {
-            email: formData.value.email,
-            password: formData.value.password,
-                }
-    )
-    if (!error.value) {
-        handleSuccess(data);
-    }
-    if (error.value) {
-        console.error(error.value.data.message);
-    }
-}
+const formData = ref({ email: '', password: '' })
 const handleLogIn = async () => {
-      await csrfRequest();
-      await submitLogIn();
+    const { email, password } = formData.value;
+    const result = await login(email, password);
+    if (!result.success) {
+        console.log('Failed to log in:', result.error);
+    }
 };
 </script>
 
@@ -66,7 +25,6 @@ const handleLogIn = async () => {
                 src="/img/Chromatic-Floral-Rabbit.svg" alt="white-rabbit"></div>
             <VeeForm
                 v-slot="{ meta }"
-                :initial-values="initialValues"
                 @submit="handleLogIn"
                 class="dialog-form"
                 action="">
@@ -105,7 +63,7 @@ const handleLogIn = async () => {
                     </div>
                     <NuxtLink
                         class="create-account"
-                        @click="closeModalAndNavigate('/signupform', 'login')"
+                        @click="modalStore.closeModalAndNavigate('/signupform', 'login')"
                     >
                         Create Account
                     </NuxtLink>
