@@ -1,13 +1,15 @@
 <script setup>
 const modalStore = useModalStore();
-const { login, errorMessageServ } = useAuth();
-
 const formData = ref({ email: '', password: '' })
+const errorMessageServ = ref('');
 const handleLogIn = async () => {
     const { email, password } = formData.value;
     const result = await login(email, password);
     if (!result.success) {
+        errorMessageServ.value = result.error;
         console.log('Failed to log in:', result.error);
+    } else {
+        errorMessageServ.value = '';
     }
 };
 </script>
@@ -30,7 +32,9 @@ const handleLogIn = async () => {
                 action="">
                 <h1>Sign In</h1>
                 <hr>
-                <div class="error_fill-up__serv">{{ errorMessageServ }}</div>
+                <div
+                    class="error_fill-up__serv"
+                    v-if="errorMessageServ">{{ errorMessageServ }}</div>
                 <div class="sign-in__container">
                     <div class="sign-in__username">
                         <label for="login">Email</label>

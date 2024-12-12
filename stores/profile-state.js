@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 
 export const useProfileStore = defineStore(
     'ProfileStore', () => {
-        const {csrfRequest, useFetchPost} = useApiFetch();
         const state = reactive({
             userData: null,
             token: '',

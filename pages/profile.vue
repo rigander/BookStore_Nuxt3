@@ -3,7 +3,6 @@ definePageMeta({
     middleware: 'auth'
 })
 
-const { useFetchGet } = useApiFetch();
 const { data, error } = await useFetchGet('/user', true);
 const user = data.value;
 </script>

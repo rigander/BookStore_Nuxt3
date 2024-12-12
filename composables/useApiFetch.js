@@ -1,8 +1,5 @@
-export const useApiFetch = () => {
-    const apiBaseUrl = useRuntimeConfig().public.apiBase;
-    const modalStore = useModalStore();
-    const profileStore = useProfileStore();
     const csrfRequest = async () => {
+        const apiBaseUrl = useRuntimeConfig().public.apiBase;
         const csrfToken = useCookie( 'XSRF-TOKEN').value;
         if (!csrfToken) {
             const { data, error } = await useFetch(
@@ -17,8 +14,9 @@ export const useApiFetch = () => {
             }
         }
     };
-    const useFetchGet = async (endpoint,  needAuthorize = false, options = {}) => {
 
+    const useFetchGet = async (endpoint,  needAuthorize = false, options = {}) => {
+        const apiBaseUrl = useRuntimeConfig().public.apiBase;
         const opts = {
             baseURL: apiBaseUrl,
             method: "GET",
@@ -36,10 +34,11 @@ export const useApiFetch = () => {
                 opts.headers = {'Authorization' : `Bearer ${auth.value.state.token}`};
             }
         }
-        return await useFetch(endpoint, opts);
+        return useFetch(endpoint, opts);
     };
 
     const useFetchPost = async (url, body, options = {}) => {
+        const apiBaseUrl = useRuntimeConfig().public.apiBase;
         const defaultOptions = {
             method: 'post',
             headers: {
@@ -48,10 +47,9 @@ export const useApiFetch = () => {
             credentials: 'include',
             cache: false
         };
-
         const requestOptions = { ...defaultOptions, ...options };
-
-        const { data, error } = await useFetch(`${apiBaseUrl}${url}`, {
+        const { data, error } =
+             useFetch(`${apiBaseUrl}${url}`, {
             ...requestOptions,
             body
         });
@@ -59,10 +57,4 @@ export const useApiFetch = () => {
         return { data, error };
     };
 
-    return {
-        apiBaseUrl,
-        csrfRequest,
-        useFetchPost,
-        useFetchGet
-    }
-}
+export { csrfRequest, useFetchPost, useFetchGet };

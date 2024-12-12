@@ -22,7 +22,9 @@ $ff:SegoeWP;
     display: none;
     -ms-overflow-style: none;  /* IE and Edge */
   }
-    scrollbar-width: none;  /* Firefox */
+    & {
+      scrollbar-width: none; /* Firefox */
+    }
 }
 
 
@@ -254,9 +256,11 @@ $ff:SegoeWP;
     width: 40px;
     height: 25px;
   }
-  width: 178px;
-  display: flex;
-  justify-content: space-between;
+  & {
+    width: 178px;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 // Product Information Bottom

@@ -1,5 +1,5 @@
 <script setup>
-const {apiBaseUrl} = useApiFetch();
+const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const {data: category} = await useFetch(`${apiBaseUrl}/api/categories`);
 const catFooter = category.value.data.footer;
 const {data: booksBS} = await useFetch(`${apiBaseUrl}/api/category/best-sellers/books`);
@@ -20,6 +20,3 @@ provide('categories', {
     <SharedFooter :cat-footer="catFooter"/>
 </template>
 
-<style>
-
-</style>

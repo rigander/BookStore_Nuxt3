@@ -1,5 +1,4 @@
 <script setup>
-const {useFetchGet} = useApiFetch();
 const category = ref(null);
 
 // Fetching a category list

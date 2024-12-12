@@ -10,10 +10,13 @@ export default defineNuxtConfig({
       '__VUE_PROD_DEVTOOLS__': false
     }
   },
+
   app:{
     pageTransition: { name: 'page', mode: 'out-in' },
   },
+
   devtools: { enabled: true },
+
   modules: [
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
@@ -21,19 +24,23 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt',
     '@vueuse/nuxt'
   ],
+
   pinia: {
     autoImports:["defineStore"]
   },
+
   piniaPersistedstate: {
     cookieOptions: {
       sameSite: 'strict'
     },
     storage: 'cookies'
   },
+
   swiper: {
     prefix: 'Swiper',
     styleLang: 'css'
   },
+
   veeValidate: {
     autoImports: true,
     componentNames: {
@@ -43,10 +50,13 @@ export default defineNuxtConfig({
       ErrorMessage: 'VeeErrorMessage'
     }
   },
+
   imports: { dirs: ["./stores"] },
+
   alias: {
     "@": resolve(__dirname, "/"),
   },
+
   css: [
     "~/assets/style/scss/main.scss",
     "~/assets/style/scss/product.scss",
@@ -60,15 +70,19 @@ export default defineNuxtConfig({
     "~/assets/style/scss/checkout.scss",
     "~/assets/style/scss/bookslist.scss"
   ],
+
   runtimeConfig: {
     public: {
       apiBase: 'http://api.book-store.loc/api'
     }
   },
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
+  compatibilityDate: '2024-12-10',
 })

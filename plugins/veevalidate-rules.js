@@ -1,5 +1,5 @@
 import { defineRule } from "vee-validate";
-import * as rules from "@vee-validate/rules";
+import { all as rules } from '@vee-validate/rules';
 
 export default defineNuxtPlugin((nuxtApp) => {
     Object.keys(rules)

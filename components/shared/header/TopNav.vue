@@ -1,7 +1,6 @@
 <script setup>
 const modalStore = useModalStore();
 const topNavStore = useTopNavStore();
-const {logout} = useAuth();
 </script>
 
 

@@ -1,5 +1,4 @@
 <script setup>
-const {useFetchGet} = useApiFetch();
 const {toggleWishlist} = useWishListStore();
 const {setBookData} = useProductBookStore();
 const props = defineProps(['modelValue']);

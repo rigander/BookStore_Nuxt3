@@ -1,10 +1,8 @@
 <script setup>
-
 const dialogVisible = ref(false);
 const ShowSignIn = () => {
     dialogVisible.value = true;
 }
-
 </script>
 
 <template>

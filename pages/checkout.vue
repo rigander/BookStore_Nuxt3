@@ -2,7 +2,6 @@
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
 const router = useRouter();
-const {apiBaseUrl} = useApiFetch();
 const profileStore = useProfileStore();
 const token = profileStore.state.token;
 const name = profileStore.state.userData ? profileStore.state.userData.name : '';
