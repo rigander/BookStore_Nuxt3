@@ -33,7 +33,7 @@ const useFetchGet = async (url,  needAuthorize = false, options = {}) => {
         }
     }
     return useFetch(url, opts,
-        { $fetch: useNuxtApp().$customFetch }
+        { $fetch: useNuxtApp().$FetchGet }
     )};
 
 const useFetchPost = async (url, body, options = {}) => {
