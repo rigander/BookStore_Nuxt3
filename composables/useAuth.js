@@ -12,10 +12,8 @@
                 console.error('Login error:', error.value.data.message);
                 return { success: false, error: error.value.data.message };
             }
-            const { id, name, email: userEmail, phone, email_verified_at } = data.value.data;
-            const token = data.value.token.value;
-            const userData = { id, name, email: userEmail, phone, email_verified_at };
-            setToken(token);
+            const { token, data: userData } = data.value;
+            setToken(token.value);
             setUserData(userData);
             closeModalAndNavigate('/');
             return { success: true };
