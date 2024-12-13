@@ -3,7 +3,6 @@
     const { setUserData, setToken } = useProfileStore();
     
     const login = async (email, password) => {
-        try {
             await csrfRequest();
             const { data, error } = await useFetchPost(
                 '/api/auth/login',
@@ -20,11 +19,6 @@
             setUserData(userData);
             closeModalAndNavigate('/');
             return { success: true };
-
-        } catch (err) {
-            console.error('Unexpected login error:', err);
-            return { success: false, error: 'Unexpected error' };
-        }
     };
 
     const logout = async () => {
