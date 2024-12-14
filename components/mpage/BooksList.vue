@@ -11,7 +11,7 @@ const fetchBooks = async (page = 1, genre = 'best-sellers') => {
         false,
         {
             cache: false,
-            query: { page: page }
+            query: { page: page },
         }
     );
     if (data.value) {

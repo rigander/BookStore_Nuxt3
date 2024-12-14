@@ -1,6 +1,5 @@
 <script setup>
 const {toggleWishlist} = useWishListStore();
-const {setBookData} = useProductBookStore();
 const props = defineProps(['modelValue']);
 const emit = defineEmits(['update:modelValue']);
 const currentPage = ref(1);
@@ -13,7 +12,7 @@ const fetchBooksPaginate = async (page = 1, category) => {
         false,
         {
             cache: false,
-            query: { page: page }
+            query: { page: page },
         }
     );
     if (data.value) {
@@ -37,8 +36,11 @@ const fetchBooksPaginate = async (page = 1, category) => {
                     <span class="off">Off</span>
                 </div>
                 <NuxtLink
-                    :to="{ name: 'product-book', params: { book: book.id }}"
-                    @click.prevent="setBookData(book)"
+                    :to="{
+                           name: 'product-book',
+                           params: { book: book.slug },
+                           query: { category: props.modelValue.slug, page: currentPage }
+                          }"
                 >
                     <img
                         class="book-img-scifi"

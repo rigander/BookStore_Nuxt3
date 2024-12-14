@@ -27,7 +27,7 @@
             {
                 headers: {
                     'Authorization': `Bearer ${profileStore.state.token}`,
-                    'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value
+                    'X-XSRF-TOKEN': useCookie( 'XSRF-TOKEN').value,
                 },
             }
         )
