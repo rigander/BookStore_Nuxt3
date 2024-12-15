@@ -14,20 +14,20 @@
     margin-top: 25px;
     height: 60px;
     width: 250px;
-    border: none;
     border-radius: 1px;
     background-image: linear-gradient(to top, #79b260, #92d774);
     color: #ffffff;
     font-size: 24px;
     font-family: SegoeWP;
+    &:hover{
+      color: #3c3f41;
+    }
+    &:active{
+      background-color: white;
+      color: #52a452;
+    }
   }
-  button:hover{
-    color: #3c3f41;
-  }
-  button:active{
-    background-color: white;
-    color: #52a452;
-  }
+
   p{
     margin: 30px 0;
     font-size: 20px;
@@ -45,21 +45,18 @@
   input{
     margin-left: 0;
     padding: 0 10px;
-  }
-  input::placeholder{
-    padding-left: 10px;
+    &::placeholder{
+      padding-left: 10px;
+    }
   }
 }
-.name_family-name{
-  height: 25px;
-}
+.name_family-name,
 .email_checkout{
   height: 25px;
 }
 .label__name_family-name{
   color: #3f3f40;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding: 20px 0;
   font-size: 22px;
   font-weight: bold;
 }
@@ -102,6 +99,10 @@
 #edit-products{
   display: flex;
   justify-content: flex-end;
+  &:hover {
+    color: #52a452;
+    cursor: pointer;
+  }
 }
 .delivery_to-post__wrapper{
   display: flex;
@@ -117,13 +118,9 @@
   flex-direction: column;
 }
 .self-pickup{
+  padding: 0 0 5px 4px;
   label{
     color: #3f3f40;
-  }
-
-  & {
-  padding-bottom: 5px;
-  padding-left: 4px;
   }
 }
 #delivery-method{
@@ -133,12 +130,8 @@
   color: #52a452;
   cursor: pointer;
 }
-.delivery_to-post_content{
-  border: 1px solid black;
-  border-radius: 4px;
-  padding: 14px 6px;
-}
-.checkout_courier-delivery{
+.delivery_to-post_content,
+.checkout_courier-delivery {
   margin-top: 20px;
   border: 1px solid black;
   border-radius: 4px;
