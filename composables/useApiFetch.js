@@ -32,10 +32,7 @@ const useFetchGet = async (url,  needAuthorize = false, options = {}) => {
             opts.headers = {'Authorization' : `Bearer ${auth.value.state.token}`};
         }
     }
-    return useFetch(url,{
-         ...opts,
-        $fetch: useNuxtApp().$fetchGet }
-    )};
+    return useFetch(url, opts)};
 
 const useFetchPost = async (url, body, options = {}) => {
     const apiBaseUrl = useRuntimeConfig().public.apiBase;
