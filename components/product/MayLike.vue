@@ -31,7 +31,6 @@ books = [
     },
 
 ]
-
 </script>
 
 

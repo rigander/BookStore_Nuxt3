@@ -1,8 +1,3 @@
-<script setup>
-
-</script>
-
-
 <template>
     <div class="prod-info-bottom__content">
         <p>The Star Wars Episode I: The Phantom Menace novelization was written by Terry Brooks and

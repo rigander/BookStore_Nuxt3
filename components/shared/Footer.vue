@@ -51,8 +51,4 @@ const cardsImages = [
     </footer>
 </template>
 
-<style lang="scss">
-
-</style>
-
 

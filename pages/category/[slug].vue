@@ -44,8 +44,3 @@ const updateCurrentPage = (newPage) => {
         </main>
     </div>
 </template>
-
-
-<style lang="scss">
-
-</style>

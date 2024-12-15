@@ -1,8 +1,3 @@
-<script setup>
-
-</script>
-
-
 <template>
     <form action="#" name="feed-back" id="form">
         <h2 class="title">Write a comment</h2>

@@ -151,10 +151,3 @@ const originalPrice = Math.floor(price / (1 - discount/100));
         </div>
     </article>
 </template>
-
-<style lang="scss">
-.jedi{
-    height: 100%;
-    width: auto;
-}
-</style>

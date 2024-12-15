@@ -79,6 +79,9 @@ header{
   justify-content: space-between;
   align-items: center;
 }
+.hover_it:hover{
+  cursor: pointer;
+}
 .header-content__books-online{
   margin-right: 43px;
 }
@@ -359,4 +362,5 @@ header{
   align-items: center;
   height: 36px;
   border-radius: 2px;
+  user-select: none;
 }

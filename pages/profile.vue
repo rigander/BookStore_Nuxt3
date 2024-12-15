@@ -2,7 +2,6 @@
 definePageMeta({
     middleware: 'auth'
 })
-
 const { data, error } = await useFetchGet('/user', true);
 const user = data.value;
 </script>
@@ -50,96 +49,3 @@ const user = data.value;
         </div>
     </div>
 </template>
-
-
-<style lang="scss" scoped>
-.profile{
-    display: flex;
-    justify-content: center;
-    width: 1280px;
-}
-.personal-data_wrapper{
-    height: 380px;
-    width: 1200px;
-    border: 1px solid #bdbdbe;
-    border-radius: 2px;
-    margin-top: 20px;
-    padding: 20px;
-    display: flex;
-}
-.p-d_img{
-    margin-right: 40px;
-}
-.personal-data{
-    display: flex;
-    flex-direction: column;
-    width: 900px;
-    h1{
-        font-size: 24px;
-        padding-bottom: 20px;
-    }
-    button{
-        height: 40px;
-        width: 120px;
-        font-size: 20px;
-        font-weight: bold;
-        background-color: #7eb15c;
-        border-radius: 2px;
-        margin-top: 90px;
-        letter-spacing: 2px;
-    }
-}
-.personal-data_p1{
-    display: flex;
-    margin-bottom: 20px;
-    h2{
-        font-weight: bold;
-        font-size: 20px;
-        padding-bottom: 4px;
-    }
-    span{
-        font-size: 19px;
-    }
-}
-.p-d_p1{
-    margin-right: 250px;
-}
-.p-d_name{
-    margin-left: 30px;
-    margin-right: 240px;
-}
-.p-d_second-name{
-    margin-right: 0;
-}
-.personal-data_p2{
-    display: flex;
-    margin-bottom: 20px;
-    h2{
-        font-weight: bold;
-        font-size: 20px;
-        padding-bottom: 4px;
-    }
-    span{
-        font-size: 19px;
-    }
-}
-.p-d_date-of-b{
-    margin-right: 225px;
-}
-.p-d_sex{
-    margin-right: 250px;
-}
-.p-d_language{
-    margin-right: 0;
-}
-.p-d_email{
-    h2{
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 4px;
-    }
-    span{
-        font-size: 19px;
-    }
-}
-</style>

@@ -68,9 +68,3 @@ const topNavStore = useTopNavStore();
         </client-only>
     </div>
 </template>
-
-<style lang="scss" >
-.hover_it:hover{
-    cursor: pointer;
-}
-</style>

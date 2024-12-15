@@ -68,7 +68,10 @@ export default defineNuxtConfig({
     "~/assets/style/scss/help.scss",
     "~/assets/style/scss/basket.scss",
     "~/assets/style/scss/checkout.scss",
-    "~/assets/style/scss/bookslist.scss"
+    "~/assets/style/scss/bookslist.scss",
+    "~/assets/style/scss/profile.scss",
+    "~/assets/style/scss/registration-successful.scss",
+    "~/assets/style/scss/whishlist.scss",
   ],
 
   runtimeConfig: {

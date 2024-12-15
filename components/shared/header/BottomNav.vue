@@ -29,11 +29,3 @@ const { category } = inject('categories');
         </nav>
     </div>
 </template>
-
-<style lang="scss">
-.bottom-nav{
-    :hover{
-        user-select: none;
-    }
-}
-</style>

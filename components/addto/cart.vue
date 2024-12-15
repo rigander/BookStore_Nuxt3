@@ -17,7 +17,3 @@ const { book } = defineProps(['book']);
         </span>
         </ClientOnly>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
