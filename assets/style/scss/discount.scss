@@ -1,20 +1,17 @@
 // DISCOUNT LABEL
 
 .discount{
-  align-self: end;
-  position: absolute;
-  z-index: 2;
-  margin-top: 2px;
-  margin-right: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: end;
+  position: absolute;
+  z-index: 2;
+  margin: 2px 5px 0 0;
   height: 48px;
   width: 48px;
-  border:none;
   border-radius: 50%;
   background-color: #f05356;
-  padding: 0;
   color: white;
   font-size: 18px;
   span{

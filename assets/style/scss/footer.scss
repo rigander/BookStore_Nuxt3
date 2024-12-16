@@ -1,27 +1,22 @@
 //FOOTER
 footer{
-  :hover{
-    user-select: none;
-  }
-}
-.active_footer{
-  background-color: black;
-}
-footer{
-  width: 100vw;
-  order: 5;
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  order: 5;
   color: #dddddd;
   margin-top: 25px;
   height: 513px;
   background-color: #434243;
+  &:hover{
+    user-select: none;
+  }
   #list-of-themes{
+    display: flex;
+    justify-content: space-between;
     align-self: center;
     height: 354px;
     width: 973px;
-    display: flex;
-    justify-content: space-between;
     font-size: 14px;
     a{
       &:hover{
@@ -54,10 +49,12 @@ footer{
     }
   }
   h3{
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
     font-size: 20px;
     font-weight: 300;
+  }
+  &.active_footer{
+    background-color: black;
   }
 }
 .banking{

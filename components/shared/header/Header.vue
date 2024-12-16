@@ -74,7 +74,7 @@ const {totalCost, countBooksInCart} = storeToRefs(cartStore);
                             <div class="wish-list">Wish list</div>
                         </div>
                         <client-only>
-                            <div class="twenty">{{ countBooksInWishlist }}</div>
+                            <div class="twelve">{{ countBooksInWishlist }}</div>
                         </client-only>
                     </NuxtLink>
                 </div>

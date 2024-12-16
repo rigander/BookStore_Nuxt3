@@ -1,5 +1,3 @@
-//HEADER
-
 //Variables
 %black-button-styles{
   &:hover{
@@ -21,11 +19,8 @@
   height: 28px;
   justify-content: flex-end;
   align-items: center;
-  background-color: #424242;
   ul{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     list-style: none;
     max-width: 600px;
     height: 16px;
@@ -61,10 +56,8 @@ header{
 }
 .header-layout{
   width: 100vw;
-  order: 1;
 }
 .header-content-container{
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,19 +75,14 @@ header{
 .hover_it:hover{
   cursor: pointer;
 }
-.header-content__books-online{
-  margin-right: 43px;
-}
 .header-content__search-panel{
   display: flex;
-  flex-direction: row;
   align-items: center;
   background-color: #79b260;
   height: 40px;
   width: 458px;
   border-radius: 2px;
   padding-left: 4px;
-  margin-right: 52px;
 }
 .magnifying-glass{
   margin-top: 7px;
@@ -112,8 +100,7 @@ header{
     background-color: #79b260;
   }
   #stick-for__magnifying-circle {
-    margin-top: -2px;
-    margin-left: 5px;
+    margin: -2px 0 0 5px;
     height: 8px;
     width: 5px;
     border-left: 4px solid white;
@@ -134,12 +121,10 @@ header{
   border: none;
   color: white;
   font-size: 23px;
-  display: inline-flex;
-  flex-direction: row;
+  display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   border-radius: 2px;
-  padding-bottom: 3px;
   &:hover{
     color: #FFCC00;
   }
@@ -149,7 +134,7 @@ header{
   }
 }
 .header-content__your-cart{
-  width: 193px;
+  width: 230px;
   height: 70px;
   display: flex;
   flex-direction: column;
@@ -159,54 +144,48 @@ header{
     width: 192px;
     display: flex;
     justify-content: space-between;
-  }
-  .my-cart:hover{
-    cursor: pointer;
+    &:hover{
+      cursor: pointer;
+    }
   }
   .items{
     display: flex;
     width: 160px;
     color: #6d6d6d;
     font-size: 23px;
+    &:hover{
+      color: #3a7ca8;
+    }
     div{
       font-size: 14px;
-      padding-top: 9px;
-      padding-left: 6px;
+      padding: 9px 0 0 6px;
     }
   }
-  .items:hover{
-    color: #3a7ca8;
-  }
   .checkout{
-    width: 185px;
     display: flex;
-    justify-content: space-between;
   }
   .total-cost{
     font-size: 27px;
     font-weight: bold;
     color: #6d6d6d;
-    padding-left: 3px;
     letter-spacing: 0.5px;
   }
   .checkout-button{
     button{
-      margin-right: 3px;
-      align-self: end;
+      margin-left: 10px;
       height: 26px;
       width: 81px;
       background-image: linear-gradient(to top, #242424, #424242);
       box-shadow: inset 0.5px 0.9px 0 0 rgba(118, 118, 118, 0.75);
       color: white;
-      border: none;
-      border-radius: 1px;
+      border-radius: 4px;
       font-size: 15px;
       @extend%black-button-styles;
     }
-  }
-  .checkout-button[aria-disabled="true"] {
-    pointer-events: none;
-    opacity: 0.5;
+    &[aria-disabled="true"] {
+      pointer-events: none;
+      opacity: 0.5;
+    }
   }
 }
 .header-content__wish-list{
@@ -218,10 +197,9 @@ header{
   padding-bottom: 15px;
   width: 90px;
   height: 50px;
-  .twenty{
+  .twelve{
     padding-top: 1px;
-    margin-left: 78px;
-    margin-top: -35px;
+    margin: -35px 0 0 78px;
     align-self: end;
     display: flex;
     justify-content: center;
@@ -230,7 +208,6 @@ header{
     color: white;
     width: 28px;
     height: 16px;
-    border: none;
     border-radius: 20px;
     background-color: #79b260;
   }
@@ -249,9 +226,7 @@ header{
     display: inline-block;
     width: 0;
     height: 0;
-    margin-left: .9em;
-    margin-right: .9em;
-    margin-bottom: 1.2em;
+    margin: 0 .9em 1.2em .9em;
     border-right:  .3em solid transparent;
     border-bottom: .7em  solid #f2f2f3;
     border-left:   .3em solid transparent;
@@ -287,26 +262,25 @@ header{
 // Main Navigation Panel
 .main-nav-wrapper{
   display: flex;
-  flex-basis: 1280px;
-  height: 40px;
-  margin: 0 auto;
   justify-content: center;
   align-items: center;
+  height: 40px;
 }
 .main-nav{
   ul{
     width: 987px;
-    height: 19px;
+    height: 36px;
     display: flex;
     justify-content: space-between;
     font-size: 19px;
-    list-style: none;
-    align-items: center;
     padding: 0 5px 0 0;
     li{
+      display: flex;
+      align-items: center;
+      border-radius: 3px;
+      user-select: none;
       a{
         padding: 0 10px 0 10px;
-        text-decoration: none;
         color: #5b5b5b;
         font-weight: bold;
         &:hover{
@@ -317,50 +291,9 @@ header{
           color: white;
         }
       }
-    }
-    li:hover{
-      background-color: #98d56f;
+      &:hover{
+        background-color: #98d56f;
+      }
     }
   }
-}
-.main-nav__computers{
-  display: inline-block;
-  width: 70px;
-}
-.main-nav__cooking{
-  display: inline-block;
-  width: 50px;
-}
-.main-nav__education{
-  display: inline-block;
-  width: 60px;
-}
-.main-nav__fiction,
-.main-nav__health{
-  display: inline-block;
-  width: 50px;
-}
-.main-nav__math{
-  display: inline-block;
-  width: 85px;
-}
-.main-nav__medical{
-  display: inline-block;
-  width: 50px;
-}
-.main-nav__reference{
-  display: inline-block;
-  width: 55px;
-}
-.main-nav__science{
-  display: inline-block;
-  width: 60px;
-}
-.bottom-nav{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 36px;
-  border-radius: 2px;
-  user-select: none;
 }
