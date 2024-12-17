@@ -66,9 +66,9 @@ $ff:SegoeWP;
     display: flex;
     align-items: center;
     list-style: none;
-    &:hover{
-      color: red;
+    :hover{
       font-weight: bold;
+      color: red;
     }
     a{
       text-decoration: none;
@@ -89,13 +89,12 @@ $ff:SegoeWP;
 // IN STOCK sign
 .in-stock-wrapper{
   position: absolute;
-  width: 47px;
-  height: 30px;
-  margin-left: 563px;
-  margin-top: -9px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 47px;
+  height: 30px;
+  margin: -9px 0 0 563px;
   #in-stock-text{
     position: absolute;
     display: flex;
@@ -144,12 +143,12 @@ $ff:SegoeWP;
   svg path {
     fill: darkolivegreen;
   }
-}
-#add-to-wishlist:hover svg path{
-  fill: #421b1b;
-}
-#add-to-wishlist:hover + #tooltip{
-  display: block;
+  &:hover svg path {
+    fill: #421b1b;
+  }
+  &:hover + #tooltip {
+    display: block;
+  }
 }
 #tooltip {
   position: absolute;
@@ -275,21 +274,32 @@ $ff:SegoeWP;
   width: 725px;
   height: 174px;
   margin-top: 41px;
-  .prod-info-bottom__nav{
-    width: 725px;
-    height: 37px;
+  &__nav{
     display: flex;
     align-items: center;
+    width: 725px;
+    height: 37px;
     ul{
       display: flex;
       padding: 0;
+      li{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        width: 208px;
+        height: 37px;
+        a{
+          text-decoration: none;
+          color: #7e7e7e;
+        }
+      }
       .white-line{
         height: 1px;
         width: 208px;
         background-color: white;
         position: absolute;
-        margin-top: 38px;
-        margin-left: 1px;
+        margin: 38px 0 0 1px;
       }
       #other-det{
         width: 136px;
@@ -306,46 +316,34 @@ $ff:SegoeWP;
           color: white;
         }
       }
-      #p-info{
-        border: 1px solid #d6d6d6;
-        border-bottom: transparent;
-        border-radius:4px 4px 0 0;
-        :hover{
-          color: darkred;
-        }
-      }
-      li{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        list-style: none;
-        width: 208px;
-        height: 37px;
-        a{
-          text-decoration: none;
-          color: #7e7e7e;
-        }
-      }
+    }
+  }
+  &__content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 725px;
+    height: 140px;
+    border: 1px solid #d6d6d6;
+    border-radius:0 4px 4px 4px;
+    p{
+      width: 651px;
+      height: 93px;
+      overflow: scroll;
+      color: #7e7e7e;
+      line-height: 1.6;
+      font-size: 14px;
+      margin-right: 16px;
+      @extend %hide-scroll-bar;
     }
   }
 }
-.prod-info-bottom__content{
-  width: 725px;
-  height: 140px;
+#p-info{
   border: 1px solid #d6d6d6;
-  border-radius:0 4px 4px 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  p{
-    width: 651px;
-    height: 93px;
-    overflow: scroll;
-    color: #7e7e7e;
-    line-height: 1.6;
-    font-size: 14px;
-    margin-right: 16px;
-    @extend %hide-scroll-bar;
+  border-bottom: transparent;
+  border-radius:4px 4px 0 0;
+  :hover{
+    color: darkred;
   }
 }
 
@@ -355,8 +353,6 @@ $ff:SegoeWP;
   display: flex;
   justify-content: space-between;
 }
-
-
 .product-review{
   height: 611px;
   width: 725px;
@@ -370,41 +366,41 @@ $ff:SegoeWP;
     padding-top: 5px;
     padding-bottom: 7px;
   }
-  .top-name{
-    border-bottom: 1px solid #c0c0c1;
+}
+.name{
+  display: flex;
+  padding-top: 10px;
+  justify-content: space-between;
+  width: 647px;
+  height: 98px;
+  margin-left: 26px;
+}
+.top-name{
+  border-bottom: 1px solid #c0c0c1;
+}
+.avatar-name{
+  width: 63px;
+  height: 87px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #a2a2a2;
+  h4{
+    font-size: 14px;
+    margin: 0;
+    padding-top: 5px;
+    font-weight: 300;
   }
-  .name{
-    display: flex;
-    padding-top: 10px;
-    justify-content: space-between;
-    width: 647px;
-    height: 98px;
-    margin-left: 26px;
-    .avatar-name{
-      width: 63px;
-      height: 87px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #a2a2a2;
-      h4{
-      font-size: 14px;
-      margin: 0;
-      padding-top: 5px;
-      font-weight: 300;
-      }
-    }
-    .text-review{
-      width: 569px;
-      height: 77px;
-      color: #7e7e7e;
-      overflow: scroll;
-      line-height: 1.5;
-      font-size: 13px;
-      margin-top: -5px;
-      @extend %hide-scroll-bar;
-    }
-  }
+}
+.text-review{
+  width: 569px;
+  height: 77px;
+  color: #7e7e7e;
+  overflow: scroll;
+  line-height: 1.5;
+  font-size: 13px;
+  margin-top: -5px;
+  @extend %hide-scroll-bar;
 }
 
 //Form
@@ -423,16 +419,11 @@ label{
   color: #a2a2a2;
 }
 input{
-  margin-bottom: 14px;
-  margin-left: 20px;
+  margin: 0 0 14px 20px;
   border: solid 1px #e2e2e2;
   border-radius: 3px;
 }
-#name{
-  width: 545px;
-  height: 29px;
-}
-#email{
+#name, #email{
   width: 545px;
   height: 29px;
 }
@@ -452,8 +443,8 @@ input{
   font-size: 18.5px;
   font-weight: bold;
   border: none;
-  background-image: linear-gradient(to top, #79b260, #92d774);
   border-radius: 1px;
+  background-image: linear-gradient(to top, #79b260, #92d774);
   color: #ffffff;
   @extend %green-button-styles
 }
@@ -462,12 +453,12 @@ input{
 .may-like__products{
   display: block;
   box-sizing: border-box;
-  margin-top: 78px;
-  margin-left: 20px;
-  max-height: 771px;
-  min-width: 248px;
+  margin: 78px 0 0 20px;
+  height: 770px;
+  width: 250px;
   border: solid 1px #d4d4d5;
-  border-radius: 4px;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
   h3{
     margin: 14px 0 0 15px;
     color: #7e7e7e;
@@ -475,11 +466,11 @@ input{
   }
 }
 .may-like-book{
-  height: 103.8px;
-  width: 249px;
-  border-bottom: 1px solid #c0c0c1;
   display: flex;
   align-items: center;
+  height: 105.6px;
+  width: 249px;
+  border-bottom: 1px solid #c0c0c1;
   padding-left: 11px;
   img{
     height: 88px;
@@ -489,23 +480,21 @@ input{
     font-size: 15px;
     color: #595959;
     font-weight: 300;
-    margin: 0;
   }
   span{
     font-size: 22px;
     color: #f05356;
   }
   button{
-    height: 24px;
-    max-width: 87px;
-    background-color: #595959;
-    border: none;
-    border-radius: 3px;
-    color: #ffffff;
-    font-size: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 24px;
+    width: 87px;
+    background-color: #595959;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 15px;
     @extend%black-button-styles;
   }
 }
@@ -514,7 +503,4 @@ input{
   flex-direction: column;
   justify-content: space-between;
   height: 70px;
-}
-.last-element{
-  border-bottom: none;
 }
