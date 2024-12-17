@@ -20,9 +20,10 @@
     outline: 1px solid transparent;
     transition: outline-color 0.3s;
   }
+  /* adds a blue halo around input */
   input:focus {
     outline-color: #007bff;
-    box-shadow: 0 0 5px 2px #007bff; /* добавьте голубое гало */
+    box-shadow: 0 0 5px 2px #007bff;
     border-color: #007bff;
   }
 }

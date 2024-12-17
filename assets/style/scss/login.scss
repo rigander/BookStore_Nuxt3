@@ -18,17 +18,14 @@
   .all-inputs{
     background-color: #38404f;
     width: 290px;
-    margin-top: 5px;
-    margin-left: 0;
-    margin-bottom: 5px;
+    margin: 5px 0;
     color: white;
     padding: 3px;
-  }
-  .all-inputs:hover{
-    cursor: default;
+    &:hover {
+      cursor: default;
+    }
   }
 }
-
 .white-rabbit__container{
   height: 250px;
   width: 200px;
@@ -57,29 +54,24 @@
   align-items: center;
   color: #bfbfc1;
   margin: auto;
-  background: rgb(43,113,45);
   background: radial-gradient(circle, rgb(82, 82, 83) 0%, rgb(51, 53, 52) 100%);
   border-radius: 10px;
   height: 600px;
   width: 400px;
 }
 .sign-in__container{
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: flex-start;
   width: 300px;
 }
 .forgot-pass{
   margin-left: 180px;
   font-size: 14px;
   text-decoration: underline;
-}
-.forgot-pass:hover{
-  cursor: pointer;
-}
-.forgot-pass:active{
-  color: #f57375;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    color: #f57375;
+  }
 }
 .sign-in-but{
   margin: 19px 0 0 0;
@@ -90,27 +82,26 @@
   border: none;
   color: #3c3f41;
   font-weight: bold;
-}
-.sign-in-but:hover{
-  cursor: pointer;
-  background: rgb(32,140,34);
-  background: linear-gradient(0deg, rgba(32,140,34,1) 50%, rgba(9,196,9,1) 82%);
-}
-.sign-in-but:active{
-  background-color: #92d774;
-  color: #d5d5da;
+  &:hover {
+    cursor: pointer;
+    background: linear-gradient(0deg, rgba(32, 140, 34, 1) 50%, rgba(9, 196, 9, 1) 82%);
+  }
+  &:active {
+    background-color: #92d774;
+    color: #d5d5da;
+  }
 }
 .create-account{
+  display: block;
+  margin-top: 20px;
   text-decoration: underline;
-  margin: 0 auto;
-  padding-top: 15px;
   font-size: 14px;
-}
-.create-account:active{
-  color: #f57375;
-}
-.create-account:hover{
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
+  &:active {
+    color: #f57375;
+  }
 }
 .error_fill-up__serv{
   color: #f48b53;

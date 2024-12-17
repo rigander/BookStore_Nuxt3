@@ -7,6 +7,8 @@
 // Variables
 $cw:996px;
 $ff:SegoeWP;
+
+// Mixins and Placeholders
 %green-button-styles{
   &:hover{
     color: #636364;
@@ -27,8 +29,11 @@ $ff:SegoeWP;
     }
 }
 
-
+// General Imports
 @import "header";
+@import "footer";
+
+// Main Content Wrapper
 #main-content-wrapper__product{
   margin-top: 9px;
   width: 1280px;
@@ -55,15 +60,13 @@ $ff:SegoeWP;
 .bread-cramps{
   width: 465px;
   height: 20px;
-  padding-left: 17px;
-  padding-bottom: 2px;
+  padding: 0 0 2px 17px;
   display: flex;
-  margin: 0;
   li{
-    list-style: none;
     display: flex;
     align-items: center;
-    :hover{
+    list-style: none;
+    &:hover{
       color: red;
       font-weight: bold;
     }
@@ -515,6 +518,3 @@ input{
 .last-element{
   border-bottom: none;
 }
-
-
-@import "footer";
