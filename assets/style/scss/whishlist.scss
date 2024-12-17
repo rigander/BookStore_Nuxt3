@@ -46,8 +46,11 @@
   color: #3f3f40;
 }
 .delete-item{
-  margin-right: 10px;
-}
-.delete-item:hover{
-  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: block;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
 }

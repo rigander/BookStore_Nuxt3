@@ -30,9 +30,7 @@
     opacity: 0.76;
     background-color: #303033;
     border-radius: 50%;
-    border: none;
-    padding-top: 4px;
-    padding-right: 12px;
+    padding: 4px 12px 0 0;
     margin-left: 3px;
     &:hover{
       background-color: white;
@@ -41,16 +39,14 @@
       background-color: #e4bc6a;
     }
     div{
-      padding-bottom: 3px;
-      padding-left: 6px;
+      padding: 0 0 3px 6px;
     }
   }
   .right{
-    align-self: center;
     display: flex;
-    order:3;
     align-items: center;
     justify-content: center;
+    order:3;
     width: 38px;
     height: 38px;
     opacity: 0.76;
@@ -107,19 +103,19 @@
   color: #ffffff;
   background-image: url("/img/deal of the month.png");
   .side-slider__content{
-    width: 269px;
-    height: 305px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
+    width: 269px;
+    height: 305px;
   }
   #deal{
-    margin-top: 18px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 18px;
     height: 46px;
     font-size: 27px;
     font-weight: 600;
@@ -146,15 +142,14 @@
     }
   }
   button{
-    background-color:#52a452;
-    border:none;
-    border-radius: 2px;
-    color: white;
     display: flex;
+    justify-content: center;
     width: 108px;
     height: 30px;
-    justify-content: center;
     padding: 2px;
+    background-color:#52a452;
+    border-radius: 2px;
+    color: white;
     text-shadow: 0.5px 0.9px 0 rgba(74, 151, 74, 0.75);
 
     font-size: 19px;
@@ -168,7 +163,6 @@
     }
   }
 }
-
 .arrow-right,
 .arrow-left,{
   display: block;
@@ -179,14 +173,10 @@
 }
 .arrow-right{
   transform: rotate(135deg);
-  margin-left: -6px;
-  margin-right: 8px;
-  margin-bottom: 3px;
+  margin: 0 8px 3px -6px;
 }
-
 .arrow-left{
   transform: rotate(-45deg);
-  margin-left: 8px;
-  margin-right: -6px;
-  margin-bottom: 3px;
+  margin: 0 -6px 3px 8px;
 }
+
