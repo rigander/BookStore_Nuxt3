@@ -21,7 +21,7 @@
   width: 900px;
   h1{
     font-size: 24px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
   }
   button{
     height: 40px;
@@ -40,21 +40,14 @@
   h2{
     font-weight: bold;
     font-size: 20px;
-    padding-bottom: 4px;
+    margin-bottom: 4px;
   }
   span{
     font-size: 19px;
   }
 }
-.p-d_p1{
-  margin-right: 250px;
-}
 .p-d_name{
-  margin-left: 30px;
-  margin-right: 240px;
-}
-.p-d_second-name{
-  margin-right: 0;
+  margin-left: 280px;
 }
 .personal-data_p2{
   display: flex;
@@ -70,12 +63,6 @@
 }
 .p-d_date-of-b{
   margin-right: 225px;
-}
-.p-d_sex{
-  margin-right: 250px;
-}
-.p-d_language{
-  margin-right: 0;
 }
 .p-d_email{
   h2{

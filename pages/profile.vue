@@ -30,7 +30,7 @@ const user = data.value;
                             <h2>Date of birth</h2>
                             <span>17 october 2987</span>
                         </div>
-                        <div class="p-d_sex p-d_p1">
+                        <div class="p-d_phone">
                             <h2>Phone</h2>
                             <span>{{ user.phone }}</span>
                         </div>
