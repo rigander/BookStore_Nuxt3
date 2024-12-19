@@ -6,18 +6,18 @@ const formData = ref({ email: '', password: '' })
 const errorMessageServ = ref('');
 configure({
     validateOnBlur: true,
-    validateOnChange: false,
+    validateOnChange: true,
     validateOnInput: false,
     validateOnModelUpdate: false,
 });
 const schema = object({
     email:
         string()
-            .required("fill in your email")
-            .email("enter valid email"),
+            .required("Email address is required.")
+            .email("Enter Valid Email"),
     password:
         string()
-            .required("fill in password")
+            .required("Please enter your password.")
 });
 
 const handleLogIn = async () => {
@@ -65,7 +65,7 @@ const handleLogIn = async () => {
                     v-if="errorMessageServ">{{ errorMessageServ }}
                 </p>
                 <div class="sign-in__container">
-                    <VeeErrorMessage name="email" class="error_fill-up"/>
+                    <VeeErrorMessage name="email" class="error_email-fill-up"/>
                     <label for="email">Email</label>
                     <VeeField
                         v-model="formData.email"
@@ -79,6 +79,7 @@ const handleLogIn = async () => {
                         @click="modalStore.closeModal('login')"
                         >Forgot password?
                     </NuxtLink>
+                    <VeeErrorMessage name="password" class="error_email-fill-up"/>
                     <label for="password">Password</label>
                     <VeeField
                         v-model="formData.password"
