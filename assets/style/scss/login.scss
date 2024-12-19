@@ -108,7 +108,33 @@
   font-size: 18px;
   margin-bottom: 10px;
 }
+
+// Close Login Form Sign
 .close-login{
+  position: relative;
+  width: 30px;
+  height: 30px;
   align-self: flex-end;
   margin: 5px;
+  &:hover{
+    opacity: 0.3;
+  }
+  &::before,
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 28px;
+    background-color: #f4f4f4;
+    border-radius: 2px;
+    transform-origin: center;
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
 }

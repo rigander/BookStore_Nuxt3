@@ -16,38 +16,52 @@ const handleLogIn = async () => {
 
 
 <template>
-        <div
+        <section
             @click.stop
-            class="dialog__content">
-            <a
+            class="dialog__content"
+            role="dialog"
+            aria-labelledby="dialog-title"
+            aria-describedby="dialog-description">
+            <button
                 @click="modalStore.closeModal('login')"
-                href="#" class="close-modal close-login"/>
-            <div class="white-rabbit__container"><img
+                class="close-login"
+                aria-label="Close login form"
+            >
+            </button>
+            <div class="white-rabbit__container">
+                <img
                 class="white-rabbit"
-                src="/img/Chromatic-Floral-Rabbit.svg" alt="white-rabbit"></div>
+                src="/img/Chromatic-Floral-Rabbit.svg"
+                alt="white-rabbit"/>
+            </div>
             <VeeForm
                 v-slot="{ meta }"
                 @submit="handleLogIn"
                 class="dialog-form"
                 action="">
-                <h1>Sign In</h1>
+                <h1 id="dialog-title" >Sign In</h1>
                 <hr>
-                <div
+                <p
+                    id="dialog-description"
                     class="error_fill-up__serv"
-                    v-if="errorMessageServ">{{ errorMessageServ }}</div>
+                    v-if="errorMessageServ">{{ errorMessageServ }}
+                </p>
                 <div class="sign-in__container">
-                    <div class="sign-in__username">
-                        <label for="login">Email</label>
+                    <div class="sign-in__email">
+                        <label for="email">Email</label>
                         <VeeField
                             v-model="formData.email"
-                            class="all-inputs username"
-                            id="username"
+                            class="all-inputs email"
                             name="email"
-                            type="email">
+                            type="email"
+                            aria-required="true">
                         </VeeField>
                     </div>
-                    <NuxtLink>
-                        <div class="forgot-pass">Forgot password?</div>
+                    <NuxtLink
+                        to="/passwordreset" class="forgot-pass"
+                        @click="modalStore.closeModal('login')"
+                    >
+                        Forgot password?
                     </NuxtLink>
                     <div class="sign-in__password">
                         <label for="login">Password</label>
@@ -73,5 +87,5 @@ const handleLogIn = async () => {
                     </NuxtLink>
                 </div>
             </VeeForm>
-        </div>
+        </section>
 </template>
