@@ -1,5 +1,6 @@
 <script setup>
 const cartStore = useCartStore();
+const {basket} = useCartStore();
 const wishlist = useWishListStore();
 const {countBooksInWishlist} = storeToRefs(wishlist);
 const modalStore = useModalStore();
@@ -29,7 +30,7 @@ const {totalCost, countBooksInCart} = storeToRefs(cartStore);
                     </div>
                     <div class="header-content__your-cart">
                         <div
-                            @click="modalStore.toggleModal('cart')"
+                            @click="basket.books.length > 0 ? modalStore.toggleModal('cart') : null"
                             class="my-cart">
                             <div class="cart">
                                 <img src="/img/header/green%20cart.png" alt="cart">
