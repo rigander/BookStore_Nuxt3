@@ -1,7 +1,25 @@
 <script setup>
+import {object, string, ref as yupRef, number, boolean} from "yup";
+import { configure } from "vee-validate";
 const modalStore = useModalStore();
 const formData = ref({ email: '', password: '' })
 const errorMessageServ = ref('');
+configure({
+    validateOnBlur: true,
+    validateOnChange: false,
+    validateOnInput: false,
+    validateOnModelUpdate: false,
+});
+const schema = object({
+    email:
+        string()
+            .required("fill in your email")
+            .email("enter valid email"),
+    password:
+        string()
+            .required("fill in password")
+});
+
 const handleLogIn = async () => {
     const { email, password } = formData.value;
     const result = await login(email, password);
@@ -25,8 +43,7 @@ const handleLogIn = async () => {
             <button
                 @click="modalStore.closeModal('login')"
                 class="close-login"
-                aria-label="Close login form"
-            >
+                aria-label="Close login form">
             </button>
             <div class="white-rabbit__container">
                 <img
@@ -35,10 +52,11 @@ const handleLogIn = async () => {
                 alt="white-rabbit"/>
             </div>
             <VeeForm
+                :validation-schema="schema"
                 v-slot="{ meta }"
                 @submit="handleLogIn"
-                class="dialog-form"
-                action="">
+                name="login"
+                class="dialog-form">
                 <h1 id="dialog-title" >Sign In</h1>
                 <hr>
                 <p
@@ -47,43 +65,38 @@ const handleLogIn = async () => {
                     v-if="errorMessageServ">{{ errorMessageServ }}
                 </p>
                 <div class="sign-in__container">
-                    <div class="sign-in__email">
-                        <label for="email">Email</label>
-                        <VeeField
-                            v-model="formData.email"
-                            class="all-inputs email"
-                            name="email"
-                            type="email"
-                            aria-required="true">
-                        </VeeField>
-                    </div>
+                    <VeeErrorMessage name="email" class="error_fill-up"/>
+                    <label for="email">Email</label>
+                    <VeeField
+                        v-model="formData.email"
+                        class="all-inputs"
+                        name="email"
+                        type="email"
+                        aria-required="true">
+                    </VeeField>
                     <NuxtLink
                         to="/passwordreset" class="forgot-pass"
                         @click="modalStore.closeModal('login')"
-                    >
-                        Forgot password?
+                        >Forgot password?
                     </NuxtLink>
-                    <div class="sign-in__password">
-                        <label for="login">Password</label>
-                        <VeeField
-                            v-model="formData.password"
-                            class="all-inputs password"
-                            id="password" name="password"
-                            type="text">
-                        </VeeField>
-                    </div>
-                    <div class="sign-in-button">
-                        <input name="signInButton"
-                               class="sign-in-but"
-                               value="Log In"
-                               type="submit"
-                        >
-                    </div>
+                    <label for="password">Password</label>
+                    <VeeField
+                        v-model="formData.password"
+                        class="all-inputs"
+                        name="password"
+                        type="text">
+                    </VeeField>
+                    <button
+                        :disabled="!meta.valid"
+                        name="signInButton"
+                        class="sign-in-but"
+                        type="submit">Log In
+                    </button>
                     <NuxtLink
+                        to="/signupform"
                         class="create-account"
-                        @click="modalStore.closeModalAndNavigate('/signupform', 'login')"
-                    >
-                        Create Account
+                        @click="modalStore.closeModal('login')"
+                        >Create Account
                     </NuxtLink>
                 </div>
             </VeeForm>
