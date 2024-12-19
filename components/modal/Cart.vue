@@ -9,48 +9,69 @@ const totalCost = computed(() => {
 
 <template>
             <div
-                @click.stop
-                class="basket-dialog_content">
-                <div class="cart-image_box">
+                @click.stop class="basket-dialog_content">
+                <!-- Header Section with Cart Icon -->
+                <header class="cart-image_box">
                     <img src="/img/cart_icon2.svg" alt="cart">
-                    <a
+                    <button
                         @click="modalStore.closeModal('cart')"
-                        href="#" class="close-modal"/>
-                </div>
+                        class="close-modal">
+                    </button>
+                </header>
+
+                <!-- Main Basket Section -->
                 <section class="modal-basket">
-                    <div class="added-item_cont">
-                        <div
+                    <ul class="added-item_cont">
+                        <li
                             v-for="book in basket.books"
                             :key="book.title"
                             class="added-item">
-                            <img class="book-mini-img" :src="book.image" width="33" height="33" alt="img">
+                            <img
+                                class="book-mini-img"
+                                :src="book.image"
+                                width="33"
+                                height="33"
+                                :alt="`Cover of ${book.title}`"
+                            />
                             <div class="added-item-title">{{ book.title }}</div>
                             <div class="plus-minus_item">
                                 <button
                                     @click="reduceQuantity(book)"
                                     :disabled="book.quantity === 1"
                                     class="reduce-item"
-                                >&#8722;
+                                    aria-label="Decrease quantity"
+                                >
+                                    &#8722;
                                 </button>
                                 <span class="added-item-amount">{{ book.quantity }}</span>
                                 <button
                                     @click="increaseQuantity(book)"
-                                    class="add-item">&#43;
+                                    class="add-item"
+                                    aria-label="Increase quantity"
+                                >
+                                    &#43;
                                 </button>
                             </div>
                             <span class="item-total-cost">{{ (book.price * book.quantity).toFixed(2) }} $</span>
-                            <div
+                            <button
                                 @click="removeFromCart(book)"
-                                class="delete-item">
+                                class="delete-item_from__modal-cart"
+                                aria-label="Remove item"
+                            >
                                 <div class="close"></div>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                    </div>
+                            </button>
+                        </li>
+                    </ul>
+
+                    <!-- Divider Line -->
+                    <hr class="line" />
+
+                    <!-- Total Cost and Checkout Section -->
                     <div class="total_checkout">
                         <span class="total-price">{{ (totalCost).toFixed(2) }}$</span>
                         <NuxtLink
-                            @click="modalStore.closeModalAndNavigate('/checkout')"
+                            to="/checkout"
+                            @click="modalStore.closeModal('cart')"
                         >
                             <button class="button basket-button">
                                 Checkout

@@ -66,7 +66,7 @@
 }
 .add-item,
 .reduce-item,
-.delete-item {
+.delete-item_from__modal-cart {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,13 +103,12 @@
   width: 190px;
 }
 .book-mini-img,
-.delete-item,
 .amount-and-cost,
 .added-item-title{
   margin-right: 10px;
 }
 /* delete sign (cross) */
-.delete-item{
+.delete-item_from__modal-cart{
   position: relative;
 }
 .close {
