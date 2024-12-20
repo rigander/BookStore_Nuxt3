@@ -1,10 +1,17 @@
 <script setup>
 const {basket, removeFromCart, increaseQuantity, reduceQuantity} = useCartStore();
+const profileStore = useProfileStore();
 const modalStore = useModalStore();
 const totalCost = computed(() => {
     return basket.books.reduce((total, book) =>
         total + book.price * book.quantity, 0);
 });
+const handleCheckoutClick = () => {
+    modalStore.closeModal('cart')
+    if (!profileStore.state.token) {
+        modalStore.toggleModal('login');
+    }
+}
 </script>
 
 <template>
@@ -70,8 +77,8 @@ const totalCost = computed(() => {
                     <div class="total_checkout">
                         <span class="total-price">{{ (totalCost).toFixed(2) }}$</span>
                         <NuxtLink
-                            to="/checkout"
-                            @click="modalStore.closeModal('cart')"
+                            :to="profileStore.state.token ? '/checkout' : null"
+                            @click="handleCheckoutClick"
                         >
                             <button class="button basket-button">
                                 Checkout
