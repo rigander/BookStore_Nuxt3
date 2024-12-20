@@ -2,15 +2,23 @@
 const {basket, removeFromCart, increaseQuantity, reduceQuantity} = useCartStore();
 const profileStore = useProfileStore();
 const modalStore = useModalStore();
+const router = useRouter();
 const totalCost = computed(() => {
     return basket.books.reduce((total, book) =>
         total + book.price * book.quantity, 0);
 });
+const calcTotalCost = (book) => (book.price * book.quantity).toFixed(2);
 const handleCheckoutClick = () => {
     modalStore.closeModal('cart')
+    if (!basket.books.length) {
+        router.push('/');
+        return;
+    }
     if (!profileStore.state.token) {
         modalStore.toggleModal('login');
+        return;
     }
+    router.push('/checkout');
 }
 </script>
 
@@ -59,7 +67,7 @@ const handleCheckoutClick = () => {
                                     &#43;
                                 </button>
                             </div>
-                            <span class="item-total-cost">{{ (book.price * book.quantity).toFixed(2) }} $</span>
+                            <span class="item-total-cost">{{ calcTotalCost(book) }} $</span>
                             <button
                                 @click="removeFromCart(book)"
                                 class="delete-item_from__modal-cart"
@@ -76,14 +84,10 @@ const handleCheckoutClick = () => {
                     <!-- Total Cost and Checkout Section -->
                     <div class="total_checkout">
                         <span class="total-price">{{ (totalCost).toFixed(2) }}$</span>
-                        <NuxtLink
-                            :to="profileStore.state.token ? '/checkout' : null"
-                            @click="handleCheckoutClick"
-                        >
-                            <button class="button basket-button">
-                                Checkout
-                            </button>
-                        </NuxtLink>
+                        <div
+                            @click="handleCheckoutClick">
+                            <button class="button basket-button">Checkout</button>
+                        </div>
                     </div>
                 </section>
             </div>
