@@ -6,6 +6,11 @@ const {countBooksInWishlist} = storeToRefs(wishlist);
 const modalStore = useModalStore();
 const profileStore = useProfileStore();
 const {totalCost, countBooksInCart} = storeToRefs(cartStore);
+const handleCheckoutClick = () => {
+    if (!profileStore.state.token) {
+        modalStore.toggleModal('login');
+    }
+}
 </script>
 
 <template>
@@ -55,12 +60,11 @@ const {totalCost, countBooksInCart} = storeToRefs(cartStore);
                                     ${{ totalCost }}
                                 </div>
                                 <NuxtLink
-                                    :to="profileStore.state.token ? '/checkout' : '#'"
-                                    :aria-disabled="!profileStore.state.token"
+                                    :to="profileStore.state.token ? '/checkout' : null"
+                                    @click="handleCheckoutClick"
+                                    :aria-disabled="basket.books.length === 0"
                                     class="checkout-button">
-                                    <button
-                                        :disabled="!profileStore.state.token"
-                                    >Checkout</button>
+                                    <button>Checkout</button>
                                 </NuxtLink>
                             </div>
                         </client-only>
