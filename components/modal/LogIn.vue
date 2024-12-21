@@ -1,15 +1,23 @@
 <script setup>
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
+
+// Access to modal windows storage
 const modalStore = useModalStore();
+
+// Form fields
 const formData = ref({ email: '', password: '' })
 const errorMessageServ = ref('');
+
+// Vee-validate configuration
 configure({
     validateOnBlur: true,
     validateOnChange: true,
     validateOnInput: false,
     validateOnModelUpdate: false,
 });
+
+//Scheme validation
 const schema = object({
     email:
         string()
@@ -20,6 +28,7 @@ const schema = object({
             .required("Please enter your password.")
 });
 
+// Log In Logic
 const handleLogIn = async () => {
     const { email, password } = formData.value;
     const result = await login(email, password);
@@ -30,6 +39,19 @@ const handleLogIn = async () => {
         errorMessageServ.value = '';
     }
 };
+
+// Close modal on Esc key press
+const handleKeydown = (event) => {
+    if (event.key === 'Escape') {
+        modalStore.closeModal('login'); // Закрыть модальное окно
+    }
+};
+onMounted(() => {
+    document.addEventListener('keydown', handleKeydown);
+});
+onUnmounted(() => {
+    document.removeEventListener('keydown', handleKeydown);
+});
 </script>
 
 
