@@ -41,17 +41,8 @@ const handleLogIn = async () => {
 };
 
 // Close modal on Esc key press
-const handleKeydown = (event) => {
-    if (event.key === 'Escape') {
-        modalStore.closeModal('login'); // Закрыть модальное окно
-    }
-};
-onMounted(() => {
-    document.addEventListener('keydown', handleKeydown);
-});
-onUnmounted(() => {
-    document.removeEventListener('keydown', handleKeydown);
-});
+useEscClose('Escape', 'login');
+
 </script>
 
 

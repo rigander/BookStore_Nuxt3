@@ -20,6 +20,10 @@ const handleCheckoutClick = () => {
     }
     router.push('/checkout');
 }
+
+// Close modal on Esc key press
+useEscClose('Escape', 'cart');
+
 </script>
 
 <template>
