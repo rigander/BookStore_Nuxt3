@@ -3,6 +3,7 @@ import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
 const router = useRouter();
 const profileStore = useProfileStore();
+const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const token = profileStore.state.token;
 const name = profileStore.state.userData ? profileStore.state.userData.name : '';
 const email = profileStore.state.userData ? profileStore.state.userData.email : '';
