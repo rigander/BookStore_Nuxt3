@@ -19,10 +19,12 @@ const bookData = data.value.books.data.find((item) => item.slug === slug);
     <div>
         <main id="main-content-wrapper__product">
             <section class="product-info">
-                <ProductBreadcrumps/>
+                <ProductBreadcrumbs
+                    :data="{
+                    bookCategory: category,
+                    bookTitle: bookData.title }"/>
                 <ProductInfoArticle
-                    :book="bookData"
-                />
+                    :book="bookData"/>
             </section>
             <div class="container-lower">
                 <div class="wrapper-prod-rew-info">

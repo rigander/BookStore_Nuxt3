@@ -57,28 +57,32 @@ $ff:SegoeWP;
   display: flex;
   align-items: center;
 }
-.bread-cramps{
+
+// Breadcrumbs
+.breadcrumbs{
   width: 465px;
   height: 20px;
   padding: 0 0 2px 17px;
   display: flex;
-  li{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    :hover{
-      font-weight: bold;
-      color: red;
-    }
-    a{
-      text-decoration: none;
-      color: #a6a6a6;
-    }
-  }.bi-chevron-double-right{
-     padding-top: 4px;
-     padding-bottom: 1px;
-   }
-
+  color: #595959;
+  .bi-chevron-double-right{
+    padding-top: 4px;
+    padding-bottom: 1px;
+  }
+}
+.breadcrumbs_link{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  &:hover{
+    color: #52a452;
+    font-weight: bold;
+  }
+  &:active{
+    color: red;
+    font-weight: bold;
+  }
 }
 
 //  Content cart (right side)
@@ -504,3 +508,5 @@ input{
   justify-content: space-between;
   height: 70px;
 }
+
+
