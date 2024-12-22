@@ -70,7 +70,8 @@ const handleCheckoutClick = () => {
                         </client-only>
                     </div>
                     <NuxtLink
-                        to="/wishlist"
+                        :to="profileStore.state.token ? '/wishlist' : null"
+                        :aria-disabled="wishlist.wishlist.books.length === 0"
                         class="header-content__wish-list">
                         <div class="star-wish-list">
                             <div class="round-for-star">
