@@ -56,7 +56,11 @@ const fetchBooksPaginate = async (page = 1, category) => {
                 </NuxtLink>
                 <span class="price-cart_wrapper">${{ book.price }}
                 <span class="cart-add-to_wrapper">
-                    <addto-cart :book="book"/>
+                    <addto-cart
+                        :book="book"
+                        :category="props.modelValue.slug"
+                        :page="currentPage"
+                    />
                 </span>
                 <span class="toggle-wishlist">
                     <button

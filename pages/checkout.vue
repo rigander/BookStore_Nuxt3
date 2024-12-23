@@ -93,14 +93,19 @@ const handleCheckout = () => {
                 <h1>Order</h1>
                 <div class="checkout-order_merch__container">
                     <client-only>
-                        <div
+                        <NuxtLink
                             v-for="book in cart.basket.books"
+                            :to="{
+                           name: 'product-book',
+                           params: { book: book.slug },
+                           query: { category: book.category, page: book.page }
+                          }"
                             class="checkout-order_merch">
                             <img :src="book.image" alt="img">
                             <span class="checkout-book_name">{{ book.title }}</span>
                             <span class="checkout_quantity">{{ book.quantity }} pc.</span>
                             <span class="cost">{{ (book.price * book.quantity).toFixed(2) }}$</span>
-                        </div>
+                        </NuxtLink>
                     </client-only>
                     <div
                         @click="modalStore.openModal('cart')"

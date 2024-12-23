@@ -1,6 +1,10 @@
 <script setup>
 const { addToCart, isBookInCart } = useCartStore();
-const { book } = defineProps(['book']);
+const props = defineProps({
+        book: Object,
+        category: String,
+        page: Number
+});
 </script>
 
 <template>
@@ -8,12 +12,15 @@ const { book } = defineProps(['book']);
         <span
             :class="isBookInCart(book)"
             @click="addToCart({
-                        book_id: book.id,
-                        image: book.image,
-                        price: book.price,
-                        quantity: 1,
-                        title: book.title })">
-
+                        category: props.category,
+                        page: props.page,
+                        book_id: props.book.id,
+                        title: props.book.title,
+                        slug: props.book.slug,
+                        image: props.book.image,
+                        price: props.book.price,
+                        quantity: 1
+                         })">
         </span>
         </ClientOnly>
 </template>
