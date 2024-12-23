@@ -2,16 +2,10 @@
 const route = useRoute();
 const slug = route.params.book;
 const category = route.query.category;
-const page = route.query.page;
 
-const { data, error } = await useFetchGet(
-    `/category/${category}/books`,
-    false,
-    {
-        query: { page: page },
-    }
-);
-const bookData = data.value.books.data.find((item) => item.slug === slug);
+const { data, error } =  await useFetchGet(`/book/${slug}`, false);
+
+const bookData = data.value;
 </script>
 
 

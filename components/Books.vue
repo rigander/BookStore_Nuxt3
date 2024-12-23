@@ -36,12 +36,9 @@ const fetchBooksPaginate = async (page = 1, category) => {
                     <span class="off">Off</span>
                 </div>
                 <NuxtLink
-                    :to="{
-                           name: 'product-book',
+                    :to="{ name: 'product-book',
                            params: { book: book.slug },
-                           query: { category: props.modelValue.slug, page: currentPage }
-                          }"
-                >
+                           query: { category: props.modelValue.slug }}">
                     <img
                         class="book-img-scifi"
                         :src="book.image"

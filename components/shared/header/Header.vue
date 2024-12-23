@@ -1,11 +1,13 @@
 <script setup>
 const cartStore = useCartStore();
-const {basket} = useCartStore();
+const {totalCost, countBooksInCart, basket} = storeToRefs(cartStore);
+
 const wishlist = useWishListStore();
 const {countBooksInWishlist} = storeToRefs(wishlist);
+
 const modalStore = useModalStore();
 const profileStore = useProfileStore();
-const {totalCost, countBooksInCart} = storeToRefs(cartStore);
+
 const handleCheckoutClick = () => {
     if (!profileStore.state.token) {
         modalStore.toggleModal('login');
