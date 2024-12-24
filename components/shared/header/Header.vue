@@ -2,13 +2,20 @@
 const cartStore = useCartStore();
 const {totalCost, countBooksInCart, basket} = storeToRefs(cartStore);
 
-const wishlist = useWishListStore();
-const {countBooksInWishlist} = storeToRefs(wishlist);
+const wishlistStore = useWishListStore();
+const {countBooksInWishlist, wishlist} = storeToRefs(wishlistStore);
 
 const modalStore = useModalStore();
 const profileStore = useProfileStore();
 
-const handleCheckoutClick = () => {
+const wishlistLink = computed(() => {
+    if (profileStore.state.token && wishlist.value.books.length > 0) {
+        return '/wishlist';
+    }
+    return null;
+});
+
+const checkUserLoggedIn = () => {
     if (!profileStore.state.token) {
         modalStore.toggleModal('login');
     }
@@ -63,7 +70,7 @@ const handleCheckoutClick = () => {
                                 </div>
                                 <NuxtLink
                                     :to="profileStore.state.token ? '/checkout' : null"
-                                    @click="handleCheckoutClick"
+                                    @click="checkUserLoggedIn"
                                     :aria-disabled="basket.books.length === 0"
                                     class="checkout-button">
                                     <button>Checkout</button>
@@ -72,8 +79,8 @@ const handleCheckoutClick = () => {
                         </client-only>
                     </div>
                     <NuxtLink
-                        :to="profileStore.state.token ? '/wishlist' : null"
-                        :aria-disabled="wishlist.wishlist.books.length === 0"
+                        :to="wishlistLink"
+                        @click="checkUserLoggedIn"
                         class="header-content__wish-list">
                         <div class="star-wish-list">
                             <div class="round-for-star">
