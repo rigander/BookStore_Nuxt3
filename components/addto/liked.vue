@@ -1,6 +1,8 @@
 <script setup>
 const { heartColor } = useWishListStore();
-const { book } = defineProps(['book']);
+const props = defineProps({
+        book: Object
+});
 </script>
 
 

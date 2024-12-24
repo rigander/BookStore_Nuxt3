@@ -5,14 +5,15 @@ export const useWishListStore = defineStore(
         const wishlist = reactive({
             books: []
         })
-        const toggleWishlist = (book) => {
+        const toggleWishlist = (book, category) => {
+            const bookUpdated = { ...book, category }
             const existingBook = wishlist.books.find((item) =>
                 item.title === book.title);
             const index = wishlist.books.findIndex((b) => b.title === book.title);
             if (existingBook || index !== -1) {
                     wishlist.books.splice(index, 1);
             } else {
-                wishlist.books.push(book);
+                wishlist.books.push(bookUpdated);
             }
         }
         const removeFromWishlist = (book) => {

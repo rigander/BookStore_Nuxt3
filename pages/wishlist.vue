@@ -1,6 +1,5 @@
 <script setup>
 const {wishlist, removeFromWishlist} = useWishListStore();
-
 </script>
 
 <template>
@@ -8,6 +7,9 @@ const {wishlist, removeFromWishlist} = useWishListStore();
         <div class="wishlist">
             <h1>Your Wishlist</h1>
             <NuxtLink
+                :to="{  name: 'product-book',
+                        params: { book: book.slug },
+                        query: { category: book.category, page: book.page }}"
                 v-for="book in wishlist.books"
                 class="wishlist_book">
                 <img id="wishlist_book-image" alt="book-img" :src="book.image">

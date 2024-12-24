@@ -2,8 +2,7 @@
 const { addToCart, isBookInCart } = useCartStore();
 const props = defineProps({
         book: Object,
-        category: String,
-        page: Number
+        category: String
 });
 </script>
 
@@ -13,7 +12,6 @@ const props = defineProps({
             :class="isBookInCart(book)"
             @click="addToCart({
                         category: props.category,
-                        page: props.page,
                         book_id: props.book.id,
                         title: props.book.title,
                         slug: props.book.slug,

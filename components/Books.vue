@@ -56,15 +56,16 @@ const fetchBooksPaginate = async (page = 1, category) => {
                     <addto-cart
                         :book="book"
                         :category="props.modelValue.slug"
-                        :page="currentPage"
                     />
                 </span>
                 <span class="toggle-wishlist">
                     <button
-                        @click="toggleWishlist(book)"
+                        @click="toggleWishlist(book, props.modelValue.slug)"
                         id="add-to-wishlist-index"
                     >
-                    <addto-liked :book="book"/>
+                    <addto-liked
+                        :book="book"
+                    />
                 </button>
                 </span>
             </span>

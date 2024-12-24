@@ -78,20 +78,20 @@ const checkUserLoggedIn = () => {
                             </div>
                         </client-only>
                     </div>
-                    <NuxtLink
-                        :to="wishlistLink"
-                        @click="checkUserLoggedIn"
-                        class="header-content__wish-list">
-                        <div class="star-wish-list">
-                            <div class="round-for-star">
-                                <div class="star"></div>
+                    <client-only>
+                        <NuxtLink
+                            :to="wishlistLink"
+                            @click="checkUserLoggedIn"
+                            class="header-content__wish-list">
+                            <div class="star-wish-list">
+                                <div class="round-for-star">
+                                    <div class="star"></div>
+                                </div>
+                                <div class="wish-list">Wish list</div>
                             </div>
-                            <div class="wish-list">Wish list</div>
-                        </div>
-                        <client-only>
                             <div class="twelve">{{ countBooksInWishlist }}</div>
-                        </client-only>
-                    </NuxtLink>
+                        </NuxtLink>
+                    </client-only>
                 </div>
             </div>
             <SharedHeaderBottomNav/>
