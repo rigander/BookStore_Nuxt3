@@ -54,9 +54,19 @@
   background-color: whitesmoke;
   border-radius: 0 0 3px 3px;
 }
+.modal-basket_link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 .added-item{
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
+}
+.added-item-title{
+  width: 190px;
 }
 .plus-minus_item{
   width: 90px;
@@ -98,9 +108,6 @@
   width: 60px;
   color: #aa294b;
   margin: 0 5px 0 5px;
-}
-.added-item-title{
-  width: 190px;
 }
 .book-mini-img,
 .amount-and-cost,

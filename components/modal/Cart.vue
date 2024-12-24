@@ -45,14 +45,23 @@ useEscClose('Escape', 'cart');
                             v-for="book in basket.books"
                             :key="book.title"
                             class="added-item">
-                            <img
+                            <NuxtLink
+                                :to="{
+                                       name: 'product-book',
+                                       params: { book: book.slug },
+                                       query: { category: book.category, page: book.page }
+                                      }"
+                                @click="modalStore.closeModal('cart')"
+                                class="modal-basket_link"
+                            ><img
                                 class="book-mini-img"
                                 :src="book.image"
                                 width="33"
                                 height="33"
                                 :alt="`Cover of ${book.title}`"
                             />
-                            <div class="added-item-title">{{ book.title }}</div>
+                                <div class="added-item-title">{{ book.title }}</div>
+                            </NuxtLink>
                             <div class="plus-minus_item">
                                 <button
                                     @click="reduceQuantity(book)"
