@@ -88,6 +88,9 @@
   .checkout-book_name{
     width: 500px;
     padding-left: 15px;
+    &:hover{
+      text-decoration: underline;
+    }
   }
   .cost{
     width: 100px;
@@ -99,9 +102,11 @@
 #edit-products{
   display: flex;
   justify-content: flex-end;
+  font-size: 20px;
   &:hover {
     color: #52a452;
     cursor: pointer;
+    font-weight: bold;
   }
 }
 .delivery_to-post__wrapper{

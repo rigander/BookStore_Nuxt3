@@ -6,14 +6,18 @@ const {wishlist, removeFromWishlist} = useWishListStore();
     <div class="wishlist-wrapper">
         <div class="wishlist">
             <h1>Your Wishlist</h1>
-            <NuxtLink
-                :to="{  name: 'product-book',
-                        params: { book: book.slug },
-                        query: { category: book.category, page: book.page }}"
+            <div
                 v-for="book in wishlist.books"
                 class="wishlist_book">
-                <img id="wishlist_book-image" alt="book-img" :src="book.image">
-                <span class="wishlist_book-title">{{ book.title }}</span>
+                <NuxtLink
+                    class="wishlist_book-link"
+                    :to="{  name: 'product-book',
+                        params: { book: book.slug },
+                        query: { category: book.category, page: book.page }}"
+                >
+                    <img id="wishlist_book-image" alt="book-img" :src="book.image">
+                    <span class="wishlist_book-title">{{ book.title }}</span>
+                </NuxtLink>
                 <span class="wishlist_book-cost">
                     <span id="wishlist_book-cost-title">Price:</span>
                     {{ book.price }}$
@@ -29,7 +33,7 @@ const {wishlist, removeFromWishlist} = useWishListStore();
                     </g>
                 </svg>
                 </span>
-            </NuxtLink>
+            </div>
         </div>
     </div>
 </template>

@@ -67,6 +67,9 @@
 }
 .added-item-title{
   width: 190px;
+  &:hover{
+    text-decoration: underline;
+  }
 }
 .plus-minus_item{
   width: 90px;

@@ -109,7 +109,7 @@ const handleCheckout = () => {
                     </client-only>
                     <div
                         @click="modalStore.openModal('cart')"
-                        id="edit-products">Edit products
+                        id="edit-products">Edit Your Order
                     </div>
                 </div>
             </div>
