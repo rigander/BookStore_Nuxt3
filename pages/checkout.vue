@@ -4,7 +4,6 @@ import { configure } from "vee-validate";
 const router = useRouter();
 const profileStore = useProfileStore();
 const apiBaseUrl = useRuntimeConfig().public.apiBase;
-const token = profileStore.state.token;
 const name = profileStore.state.userData ? profileStore.state.userData.name : '';
 const email = profileStore.state.userData ? profileStore.state.userData.email : '';
 const phone = profileStore.state.userData ? profileStore.state.userData.phone : '';
@@ -45,6 +44,46 @@ const payment_method = [
 const selectedPaymentMethod = ref('visa');
 const selectedDeliveryMethod = ref('nova_poshta');
 const showDeliveryAddress = ref(false);
+const errorMessageServ = ref('');
+
+// Hide or Show address input fields for courier delivery
+const handleShowDeliveryAddress = () => {
+    showDeliveryAddress.value = !showDeliveryAddress.value;
+}
+
+
+// Check if logged in prior entry to page
+definePageMeta({
+    middleware: ["auth"]
+})
+
+// Get User Data from Server
+const {data, error} = await useFetchGet('/user', true);
+let user = ref(null);
+if(data.value){
+     user = data.value;
+}
+
+const createdOrder = ref(null);
+
+const orderBody = {
+    books: cart.basket.books,
+    delivery_method: selectedDeliveryMethod,
+    payment_method: selectedPaymentMethod,
+}
+
+// Checkout (submit) order
+const submitOrder = async () => {
+    const {data: checkoutData, error} = await useFetchPost(
+        '/api/checkout', orderBody );
+    if (error.value) {
+        // Show error message from server in case of existence
+        errorMessageServ.value = error.value.data?.message || 'Something went wrong, please try again.';
+        return;
+    }
+    // Clear error message in case of successful request
+    errorMessageServ.value = '';
+}
 
 // Vee-validate configuration
 configure({
@@ -76,42 +115,6 @@ const schema = object({
             .matches(phoneRegex, "Invalid phone number."),
 });
 
-const errorMessageServ = ref('');
-
-
-const handleShowDeliveryAddress = () => {
-    showDeliveryAddress.value = !showDeliveryAddress.value;
-}
-const submitOrder = async () => {
-        const {data: responseData, error} = await useFetch(
-            `${apiBaseUrl}/api/checkout`,
-            {
-                method: 'post',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                },
-                body: {
-                    books: cart.basket.books,
-                    delivery_method: selectedDeliveryMethod,
-                    payment_method: selectedPaymentMethod,
-                }
-            }
-        );
-    if (error.value) {
-        // Show error message from server in case of existence
-        errorMessageServ.value = error.value.data?.message || 'Something went wrong, please try again.';
-        return;
-    }
-    // Clear error message in case of successful request
-    errorMessageServ.value = '';
-}
-const handleCheckout = () => {
-    if(token){
-         submitOrder();
-        return
-    }
-    modalStore.openModal('login');
-}
 
 </script>
 
@@ -236,7 +239,7 @@ const handleCheckout = () => {
                 </client-only>
             </div>
             <button
-                @click.prevent="handleCheckout"
+                @click.prevent="submitOrder"
             >
                 Checkout
             </button>

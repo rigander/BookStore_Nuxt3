@@ -37,10 +37,14 @@ const useFetchGet = (url,  needAuthorize = false, options = {}) => {
 
 const useFetchPost = async (url, body, options = {}) => {
     const apiBaseUrl = useRuntimeConfig().public.apiBase;
+    const csrfToken = useCookie('XSRF-TOKEN').value;
+    if (!csrfToken){
+       const { data:csrfToken } = csrfRequest();
+    }
     const opts = {
         method: 'post',
         headers: {
-            'X-XSRF-TOKEN': useCookie('XSRF-TOKEN').value,
+            'X-XSRF-TOKEN': csrfToken,
         },
         credentials: 'include',
         cache: false,
