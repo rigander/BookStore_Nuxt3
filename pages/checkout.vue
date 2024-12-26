@@ -3,12 +3,12 @@ import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
 const router = useRouter();
 const profileStore = useProfileStore();
-const apiBaseUrl = useRuntimeConfig().public.apiBase;
 const name = profileStore.state.userData ? profileStore.state.userData.name : '';
 const email = profileStore.state.userData ? profileStore.state.userData.email : '';
 const phone = profileStore.state.userData ? profileStore.state.userData.phone : '';
 const modalStore = useModalStore();
-const cart = useCartStore();
+const { basket, clearCart } = useCartStore();
+const createdOrder = ref(null);
 const delivery_method = [
     {
         name: 'Нова Пошта',
@@ -64,25 +64,33 @@ if(data.value){
      user = data.value;
 }
 
-const createdOrder = ref(null);
+
 
 const orderBody = {
-    books: cart.basket.books,
+    books: basket.books,
     delivery_method: selectedDeliveryMethod,
     payment_method: selectedPaymentMethod,
 }
 
 // Checkout (submit) order
 const submitOrder = async () => {
-    const {data: checkoutData, error} = await useFetchPost(
+    const {data, error} = await useFetchPost(
         '/api/checkout', orderBody );
+    createdOrder.value = data;
+
+    // Show error message from server (if happened)
     if (error.value) {
-        // Show error message from server in case of existence
         errorMessageServ.value = error.value.data?.message || 'Something went wrong, please try again.';
         return;
     }
     // Clear error message in case of successful request
     errorMessageServ.value = '';
+}
+
+const Checkout = async () => {
+    await submitOrder();
+    clearCart();
+    router.push('/orderstatus');
 }
 
 // Vee-validate configuration
@@ -155,7 +163,7 @@ const schema = object({
                 <div class="checkout-order_merch__container">
                     <client-only>
                         <NuxtLink
-                            v-for="book in cart.basket.books"
+                            v-for="book in basket.books"
                             :to="{
                            name: 'product-book',
                            params: { book: book.slug },

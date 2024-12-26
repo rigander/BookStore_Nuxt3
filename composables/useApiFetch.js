@@ -38,18 +38,24 @@ const useFetchGet = (url,  needAuthorize = false, options = {}) => {
 const useFetchPost = async (url, body, options = {}) => {
     const apiBaseUrl = useRuntimeConfig().public.apiBase;
     const csrfToken = useCookie('XSRF-TOKEN').value;
+    const auth = useCookie('ProfileStore');
     if (!csrfToken){
        const { data:csrfToken } = csrfRequest();
     }
     const opts = {
-        method: 'post',
-        headers: {
-            'X-XSRF-TOKEN': csrfToken,
-        },
+        method: 'POST',
+        baseURL: apiBaseUrl,
+        headers: { 'X-XSRF-TOKEN': csrfToken },
         credentials: 'include',
         cache: false,
         ...options
     };
+    if (auth.value && auth.value.state.token) {
+        opts.headers = {
+            ...opts.headers,
+            'Authorization': `Bearer ${auth.value.state.token}`
+        }
+    }
     const { data, error } =  await useFetch(`${apiBaseUrl}${url}`, {
         ...opts,
         body,
