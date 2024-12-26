@@ -5,6 +5,13 @@ export const useCartStore = defineStore(
         const basket = reactive({
             books: []
         })
+        const processedOrders = reactive({
+            orders: []
+        });
+        const addProcessedOrder = (order) => {
+            processedOrders.orders.push(order);
+        }
+
         const addToCart = (book) => {
             const existingBook = basket.books.find((item) =>
                 item.title === book.title);
@@ -47,6 +54,8 @@ export const useCartStore = defineStore(
         return{
             basket,
             addToCart,
+            processedOrders,
+            addProcessedOrder,
             increaseQuantity,
             reduceQuantity,
             removeFromCart,

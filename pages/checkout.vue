@@ -7,7 +7,7 @@ const name = profileStore.state.userData ? profileStore.state.userData.name : ''
 const email = profileStore.state.userData ? profileStore.state.userData.email : '';
 const phone = profileStore.state.userData ? profileStore.state.userData.phone : '';
 const modalStore = useModalStore();
-const { basket, clearCart } = useCartStore();
+const { basket, totalCost, clearCart, addProcessedOrder } = useCartStore();
 const createdOrder = ref(null);
 const delivery_method = [
     {
@@ -64,19 +64,17 @@ if(data.value){
      user = data.value;
 }
 
-
-
 const orderBody = {
     books: basket.books,
     delivery_method: selectedDeliveryMethod,
     payment_method: selectedPaymentMethod,
 }
 
-// Checkout (submit) order
+// Checkout / Submit order
 const submitOrder = async () => {
     const {data, error} = await useFetchPost(
         '/api/checkout', orderBody );
-    createdOrder.value = data;
+    createdOrder.value = data.value;
 
     // Show error message from server (if happened)
     if (error.value) {
@@ -89,6 +87,7 @@ const submitOrder = async () => {
 
 const Checkout = async () => {
     await submitOrder();
+    addProcessedOrder(createdOrder.value);
     clearCart();
     router.push('/orderstatus');
 }
@@ -243,11 +242,11 @@ const schema = object({
             <div class="checkout_total-cost">
                 <h1>Total</h1>
                 <client-only>
-                    <div class="total_cost">{{ cart.totalCost }} $</div>
+                    <div class="total_cost">{{ totalCost }} $</div>
                 </client-only>
             </div>
             <button
-                @click.prevent="submitOrder"
+                @click.prevent="Checkout"
             >
                 Checkout
             </button>
