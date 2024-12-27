@@ -1,14 +1,100 @@
-.books__sci-fi{
+/* Variables */
+$cw:996px;
+$ff:SegoeWP;
+
+.books-list{
   position: relative;
   height: 822px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  user-select: none;
 }
-.books__sci-fi-div {
+.book{
   display: flex;
   align-items: center;
   min-height: 150px;
   margin-top: 10px;
+  font-weight: 300;
+  text-align: center;
+  color: #646464;
+  height: 260px;
+  width: 150px;
+  flex-direction: column;
 }
-.books-p{
+
+
+/* DISCOUNT LABEL */
+.book-discount{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: end;
+  position: absolute;
+  z-index: 2;
+  margin: 2px 5px 0 0;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  background-color: #f05356;
+  color: white;
+  font-size: 18px;
+}
+.discount-number{
+  color: #ffffff;
+  font-family: "SegoeWP", serif;
+}
+.discount-text{
+  padding: 2px;
+  font-size: 13px;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+
+.book-link_content{
+  text-decoration: none;
+  color: #555454;
+  &:hover{
+    color: black;
+    font-weight: bold;
+  }
+  &:active{
+    color: red;
+    font-weight: bold;
+  }
+}
+.book-img{
+  padding-left: 5px;
+  height: 159px;
+}
+.book-actions{
+  display: flex;
+  width: 116px;
+  font-weight: bold;
+  font-size: 22px;
+  color: #f05356;
+  padding-top: 5px;
+  #cart_1{
+    width: 20px;
+  }
+  span:hover{
+    cursor: pointer;
+    scale: 115%;
+  }
+}
+.toggle-wishlist{
+  height: 20px;
+  width: 20px;
+}
+#add-to-wishlist-index{
+  height: 20px;
+  width: 20px;
+}
+.book-title{
   padding: 8px 0 0 5px;
   height: 40px;
   width: 120px;
@@ -29,6 +115,7 @@
   height: 20px;
   width: 20px;
   background-size: cover;
+  display: inline-block;
 }
 .orange-heart{
   background-image: url("/img/orange-heart.svg");
@@ -42,6 +129,7 @@
 .add-to-cart-green{
   background-image: url("/img/add-to-cart-green.svg");
 }
+
 
 /* Pagination */
 .pagination-container{

@@ -8,8 +8,8 @@ const props = defineProps({
 
 <template>
         <ClientOnly>
-        <span
-            :class="isBookInCart(book)"
+        <button
+            :class="isBookInCart(book) ? 'add-to-cart-green' : 'add-to-cart-grey'"
             @click="addToCart({
                         category: props.category,
                         book_id: props.book.id,
@@ -19,6 +19,6 @@ const props = defineProps({
                         price: props.book.price,
                         quantity: 1
                          })">
-        </span>
+        </button>
         </ClientOnly>
 </template>

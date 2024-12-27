@@ -22,11 +22,7 @@ export const useCartStore = defineStore(
             }
         };
         const isBookInCart = (book) => {
-            const existingBook = basket.books.some((item) =>
-                item.title === book.title);
-            if (existingBook) {
-                return 'add-to-cart-green'
-            } else return 'add-to-cart-grey'
+            return basket.books.some((item) => item.title === book.title);
         };
         const increaseQuantity = (book) => {
             book.quantity += 1;

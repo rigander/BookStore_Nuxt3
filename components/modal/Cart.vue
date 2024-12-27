@@ -3,10 +3,7 @@ const {basket, removeFromCart, increaseQuantity, reduceQuantity} = useCartStore(
 const profileStore = useProfileStore();
 const modalStore = useModalStore();
 const router = useRouter();
-const totalCost = computed(() => {
-    return basket.books.reduce((total, book) =>
-        total + book.price * book.quantity, 0);
-});
+
 const calcTotalCost = (book) => (book.price * book.quantity).toFixed(2);
 const handleCheckoutClick = () => {
     modalStore.closeModal('cart')

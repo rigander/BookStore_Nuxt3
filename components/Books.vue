@@ -24,51 +24,53 @@ const fetchBooksPaginate = async (page = 1, category) => {
 
 <template>
     <ClientOnly>
-        <div class="books__sci-fi">
+        <div class="books-list">
             <div
-                class="books__sci-fi-div"
+                class="book"
                 v-for="book in props.modelValue.books.data"
                 :key="book.id"
             >
                 <div v-if="book.discount"
-                     class="discount">
-                    <span>{{ book.discount }}%</span>
-                    <span class="off">Off</span>
+                     class="book-discount">
+                    <span class="discount-number">{{ book.discount }}%</span>
+                    <span class="discount-text">Off</span>
                 </div>
                 <NuxtLink
+                    class="book-link_content"
                     :to="{ name: 'product-book',
                            params: { book: book.slug },
                            query: { category: props.modelValue.slug }}">
                     <img
-                        class="book-img-scifi"
+                        class="book-img"
                         :src="book.image"
                         alt="image"
                     >
                     <p
-                        class="books-p"
+                        class="book-title"
                         :class="{ 'long-text': book.title.length > 20,
                               'short-text': book.title.length < 20 }"
                     >{{ book.title }}
                     </p>
                 </NuxtLink>
-                <span class="price-cart_wrapper">${{ book.price }}
-                <span class="cart-add-to_wrapper">
-                    <addto-cart
-                        :book="book"
-                        :category="props.modelValue.slug"
-                    />
-                </span>
-                <span class="toggle-wishlist">
-                    <button
-                        @click="toggleWishlist(book, props.modelValue.slug)"
-                        id="add-to-wishlist-index"
-                    >
-                    <addto-liked
-                        :book="book"
-                    />
-                </button>
-                </span>
-            </span>
+                <div class="book-actions">
+                    <div>${{ book.price }}</div>
+                    <span class="cart-add-to_wrapper">
+                        <addto-cart
+                            :book="book"
+                            :category="props.modelValue.slug"
+                        />
+                    </span>
+                    <span class="toggle-wishlist">
+                        <button
+                            @click="toggleWishlist(book, props.modelValue.slug)"
+                            id="add-to-wishlist-index"
+                        >
+                            <addto-liked
+                                :book="book"
+                            />
+                        </button>
+                    </span>
+                </div>
             </div>
             <div id="block"></div>
             <vue-awesome-paginate
