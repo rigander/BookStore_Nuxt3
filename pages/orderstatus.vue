@@ -1,57 +1,56 @@
 <script setup>
 const { processedOrders } = useCartStore();
 const orders = processedOrders.orders.filter(order => order !== null);
-console.log(orders);
 </script>
 
 
 <template>
-        <div class="order-status">
             <ul>
-                <li  v-for="(order, index) in orders" :key="index">
-                    <div class="checkout-orders">
-                        <div class="checkout-order_merch__container">
-                                <h1>Order # {{ order.data.id }}</h1>
-                            <div class="order-item">
+                <li class="order-container"
+                    v-for="(order, index) in orders" :key="index">
+                    <div class="order">
+                        <div class="order-data">
                                 <table>
                                     <tr>
-                                        <td><strong>Status:</strong></td>
+                                        <th class="order-header" colspan="2">
+                                            Order # {{ order.data.id }}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th><strong>Status:</strong></th>
                                         <td>{{ order.data.status }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Delivery Method:</strong></td>
+                                        <th><strong>Delivery Method:</strong></th>
                                         <td>{{ order.data.delivery_method }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Payment Method:</strong></td>
+                                        <th><strong>Payment Method:</strong></th>
                                         <td>{{ order.data.payment_method }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Created At:</strong></td>
+                                        <th><strong>Created At:</strong></th>
                                         <td>{{ order.data.created_at }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Updated At:</strong></td>
+                                        <th><strong>Updated At:</strong></th>
                                         <td>{{ order.data.updated_at }}</td>
                                     </tr>
                                 </table>
                             </div>
-
-                            <NuxtLink
-                                    v-for="book in order.data.books"
-                                    :to="{
-                           name: 'product-book',
-                           params: { book: book.slug },
-                           query: { category: book.category, page: book.page }
-                          }"
-                                    class="checkout-order_merch">
-                                    <img :src="book.image" alt="img">
-                                    <span class="checkout-book_name">{{ book.title }}</span>
-                                    <span class="cost">{{ book.price }}$</span>
-                                </NuxtLink>
+                        <div class="order-book-wrapper"
+                             v-for="book in order.data.books"
+                        >
+                            <NuxtLink :to="{name: 'product-book',
+                                            params: { book: book.slug },
+                                            query: { category: book.category, page: book.page }}"
+                                       class="order-book">
+                                <img :src="book.image" alt="img">
+                                <span class="order-book_name">{{ book.title }}</span>
+                            </NuxtLink>
+                            <span class="order-book_cost">{{ book.price }}$</span>
                         </div>
                     </div>
                 </li>
             </ul>
-        </div>
 </template>

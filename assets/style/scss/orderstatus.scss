@@ -1,17 +1,57 @@
-.checkout-orders{
-  h1{
-    font-size: 22px;
-    font-weight: 600;
-    padding-bottom: 15px;
-  }
+.order-container{
+  margin-top: 20px;
 }
-.checkout-order_merch__container{
+.order{
   display: flex;
   flex-direction: column;
   width: 800px;
   border: 1px solid black;
   border-radius: 4px;
   padding: 10px;
+}
+
+/* Order data table */
+.order-data{
+  margin-left: 5px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  table{
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    .order-header{
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #93a694;
+      color: #2b2b2c;
+      padding: 15px;
+    }
+    td,th{
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    tr:nth-child(even){
+      background-color: #f9f9f9;
+    }
+    tr:hover{
+      background-color: #f1f1f1;
+    }
+    th{
+      padding: 12px;
+      text-align: left;
+      background-color: #7da67a;
+    }
+  }
+}
+
+
+/* Order books */
+.order-book-wrapper{
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 .checkout-book_name{
   width: 500px;
@@ -20,23 +60,21 @@
     text-decoration: underline;
   }
 }
-.checkout-order_merch{
+.order-book{
   display: flex;
-  margin-bottom: 20px;
+  align-items: center;
   img{
-    width: 7%;
+    width: 20%;
   }
-  .checkout-book_name{
+  .order-book_name{
     width: 500px;
-    padding-left: 15px;
+    text-align: center;
     &:hover{
       text-decoration: underline;
     }
   }
-  .cost{
-    width: 100px;
-    font-weight: bold;
-    color: green;
-    padding-left: 100px;
-  }
+}
+.order-book_cost{
+  font-weight: bold;
+  color: green;
 }
