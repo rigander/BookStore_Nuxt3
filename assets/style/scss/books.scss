@@ -30,6 +30,7 @@ $ff:SegoeWP;
 /* DISCOUNT LABEL */
 .book-discount{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   align-self: end;
@@ -41,17 +42,17 @@ $ff:SegoeWP;
   border-radius: 50%;
   background-color: #f05356;
   color: white;
-  font-size: 18px;
 }
 .discount-number{
   color: #ffffff;
   font-family: "SegoeWP", serif;
+  font-size: 18px;
 }
 .discount-text{
-  padding: 2px;
   font-size: 13px;
   font-weight: normal;
   color: #ffffff;
+  padding-top: 2px;
 }
 
 
