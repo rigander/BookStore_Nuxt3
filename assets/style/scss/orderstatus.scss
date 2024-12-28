@@ -1,0 +1,42 @@
+.checkout-orders{
+  h1{
+    font-size: 22px;
+    font-weight: 600;
+    padding-bottom: 15px;
+  }
+}
+.checkout-order_merch__container{
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 10px;
+}
+.checkout-book_name{
+  width: 500px;
+  padding-left: 15px;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+.checkout-order_merch{
+  display: flex;
+  margin-bottom: 20px;
+  img{
+    width: 7%;
+  }
+  .checkout-book_name{
+    width: 500px;
+    padding-left: 15px;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  .cost{
+    width: 100px;
+    font-weight: bold;
+    color: green;
+    padding-left: 100px;
+  }
+}

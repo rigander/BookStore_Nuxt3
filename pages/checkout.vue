@@ -100,7 +100,7 @@ configure({
     validateOnModelUpdate: false,
 });
 
-const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
+const nameSurname = /^[A-Za-zА-Яа-яЁё]+ +[A-Za-zА-Яа-яЁё]+(-[A-Za-zА-Яа-яЁё]+)*$/;
 const phoneRegex = /^\+\(38\)\d{3}-\d{3}-\d{4}$/;
 
 //Scheme validation
@@ -112,7 +112,7 @@ const schema = object({
     name:
         string()
             .required("Please enter your Full Name and Family Name.")
-            .matches(usernameRegex, "Invalid Name format"),
+            .matches(nameSurname, "Invalid Name format"),
     phone:
         string()
             .required("Mobile phone number is required.")
@@ -120,6 +120,10 @@ const schema = object({
             .min(17,"Invalid phone number.")
             .max(17,"Invalid phone number.")
             .matches(phoneRegex, "Invalid phone number."),
+    receiver:
+        string()
+            .required("Please enter Full Name and Family Name.")
+            .matches(nameSurname, "Invalid Name format"),
 });
 
 
@@ -235,7 +239,8 @@ const schema = object({
                     </option>
                 </select>
                 <label for="receiver">Receiver</label>
-                <input type="text" name="receiver">
+                <VeeErrorMessage name="receiver" class="error_fill-up"/>
+                <VeeField type="text" name="receiver" placeholder="Full Name and Family Name"/>
                 <label for="order-comments">Add comments</label>
                 <textarea name="order-comments"></textarea>
             </div>
