@@ -28,9 +28,9 @@ const updateCurrentPage = (newPage) => {
 <template>
     <div class="slug-wrapper">
         <SharedAsideNav/>
-        <main id="main-content-wrapper-scifi">
-            <div class="books-li_container-scifi">
-                <section class="product-list-scifi">
+        <main id="books-list-wrapper">
+            <div class="books-list__container">
+                <section>
                     <div class="title_sci-fi">
                         <h4>{{ booksStore.data.name }}</h4>
                     </div>

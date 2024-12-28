@@ -1,15 +1,15 @@
-.product-list__nav_new{
+.books-list__nav_container{
   display: flex;
   justify-content: center;
   align-items: center;
   height: 39px;
 }
-.product-list__nav_ul{
+.product-list__nav{
   display: flex;
   padding: 0;
   margin: 0;
 }
-.big-box{
+.books-list__side-box{
   width: 243px;
   height: 40px;
   margin: -1px 0 0 1px;

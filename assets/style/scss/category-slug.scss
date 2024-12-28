@@ -17,7 +17,7 @@ $ff:SegoeWP;
 @import "header";
 
 /* Books List */
-#main-content-wrapper-scifi{
+#books-list-wrapper{
   order: 4;
   margin-top: 14px;
   width: 800px;
@@ -33,7 +33,7 @@ $ff:SegoeWP;
       margin: 18px 0 15px 30px;
     }
   }
-  .books-li_container-scifi{
+  .books-list__container{
     border: 1px solid #d4d4d5;
     margin-top: 1px;
     section{

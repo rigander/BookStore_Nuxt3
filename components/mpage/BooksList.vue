@@ -30,22 +30,22 @@ const changeGenre = (event, genreSlug) => {
 
 
 <template>
-    <main id="main-content-wrapper-scifi">
-        <div class="books-li_container-scifi">
-            <section class="product-list-scifi">
-                <div class="product-list__nav_new">
-                    <ul class="product-list__nav_ul">
+    <main id="books-list-wrapper">
+        <div class="books-list__container">
+            <section>
+                <div class="books-list__nav_container">
+                    <ul class="product-list__nav">
                         <li
-                                v-for="(genre, index) in categories.featured"
-                                :key="index"
-                                :class="category.slug === genre.slug && 'active'"
-                                @click="changeGenre($event, genre.slug)"
-                                class="option product-list__nav__li"
+                            v-for="(genre, index) in categories.featured"
+                            :key="index"
+                            :class="category.slug === genre.slug && 'active'"
+                            @click="changeGenre($event, genre.slug)"
+                            class="option product-list__nav__li"
                         >
-                            <div><a href="">{{ genre.name }}</a></div>
+                            <button>{{ genre.name }}</button>
                         </li>
                     </ul>
-                    <div class="big-box"></div>
+                    <div class="books-list__side-box"></div>
                 </div>
                 <Books
                     v-model="category"
