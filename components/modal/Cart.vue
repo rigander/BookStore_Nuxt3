@@ -4,7 +4,11 @@ const profileStore = useProfileStore();
 const modalStore = useModalStore();
 const router = useRouter();
 
-const calcTotalCost = (book) => (book.price * book.quantity).toFixed(2);
+const totalOrderCost = computed(() => {
+    return basket.books.reduce((total, book) =>
+        total + book.price * book.quantity, 0);
+});
+const bookTotalPrice = (book) => (book.price * book.quantity).toFixed(2);
 const handleCheckoutClick = () => {
     modalStore.closeModal('cart')
     if (!basket.books.length) {
@@ -77,7 +81,7 @@ useEscClose('Escape', 'cart');
                                     &#43;
                                 </button>
                             </div>
-                            <span class="item-total-cost">{{ calcTotalCost(book) }} $</span>
+                            <span class="item-total-cost">{{ bookTotalPrice(book) }} $</span>
                             <button
                                 @click="removeFromCart(book)"
                                 class="delete-item_from__modal-cart"
@@ -93,7 +97,7 @@ useEscClose('Escape', 'cart');
 
                     <!-- Total Cost and Checkout Section -->
                     <div class="total_checkout">
-                        <span class="total-price">{{ (totalCost).toFixed(2) }}$</span>
+                        <span class="total-price">{{ (totalOrderCost).toFixed(2) }}$</span>
                         <div
                             @click="handleCheckoutClick">
                             <button class="button basket-button">Checkout</button>

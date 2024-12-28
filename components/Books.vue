@@ -45,31 +45,28 @@ const fetchBooksPaginate = async (page = 1, category) => {
                         :src="book.image"
                         alt="image"
                     >
-                    <p
+                    <h4
                         class="book-title"
                         :class="{ 'long-text': book.title.length > 20,
                               'short-text': book.title.length < 20 }"
                     >{{ book.title }}
-                    </p>
+                    </h4>
                 </NuxtLink>
                 <div class="book-actions">
-                    <div>${{ book.price }}</div>
-                    <span class="cart-add-to_wrapper">
+                    <span class="book-price">${{ book.price }}</span>
+                    <button class="add-to-cart">
                         <addto-cart
                             :book="book"
                             :category="props.modelValue.slug"
                         />
-                    </span>
-                    <span class="toggle-wishlist">
-                        <button
+                    </button>
+                    <button class="toggle-wishlist"
                             @click="toggleWishlist(book, props.modelValue.slug)"
-                            id="add-to-wishlist-index"
                         >
                             <addto-liked
                                 :book="book"
                             />
-                        </button>
-                    </span>
+                    </button>
                 </div>
             </div>
             <div id="block"></div>

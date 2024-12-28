@@ -31,7 +31,7 @@ const updateCurrentPage = (newPage) => {
         <main id="books-list-wrapper">
             <div class="books-list__container">
                 <section>
-                    <div class="title_sci-fi">
+                    <div class="books-list_title">
                         <h4>{{ booksStore.data.name }}</h4>
                     </div>
                     <Books

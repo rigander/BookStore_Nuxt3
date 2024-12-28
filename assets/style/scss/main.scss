@@ -16,25 +16,6 @@ $ff:SegoeWP;
   justify-content: center;
   font-family: $ff;
 }
-#best-sel-box{
-  border-left: 1px solid #d4d4d5;
-}
-.bs-anchor-book{
-  p:hover{
-    color: black;
-    font-weight: bold;
-  }
-  p:active{
-    color: red;
-    font-weight: bold;
-  }
-  img{
-    padding-left: 5px;
-  }
-  span{
-    padding-top: 5px;
-  }
-}
 .activeCategory{
   background-color: #92d774;
 }

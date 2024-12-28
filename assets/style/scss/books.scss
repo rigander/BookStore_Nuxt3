@@ -56,6 +56,9 @@ $ff:SegoeWP;
 
 
 .book-link_content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
   color: #555454;
   &:hover{
@@ -73,49 +76,48 @@ $ff:SegoeWP;
 }
 .book-actions{
   display: flex;
+  align-items: center;
+  justify-content: space-around;
   width: 116px;
   font-weight: bold;
   font-size: 22px;
   color: #f05356;
-  padding-top: 5px;
-  #cart_1{
-    width: 20px;
-  }
-  span:hover{
-    cursor: pointer;
-    scale: 115%;
-  }
+  margin-top: 5px;
 }
 .toggle-wishlist{
   height: 20px;
   width: 20px;
-}
-#add-to-wishlist-index{
-  height: 20px;
-  width: 20px;
+  &:hover{
+    transform: scale(1.15);
+  }
 }
 .book-title{
-  padding: 8px 0 0 5px;
   height: 40px;
   width: 120px;
   overflow: hidden;
   cursor: pointer;
 }
 .long-text {
-  height: auto;
   overflow: visible;
 }
 .short-text {
-  width: 95px;
+  width: 100px;
 }
 .orange-heart,
 .dark-heart,
 .add-to-cart-grey,
-.add-to-cart-green {
-  height: 20px;
-  width: 20px;
+.add-to-cart-green{
+  height: 24px;
+  width: 24px;
   background-size: cover;
   display: inline-block;
+}
+.add-to-cart:hover{
+  transform: scale(1.15);
+}
+.add-to-cart-grey,
+.add-to-cart-green{
+  margin-top: 5px;
 }
 .orange-heart{
   background-image: url("/img/orange-heart.svg");
