@@ -47,12 +47,12 @@ const topNavStore = useTopNavStore();
                         </NuxtLink>
                     </li>
                     <li
-                        v-if="topNavStore.showBooksInCart"
+                        v-if="topNavStore.showMyAccount"
                         class="hover_it"
                     >
                         <NuxtLink
-                            to="/checkout"
-                        >Order Status
+                            to="/orderstatus"
+                        >Orders Status
                         </NuxtLink>
                     </li>
                     <li

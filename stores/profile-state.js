@@ -8,9 +8,7 @@ export const useProfileStore = defineStore(
             errorMessage: ''
         });
 
-        const isAuthorized = computed(() => {
-            return state.token !== null;
-        });
+        const isAuthorized = computed(() => !!state.token );
 
         const setToken = (token) => {
             state.token = token;

@@ -1,4 +1,5 @@
 <script setup>
+// Check if logged in prior entry to page
 definePageMeta({
     middleware: 'auth'
 })

@@ -1,6 +1,10 @@
 <script setup>
 import {object, string, ref as yupRef, number, boolean} from "yup";
 import { configure } from "vee-validate";
+// Check if logged in prior entry to page
+definePageMeta({
+    middleware: 'auth'
+})
 const router = useRouter();
 const profileStore = useProfileStore();
 const name = profileStore.state.userData ? profileStore.state.userData.name : '';
@@ -50,12 +54,6 @@ const errorMessageServ = ref('');
 const handleShowDeliveryAddress = () => {
     showDeliveryAddress.value = !showDeliveryAddress.value;
 }
-
-
-// Check if logged in prior entry to page
-definePageMeta({
-    middleware: ["auth"]
-})
 
 // Get User Data from Server
 const {data, error} = await useFetchGet('/user', true);

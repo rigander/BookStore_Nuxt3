@@ -9,17 +9,10 @@ const modalStore = useModalStore();
 const profileStore = useProfileStore();
 
 const wishlistLink = computed(() => {
-    if (profileStore.state.token && wishlist.value.books.length > 0) {
+    if (wishlist.value.books.length > 0) {
         return '/wishlist';
     }
-    return null;
 });
-
-const checkUserLoggedIn = () => {
-    if (!profileStore.state.token) {
-        modalStore.toggleModal('login');
-    }
-}
 </script>
 
 <template>
@@ -69,8 +62,7 @@ const checkUserLoggedIn = () => {
                                     ${{ totalCost }}
                                 </div>
                                 <NuxtLink
-                                    :to="profileStore.state.token ? '/checkout' : null"
-                                    @click="checkUserLoggedIn"
+                                    :to="'/checkout'"
                                     :aria-disabled="basket.books.length === 0"
                                     class="checkout-button">
                                     <button>Checkout</button>
@@ -81,7 +73,6 @@ const checkUserLoggedIn = () => {
                     <client-only>
                         <NuxtLink
                             :to="wishlistLink"
-                            @click="checkUserLoggedIn"
                             class="header-content__wish-list">
                             <div class="star-wish-list">
                                 <div class="round-for-star">

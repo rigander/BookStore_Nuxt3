@@ -1,5 +1,11 @@
 <script setup>
 const {wishlist, removeFromWishlist} = useWishListStore();
+
+definePageMeta({
+    middleware: 'auth'
+})
+
+
 </script>
 
 <template>
@@ -8,6 +14,7 @@ const {wishlist, removeFromWishlist} = useWishListStore();
             <h1>Your Wishlist</h1>
             <div
                 v-for="book in wishlist.books"
+                :key="book.id"
                 class="wishlist_book">
                 <NuxtLink
                     class="wishlist_book-link"
