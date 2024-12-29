@@ -6,7 +6,6 @@ const wishlistStore = useWishListStore();
 const {countBooksInWishlist, wishlist} = storeToRefs(wishlistStore);
 
 const modalStore = useModalStore();
-const profileStore = useProfileStore();
 
 const wishlistLink = computed(() => {
     if (wishlist.value.books.length > 0) {
