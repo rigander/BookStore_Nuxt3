@@ -11,6 +11,12 @@ export const useCartStore = defineStore(
         const addProcessedOrder = (order) => {
             processedOrders.orders.push(order);
         }
+        const getLastOrder = () => {
+            const lastOrder = processedOrders.orders.length > 0
+                ? processedOrders.orders[processedOrders.orders.length - 1]
+                : null;
+            return lastOrder?.data?.id || null;
+        };
 
         const addToCart = (book) => {
             const existingBook = basket.books.find((item) =>
@@ -52,6 +58,7 @@ export const useCartStore = defineStore(
             addToCart,
             processedOrders,
             addProcessedOrder,
+            getLastOrder,
             increaseQuantity,
             reduceQuantity,
             removeFromCart,
