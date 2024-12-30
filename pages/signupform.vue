@@ -12,7 +12,7 @@ configure({
 });
 const errorMessageServEmail = ref();
 const errorMessageServPhone = ref();
-const usernameRegex = /^[a-zA-Z0-9!_\[\].\\|/-]+$/;
+const usernameRegex = /^[A-Za-zА-Яа-яЁё]+ +[A-Za-zА-Яа-яЁё]+(-[A-Za-zА-Яа-яЁё]+)*$/;
 const passwordRegex = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[!$_+%:?*()!@#^&_-]).*$/;
 const phoneRegex = /^\+\(38\)\d{3}-\d{3}-\d{4}$/;
 const schema = object({

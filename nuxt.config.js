@@ -71,6 +71,7 @@ export default defineNuxtConfig({
     "~/assets/style/scss/bookslist.scss",
     "~/assets/style/scss/profile.scss",
     "~/assets/style/scss/registration-successful.scss",
+    "~/assets/style/scss/order-successful.scss",
     "~/assets/style/scss/whishlist.scss",
     "~/assets/style/scss/password-reset.scss"
   ],

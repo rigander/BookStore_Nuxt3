@@ -87,7 +87,7 @@ const Checkout = async () => {
     await submitOrder();
     addProcessedOrder(createdOrder.value);
     clearCart();
-    router.push('/orderstatus');
+    router.push('/ordersuccessful');
 }
 
 // Vee-validate configuration
