@@ -16,7 +16,6 @@ const wishlistLink = computed(() => {
 
 <template>
     <header>
-        <div class="header-layout">
             <SharedHeaderTopNav />
             <div class="header-content-container">
                 <div class="header-content">
@@ -28,10 +27,10 @@ const wishlistLink = computed(() => {
                     <div class="header-content__search-panel">
                         <input id="search" type="search">
                         <button id="search-button">
-                            <div class="magnifying-glass">
-                                <div id="magnifying_circle"></div>
-                                <div id="stick-for__magnifying-circle"></div>
-                            </div><span>Search</span>
+                            <span class="magnifying-glass">
+                                <span id="magnifying_circle"></span>
+                                <span id="stick-for__magnifying-circle"></span>
+                            </span><span>Search</span>
                         </button>
                     </div>
                     <div class="header-content__your-cart">
@@ -85,7 +84,6 @@ const wishlistLink = computed(() => {
                 </div>
             </div>
             <SharedHeaderBottomNav/>
-        </div>
     </header>
 </template>
 
