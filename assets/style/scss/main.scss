@@ -11,15 +11,11 @@ $ff:SegoeWP;
 @import "header";
 @import "slide-bar";
 @import "aside-left";
-body{
-  overflow-x:scroll;
-}
+
 .main-wrapper{
   display: flex;
   justify-content: center;
   font-family: $ff;
-  max-width: 100%;
-  width: 100%;
 }
 .activeCategory{
   background-color: #92d774;
